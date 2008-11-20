@@ -7,6 +7,7 @@ package org.p25366.y2008.model
 	[Bindable]
 	public class Model
 	{
+		public var data:String = "../../data";
 		public var keys:ArrayCollection;
 		public var currentKey:KeyVO;
 		public function Model(enforcer:SingletonEnforcer)

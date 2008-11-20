@@ -27,13 +27,14 @@
 		]]>
 	</mx:Script>
 	<mx:Style source="org/p25366/y2008/style/style.css" />
-	<mx:HSlider id="slider" minimum="0" maximum="100" />
+	<!--<mx:HSlider id="slider" minimum="0" maximum="100" />
+	
 	<mx:CheckBox top="20" id="checkBox" label="Afficher ?"/>
 	<mx:HorizontalList 
 		id="list"
 		dataProvider="{model.keys}" 
 		columnWidth="60"
-		horizontalCenter="0"
+ 		horizontalCenter="0"
 		itemRenderer="org.p25366.y2008.view.KeyItemRenderer"
 		itemClick="{model.currentKey=KeyVO(list.selectedItem)}"
 		styleName="listAccueil"
@@ -46,6 +47,9 @@
 		top="100" left="{slider.value}" right="10" bottom="10"
 		dataProvider="{model.keys}"
 		visible="{checkBox.selected}"
-		/>
-	
+		/>-->
+	<mx:TabBar dataProvider="{viewStack}"/>
+	<mx:ViewStack id="viewStack">
+		<mx:Canvas label="test" />
+	</mx:ViewStack>
 </mx:Application> 
