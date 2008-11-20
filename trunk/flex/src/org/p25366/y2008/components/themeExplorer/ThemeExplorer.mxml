@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300">
+
+<mx:Script>
+	<![CDATA[
+		import org.p25366.y2008.model.Model;
+			import org.p25366.y2008.components.themeExplorer.model.Model;
+			[Bindable]
+			private var model:Model = Model.getInstance();
+			
+	]]>
+</mx:Script>
+<mx:HBox horizontalCenter="0" verticalCenter="0">
+		<mx:List dataProvider="{model.keys_arr}" x="10" y="10" height="280">
+	</mx:List>
+	<mx:List x="10" y="10" height="280">
+</mx:List>
+</mx:HBox>
+</mx:Canvas>
