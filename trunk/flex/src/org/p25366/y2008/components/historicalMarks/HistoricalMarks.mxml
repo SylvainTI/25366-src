@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<mx:Label text="lalaa" />
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300">
-	
+		<mx:List 
+		id="list"
+		dataProvider="{model.keys}" 
+		columnWidth="60"
+		horizontalCenter="0"
+		itemRenderer="org.p25366.y2008.view.KeyItemRenderer"
+		itemClick="{model.currentKey=KeyVO(list.selectedItem)}"
+		styleName="listAccueil"
+		/>
 </mx:Canvas>
