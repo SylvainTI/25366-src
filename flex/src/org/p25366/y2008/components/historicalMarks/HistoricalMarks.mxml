@@ -4,8 +4,8 @@
 		<![CDATA[
 			import org.p25366.y2008.components.historicalMarks.model.HistoricModel;
 		
-			//[Bindable]
-			//public var historicModels:HistoricModel = HistoricModel.getInstance();
+			[Bindable]
+			public var historicModels:HistoricModel = HistoricModel.getInstance();
 		
 		]]>
 	</mx:Script>
