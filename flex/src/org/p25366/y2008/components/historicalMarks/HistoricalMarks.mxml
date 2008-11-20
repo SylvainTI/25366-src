@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300">
+<mx:Script>
+		<![CDATA[
+		//import libs.Historic_Models;
+		
+			//[Bindable]
+			//public var historic_models:Historic_Models = Historic_Models.getInstance();
+		
+		]]>
+	</mx:Script>
 <mx:Label text="lalaa" />
 		<mx:List 
 		id="list"
-		dataProvider="{Historic_Models.keys}" 
 		columnWidth="60"
 		horizontalCenter="0"
 		itemRenderer="org.p25366.y2008.components.historicalMarks.view.KeyItemRenderer"
