@@ -4,28 +4,45 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import mx.rpc.events.FaultEvent;
 			import mx.rpc.http.HTTPService;
 			import mx.rpc.events.ResultEvent;
 			private var httpService:HTTPService;
 			
 			private function resultHandler(event:ResultEvent):void{
+			}
+			
+			private function faultHandler(event:FaultEvent):void{
 				
 			}
+			
 			public function search(word:String):void
 			{
-				httpService=new HTTPService()
+				httpService = new HTTPService()
 				httpService.destination = "sampleDestination";
                 httpService.method = "GET";
-                //httpService.addEventListener("result", httpResult);
-                //httpService.addEventListener("fault", httpFault);
+                httpService.addEventListener(ResultEvent.RESULT, resultHandler);
+                httpService.addEventListener(FaultEvent.FAULT , faultHandler);
                 httpService.send();
-
 			}
 		]]>
 	</mx:Script>
+	<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml">
+
+    <mx:Panel title="Entrez votre recherche" height="75%" width="75%" 
+        paddingTop="10" paddingLeft="10">
+        
+        <mx:TextInput id="src" text="Recherchez..." click="src.text = ''"/>
+
+        <mx:Button label="Rechercher" click=""/>
+
+
+    </mx:Panel>
+</mx:Application>
 	<!--
 	<mx:HTTPService id="25366search" 
 		url="data.provider.xml"
 		result="resultHandler(event)"/>
 		-->
 </mx:Canvas>
+
