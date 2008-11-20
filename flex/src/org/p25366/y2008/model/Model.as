@@ -10,6 +10,7 @@ package org.p25366.y2008.model
 		public var data:String = "../../data";
 		public var keys:ArrayCollection;
 		public var currentKey:KeyVO;
+		public var page:String = "choixLangue";
 		public function Model(enforcer:SingletonEnforcer)
 		{
 			keys = new ArrayCollection();
