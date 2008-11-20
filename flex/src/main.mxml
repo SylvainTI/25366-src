@@ -1,7 +1,11 @@
 <?xml version="1.0"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+<mx:Application 
+	creationComplete="init()" 
 	layout="absolute"
-	creationComplete="init()" xmlns:historicalMarks="org.p25366.y2008.components.historicalMarks.*" xmlns:searchResults="org.p25366.y2008.components.searchResults.*">
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:historicalMarks="org.p25366.y2008.components.historicalMarks.*" 
+	xmlns:searchResults="org.p25366.y2008.components.searchResults.*"
+	xmlns:themeExplorer="org.p25366.y2008.components.themeExplorer.*">
 	<mx:Script>
 		<![CDATA[
 			import mx.rpc.events.ResultEvent;
@@ -27,8 +31,8 @@
 		]]>
 	</mx:Script>
 	<mx:Style source="org/p25366/y2008/style/style.css" />
-	<!--<mx:HSlider id="slider" minimum="0" maximum="100" />
-	
+	<!--
+	<mx:HSlider id="slider" minimum="0" maximum="100" />
 	<mx:CheckBox top="20" id="checkBox" label="Afficher ?"/>
 	<mx:HorizontalList 
 		id="list"
@@ -47,10 +51,15 @@
 		top="100" left="{slider.value}" right="10" bottom="10"
 		dataProvider="{model.keys}"
 		visible="{checkBox.selected}"
-		/>-->
+		/>
+	-->
 	<mx:TabBar dataProvider="{viewStack}"/>
-	<mx:ViewStack id="viewStack">
+	<mx:ViewStack
+		id="viewStack"
+		top="30"
+		>
 		<searchResults:SearchResult label="Search Result"/>
 		<historicalMarks:HistoricalMarks label="Historical Marks"/>
+		<themeExplorer:ThemeExplorer label="Theme Explorer" />
 	</mx:ViewStack>
 </mx:Application> 
