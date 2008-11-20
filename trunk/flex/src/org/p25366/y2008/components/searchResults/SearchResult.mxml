@@ -1,48 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300" 
+<mx:Canvas 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
 	>
 	
 	<mx:Script>
 		<![CDATA[
+			import mx.managers.CursorManager;
+			import org.p25366.y2008.model.Model;
 			import mx.rpc.events.FaultEvent;
 			import mx.rpc.http.HTTPService;
 			import mx.rpc.events.ResultEvent;
 			private var httpService:HTTPService;
 			
-			private function resultHandler(event:ResultEvent):void{
+			[Bindable]
+			private var _word:String;
+			public function set word(value:String):void
+			{
+				_word = value;
+				search(_word);
 			}
-			
-			private function faultHandler(event:FaultEvent):void{
-				
+			public function get word():String
+			{
+				return _word;
 			}
-			
-			public function search(word:String):void
+			private function search(word:String):void
 			{
 				httpService = new HTTPService()
-				httpService.destination = "sampleDestination";
+				httpService.destination = Model.getInstance().data+"?action=search&word="+_word;
                 httpService.method = "GET";
                 httpService.addEventListener(ResultEvent.RESULT, resultHandler);
                 httpService.addEventListener(FaultEvent.FAULT , faultHandler);
                 httpService.send();
+                CursorManager.setBusyCursor();
+			}
+			private function resultHandler(event:ResultEvent):void
+			{
+				//TODO interprétation du xml
+				
+				CursorManager.removeBusyCursor();
+			}
+			private function faultHandler(event:FaultEvent):void
+			{
+				CursorManager.removeBusyCursor();
 			}
 		]]>
 	</mx:Script>
-	<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml">
-
-    <mx:Panel title="Entrez votre recherche" height="75%" width="75%" 
-        paddingTop="10" paddingLeft="10">
-        
-        <mx:TextInput id="src" text="Recherchez..." click="src.text = ''"/>
-
-        <mx:Button label="Rechercher" click=""/>
-
-
-    </mx:Panel>
-</mx:Application>
-	<!--
-	<mx:HTTPService id="25366search" 
-		url="data.provider.xml"
-		result="resultHandler(event)"/>
-		-->
+	<mx:Label text="{_word}" width="200" />
 </mx:Canvas>
 
