@@ -1,25 +1,71 @@
 question :
-http://localhost/svn/25366/data/?action=theme&langSource=fra
+	http://localhost/svn/25366/data/?action=themes&langSource=fr-fra
 réponse :
-<?xml version="1.0" encoding="utf-8" ?>
+	<?xml version="1.0" encoding="utf-8" ?>
+	<themes>
+		<theme>
+			<id>0</id>
+			<lang>fr-fra</lang>
+			<lib><![CDATA[vie]]></lib>
+		</theme>
+		<theme>
 
-<themes>
-	<theme>
-		<id>0</id>
-		<lang>fra</lang>
-		<lib><![CDATA[vie]]></lib>
-	</theme>
-	<theme>
+			<id>1</id>
+			<lang>fr-fra</lang>
+			<lib><![CDATA[alimentation]]></lib>
+		</theme>
+		<theme>
+			<id>2</id>
+			<lang>fr-fra</lang>
 
-		<id>1</id>
-		<lang>fra</lang>
-		<lib><![CDATA[alimentation]]></lib>
-	</theme>
-	<theme>
-		<id>2</id>
-		<lang>fra</lang>
+			<lib><![CDATA[espace]]></lib>
+		</theme>
+	</themes>
 
-		<lib><![CDATA[espace]]></lib>
-	</theme>
-</themes>
-		
+
+question :
+	http://localhost/svn/25366/data/?action=subthemes&langSource=fr-fra&theme=vie
+réponse :
+	<?xml version="1.0" encoding="utf-8" ?>
+	<subthemes>
+		<subtheme>
+			<id></id>
+			<langSource>fr-fra</langSource>
+			<lib><![CDATA[naissance]]></lib>
+		</subtheme>
+		<subtheme>
+			<id>1</id>
+			<lang>fr-fra</lang>
+			<lib><![CDATA[conception]]></lib>
+		</subtheme>
+		<subtheme>
+			<id>2</id>
+			<lang>fr-fra</lang>
+			<lib><![CDATA[vie]]></lib>
+		</subtheme>
+	</subthemes>
+
+question :
+	http://localhost/svn/25366/data/?action=words&langSource=fr-fra&subtheme=
+réponse :
+	<?xml version="1.0" encoding="utf-8" ?>
+	<themes>
+		<theme>
+			<id>0</id>
+			<lang>fr-fra</lang>
+			<lib><![CDATA[vie]]></lib>
+		</theme>
+		<theme>
+
+			<id>1</id>
+			<lang>fr-fra</lang>
+			<lib><![CDATA[alimentation]]></lib>
+		</theme>
+		<theme>
+			<id>2</id>
+			<lang>fr-fra</lang>
+
+			<lib><![CDATA[espace]]></lib>
+		</theme>
+	</themes>
+
