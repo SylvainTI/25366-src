@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml">
+	<mx:Script>
+		<![CDATA[
+			import org.p25366.y2008.vo.KeyVO;
+		]]>
+	</mx:Script>
+	<mx:Label text="{KeyVO(data).label}" />
+	<mx:Label text="{KeyVO(data).image}" />
+</mx:VBox>
