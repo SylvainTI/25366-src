@@ -32,7 +32,7 @@ package org.p25366.y2008.model
 			keyVO.image = "zezef§/zef/Zef/zesf.jpg";
 			keys.addItem(keyVO);
 		}
-		public static var instance:Model;
+		private static var instance:Model;
 		public static function getInstance():Model
 		{
 			if (! instance){
