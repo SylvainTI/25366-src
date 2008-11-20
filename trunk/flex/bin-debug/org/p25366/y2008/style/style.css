@@ -1,0 +1,8 @@
+/* CSS file */
+Application{
+	backgroundColor: #ffffff;
+	theme-color : #999999;
+}
+global {
+	fontFamily: Arial;	
+}
