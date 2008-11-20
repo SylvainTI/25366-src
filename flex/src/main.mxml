@@ -8,6 +8,7 @@
 			import mx.rpc.http.HTTPService;
 			import org.p25366.y2008.vo.KeyVO;
 			import org.p25366.y2008.model.Model;
+			
 			[Bindable]
 			public var model:Model = Model.getInstance();
 			public var httpService:HTTPService;
