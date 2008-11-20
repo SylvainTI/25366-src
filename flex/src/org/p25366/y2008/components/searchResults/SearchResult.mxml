@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300" 
+	initialize="25366search.send()">
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.rpc.events.ResultEvent;
+			private var httpService:HTTPService;
+			
+			private function resultHandler(event:ResultEvent):void{
+				
+			}
+			public function search(word:String):void
+			{
+				httpService=new HTTPService()
+				service.destination = "sampleDestination";
+                service.method = "POST"; 
+                service.addEventListener("result", httpResult);
+                service.addEventListener("fault", httpFault);
+                service.send(parameters);
+
+			}
+		]]>
+	</mx:Script>
+	
+	<mx:HTTPService id="25366search" 
+		url="data.provider.xml"
+		result="resultHandler(event)"/>
+		
+</mx:Canvas>
