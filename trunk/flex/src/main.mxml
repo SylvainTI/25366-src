@@ -14,7 +14,7 @@
 			public var httpService:HTTPService;
 			public function init():void
 			{
-				httpService = new HTTPService(); 
+				httpService = new HTTPService();
 				httpService.url = "data/keys.xml";
 				httpService.resultFormat = HTTPService.RESULT_FORMAT_E4X;
 				httpService.addEventListener(ResultEvent.RESULT, result);
