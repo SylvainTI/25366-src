@@ -24,7 +24,7 @@ réponse :
 
 
 question :
-	http://localhost/svn/25366/data/?action=subthemes&langSource=fr-fra&langDest=zh-zho&theme=vie
+	http://localhost/svn/25366/data/?action=subthemes&langSource=fr-fra&langDest=zh-zho&themeId=1
 réponse :
 	<?xml version="1.0" encoding="utf-8" ?>
 	<subthemes>
@@ -38,7 +38,7 @@ réponse :
 			<genreDest><![CDATA[genre dans la langue de destination]]></genreDest>
 		</subtheme>
 		<subtheme>
-			<id>0</id>
+			<id>1</id>
 			<langSource>fr-fra</langSource>
 			<langDest>zh-zho</langDest>
 			<libSource><![CDATA[durée]]></libSource>
@@ -49,26 +49,28 @@ réponse :
 	</subthemes>
 
 question :
-	http://localhost/svn/25366/data/?action=words&langSource=fr-fra&subtheme=
+	http://localhost/svn/25366/data/?action=words&langSource=fr-fra&langDest=zh-zho&subthemeId=2
+	subtheme 2 est la durée
 réponse :
 	<?xml version="1.0" encoding="utf-8" ?>
-	<themes>
-		<theme>
+	<words>
+		<word>
 			<id>0</id>
-			<lang>fr-fra</lang>
-			<lib><![CDATA[vie]]></lib>
-		</theme>
-		<theme>
-
+			<langSource>fr-fra</langSource>
+			<langDest>zh-zho</langDest>
+			<libSource><![CDATA[initiale]]></libSource>
+			<libDest><![CDATA['initiale' en chinois]]></libDest>
+			<genreSource><![CDATA[f.]]></genreSource>
+			<genreDest><![CDATA[genre dans la langue de destination]]></genreDest>
+		</word>
+		<word>
 			<id>1</id>
-			<lang>fr-fra</lang>
-			<lib><![CDATA[alimentation]]></lib>
-		</theme>
-		<theme>
-			<id>2</id>
-			<lang>fr-fra</lang>
-
-			<lib><![CDATA[espace]]></lib>
-		</theme>
-	</themes>
+			<langSource>fr-fra</langSource>
+			<langDest>zh-zho</langDest>
+			<libSource><![CDATA[initiative]]></libSource>
+			<libDest><![CDATA['initiative' en chinois]]></libDest>
+			<genreSource><![CDATA[f.]]></genreSource>
+			<genreDest><![CDATA[genre dans la langue de destination]]></genreDest>
+		</word>
+	</words>
 
