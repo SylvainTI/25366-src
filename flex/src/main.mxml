@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
 	layout="absolute"
-	creationComplete="init()" xmlns:historicalMarks="org.p25366.y2008.components.historicalMarks.*">
+	creationComplete="init()" xmlns:historicalMarks="org.p25366.y2008.components.historicalMarks.*" xmlns:searchResults="org.p25366.y2008.components.searchResults.*">
 	<mx:Script>
 		<![CDATA[
 			import mx.rpc.events.ResultEvent;
@@ -50,6 +50,7 @@
 		/>-->
 	<mx:TabBar dataProvider="{viewStack}"/>
 	<mx:ViewStack id="viewStack">
+		<searchResults:SearchResult label="Search Result"/>
 		<historicalMarks:HistoricalMarks label="Historical Marks"/>
 	</mx:ViewStack>
 </mx:Application> 
