@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
 	layout="absolute"
-	creationComplete="init()">
+	creationComplete="init()" xmlns:historicalMarks="org.p25366.y2008.components.historicalMarks.*">
 	<mx:Script>
 		<![CDATA[
 			import mx.rpc.events.ResultEvent;
@@ -50,6 +50,6 @@
 		/>-->
 	<mx:TabBar dataProvider="{viewStack}"/>
 	<mx:ViewStack id="viewStack">
-		<mx:Canvas label="test" />
+		<historicalMarks:HistoricalMarks label="Historical Marks"/>
 	</mx:ViewStack>
 </mx:Application> 
