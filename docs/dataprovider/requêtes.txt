@@ -30,21 +30,29 @@ réponse :
 	<subthemes>
 		<subtheme>
 			<id>0</id>
-			<langSource>fr-fra</langSource>
-			<langDest>zh-zho</langDest>
-			<libSource><![CDATA[début]]></libSource>
-			<libSDest><![CDATA['début' en chinois]]></libDest>
-			<genreSource><![CDATA[m.]]></genreSource>
-			<genreDest><![CDATA[genre dans la langue de destination]]></genreDest>
+			<source>
+				<lang>fr-fra</lang>
+				<lib><![CDATA[début]]></lib>
+				<genre><![CDATA[m.]]></genre>
+			</source>
+			<destination>
+				<lang>zh-zho</lang>
+				<lib><![CDATA['début' en chinois]]></lib>
+				<genre><![CDATA[genre dans la langue de destination]]></genre>
+			</destination>
 		</subtheme>
 		<subtheme>
 			<id>1</id>
-			<langSource>fr-fra</langSource>
-			<langDest>zh-zho</langDest>
-			<libSource><![CDATA[durée]]></libSource>
-			<libSDest><![CDATA['durée' en chinois]]></libDest>
-			<genreSource><![CDATA[f.]]></genreSource>
-			<genreDest><![CDATA[genre dans la langue de destination]]></genreDest>
+			<source>
+				<lang>fr-fra</lang>
+				<lib><![CDATA[durée]]></lib>
+				<genre><![CDATA[m.]]></genre>
+			</source>
+			<destination>
+				<lang>zh-zho</lang>
+				<lib><![CDATA['durée' en chinois]]></lib>
+				<genre><![CDATA[genre dans la langue de destination]]></genre>
+			</destination>
 		</subtheme>
 	</subthemes>
 
@@ -56,21 +64,29 @@ réponse :
 	<words>
 		<word>
 			<id>0</id>
-			<langSource>fr-fra</langSource>
-			<langDest>zh-zho</langDest>
-			<libSource><![CDATA[initiale]]></libSource>
-			<libDest><![CDATA['initiale' en chinois]]></libDest>
-			<genreSource><![CDATA[f.]]></genreSource>
-			<genreDest><![CDATA[genre dans la langue de destination]]></genreDest>
+			<source>
+				<lang>fr-fra</lang>
+				<lib><![CDATA[initiale]]></lib>
+				<genre><![CDATA[f.]]></genre>
+			</source>
+			<destination>
+				<lang>zh-zho</lang>
+				<lib><![CDATA['initiale' en chinois]]></lib>
+				<genre><![CDATA[genre dans la langue de destination]]></genre>
+			</destination>
 		</word>
 		<word>
-			<id>1</id>
-			<langSource>fr-fra</langSource>
-			<langDest>zh-zho</langDest>
-			<libSource><![CDATA[initiative]]></libSource>
-			<libDest><![CDATA['initiative' en chinois]]></libDest>
-			<genreSource><![CDATA[f.]]></genreSource>
-			<genreDest><![CDATA[genre dans la langue de destination]]></genreDest>
+			<id>0</id>
+			<source>
+				<lang>fr-fra</lang>
+				<lib><![CDATA[initiative]]></lib>
+				<genre><![CDATA[f.]]></genre>
+			</source>
+			<destination>
+				<lang>zh-zho</lang>
+				<lib><![CDATA['initiative' en chinois]]></lib>
+				<genre><![CDATA[genre dans la langue de destination]]></genre>
+			</destination>
 		</word>
 	</words>
 
