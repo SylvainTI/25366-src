@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+	layout="absolute"
+	creationComplete="init()">
+	<mx:Script>
+		<![CDATA[
+			import mx.rpc.events.ResultEvent;
+			import mx.rpc.http.HTTPService;
+			import org.p25366.y2008.vo.KeyVO;
+			import org.p25366.y2008.model.Model;
+			[Bindable]
+			public var model:Model = Model.getInstance();
+			public var httpService:HTTPService;
+			public function init():void
+			{
+				httpService = new HTTPService();
+				httpService.url = "data/keys.xml";
+				httpService.resultFormat = HTTPService.RESULT_FORMAT_E4X;
+				httpService.addEventListener(ResultEvent.RESULT, result);
+				httpService.send();
+			}
+			public function result(data:Object):void
+			{
+				trace("yeah");
+			}
+		]]>
+	</mx:Script>
+	<mx:Style source="org/p25366/y2008/style/style.css" />
+	<mx:HSlider id="slider" minimum="0" maximum="100" />
+	<mx:CheckBox top="20" id="checkBox" label="Afficher ?"/>
+	<mx:HorizontalList 
+		id="list"
+		dataProvider="{model.keys}" 
+		columnWidth="60"
+		horizontalCenter="0"
+		itemRenderer="org.p25366.y2008.view.KeyItemRenderer"
+		itemClick="{model.currentKey=KeyVO(list.selectedItem)}"
+		styleName="listAccueil"
+		/>
+	<mx:Label 
+		top="50"
+		text="{model.currentKey.label}" 
+		/>
+	<mx:Tree 
+		top="100" left="{slider.value}" right="10" bottom="10"
+		dataProvider="{model.keys}"
+		visible="{checkBox.selected}"
+		/>
+	
+</mx:Application> 
