@@ -15,7 +15,7 @@
 			{
 				httpService=new HTTPService()
 				httpService.destination = "sampleDestination";
-                httpService.method = "POST"; 
+                httpService.method = "GET";
                 //httpService.addEventListener("result", httpResult);
                 //httpService.addEventListener("fault", httpFault);
                 httpService.send();
