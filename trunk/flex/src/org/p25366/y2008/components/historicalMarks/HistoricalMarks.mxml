@@ -40,7 +40,7 @@
 				service.method ="GET";
 				service.addEventListener(ResultEvent.RESULT, resultHandler);
 				service.addEventListener(FaultEvent.FAULT, faultHandler);
-				service.url= "data/data.xml";
+				service.url= "http://localhost/svn/25366/flex/bin-debug/data/data.xml";
 				service.send();
 			}
 		
