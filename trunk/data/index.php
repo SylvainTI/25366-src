@@ -1,8 +1,6 @@
 <?php
 header('Content-type: application/xml; charset="utf-8"');
-?>
-<?xml version="1.0" encoding="utf-8" ?>
-<?php
+echo ('<?xml version="1.0" encoding="utf-8" ?>');
 $action = isset($_GET["action"]) ? $_GET['action'] : false;
 $themeId = isset($_GET["themeId"]) ? $_GET['themeId'] : false;
 $subthemeId = isset($_GET["subthemeId"]) ? $_GET['subthemeId'] : false;
