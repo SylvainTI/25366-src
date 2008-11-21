@@ -1,9 +1,14 @@
-<subthemes>
-	<subtheme>
 <?php
-	$subthemeId = 2;
+
+echo '<?xml version="1.0" encoding="UTF-8" ?>';
+echo '<subthemes>';
+echo '<subtheme>';
+
+	$subthemeId = "2";
 	$libSource = "durée";
 	$genreSource = "f.";
+	$langSource = "fr-fra";
+	$langDest = "zh-zho";
 	$libDest = "'durée' dans la langue de destination";
 	$genreDest = "genre du mot edans la langue de destination";
 ?>		<id><?php echo $subthemeId; ?></id>
@@ -20,9 +25,11 @@
 	</subtheme>
 	<subtheme>
 <?php
-	$subthemeId = 1;
+	$subthemeId = "1";
 	$libSource = "naissance";
 	$genreSource = "f.";
+	$langSource = "fr-fra";
+	$langDest = "zh-zho";
 	$libDest = "'naissance' dans la langue de destination";
 	$genreDest = "genre du mot edans la langue de destination";
 ?>		<id><?php echo $subthemeId; ?></id>
