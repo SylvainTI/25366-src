@@ -34,7 +34,7 @@ switch ($action) {
 		";
 		break;
 	case "themes":
-		include('words.php');
+		include('themes.php');
 		break;
 	
 	case "subthemes":
