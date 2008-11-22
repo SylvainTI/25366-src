@@ -1,9 +1,6 @@
+<subthemes>
+<subtheme>
 <?php
-
-echo '<?xml version="1.0" encoding="UTF-8" ?>';
-echo '<subthemes>';
-echo '<subtheme>';
-
 	$subthemeId = "2";
 	$libSource = "durée";
 	$genreSource = "f.";
