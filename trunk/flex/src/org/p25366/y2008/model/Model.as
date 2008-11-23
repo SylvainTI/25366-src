@@ -23,7 +23,8 @@ package org.p25366.y2008.model
 				instance = new Model(new SingletonEnforcer())
 			}
 			return instance;
-		}
+		}	
 	}
 }
 class SingletonEnforcer{}
+

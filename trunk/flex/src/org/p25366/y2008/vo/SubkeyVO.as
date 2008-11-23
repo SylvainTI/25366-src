@@ -1,17 +1,18 @@
 package org.p25366.y2008.vo
 {
-	import mx.collections.ArrayCollection;
-	
 	[Bindable]
+	
 	public class SubkeyVO
 	{
-		public var parent:SubkeyVO;
-		public var label:String;
-		public var id:Number;
-		public var langSource:String;
-		public var langDest:String;
+		public var id:String;
 		
-		//public var image:String;
-		public var children:ArrayCollection;
+		public var langDest:String;
+		public var libDest:String;
+		public var genderDest:String;
+		
+		public var langSrc:String;
+		public var libSrc:String;
+		public var genderSrc:String;
+		
 	}
 }
