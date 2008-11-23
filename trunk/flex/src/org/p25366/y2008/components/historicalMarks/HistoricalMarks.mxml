@@ -9,7 +9,7 @@
 			import mx.controls.Alert;
 			 
 			import org.p25366.y2008.components.historicalMarks.model.HistoricModel;
-			import org.p25366.y2008.components.historicalMarks.vo.HistoricalMarkVO;
+		//	import org.p25366.y2008.components.historicalMarks.vo.HistoricalMarkVO;
 			import mx.rpc.events.ResultEvent;
 			import mx.rpc.events.FaultEvent;
 			
