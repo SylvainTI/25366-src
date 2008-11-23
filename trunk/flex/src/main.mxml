@@ -5,9 +5,12 @@
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:historicalMarks="org.p25366.y2008.components.historicalMarks.*" 
 	xmlns:searchResults="org.p25366.y2008.components.searchResults.*"
-	xmlns:themeExplorer="org.p25366.y2008.components.themeExplorer.*">
+	xmlns:themeExplorer="org.p25366.y2008.components.themeExplorer.*" xmlns:definitionPage="org.p25366.y2008.components.definitionPage.*">
 	<mx:Script>
 		<![CDATA[
+		/* Samedi : 02:20 (Mouhahahah) Anthony dit : Je me suis permis de rajouter => themeId="1"  ,dans mon composant que tu instancies ici, 
+		en fait tu pourras faire du data-binding à la place du 1, il me faut l'Id du theme selectionné. Merci */
+
 			import mx.rpc.events.ResultEvent;
 			import mx.rpc.http.HTTPService;
 			
@@ -32,7 +35,8 @@
 			public function determineLang(event:Event):void
 			{
 				model.langSource=event.currentTarget.selectedItem.data;
-			}
+			}			
+			
 		]]>
 	</mx:Script>
 	<mx:Style source="org/p25366/y2008/style/style.css" />
@@ -77,10 +81,21 @@
 			/>
 		<mx:ViewStack
 			id="viewStack"
-			top="100"
+			top="150"
+			height="70%"
+			width="70%"
 			>
 			<historicalMarks:HistoricalMarks label="Historical Marks"/>
-			<themeExplorer:ThemeExplorer label="Theme Explorer" />
+			<mx:HBox	label="Theme Explorer And Definition Page">
+			<themeExplorer:ThemeExplorer 
+				id = "themeExplorer"
+				themeId="1"
+				/>
+			<definitionPage:DefinitionPage 
+				id = "definitionPage"
+				wordId="1"
+				/>
+				</mx:HBox>
 		</mx:ViewStack>
 		<mx:TextInput 
 			id="searchTextInput" 
