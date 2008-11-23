@@ -1,10 +1,9 @@
-<subthemes>
-<subtheme>
+<words>
+	<word>
 <?php
-	$subthemeId = "2";
-	$libSource = "durée";
+	$libSource = "mort";
 	$genreSource = "f.";
-	$libDest = "'durée' dans la langue de destination";
+	$libDest = "'mort' dans la langue de destination";
 	$genreDest = "genre du mot edans la langue de destination";
 ?>		<id><?php echo $subthemeId; ?></id>
 		<source>
@@ -17,10 +16,9 @@
 			<lib><![CDATA[<?php echo $libDest; ?>]]></lib>
 			<genre><![CDATA[<?php echo $genreDest; ?>]]></genre>
 		</destination>
-	</subtheme>
-	<subtheme>
+	</word>
+	<word>
 <?php
-	$subthemeId = "1";
 	$libSource = "naissance";
 	$genreSource = "f.";
 	$libDest = "'naissance' dans la langue de destination";
@@ -36,5 +34,5 @@
 			<lib><![CDATA[<?php echo $libDest; ?>]]></lib>
 			<genre><![CDATA[<?php echo $genreDest; ?>]]></genre>
 		</destination>
-	</subtheme>
-</subthemes>
+	</word>
+</words>
