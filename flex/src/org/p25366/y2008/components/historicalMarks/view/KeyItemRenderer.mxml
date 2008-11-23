@@ -2,10 +2,10 @@
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" >
 	<mx:Script>
 		<![CDATA[
-			import org.p25366.y2008.components.historicalMarks.vo.HistoricalMarkVO;
+			//import org.p25366.y2008.components.historicalMarks.vo.HistoricalMarkVO;
 			import org.p25366.y2008.vo.KeyVO;
 		]]>
 	</mx:Script>
-	<mx:Label text="{HistoricalMarkVO(data).date}" />
-	<mx:Text text="{HistoricalMarkVO(data).description}" />
+	<!--<mx:Label text="{//HistoricalMarkVO(data).date}" />
+	<mx:Text text="{HistoricalMarkVO(data).description}" />-->
 </mx:VBox>

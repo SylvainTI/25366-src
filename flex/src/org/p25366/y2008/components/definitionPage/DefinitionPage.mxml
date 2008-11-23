@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" creationComplete="init(event);" width="670" height="478">
+	<mx:Script>
+		<![CDATA[
+			import com.carlcalderon.arthropod.Debug;
+			import org.p25366.y2008.components.definitionPage.model.DefinitionPageModel;
+			[Bindable]
+			public var wordId:String;
+			private var definitionPage:DefinitionPageModel = DefinitionPageModel.getInstance();
+			
+			private function init( event : Event ) : void {
+				this.definitionPage.openPage(this.wordId);
+			}
+		]]>
+	</mx:Script>
+	<mx:VBox>
+	<mx:HBox>	
+	<mx:Text x="10" y="10" text="Original Word" width="103"/>
+	<mx:Text text="genre"/>
+	<mx:Text x="146" y="10" text="Translated Word" width="128"/>
+	</mx:HBox>
+	<mx:HBox>
+		<mx:VBox>
+			<mx:Text text="phrase en LANGUE ORIGINE : "/>
+			<mx:Text text="PHRASE."/>
+		</mx:VBox>
+		<mx:VBox>
+			<mx:Text text="phrase en LANGUE DESTINATION : "/>
+			<mx:Text text="PHRASE."/>
+		</mx:VBox>
+	</mx:HBox>
+	<mx:VBox>
+		<mx:Text text="Tags"/>
+		<mx:Text text="Chien,Chat,Vache,Train,Poireaux,Ordinateur..."/>
+	</mx:VBox>
+	</mx:VBox>
+</mx:Canvas>
