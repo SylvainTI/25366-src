@@ -4,7 +4,7 @@
 		<![CDATA[
 			import org.p25366.y2008.model.Model;
 			import org.p25366.y2008.components.themeExplorer.model.ThemeExplorerModel;
-			import com.carlcalderon.arthropod.Debug;
+			//import com.carlcalderon.arthropod.Debug;
 			
 			[Bindable]
 			private var themeExplorerModel:ThemeExplorerModel = ThemeExplorerModel.getInstance();
@@ -21,7 +21,7 @@
 			}		
 			
 			private function onWordSelected( event : Event ) : void {
-				Debug.log("onWordSelected.ItemSelected.id :: "+wordsList.selectedItem.id);
+				//Debug.log("onWordSelected.ItemSelected.id :: "+wordsList.selectedItem.id);
 			}
 			
 		]]>

@@ -11,7 +11,7 @@ import flash.display.Sprite;
 	
 	import org.p25366.y2008.model.Model;
 	import org.p25366.y2008.vo.WordVO;
-	import com.carlcalderon.arthropod.Debug;
+	//import com.carlcalderon.arthropod.Debug;
 	
 	[Bindable]
 	public class WordDelegate extends Sprite
@@ -49,7 +49,7 @@ import flash.display.Sprite;
 		}
 	
 		private function onXmlLoaded( event : Event ) : void {
-			Debug.log(event.target.data);
+			//Debug.log(event.target.data);
 			words_arr = new ArrayCollection();
 			var xml:XML = new XML(event.target.data);
 			for each( var element:XML in xml.elements()){

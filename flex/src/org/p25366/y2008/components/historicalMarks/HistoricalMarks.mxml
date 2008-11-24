@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Canvas 
-	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	creationComplete="init()"
 	>
 	<mx:Script>
 		<![CDATA[
@@ -9,24 +10,28 @@
 			import mx.controls.Alert;
 			 
 			import org.p25366.y2008.components.historicalMarks.model.HistoricModel;
-		//	import org.p25366.y2008.components.historicalMarks.vo.HistoricalMarkVO;
+			import org.p25366.y2008.components.historicalMarks.vo.HistoricalMarkVO;
 			import mx.rpc.events.ResultEvent;
 			import mx.rpc.events.FaultEvent;
 			
 			[Bindable]
 			private var model:HistoricModel=HistoricModel.getInstance();
-			
-			[Bindable]
-			public var historicModels:HistoricModel = HistoricModel.getInstance();
-			
 			[Bindable]
 			public var historicCollection:ArrayCollection;
+			
+			public var historicalMarkVO:HistoricalMarkVO;
+			
 			private function resultHandler(event:ResultEvent):void{
-				//event.result.tranches.tranche;	
 				model.marks= new ArrayCollection();
 				
-				Alert.show(event.result.tranches.tranche);	
-				Alert.show('work');
+				for each(var item_test:XML in (event.result as XML).elements()){
+					
+			historicalMarkVO = new HistoricalMarkVO();
+			historicalMarkVO.date = item_test.date;
+			historicalMarkVO.description =  item_test.description;
+			(model.marks).addItem(historicalMarkVO);
+			
+				}
 			}
 			private function faultHandler(event:FaultEvent):void{
 				Alert.show(event.fault.toString());
@@ -34,37 +39,23 @@
 			
 			public var service:HTTPService;
 			private function init():void{
-				//HTTPHistory.send();
 				service= new HTTPService();
 				service.resultFormat = HTTPService.RESULT_FORMAT_E4X;
 				service.method ="GET";
 				service.addEventListener(ResultEvent.RESULT, resultHandler);
 				service.addEventListener(FaultEvent.FAULT, faultHandler);
-				service.url= "http://localhost/svn/25366/flex/bin-debug/data/data.xml";
+				service.url= "data/data.xml";
 				service.send();
 			}
 		
 		]]>
 	</mx:Script>
-	<!--
-	<mx:HTTPService 
-		id="HTTPHistory" 
-		url="data/data.xml" 
-		result="httpResultHandler(event)"
-		fault="faultHandler(event)"
-		/>
-		-->
-	<mx:Label text="lalaa" />
 	<mx:List 
 		id="list"
-		dataProvider="{historicCollection}" 
+		dataProvider="{model.marks}" 
 		columnWidth="200"
 		horizontalCenter="0"
 		itemRenderer="org.p25366.y2008.components.historicalMarks.view.KeyItemRenderer"
 		styleName="listAccueil"
 		/>
-		<mx:Button 
-			click="init()" 
-			label="Load" 
-			/>
 </mx:Canvas>
