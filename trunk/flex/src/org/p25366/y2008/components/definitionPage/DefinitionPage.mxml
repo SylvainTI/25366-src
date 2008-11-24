@@ -2,7 +2,7 @@
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" creationComplete="init(event);" width="670" height="478">
 	<mx:Script>
 		<![CDATA[
-			import com.carlcalderon.arthropod.Debug;
+			//import com.carlcalderon.arthropod.Debug;
 			import org.p25366.y2008.components.definitionPage.model.DefinitionPageModel;
 			[Bindable]
 			public var wordId:String;

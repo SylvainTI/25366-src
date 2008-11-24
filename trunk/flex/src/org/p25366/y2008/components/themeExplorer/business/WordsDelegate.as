@@ -11,7 +11,7 @@ package org.p25366.y2008.components.themeExplorer.business
 	
 	import org.p25366.y2008.model.Model;
 	import org.p25366.y2008.vo.WordsVO;
-	import com.carlcalderon.arthropod.Debug;
+	//import com.carlcalderon.arthropod.Debug;
 	
 	[Bindable]
 	public class WordsDelegate extends Sprite
@@ -55,7 +55,7 @@ package org.p25366.y2008.components.themeExplorer.business
 			for each( var element:XML in xml.elements()){
 				var wordVO:WordsVO = new WordsVO();
 				wordVO.id = element.id.toString();
-				Debug.log(element.id.toString());
+				//Debug.log(element.id.toString());
 				wordVO.genderDest = element.destination.genre.toString();
 				wordVO.genderSrc = element.source.genre.toString();
 				wordVO.langDest = element.destination.lang.toString();
