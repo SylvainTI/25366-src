@@ -23,7 +23,7 @@
 			
 			private function resultHandler(event:ResultEvent):void{
 				model.marks= new ArrayCollection();
-				
+				Alert.show(event.result.valueOf());
 				for each(var item_test:XML in (event.result as XML).elements()){
 					
 			historicalMarkVO = new HistoricalMarkVO();
@@ -53,7 +53,7 @@
 	<mx:List 
 		id="list"
 		dataProvider="{model.marks}" 
-		columnWidth="200"
+		columnWidth="800"
 		horizontalCenter="0"
 		itemRenderer="org.p25366.y2008.components.historicalMarks.view.KeyItemRenderer"
 		styleName="listAccueil"
