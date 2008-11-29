@@ -15,23 +15,25 @@
 			import mx.rpc.events.FaultEvent;
 			
 			[Bindable]
-			private var model:HistoricModel=HistoricModel.getInstance();
-			[Bindable]
-			public var historicCollection:ArrayCollection;
+			private var historic_slider_datas:Array;
 			
-			public var historicalMarkVO:HistoricalMarkVO;
+			[Bindable]
+			private var model:HistoricModel=HistoricModel.getInstance(); 
+			
+			private var historicalMarkVO:HistoricalMarkVO;
 			
 			private function resultHandler(event:ResultEvent):void{
 				model.marks= new ArrayCollection();
-				Alert.show(event.result.valueOf());
+				
 				for each(var item_test:XML in (event.result as XML).elements()){
-					
+			//	historic_slider_datas[historic_slider_datas.length] = item_test.date.toString();
 			historicalMarkVO = new HistoricalMarkVO();
 			historicalMarkVO.date = item_test.date;
 			historicalMarkVO.description =  item_test.description;
 			(model.marks).addItem(historicalMarkVO);
 			
 				}
+				historic_slider_datas = new Array('1','3','10');
 			}
 			private function faultHandler(event:FaultEvent):void{
 				Alert.show(event.fault.toString());
@@ -50,12 +52,26 @@
 		
 		]]>
 	</mx:Script>
-	<mx:List 
-		id="list"
-		dataProvider="{model.marks}" 
-		columnWidth="800"
-		horizontalCenter="0"
-		itemRenderer="org.p25366.y2008.components.historicalMarks.view.KeyItemRenderer"
-		styleName="listAccueil"
-		/>
+<mx:HBox height="100%" width="100%" >	
+
+	<mx:HBox width="90%" height="100%" horizontalAlign="left">
+	<mx:VSlider width="10%" id="historic_slider"  height="98%" snapInterval="1" labels="{historic_slider_datas}" />
+		<mx:List 
+			borderThickness="0"
+			backgroundAlpha="0"
+			id="list"
+			dataProvider="{model.marks}" 
+			width="90%" 
+			height="90%"
+			horizontalCenter="0"
+			itemRenderer="org.p25366.y2008.components.historicalMarks.view.KeyItemRenderer"
+			styleName="listAccueil"
+			/>
+			
+	</mx:HBox>
+	<mx:HBox width="10%" height="10%" horizontalAlign="right">
+		<mx:Label text="Rechercher:" />
+		<mx:TextInput id="to_search" />
+	</mx:HBox>
+</mx:HBox>
 </mx:Canvas>
