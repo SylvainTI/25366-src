@@ -1,11 +1,14 @@
 <?xml version="1.0"?>
 <mx:Application 
+	backgroundColor="0xffffff"
 	creationComplete="init()" 
 	layout="absolute"
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:historicalMarks="org.p25366.y2008.components.historicalMarks.*" 
 	xmlns:searchResults="org.p25366.y2008.components.searchResults.*"
-	xmlns:themeExplorer="org.p25366.y2008.components.themeExplorer.*" xmlns:definitionPage="org.p25366.y2008.components.definitionPage.*">
+	xmlns:themeExplorer="org.p25366.y2008.components.themeExplorer.*" 
+	xmlns:definitionPage="org.p25366.y2008.components.definitionPage.*"
+	>
 	<mx:Script>
 		<![CDATA[
 		/* Samedi : 02:20 (Mouhahahah) Anthony dit : Je me suis permis de rajouter => themeId="1"  ,dans mon composant que tu instancies ici, 
