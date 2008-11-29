@@ -6,6 +6,6 @@
 			import org.p25366.y2008.vo.KeyVO;
 		]]>
 	</mx:Script>
-	<mx:Label text="{HistoricalMarkVO(data).date}" />
-	<mx:Text text="{HistoricalMarkVO(data).description}" />
+	<mx:Label text="{HistoricalMarkVO(data).date}" fontWeight="bold"  fontSize="13" />
+	<mx:Text text="{HistoricalMarkVO(data).description}"  fontWeight="bold"/>
 </mx:VBox>
