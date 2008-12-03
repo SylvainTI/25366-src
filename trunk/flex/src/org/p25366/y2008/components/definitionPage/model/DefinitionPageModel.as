@@ -1,10 +1,15 @@
 package org.p25366.y2008.components.definitionPage.model
 {
+	import mx.controls.Alert;
+	
 	import org.p25366.y2008.components.definitionPage.business.WordDelegate;
+	import org.p25366.y2008.event.ProjectEvents;
+	import org.p25366.y2008.vo.WordVO;
 	
 	[Bindable]
 	public class DefinitionPageModel
 	{
+		public var word:WordVO = new WordVO();
 		private var _word:WordDelegate = WordDelegate.getInstance();
 		private static var instance:DefinitionPageModel;
 		
@@ -16,13 +21,14 @@ package org.p25366.y2008.components.definitionPage.model
 			return instance;
 		}
 		
-		public function openPage(pId:String) : void {
-				this._word.getDatas(pId);
+		public function openPage(event : ProjectEvents) : void {
+				this._word.getDatas(event.wordId);
 				this._word.addEventListener("definitionPageLoaded",onSubThemeLoaded);
 		}
 		
 		private function onSubThemeLoaded( event : Event ) : void {
-
+			this.word = _word.word;
 		}
+		
 	}
 }

@@ -4,6 +4,7 @@ echo ('<?xml version="1.0" encoding="utf-8" ?>');
 $action = isset($_GET["action"]) ? $_GET['action'] : false;
 $themeId = isset($_GET["themeId"]) ? $_GET['themeId'] : false;
 $subthemeId = isset($_GET["subthemeId"]) ? $_GET['subthemeId'] : false;
+$wordId = isset($_GET["wordId"]) ? $_GET['wordId'] : false;
 $langSource = isset($_GET["langSource"]) ? $_GET['langSource'] : false;
 $langDest = isset($_GET["langDest"]) ? $_GET['langDest'] : false;
 switch ($action) {
@@ -42,11 +43,10 @@ switch ($action) {
 		include('subthemes.php');
 		break;
 	case "words":
-	//todo
 		include('words.php');
 		break;
 	case "word":
-	//todo
+		include('word.php');
 		break;
 	case "historical":
 	//todo

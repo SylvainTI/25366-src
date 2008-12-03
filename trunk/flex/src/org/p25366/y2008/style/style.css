@@ -10,3 +10,20 @@ global {
 	
 }
 
+List.themeExplorerList{
+	background-alpha:0;
+	borderThickness: 0;
+	borderStyle: none;
+	rollOverColor: #F1F1F1;
+	selectionColor: #EDEDED;
+	verticalScrollBarStyleName: listVerticalScrollBar;
+}
+.listVerticalScrollBar
+{
+	borderColor: #FFFFFF;
+	trackColors: #FFFFFF, #FFFFFF;
+}
+
+Canvas.defPage{
+	background-alpha: 0;
+}

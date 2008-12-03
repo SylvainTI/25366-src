@@ -4,6 +4,7 @@ package org.p25366.y2008.vo
 	public class WordsVO
 	{
 		public var id:String;
+		public var subThemeId:String;
 		
 		public var langDest:String;
 		public var libDest:String;

@@ -1,37 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" creationComplete="init(event);" width="670" height="478">
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"  width="670" height="478" creationComplete="init()" styleName="defPage">
 	<mx:Script>
 		<![CDATA[
 			//import com.carlcalderon.arthropod.Debug;
+			import org.p25366.y2008.model.Model;
 			import org.p25366.y2008.components.definitionPage.model.DefinitionPageModel;
+			import org.p25366.y2008.event.ProjectEvents;
+			
 			[Bindable]
-			public var wordId:String;
 			private var definitionPage:DefinitionPageModel = DefinitionPageModel.getInstance();
 			
-			private function init( event : Event ) : void {
-				this.definitionPage.openPage(this.wordId);
+			public function init() : void {
+				Model.getInstance().addEventListener(ProjectEvents.OPEN_PAGE,definitionPage.openPage);
 			}
 		]]>
 	</mx:Script>
 	<mx:VBox>
-	<mx:HBox>	
-	<mx:Text x="10" y="10" text="Original Word" width="103"/>
-	<mx:Text text="genre"/>
-	<mx:Text x="146" y="10" text="Translated Word" width="128"/>
-	</mx:HBox>
-	<mx:HBox>
+		<mx:HBox>	
+			<mx:Text x="10" y="10" text="{definitionPage.word.libSrc}" width="103"/>
+			<mx:Text text="{definitionPage.word.genderSrc}"/>
+			<mx:Text x="146" y="10" text="{definitionPage.word.langDest}" width="128"/>
+		</mx:HBox>
+		<mx:HBox>
+			<mx:VBox>
+				<mx:Text text="{'Phrase en '+definitionPage.word.langSrc+' : '}"/>
+				<mx:Text text="{definitionPage.word.sensSrc}"/>
+			</mx:VBox>
+			<mx:VBox>
+				<mx:Text text="{'Phrase en '+definitionPage.word.langDest+' : '}"/>
+				<mx:Text text="{definitionPage.word.sensDest}"/>
+			</mx:VBox>
+		</mx:HBox>
 		<mx:VBox>
-			<mx:Text text="phrase en LANGUE ORIGINE : "/>
-			<mx:Text text="PHRASE."/>
+			<mx:Text text="Tags"/>
+			<mx:Text text="{definitionPage.word.tags}"/>
 		</mx:VBox>
-		<mx:VBox>
-			<mx:Text text="phrase en LANGUE DESTINATION : "/>
-			<mx:Text text="PHRASE."/>
-		</mx:VBox>
-	</mx:HBox>
-	<mx:VBox>
-		<mx:Text text="Tags"/>
-		<mx:Text text="Chien,Chat,Vache,Train,Poireaux,Ordinateur..."/>
-	</mx:VBox>
 	</mx:VBox>
 </mx:Canvas>

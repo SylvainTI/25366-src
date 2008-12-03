@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"  creationComplete="init(event)">
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"  creationComplete="init(event) ">
 	<mx:Script>
 		<![CDATA[
+			import org.p25366.y2008.event.ProjectEvents;
 			import org.p25366.y2008.model.Model;
 			import org.p25366.y2008.components.themeExplorer.model.ThemeExplorerModel;
 			//import com.carlcalderon.arthropod.Debug;
@@ -17,18 +18,23 @@
 			
 			private function onItemSelected( event : Event ) : void{
 				wordsList.visible = true;
+				Model.getInstance().defPageVisible = false;		
 				this.themeExplorerModel.openSection("words",subthemesList.selectedItem.id);
 			}		
 			
 			private function onWordSelected( event : Event ) : void {
-				//Debug.log("onWordSelected.ItemSelected.id :: "+wordsList.selectedItem.id);
+				Model.getInstance().defPageVisible = true;		
+				var event2:ProjectEvents = new ProjectEvents(ProjectEvents.OPEN_PAGE);
+				event2.wordId = subthemesList.selectedItem.id;
+				Model.getInstance().dispatchEvent(event2);
 			}
 			
 		]]>
 	</mx:Script>
-	<mx:HBox>
+	<mx:HBox left="20">
 		<mx:List
 			id = "subthemesList"
+			styleName="themeExplorerList"
 			visible="false"
 			click="onItemSelected(event)"
 			dataProvider="{this.themeExplorerModel.subthemes_arr}" 
@@ -40,7 +46,8 @@
 		<mx:List 
 			visible="false"
 			id = "wordsList"
-			click = "onWordSelected(event)"
+			styleName="themeExplorerList"
+			click = "onWordSelected(event);"
 			dataProvider="{this.themeExplorerModel.words_arr}" 
 			itemRenderer="org.p25366.y2008.view.WordsItemRenderer"
 			x="10" 
