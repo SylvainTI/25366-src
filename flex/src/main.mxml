@@ -96,7 +96,7 @@
 				/>
 			<definitionPage:DefinitionPage 
 				id = "definitionPage"
-				wordId="1"
+				visible = "{model.defPageVisible}"
 				/>
 				</mx:HBox>
 		</mx:ViewStack>

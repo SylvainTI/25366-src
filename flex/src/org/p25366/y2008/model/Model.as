@@ -15,7 +15,6 @@ package org.p25366.y2008.model
 		public var currentKey:KeyVO;
 		public var page:String = "choixLangue";
 		public var defPageVisible:Boolean = false;
-		public var defPageEnabled:Boolean = false;
 		private static var instance:Model;
 		
 		public function Model(enforcer:SingletonEnforcer)
