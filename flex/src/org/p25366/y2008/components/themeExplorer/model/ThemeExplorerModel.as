@@ -1,7 +1,5 @@
 package org.p25366.y2008.components.themeExplorer.model
 {	
-	import flash.events.Event;
-	
 	import mx.collections.ArrayCollection;
 	
 	import org.p25366.y2008.components.themeExplorer.business.SubthemesDelegate;
@@ -27,6 +25,7 @@ package org.p25366.y2008.components.themeExplorer.model
 		}
 		
 		public function openSection(pSection:String,pId:String) : void {
+			if(pSection==null && pId==null)throw (new Error("Erreur ThemeExplorer.openSection : Parametre nul"));
 			switch(pSection){
 				case "subthemes":
 				this._subkeysDelegate.getDatas(pId);

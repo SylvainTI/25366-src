@@ -5,7 +5,12 @@
 	$genreSource = "f.";
 	$libDest = "'mort' dans la langue de destination";
 	$genreDest = "genre du mot edans la langue de destination";
-?>		<id><?php echo $subthemeId; ?></id>
+	$wordId = "1";
+	$subthemeId = "4";
+?>		
+
+		<id><?php echo $wordId; ?></id>
+		<subThemeId><?php echo $subthemeId; ?></subThemeId>
 		<source>
 			<lang><?php echo $langSource; ?></lang>
 			<lib><![CDATA[<?php echo $libSource; ?>]]></lib>
@@ -23,7 +28,10 @@
 	$genreSource = "f.";
 	$libDest = "'naissance' dans la langue de destination";
 	$genreDest = "genre du mot edans la langue de destination";
-?>		<id><?php echo $subthemeId; ?></id>
+	$wordId = "2";
+?>		
+		<id><?php echo $wordId; ?></id>
+		<subThemeId><?php echo $subthemeId; ?></subThemeId>
 		<source>
 			<lang><?php echo $langSource; ?></lang>
 			<lib><![CDATA[<?php echo $libSource; ?>]]></lib>

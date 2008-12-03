@@ -2,6 +2,7 @@ package org.p25366.y2008.model
 {
 	import mx.collections.ArrayCollection;
 	
+	import org.p25366.y2008.event.ProjectEvents;
 	import org.p25366.y2008.vo.KeyVO;
 	
 	[Bindable]
@@ -13,10 +14,19 @@ package org.p25366.y2008.model
 		public var keys:ArrayCollection;
 		public var currentKey:KeyVO;
 		public var page:String = "choixLangue";
+		public var defPageVisible:Boolean = false;
+		public var defPageEnabled:Boolean = false;
+		private static var instance:Model;
+		
 		public function Model(enforcer:SingletonEnforcer)
 		{
+			addEventListener(ProjectEvents.OPEN_PAGE,initDefinitionPage);
 		}
-		private static var instance:Model;
+		
+		public function  initDefinitionPage(event : ProjectEvents) : void{
+			dispatchEvent(event);
+		}
+		
 		public static function getInstance():Model
 		{
 			if (! instance){

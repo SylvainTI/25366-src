@@ -54,8 +54,8 @@ package org.p25366.y2008.components.themeExplorer.business
 			var xml:XML = new XML(event.target.data);
 			for each( var element:XML in xml.elements()){
 				var wordVO:WordsVO = new WordsVO();
+				wordVO.subThemeId = element.subThemeId.toString();
 				wordVO.id = element.id.toString();
-				//Debug.log(element.id.toString());
 				wordVO.genderDest = element.destination.genre.toString();
 				wordVO.genderSrc = element.source.genre.toString();
 				wordVO.langDest = element.destination.lang.toString();
