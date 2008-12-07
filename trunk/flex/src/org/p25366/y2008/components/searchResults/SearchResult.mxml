@@ -3,16 +3,16 @@
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
 	backgroundColor="0xcccccc" 
 	>
-	
 	<mx:Script>
 		<![CDATA[
+			import mx.events.CloseEvent;
 			import mx.managers.CursorManager;
 			import org.p25366.y2008.model.Model;
 			import mx.rpc.events.FaultEvent;
 			import mx.rpc.http.HTTPService;
 			import mx.rpc.events.ResultEvent;
 			private var httpService:HTTPService;
-			
+				
 			[Bindable]
 			private var _word:String;
 			public function set word(value:String):void
@@ -44,6 +44,19 @@
 			{
 				CursorManager.removeBusyCursor();
 			}
+			public function confirmHandler(event: CloseEvent): void{
+				switch (event.detail){
+					case Alert.OK:
+					var my_req:URLRequest = new URLRequest('requete.php');
+					var my_load:ULRLoader = new URLLoader();
+					my_load.addEventListener(Event.COMPLETE, completeHandler);
+					my_load.load(my_req);
+					
+						}
+				}
+					private function completeHandler(evt:Event):void{
+					trace (evt.target.data);
+					}
 		]]>
 	</mx:Script>
 	<mx:Label text="{_word}" width="200" />
