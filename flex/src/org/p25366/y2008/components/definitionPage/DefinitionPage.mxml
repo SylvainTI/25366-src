@@ -16,7 +16,7 @@
 		]]>
 	</mx:Script>
 	<mx:VBox>
-		<mx:HBox>	
+		<mx:HBox>
 			<mx:Text x="10" y="10" text="{definitionPage.word.libSrc}" width="103"/>
 			<mx:Text text="{definitionPage.word.genderSrc}"/>
 			<mx:Text x="146" y="10" text="{definitionPage.word.langDest}" width="128"/>
