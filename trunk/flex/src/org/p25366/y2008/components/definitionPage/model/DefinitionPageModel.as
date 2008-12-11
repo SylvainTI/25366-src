@@ -1,6 +1,6 @@
 package org.p25366.y2008.components.definitionPage.model
 {
-	import mx.controls.Alert;
+	import flash.events.Event;
 	
 	import org.p25366.y2008.components.definitionPage.business.WordDelegate;
 	import org.p25366.y2008.event.ProjectEvents;

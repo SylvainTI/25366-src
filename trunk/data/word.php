@@ -4,7 +4,7 @@
 	$genreSource = "f.";
 	$sensSource = "Définition du mot dans la langue source";
 	$libDest = "'naissance' dans la langue de destination";
-	$genreDest = "genre du mot dans la langue de destination";
+	$genreDest = "genre dest";
 	$sensDest = "Définition du mot dans la langue de destination";
 	$tags = "Les tags en rapport avec le mot";
 ?>		
