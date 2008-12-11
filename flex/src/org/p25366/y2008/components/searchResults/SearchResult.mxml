@@ -5,6 +5,7 @@
 	>
 	<mx:Script>
 		<![CDATA[
+			import mx.controls.Alert;
 			import mx.events.CloseEvent;
 			import mx.managers.CursorManager;
 			import org.p25366.y2008.model.Model;

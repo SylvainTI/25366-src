@@ -1,6 +1,7 @@
 package org.p25366.y2008.model
 {
 	import mx.collections.ArrayCollection;
+	import mx.controls.Alert;
 	
 	import org.p25366.y2008.event.ProjectEvents;
 	import org.p25366.y2008.vo.KeyVO;
@@ -19,11 +20,12 @@ package org.p25366.y2008.model
 		
 		public function Model(enforcer:SingletonEnforcer)
 		{
-			addEventListener(ProjectEvents.OPEN_PAGE,initDefinitionPage);
+			addEventListener(ProjectEvents.OPEN_PAGE, initDefinitionPage);
 		}
 		
 		public function  initDefinitionPage(event : ProjectEvents) : void{
-			dispatchEvent(event);
+			var event2:ProjectEvents = event;
+			this.dispatchEvent(event2);
 		}
 		
 		public static function getInstance():Model
