@@ -7,6 +7,8 @@ $subthemeId = isset($_GET["subthemeId"]) ? $_GET['subthemeId'] : false;
 $wordId = isset($_GET["wordId"]) ? $_GET['wordId'] : false;
 $langSource = isset($_GET["langSource"]) ? $_GET['langSource'] : false;
 $langDest = isset($_GET["langDest"]) ? $_GET['langDest'] : false;
+$query = isset($_GET["q"]) ? $_GET["q"] : false;
+
 switch ($action) {
 	case "langs":
 		echo "
@@ -52,7 +54,7 @@ switch ($action) {
 	//todo
 		break;
 	case "search":
-	//todo
+		include('search.php');
 		break;
 
 }
