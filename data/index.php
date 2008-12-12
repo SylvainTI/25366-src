@@ -51,7 +51,7 @@ switch ($action) {
 		include('word.php');
 		break;
 	case "historical":
-	//todo
+		include('historical.php');
 		break;
 	case "search":
 		include('search.php');
