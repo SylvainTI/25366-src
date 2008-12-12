@@ -90,3 +90,7 @@ réponse :
 		</word>
 	</words>
 
+
+question :
+	http://localhost/svn/25366/data/index.php?action=search&q=mot_recherché
+	subtheme 2 est la durée
