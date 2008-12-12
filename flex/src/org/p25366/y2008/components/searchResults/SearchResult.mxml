@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Canvas  creationComplete="test_service.send();" 
+<mx:Canvas 
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
 	backgroundColor="0xcccccc" 
 	>
@@ -40,6 +40,7 @@
 				var one_result:Object;
 				
 				for each(var result:XML in (event.result as XML).elements()) {
+					
 					one_result = new Object();
 					one_result.date = result.date;
 					one_result.description = result.description;
@@ -66,21 +67,26 @@
 					private function completeHandler(evt:Event):void{
 					trace (evt.target.data);
 					}
+			public function recherche(): void
+				{
+					test_service.send();
+				}
 		]]>
 	</mx:Script>
+
+	
 	<mx:HTTPService
 		id="test_service"
 		resultFormat="e4x"
 		method ="GET"
 		result="resultHandler(event)" 
 		fault="faultHandler(event)"  
-		url= "http://localhost/svn/25366/data/index.php?action=search&amp;"
+		url= "http://localhost/svn/25366/data/index.php?action=search&amp;value={_word}"
 	/>
 	<mx:VBox>
-		
-		
-	
-	<mx:Label text="{_word}" width="200" />
+
+	<mx:Text text="Résultat de la recherche pour {_word}              Dans les repères historiques" width="200" />
+	<mx:Button click="recherche()" label="rechercher" />
 	<mx:List dataProvider="{listData}"  itemRenderer="org.p25366.y2008.components.searchResults.view.SearchRenderer"/>
 	</mx:VBox>
 </mx:Canvas>
