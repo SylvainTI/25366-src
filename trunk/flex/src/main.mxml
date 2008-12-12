@@ -35,9 +35,14 @@
 			{
 				trace("yeah");
 			}
-			public function determineLang(event:Event):void
+			public function determineLangSource(event:Event):void
 			{
 				model.langSource=event.currentTarget.selectedItem.data;
+			}	
+			
+			public function determineLangDest(event:Event):void
+			{
+				model.langDest=event.currentTarget.selectedItem.data;
 			}			
 			
 		]]>
@@ -56,13 +61,37 @@
 		width="100%"
 		height="100%"
 		>
+		
+		<mx:Text
+			width="200"
+			left="250"
+			verticalCenter="-100"
+			>
+            <mx:text>
+                Pour entrer, choisissez une langue source et une langue cible en cliquant sur les champs ci-dessous
+            </mx:text>
+        </mx:Text>
             
 		<mx:List
 			id="langSource"
 			height="100"
-			left="300"
+			left="250"
 			verticalCenter="0"
-			change="determineLang(event)"
+			change="determineLangSource(event)"
+			borderSides=""
+			cornerRadius="10"
+			>
+	            <mx:Object label="français" data="fr-fra"/>
+	            <mx:Object label="chinois" data="zh-zho"/>
+        	
+		</mx:List>
+		
+		<mx:List
+			id="langDest"
+			height="100"
+			left="325"
+			verticalCenter="0"
+			change="determineLangDest(event)"
 			borderSides=""
 			cornerRadius="10"
 			>
