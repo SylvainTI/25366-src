@@ -45,19 +45,26 @@
 	<mx:Style source="org/p25366/y2008/style/style.css" />
 	<mx:Image 
 		source="@Embed('org/p25366/y2008/style/assets/logo25366.png')" 
+		verticalCenter="0"
+		left="100"
+		visible="{model.page=='choixLangue'}"
 		/>
 		
 	<mx:Canvas 
 		id="choixLangue"
 		visible="{model.page=='choixLangue'}"
+		width="100%"
+		height="100%"
 		>
-		
+            
 		<mx:List
 			id="langSource"
 			height="100"
-			top="100"
-			horizontalCenter="0"
+			left="300"
+			verticalCenter="0"
 			change="determineLang(event)"
+			borderSides=""
+			cornerRadius="10"
 			>
 	            <mx:Object label="français" data="fr-fra"/>
 	            <mx:Object label="chinois" data="zh-zho"/>
@@ -67,8 +74,8 @@
 		<mx:Button 
 			label="Choix"
 			click="model.page='home'"
-			top="200"
-			horizontalCenter="0"
+			verticalCenter="0"
+			left="400"
 			/>
 	</mx:Canvas>
 	
@@ -78,6 +85,11 @@
 		width="100%"
 		height="100%"
 		>
+		<mx:Image 
+		source="@Embed('org/p25366/y2008/style/assets/logo25366.png')" 
+		top="0"
+		left="100"
+		/>
 		<mx:TabBar 
 			dataProvider="{viewStack}"
 			top="80" 
