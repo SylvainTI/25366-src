@@ -1,21 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Canvas 
+<mx:Canvas  creationComplete="test_service.send();" 
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
 	backgroundColor="0xcccccc" 
 	>
 	<mx:Script>
 		<![CDATA[
-			import mx.controls.Alert;
+			import mx.collections.ArrayCollection;
 			import mx.events.CloseEvent;
 			import mx.managers.CursorManager;
 			import org.p25366.y2008.model.Model;
 			import mx.rpc.events.FaultEvent;
 			import mx.rpc.http.HTTPService;
 			import mx.rpc.events.ResultEvent;
-			private var httpService:HTTPService;
+			import mx.controls.Alert;
+			
+			
 				
 			[Bindable]
 			private var _word:String;
+			
+			[Bindable]
+			private var listData:ArrayCollection;
 			public function set word(value:String):void
 			{
 				_word = value;
@@ -27,17 +32,21 @@
 			}
 			private function search(word:String):void
 			{
-				httpService = new HTTPService()
-				httpService.destination = Model.getInstance().data+"?action=search&word="+_word;
-                httpService.method = "GET";
-                httpService.addEventListener(ResultEvent.RESULT, resultHandler);
-                httpService.addEventListener(FaultEvent.FAULT , faultHandler);
-                httpService.send();
-                CursorManager.setBusyCursor();
 			}
 			private function resultHandler(event:ResultEvent):void
 			{
-				//TODO interprétation du xml
+				listData = new ArrayCollection();
+				//Alert.show(event.result.toString());
+				var one_:Object;
+				
+				for each(var result:XML in (event.result as XML).elements()) {
+					one_result = new Object();
+					one_result.date = result.date;
+					one_result.description = result.description;
+					one_result.num = result.num;
+					
+					listData.addresult(one_result);
+				}
 				
 				CursorManager.removeBusyCursor();
 			}
@@ -46,20 +55,33 @@
 				CursorManager.removeBusyCursor();
 			}
 			public function confirmHandler(event: CloseEvent): void{
-				switch (event.detail){
+				/*switch (event.detail){
 					case Alert.OK:
 					var my_req:URLRequest = new URLRequest('requete.php');
 					var my_load:ULRLoader = new URLLoader();
 					my_load.addEventListener(Event.COMPLETE, completeHandler);
 					my_load.load(my_req);
-					
-						}
-				}
+							}*/
+					}
 					private function completeHandler(evt:Event):void{
 					trace (evt.target.data);
 					}
 		]]>
 	</mx:Script>
+	<mx:HTTPService
+		id="test_service"
+		resultFormat="e4x"
+		method ="GET"
+		result="resultHandler(event)" 
+		fault="faultHandler(event)"  
+		url= "data/recherche1.xml"
+	/>
+	<mx:VBox>
+		
+		
+	
 	<mx:Label text="{_word}" width="200" />
+	<mx:List dataProvider="{listData}"  resultRenderer="org.p25366.y2008.components.searchResults.view.SearchRenderer"/>
+	</mx:VBox>
 </mx:Canvas>
 
