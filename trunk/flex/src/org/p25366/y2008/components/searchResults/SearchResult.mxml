@@ -37,7 +37,7 @@
 			{
 				listData = new ArrayCollection();
 				//Alert.show(event.result.toString());
-				var one_:Object;
+				var one_result:Object;
 				
 				for each(var result:XML in (event.result as XML).elements()) {
 					one_result = new Object();
@@ -45,7 +45,7 @@
 					one_result.description = result.description;
 					one_result.num = result.num;
 					
-					listData.addresult(one_result);
+					listData.addItem(one_result);
 				}
 				
 				CursorManager.removeBusyCursor();
@@ -74,14 +74,14 @@
 		method ="GET"
 		result="resultHandler(event)" 
 		fault="faultHandler(event)"  
-		url= "data/recherche1.xml"
+		url= "http://localhost/svn/25366/data/index.php?action=search&amp;"
 	/>
 	<mx:VBox>
 		
 		
 	
 	<mx:Label text="{_word}" width="200" />
-	<mx:List dataProvider="{listData}"  resultRenderer="org.p25366.y2008.components.searchResults.view.SearchRenderer"/>
+	<mx:List dataProvider="{listData}"  itemRenderer="org.p25366.y2008.components.searchResults.view.SearchRenderer"/>
 	</mx:VBox>
 </mx:Canvas>
 
