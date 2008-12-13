@@ -3,14 +3,17 @@ package org.p25366.y2008.components.themeExplorer.model
 	import mx.collections.ArrayCollection;
 	
 	import org.p25366.y2008.components.themeExplorer.business.SubthemesDelegate;
+	import org.p25366.y2008.components.themeExplorer.business.ThemesDelegate;
 	import org.p25366.y2008.components.themeExplorer.business.WordsDelegate;
 	
 	[Bindable]
 	public class ThemeExplorerModel
 	{
+		public var themes_arr:ArrayCollection;
 		public var subthemes_arr:ArrayCollection;
 		public var words_arr:ArrayCollection;
 		
+		private var _keysDelegate:ThemesDelegate = ThemesDelegate.getInstance();
 		private var _subkeysDelegate:SubthemesDelegate = SubthemesDelegate.getInstance();
 		private var _wordsDelegate:WordsDelegate = WordsDelegate.getInstance();
 
@@ -24,9 +27,13 @@ package org.p25366.y2008.components.themeExplorer.model
 			return instance;
 		}
 		
-		public function openSection(pSection:String,pId:String) : void {
-			if(pSection==null && pId==null)throw (new Error("Erreur ThemeExplorer.openSection : Parametre nul"));
+		public function openSection(pSection:String,pId:String = null) : void {
+			if(pSection==null && pId==null && pSection!="themes")throw (new Error("Erreur ThemeExplorer.openSection : Parametre nul"));
 			switch(pSection){
+				case "themes":
+				this._keysDelegate.getDatas();
+				this._keysDelegate.addEventListener("themesLoaded",onThemesLoaded);
+				break;
 				case "subthemes":
 				this._subkeysDelegate.getDatas(pId);
 				this._subkeysDelegate.addEventListener("subThemesLoaded",onSubThemeLoaded);
@@ -44,6 +51,10 @@ package org.p25366.y2008.components.themeExplorer.model
 		
 		private function onWordsLoaded( event : Event ) : void {
 				this.words_arr = this._wordsDelegate.words_arr;
+		}
+		
+		private function onThemesLoaded( event : Event ) : void {
+				this.themes_arr = this._keysDelegate.themes_arr;
 		}
 		
 	}

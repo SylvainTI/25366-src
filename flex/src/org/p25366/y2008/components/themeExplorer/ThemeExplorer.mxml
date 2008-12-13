@@ -9,11 +9,14 @@
 			
 			[Bindable]
 			private var themeExplorerModel:ThemeExplorerModel = ThemeExplorerModel.getInstance();
-			public var themeId:String = new String();
 			
-			private function init( event : Event ) : void {
-				subthemesList.visible = true;
-				this.themeExplorerModel.openSection("subthemes",this.themeId);
+			private function init( event : Event ) : void{
+				currentState = "themes";
+				this.themeExplorerModel.openSection("themes");
+			}
+			
+			private function onThemeSelected( event : Event ) : void {
+				this.themeExplorerModel.openSection("subthemes",event.target.selectedItem.id);
 			}	
 			
 			private function onItemSelected( event : Event ) : void{
@@ -31,28 +34,48 @@
 			
 		]]>
 	</mx:Script>
-	<mx:HBox left="20">
-		<mx:List
-			id = "subthemesList"
-			styleName="themeExplorerList"
-			visible="false"
-			click="onItemSelected(event)"
-			dataProvider="{this.themeExplorerModel.subthemes_arr}" 
-			itemRenderer="org.p25366.y2008.view.SubkeyItemRenderer"
-			x="10" 
-			y="10" 
+	<mx:HBox id="hbox" left="20">
+	</mx:HBox>
+	<mx:states>
+	<mx:State name="themes">
+		<mx:AddChild relativeTo="{hbox}">
+			<mx:HorizontalList 
+					styleName="themeExplorerList"
+					click="onThemeSelected(event)"
+					dataProvider="{this.themeExplorerModel.themes_arr}" 
+					itemRenderer="org.p25366.y2008.view.KeyItemRenderer"
+					x="10" 
+					y="10"
 			/>
-			
+		</mx:AddChild>
+	</mx:State>
+	<mx:State name="subthemes">
+	<mx:AddChild relativeTo="{hbox}">
+				<mx:List
+					id = "subthemesList"
+					styleName="themeExplorerList"
+					click="onItemSelected(event)"
+					dataProvider="{this.themeExplorerModel.subthemes_arr}" 
+					itemRenderer="org.p25366.y2008.view.SubkeyItemRenderer"
+					x="10" 
+					y="10" 
+					/>
+					
+				
+	</mx:AddChild>
+	</mx:State>
+	<mx:State name="words">
+	<mx:AddChild relativeTo="{hbox}">
 		<mx:List 
-			visible="false"
-			id = "wordsList"
-			styleName="themeExplorerList"
-			click = "onWordSelected(event);"
-			dataProvider="{this.themeExplorerModel.words_arr}" 
-			itemRenderer="org.p25366.y2008.view.WordsItemRenderer"
-			x="10" 
-			y="10" 
-			/>
-			
-</mx:HBox>
+					id = "wordsList"
+					styleName="themeExplorerList"
+					click = "onWordSelected(event);"
+					dataProvider="{this.themeExplorerModel.words_arr}" 
+					itemRenderer="org.p25366.y2008.view.WordsItemRenderer"
+					x="10" 
+					y="10" 
+					/>
+	</mx:AddChild>
+	</mx:State>
+	</mx:states>
 </mx:Canvas>

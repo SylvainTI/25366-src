@@ -37,7 +37,12 @@
 			}
 			public function determineLangSource(event:Event):void
 			{
-				model.langSource=event.currentTarget.selectedItem.data;
+				if(event.currentTarget.selectedItem.data == "fr-fra"){
+				model.langDest = "zh-zho";
+				}else {
+				model.langDest = "fr-fra";
+				}
+				model.langSource = event.currentTarget.selectedItem.data;
 			}	
 			
 			public function determineLangDest(event:Event):void
@@ -133,7 +138,6 @@
 			<mx:HBox	label="Theme Explorer And Definition Page">
 			<themeExplorer:ThemeExplorer 
 				id = "themeExplorer"
-				themeId="1"
 				/>
 			<definitionPage:DefinitionPage 
 				id = "definitionPage"
