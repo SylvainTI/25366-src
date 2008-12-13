@@ -16,6 +16,7 @@
 			}
 			
 			private function onThemeSelected( event : Event ) : void {
+				currentState = "subthemes";
 				this.themeExplorerModel.openSection("subthemes",event.target.selectedItem.id);
 			}	
 			
@@ -34,12 +35,26 @@
 			
 		]]>
 	</mx:Script>
+	<mx:HBox id="themesBox" left="20">
+	</mx:HBox>
+	
+	<mx:VBox id="themesBoxVertical" left="0">
+	</mx:VBox>
+	
 	<mx:HBox id="hbox" left="20">
 	</mx:HBox>
+	
+	<mx:transitions>
+		<mx:Transition fromState="themes" toState="subthemes">
+			<mx:Move target="themesBoxVertical"/>
+		</mx:Transition>
+	</mx:transitions>
 	<mx:states>
 	<mx:State name="themes">
-		<mx:AddChild relativeTo="{hbox}">
-			<mx:HorizontalList 
+		<mx:AddChild relativeTo="{themesBox}">
+			<mx:TileList
+					direction="horizontal"
+					id = "themeExplorer"
 					styleName="themeExplorerList"
 					click="onThemeSelected(event)"
 					dataProvider="{this.themeExplorerModel.themes_arr}" 
@@ -60,8 +75,6 @@
 					x="10" 
 					y="10" 
 					/>
-					
-				
 	</mx:AddChild>
 	</mx:State>
 	<mx:State name="words">
