@@ -18,6 +18,13 @@ VBox.wordsItem{
 	
 	}
 	
+Label.keyStyle{
+	fontFamily: DINPro;
+	color: #000000;
+	fontSize: 20;
+
+}
+
 List.themeExplorerList{
 	background-alpha:0;
 	borderThickness: 0;
@@ -34,4 +41,11 @@ List.themeExplorerList{
 
 Canvas.defPage{
 	background-alpha: 0;
+}
+@font-face
+{
+	fontFamily: DINPro;
+	fontWeight: normal;
+	fontStyle: normal;
+	src: local("DINPro");
 }

@@ -5,9 +5,9 @@ package org.p25366.y2008.vo
 	[Bindable]
 	public class KeyVO
 	{
-		public var parent:KeyVO;
+		public var id:String;
 		public var label:String;
 		public var image:String;
-		public var children:ArrayCollection;
+		public var langSrc:String;
 	}
 }
