@@ -86,7 +86,6 @@
 	<mx:VBox>
 
 	<mx:Text text="Résultat de la recherche pour {_word}              Dans les repères historiques" width="200" />
-	<mx:Button click="recherche()" label="rechercher" />
 	<mx:List dataProvider="{listData}"  itemRenderer="org.p25366.y2008.components.searchResults.view.SearchRenderer"/>
 	</mx:VBox>
 </mx:Canvas>
