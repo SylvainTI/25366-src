@@ -5,6 +5,7 @@
 	>
 	<mx:Script>
 		<![CDATA[
+			import org.p25366.y2008.components.historicalMarks.vo.HistoricalEventVO;
 			import mx.rpc.http.HTTPService;
 			import mx.collections.ArrayCollection;
 			import mx.controls.Alert;
@@ -20,21 +21,38 @@
 			private var model:HistoricModel=HistoricModel.getInstance(); 
 			
 			[Bindable]
-			private var association:Array = new Array();
+			private var association_id_date:Array = new Array();
 			
 			private var historicalMarkVO:HistoricalMarkVO;
+			private var historicalEventVO:HistoricalEventVO;
 			
 			private function resultHandler(event:ResultEvent):void{
 				model.marks= new ArrayCollection();
+				historicalEventVO = new HistoricalEventVO();
 				
-				for each(var item_test:XML in (event.result as XML).elements()){
-			association[item_test.id] = item_test.date;
-			historicalMarkVO = new HistoricalMarkVO();
-			historicalMarkVO.date = item_test.date;
-			historicalMarkVO.description =  item_test.description;
-			historicalMarkVO.id = item_test.id;
-			(model.marks).addItem(historicalMarkVO);
-				}
+				for each(var repere:XML in (event.result as XML).elements()){
+				
+				
+				historicalMarkVO = new HistoricalMarkVO();
+				historicalMarkVO.id = repere.id;
+				historicalMarkVO.date = repere.date;
+				historicalMarkVO.events = new ArrayCollection();
+				
+					for each (var one_event:XML in repere.events.elements()){
+						//Alert.show(one_event.description);
+					historicalEventVO = new HistoricalEventVO();
+					historicalEventVO.description = one_event.description;
+					historicalEventVO.link = one_event.link;
+					historicalEventVO.from_date =  int(one_event.date);
+					historicalEventVO.date_type = one_event.date.@type;
+
+					
+					historicalMarkVO.events.addItem(historicalEventVO);
+					}
+					model.marks.addItem(historicalMarkVO);
+
+			}
+			//Alert.show(ObjectUtil.toString(model.marks));
 			}
 			private function faultHandler(event:FaultEvent):void{
 				Alert.show(event.fault.toString());
@@ -53,35 +71,42 @@
 			}
 			
 			private function tipValue(value:Number):String{
-			return (association[value]);	
+			return (association_id_date[value]);	
 			}
 			
 			private function sliderChange(evt:Event):void{
-			var index:Number = 100 - historic_slider.value-1;
+			//var index:Number = 100 - historic_slider.value-1;
+			var index:Number =historic_slider.value;
 			list.scrollToIndex(index);
 			}
+		    [Embed(source="assets/slide_button.png")]
+            [Bindable]
+             public var SlideButton:Class;  
 
-		
 		]]>
 	</mx:Script>
 <mx:VBox height="100%" width="100%" >
 <mx:Label text="100 repères historiques"  fontSize="20"/>	
-	<mx:VBox  width="90%" height="100%" horizontalAlign="left">
-	<mx:HSlider  useHandCursor="true" value="100" liveDragging="true" invertThumbDirection="true"  
+	<mx:VBox  width="100%" height="100%" horizontalAlign="left">
+	<mx:HSlider  useHandCursor="true"  buttonMode="true" liveDragging="true" invertThumbDirection="true"  
 		change="sliderChange(event)"  dataTipFormatFunction="tipValue" 
-		width="100%" id="historic_slider"  snapInterval="1" minimum="1" maximum="100"   />
+		width="100%" id="historic_slider"  snapInterval="1" minimum="1" maximum="99"  baseline="" 
+		   tickLength="40" />
 		
+	<mx:HRule width="100%" />
 		<mx:HorizontalList
 			horizontalScrollPolicy="off"
 			borderThickness="0"
 			backgroundAlpha="0"
 			id="list"
 			dataProvider="{model.marks}" 
-			width="98%" 
-			height="90%"
+			width="100%" 
+			height="100%"
+			columnWidth="300"
 			itemRenderer="org.p25366.y2008.components.historicalMarks.view.KeyItemRenderer"
 			styleName="listAccueil"
 			/>
+				
 			
 	</mx:VBox>
 </mx:VBox>

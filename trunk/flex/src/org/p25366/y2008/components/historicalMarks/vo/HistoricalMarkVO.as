@@ -1,4 +1,4 @@
-package org.p25366.y2008.components.historicalMarks.vo
+package  org.p25366.y2008.components.historicalMarks.vo
 {
 	import mx.collections.ArrayCollection;
 	
@@ -7,6 +7,6 @@ package org.p25366.y2008.components.historicalMarks.vo
 	{
 		public var id:Number;
 		public var date:String;
-		public var description:String;
+		public var events:ArrayCollection;
 	}
 }
