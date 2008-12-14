@@ -66,7 +66,7 @@
 				service.method ="GET";
 				service.addEventListener(ResultEvent.RESULT, resultHandler);
 				service.addEventListener(FaultEvent.FAULT, faultHandler);
-				service.url= "http://localhost/svn/25366/data/historic_keys.php";
+				service.url= "../../data/historic_keys.php";
 				service.send();
 			}
 			

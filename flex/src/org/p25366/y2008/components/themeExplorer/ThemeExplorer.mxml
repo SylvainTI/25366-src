@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"  creationComplete="init(event) ">
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"  creationComplete="init(event)">
 	<mx:Script>
 		<![CDATA[
+			import mx.controls.Alert;
 			import org.p25366.y2008.event.ProjectEvents;
 			import org.p25366.y2008.model.Model;
 			import org.p25366.y2008.components.themeExplorer.model.ThemeExplorerModel;
@@ -16,13 +17,12 @@
 			}
 			
 			private function onThemeSelected( event : Event ) : void {
+				this.themeExplorerModel.openSection("subthemes",themeExplorer.selectedItem.id);
 				currentState = "subthemes";
-				this.themeExplorerModel.openSection("subthemes",event.target.selectedItem.id);
 			}	
 			
 			private function onItemSelected( event : Event ) : void{
 				wordsList.visible = true;
-				Model.getInstance().defPageVisible = false;		
 				this.themeExplorerModel.openSection("words",subthemesList.selectedItem.id);
 			}		
 			
@@ -31,24 +31,22 @@
 				var event2:ProjectEvents = new ProjectEvents(ProjectEvents.OPEN_PAGE);
 				event2.wordId = subthemesList.selectedItem.id;
 				Model.getInstance().dispatchEvent(event2);
+				currentState = "word";
 			}
 			
 		]]>
 	</mx:Script>
-	<mx:HBox id="themesBox" left="20">
+	<mx:HBox id="themesBox" width="100%" height="100%">
 	</mx:HBox>
 	
-	<mx:VBox id="themesBoxVertical" left="0">
-	</mx:VBox>
-	
-	<mx:HBox id="hbox" left="20">
+	<mx:HBox width="100%" height="100%">
+		<mx:VBox id="themesBoxVertical" autoLayout="true"/>
+		<mx:HBox id="hbox">
+			<mx:Canvas id="subthemesBox"/>
+			<mx:Canvas id="wordsBox"/>
+		</mx:HBox>
 	</mx:HBox>
 	
-	<mx:transitions>
-		<mx:Transition fromState="themes" toState="subthemes">
-			<mx:Move target="themesBoxVertical"/>
-		</mx:Transition>
-	</mx:transitions>
 	<mx:states>
 	<mx:State name="themes">
 		<mx:AddChild relativeTo="{themesBox}">
@@ -59,34 +57,38 @@
 					click="onThemeSelected(event)"
 					dataProvider="{this.themeExplorerModel.themes_arr}" 
 					itemRenderer="org.p25366.y2008.view.KeyItemRenderer"
-					x="10" 
-					y="10"
 			/>
-		</mx:AddChild>
+			</mx:AddChild>
 	</mx:State>
 	<mx:State name="subthemes">
-	<mx:AddChild relativeTo="{hbox}">
+	<mx:RemoveChild target="{themeExplorer}"/>
+			<mx:AddChild relativeTo="{themesBoxVertical}">
+			<mx:TileList
+					direction="vertical"
+					id = "themeExplorerVertical"
+					styleName="themeExplorerList"
+					click="onThemeSelected(event)"
+					dataProvider="{this.themeExplorerModel.themes_arr}" 
+					itemRenderer="org.p25366.y2008.view.HorizontalKeyItemRenderer"
+				/>	
+				</mx:AddChild>
+				<mx:AddChild relativeTo="{subthemesBox}">
 				<mx:List
 					id = "subthemesList"
 					styleName="themeExplorerList"
 					click="onItemSelected(event)"
 					dataProvider="{this.themeExplorerModel.subthemes_arr}" 
 					itemRenderer="org.p25366.y2008.view.SubkeyItemRenderer"
-					x="10" 
-					y="10" 
 					/>
 	</mx:AddChild>
-	</mx:State>
-	<mx:State name="words">
-	<mx:AddChild relativeTo="{hbox}">
+	<mx:AddChild relativeTo="{wordsBox}">
 		<mx:List 
+					visible = "false"
 					id = "wordsList"
 					styleName="themeExplorerList"
 					click = "onWordSelected(event);"
 					dataProvider="{this.themeExplorerModel.words_arr}" 
 					itemRenderer="org.p25366.y2008.view.WordsItemRenderer"
-					x="10" 
-					y="10" 
 					/>
 	</mx:AddChild>
 	</mx:State>

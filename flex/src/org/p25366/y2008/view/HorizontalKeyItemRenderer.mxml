@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" autoLayout="true" mouseOver="currentState='horizontalOver'" mouseOut="currentState='horizontalOut'" mouseChildren="false">
+
+	<mx:Script>
+		<![CDATA[
+			import org.p25366.y2008.model.Model;
+			import org.p25366.y2008.vo.KeyVO;
+		]]>
+	</mx:Script>
+				<mx:Image scaleX=".5" scaleY=".5" id="img" source="{Model.getInstance().assets+data.image}" autoLoad="true" scaleContent="true"/>
+				<mx:Label left="{img.width+img.x}" id="txt" text="{data.label}" styleName="keyStyle" alpha="0"/>
+	
+	<mx:transitions>
+		<mx:Transition fromState="*" toState="horizontalOver">
+			<mx:Move target="{img}" xTo="10"/>
+		</mx:Transition>
+		
+		<mx:Transition fromState="horizontalOver" toState="horizontalOut">
+			<mx:Move target="{img}" xTo="-10"/>
+		</mx:Transition>
+	</mx:transitions>
+	<mx:states>
+		<mx:State name="horizontalOver">
+			<mx:SetProperty target="{img}" name="scaleX" value=".8"/>
+			<mx:SetProperty target="{img}" name="scaleY" value=".8"/>
+			<mx:SetProperty target="{txt}" name="alpha" value="1"/>
+		</mx:State>
+		<mx:State name="horizontalOut">
+			<mx:SetProperty target="{img}" name="scaleX" value=".5"/>
+			<mx:SetProperty target="{img}" name="scaleY" value=".5"/>
+			<mx:SetProperty target="{txt}" name="alpha" value="0"/>
+		</mx:State>
+	</mx:states>
+</mx:Canvas>

@@ -131,18 +131,20 @@
 		<mx:ViewStack
 			id="viewStack"
 			top="150"
-			height="70%"
-			width="70%"
+			height="80%"
+			width="100%"
 			>
 			<historicalMarks:HistoricalMarks label="Historical Marks"/>
-			<mx:HBox	label="Theme Explorer And Definition Page">
-			<themeExplorer:ThemeExplorer 
-				id = "themeExplorer"
-				/>
-			<definitionPage:DefinitionPage 
-				id = "definitionPage"
-				visible = "{model.defPageVisible}"
-				/>
+			<mx:HBox label="Theme Explorer And Definition Page" width="100%" height="100%">
+				<themeExplorer:ThemeExplorer 
+					id = "themeExplorer"
+					width="100%"
+					height="100%"
+					/>
+				<definitionPage:DefinitionPage 
+					id = "definitionPage"
+					visible = "{model.defPageVisible}"
+					/>
 				</mx:HBox>
 		</mx:ViewStack>
 		<mx:TextInput 

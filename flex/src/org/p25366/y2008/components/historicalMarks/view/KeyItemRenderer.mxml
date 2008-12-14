@@ -12,7 +12,7 @@
 	</mx:HBox>
 	<mx:List itemRenderer="org.p25366.y2008.components.historicalMarks.view.KeyEventRenderer" 
 		dataProvider="{HistoricalMarkVO(data).events}"
-					horizontalScrollPolicy="off"
+			horizontalScrollPolicy="off"
 			borderThickness="0"
 			backgroundAlpha="0"
 		/>
