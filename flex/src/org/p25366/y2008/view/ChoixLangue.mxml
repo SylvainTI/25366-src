@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	>
+	<mx:Script>
+		<![CDATA[
+			import org.p25366.y2008.model.Model;
+			[Bindable]
+			private var model:Model = Model.getInstance();
+			/**
+			 * il faut utiliser les infos venant de Thierry pour construire ces choix.
+			 * Il faut les stocker dans le modèle.
+			 * Arnaud
+			 */
+			public function determineLangSource(event:Event):void
+			{
+				if(event.currentTarget.selectedItem.data == "fr-fra"){
+					model.langDest = "zh-zho";
+				}else {
+					model.langDest = "fr-fra";
+				}
+				model.langSource = event.currentTarget.selectedItem.data;
+			}	
+			
+			public function determineLangDest(event:Event):void
+			{
+				model.langDest=event.currentTarget.selectedItem.data;
+			}		
+		]]>
+	</mx:Script>
+	<mx:Text
+		width="200"
+		left="250"
+		verticalCenter="-100"
+		text="Pour entrer, choisissez une langue source et une langue cible en cliquant sur les champs ci-dessous"
+		/>
+	<mx:List
+		id="langSource"
+		height="100"
+		left="250"
+		verticalCenter="0"
+		change="determineLangSource(event)"
+		borderSides=""
+		cornerRadius="10"
+		>
+        <!--
+        Il fauy prendre un array collection du model comme data provider
+        -->
+        <mx:Object label="français" data="fr-fra"/>
+        <mx:Object label="chinois" data="zh-zho"/>
+	</mx:List>
+	<mx:List
+		id="langDest"
+		height="100"
+		left="325"
+		verticalCenter="0"
+		change="determineLangDest(event)"
+		borderSides=""
+		cornerRadius="10"
+		>
+        <mx:Object label="français" data="fr-fra"/>
+        <mx:Object label="chinois" data="zh-zho"/>
+	</mx:List>
+	<mx:Button 
+		label="Choix"
+		click="model.page='home'"
+		verticalCenter="0"
+		left="400"
+		/>
+</mx:Canvas>

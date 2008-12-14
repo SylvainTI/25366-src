@@ -1,6 +1,5 @@
-﻿<?php
-echo '<?xml version="1.0" encoding="UTF-8" ?>';
-echo '<reperes>
+
+<reperes>
 	<repere>
 		<id>83</id>
 		<date>1930</date>
@@ -48,6 +47,4 @@ echo '<reperes>
 			</event>
 		</events>
 	</repere>
-</reperes>';
-?>
-
+</reperes>

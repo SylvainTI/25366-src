@@ -5,6 +5,7 @@
 	>
 	<mx:Script>
 		<![CDATA[
+			import org.p25366.y2008.model.Model;
 			import org.p25366.y2008.components.historicalMarks.vo.HistoricalEventVO;
 			import mx.rpc.http.HTTPService;
 			import mx.collections.ArrayCollection;
@@ -18,7 +19,7 @@
 
 			
 			[Bindable]
-			private var model:HistoricModel=HistoricModel.getInstance(); 
+			private var historicModel:HistoricModel=HistoricModel.getInstance(); 
 			
 			[Bindable]
 			private var association_id_date:Array = new Array();
@@ -27,7 +28,7 @@
 			private var historicalEventVO:HistoricalEventVO;
 			
 			private function resultHandler(event:ResultEvent):void{
-				model.marks= new ArrayCollection();
+				historicModel.marks= new ArrayCollection();
 				historicalEventVO = new HistoricalEventVO();
 				
 				for each(var repere:XML in (event.result as XML).elements()){
@@ -49,7 +50,7 @@
 					
 					historicalMarkVO.events.addItem(historicalEventVO);
 					}
-					model.marks.addItem(historicalMarkVO);
+					historicModel.marks.addItem(historicalMarkVO);
 
 			}
 			//Alert.show(ObjectUtil.toString(model.marks));
@@ -66,7 +67,12 @@
 				service.method ="GET";
 				service.addEventListener(ResultEvent.RESULT, resultHandler);
 				service.addEventListener(FaultEvent.FAULT, faultHandler);
-				service.url= "../../data/historic_keys.php";
+				/*
+				Il faut utiliser l'adresse du modèle, dans le dossier data, et la syntaxe de Thierry
+				Arnaud
+				*/
+				//service.url= "../../data/historic_keys.php";
+				service.url = Model.getInstance().data+"?action=historic_keys";
 				service.send();
 			}
 			
@@ -99,7 +105,7 @@
 			borderThickness="0"
 			backgroundAlpha="0"
 			id="list"
-			dataProvider="{model.marks}" 
+			dataProvider="{historicModel.marks}" 
 			width="100%" 
 			height="100%"
 			columnWidth="300"

@@ -44,5 +44,6 @@ Canvas.defPage{
 	fontFamily: DINPro;
 	fontWeight: normal;
 	fontStyle: normal;
-	src: local("DINPro");
+	src: url("fonts/DINPro.otf");
+
 }

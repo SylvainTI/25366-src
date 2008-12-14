@@ -8,8 +8,12 @@ package org.p25366.y2008.model
 	[Bindable]
 	public class Model
 	{
-		public var data:String = "../../data";
-		public var assets:String = "http://localhost:8888/svn/25366/flex/src/org/p25366/y2008/style/assets/";
+		/**
+		 * Attention, il ne faut rien prendre hors du dossier bin-debug, c'est ce qu'on mettra en ligne
+		 * Arnaud
+		 */
+		public var data:String = "data/";
+		public var assets:String = "data/media/";
 		public var langSource:String = "";
 		public var langDest:String = "";
 		public var keys:ArrayCollection;
@@ -18,16 +22,20 @@ package org.p25366.y2008.model
 		public var defPageVisible:Boolean = false;
 		private static var instance:Model;
 		
-		public function Model(enforcer:SingletonEnforcer)
-		{
-			addEventListener(ProjectEvents.OPEN_PAGE, initDefinitionPage);
-		}
-		
+		/**
+		 * Pas de logique applicative dans le modèle !
+		 * Arnaud
+		 */
 		public function  initDefinitionPage(event : ProjectEvents) : void{
 			var event2:ProjectEvents = event;
 			this.dispatchEvent(event2);
 		}
 		
+		public function Model(enforcer:SingletonEnforcer)
+		{
+			// Pas d'init dans le modèle ! Arnaud
+			addEventListener(ProjectEvents.OPEN_PAGE, initDefinitionPage);
+		}
 		public static function getInstance():Model
 		{
 			if (! instance){
@@ -38,4 +46,3 @@ package org.p25366.y2008.model
 	}
 }
 class SingletonEnforcer{}
-

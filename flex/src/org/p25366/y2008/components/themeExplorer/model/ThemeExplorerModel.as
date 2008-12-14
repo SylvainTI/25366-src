@@ -9,6 +9,7 @@ package org.p25366.y2008.components.themeExplorer.model
 	[Bindable]
 	public class ThemeExplorerModel
 	{
+		public var currentState:String;
 		public var themes_arr:ArrayCollection;
 		public var subthemes_arr:ArrayCollection;
 		public var words_arr:ArrayCollection;
@@ -27,6 +28,11 @@ package org.p25366.y2008.components.themeExplorer.model
 			return instance;
 		}
 		
+		/**
+		 * Anthony, pas de logique applicative dans le modèle !
+		 * Mets ça dans une vue, ou mieux, dans un controller
+		 * Arnaud
+		 */
 		public function openSection(pSection:String,pId:String = null) : void {
 			if(pSection==null && pId==null && pSection!="themes")throw (new Error("Erreur ThemeExplorer.openSection : Parametre nul"));
 			switch(pSection){
@@ -44,18 +50,14 @@ package org.p25366.y2008.components.themeExplorer.model
 				break;
 			}
 		}
-		
 		private function onSubThemeLoaded( event : Event ) : void {
 				this.subthemes_arr = this._subkeysDelegate.subkeys_arr;
 		}
-		
 		private function onWordsLoaded( event : Event ) : void {
 				this.words_arr = this._wordsDelegate.words_arr;
 		}
-		
 		private function onThemesLoaded( event : Event ) : void {
 				this.themes_arr = this._keysDelegate.themes_arr;
 		}
-		
 	}
 }
