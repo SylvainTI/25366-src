@@ -2,6 +2,8 @@
 <mx:Canvas 
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
 	backgroundColor="0xcccccc" 
+	creationComplete="recherche( )"
+
 	>
 	<mx:Script>
 		<![CDATA[
@@ -54,7 +56,8 @@
 			private function faultHandler(event:FaultEvent):void
 			{
 				CursorManager.removeBusyCursor();
-				Alert.show("pas compris");
+				Alert.show("cela ne marche pas");
+				//http://localhost/svn/25366/data/index.php?action=search&amp;q=searchTextInput.txt
 			}
 			public function confirmHandler(event: CloseEvent): void{
 				/*switch (event.detail){
@@ -83,7 +86,7 @@
 		method ="GET"
 		result="resultHandler(event)" 
 		fault="faultHandler(event)"  
-		url= "'http://localhost/svn/25366/data/index.php?action=search&amp;q=' + searchTextInput.text"
+		url= "http://localhost/svn/25366/data/index.php?action=search&amp;q={_word}"
 	/>
 	<mx:VBox>	
 
