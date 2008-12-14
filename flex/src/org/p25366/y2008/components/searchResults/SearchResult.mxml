@@ -56,7 +56,7 @@
 			private function faultHandler(event:FaultEvent):void
 			{
 				CursorManager.removeBusyCursor();
-				Alert.show("cela ne marche pas");
+				//Alert.show("cela ne marche pas");
 				//http://localhost/svn/25366/data/index.php?action=search&amp;q=searchTextInput.txt
 			}
 			public function confirmHandler(event: CloseEvent): void{
