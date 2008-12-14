@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml">
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" height="300" width="110" backgroundAlpha="0">
 	<mx:Script>
 		<![CDATA[
+			import org.p25366.y2008.model.Model;
 			import org.p25366.y2008.vo.KeyVO;
 		]]>
 	</mx:Script>
-	<mx:Image id="img" scaleX="0.5" scaleY="0.5" source="http://localhost:8888/svn/25366/flex/src/org/p25366/y2008/style/assets/keys/voyages.png" mouseOut="this.img.scaleX = 0.5;this.img.scaleY = 0.5;" mouseOver="this.img.scaleX = 1;this.img.scaleY = 1;" x="0" y="0" autoLoad="true" scaleContent="true"/>
-	<mx:Label text="{data.label}" styleName="keyStyle" rotation="90" x="{img.contentWidth+50}" y="{img.contentHeight+10}"/>
+		<mx:Image id="img" source="{Model.getInstance().assets+data.image}" x="0" y="0" autoLoad="true" scaleContent="true" horizontalCenter="0"/>
+		<mx:Label id="txt" text="{data.label}" styleName="keyStyle" rotation="90" horizontalCenter="20" top="{img.height}"/>
 </mx:Canvas>

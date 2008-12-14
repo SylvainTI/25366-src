@@ -1,7 +1,6 @@
 package org.p25366.y2008.model
 {
 	import mx.collections.ArrayCollection;
-	import mx.controls.Alert;
 	
 	import org.p25366.y2008.event.ProjectEvents;
 	import org.p25366.y2008.vo.KeyVO;
@@ -10,6 +9,7 @@ package org.p25366.y2008.model
 	public class Model
 	{
 		public var data:String = "../../data";
+		public var assets:String = "http://localhost:8888/svn/25366/flex/src/org/p25366/y2008/style/assets/";
 		public var langSource:String = "";
 		public var langDest:String = "";
 		public var keys:ArrayCollection;

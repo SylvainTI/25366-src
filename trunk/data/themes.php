@@ -3,7 +3,7 @@
 <?php
 	$themeId = 1;
 	$lib = "Vie";
-	$image = "vie.png";
+	$image = "keys/vie.png";
 ?>		<id><?php echo $themeId; ?></id>
 		<lang><?php echo $langSource; ?></lang>
 		<lib><![CDATA[<?php echo $lib; ?>]]></lib>
@@ -12,8 +12,8 @@
 	<theme>
 <?php
 	$themeId = 2;
-	$lib = "Voyages";
-	$image = "voyages.png";
+	$lib = "Arts";
+	$image = "keys/arts.png";
 ?>		<id><?php echo $themeId; ?></id>
 		<lang><?php echo $langSource; ?></lang>
 		<lib><![CDATA[<?php echo $lib; ?>]]></lib>
