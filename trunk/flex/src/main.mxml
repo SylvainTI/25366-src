@@ -4,10 +4,7 @@
 	creationComplete="init()" 
 	layout="absolute"
 	xmlns:mx="http://www.adobe.com/2006/mxml"
-	xmlns:historicalMarks="org.p25366.y2008.components.historicalMarks.*" 
-	xmlns:searchResults="org.p25366.y2008.components.searchResults.*"
-	xmlns:themeExplorer="org.p25366.y2008.components.themeExplorer.*" 
-	xmlns:definitionPage="org.p25366.y2008.components.definitionPage.*"
+	xmlns:view="org.p25366.y2008.view.*"
 	>
 	<mx:Script>
 		<![CDATA[
@@ -23,6 +20,10 @@
 			[Bindable]
 			public var model:Model = Model.getInstance();
 			public var httpService:HTTPService;
+			/**
+			 * Il faut appeler le vrai data provider de Thierry, et stocker les résultats dans le modèle.
+			 * Arnaud
+			 */
 			public function init():void
 			{
 				httpService = new HTTPService();
@@ -35,21 +36,6 @@
 			{
 				trace("yeah");
 			}
-			public function determineLangSource(event:Event):void
-			{
-				if(event.currentTarget.selectedItem.data == "fr-fra"){
-				model.langDest = "zh-zho";
-				}else {
-				model.langDest = "fr-fra";
-				}
-				model.langSource = event.currentTarget.selectedItem.data;
-			}	
-			
-			public function determineLangDest(event:Event):void
-			{
-				model.langDest=event.currentTarget.selectedItem.data;
-			}			
-			
 		]]>
 	</mx:Script>
 	<mx:Style source="org/p25366/y2008/style/style.css" />
@@ -59,113 +45,16 @@
 		left="100"
 		visible="{model.page=='choixLangue'}"
 		/>
-		
-	<mx:Canvas 
+	<view:ChoixLangue
 		id="choixLangue"
 		visible="{model.page=='choixLangue'}"
 		width="100%"
 		height="100%"
-		>
-		
-		<mx:Text
-			width="200"
-			left="250"
-			verticalCenter="-100"
-			>
-            <mx:text>
-                Pour entrer, choisissez une langue source et une langue cible en cliquant sur les champs ci-dessous
-            </mx:text>
-        </mx:Text>
-            
-		<mx:List
-			id="langSource"
-			height="100"
-			left="250"
-			verticalCenter="0"
-			change="determineLangSource(event)"
-			borderSides=""
-			cornerRadius="10"
-			>
-	            <mx:Object label="français" data="fr-fra"/>
-	            <mx:Object label="chinois" data="zh-zho"/>
-        	
-		</mx:List>
-		
-		<mx:List
-			id="langDest"
-			height="100"
-			left="325"
-			verticalCenter="0"
-			change="determineLangDest(event)"
-			borderSides=""
-			cornerRadius="10"
-			>
-	            <mx:Object label="français" data="fr-fra"/>
-	            <mx:Object label="chinois" data="zh-zho"/>
-        	
-		</mx:List>
-		
-		<mx:Button 
-			label="Choix"
-			click="model.page='home'"
-			verticalCenter="0"
-			left="400"
-			/>
-	</mx:Canvas>
-	
-	<mx:Canvas 
+		/>
+	<view:Home
 		id="langueChoisie"
 		visible="{model.page!='choixLangue'}"
 		width="100%"
 		height="100%"
-		>
-		<mx:Image 
-		source="@Embed('org/p25366/y2008/style/assets/logo25366.png')" 
-		top="0"
-		left="100"
 		/>
-		<mx:TabBar 
-			dataProvider="{viewStack}"
-			top="80" 
-			/>
-		<mx:ViewStack
-			id="viewStack"
-			top="150"
-			height="80%"
-			width="100%"
-			>
-			<historicalMarks:HistoricalMarks label="Historical Marks"/>
-			<mx:HBox label="Theme Explorer And Definition Page" width="100%" height="100%">
-				<themeExplorer:ThemeExplorer 
-					id = "themeExplorer"
-					width="100%"
-					height="100%"
-					/>
-				<definitionPage:DefinitionPage 
-					id = "definitionPage"
-					visible = "{model.defPageVisible}"
-					/>
-				</mx:HBox>
-		</mx:ViewStack>
-		<mx:TextInput 
-			id="searchTextInput" 
-			right="20"
-			top="20"
-			/>
-		<searchResults:SearchResult 
-			label="Search Result"
-			word="{searchTextInput.text}"
-			visible="{searchTextInput.text!=''}"
-			width="500"
-			height="400"
-			right="20"
-			top="50"
-			showEffect="{wipeDown}"
-			hideEffect="{wipeUp}"
-			/>
-	</mx:Canvas>
-	
-	<mx:WipeDown id="wipeDown" />
-	<mx:WipeUp id="wipeUp" />
-
 </mx:Application> 

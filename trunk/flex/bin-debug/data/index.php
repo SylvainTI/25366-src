@@ -51,7 +51,12 @@ switch ($action) {
 		include('word.php');
 		break;
 	case "historical":
+		//Thierry, je ne sais pas s'ils utilisent ça, fais un point avec eux. Arnaud
 		include('historical.php');
+		break;
+	case "historic_keys":
+		//Thierry, je ne sais pas s'ils utilisent ça, fais un point avec eux. Arnaud
+		include('historic_keys.php');
 		break;
 	case "search":
 		include('search.php');

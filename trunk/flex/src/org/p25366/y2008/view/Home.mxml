@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:historicalMarks="org.p25366.y2008.components.historicalMarks.*" 
+	xmlns:themeExplorer="org.p25366.y2008.components.themeExplorer.*" 
+	xmlns:definitionPage="org.p25366.y2008.components.definitionPage.*" 
+	xmlns:searchResults="org.p25366.y2008.components.searchResults.*"
+	>
+	<mx:Script>
+		<![CDATA[
+			import org.p25366.y2008.model.Model;
+			[Bindable]
+			private var model:Model = Model.getInstance();
+		]]>
+	</mx:Script>
+	<mx:Image 
+		source="@Embed('org/p25366/y2008/style/assets/logo25366.png')" 
+		top="0"
+		left="100"
+		/>
+	<mx:TabBar 
+		dataProvider="{viewStack}"
+		top="80" 
+		/>
+	<mx:ViewStack
+		id="viewStack"
+		top="150"
+		height="80%"
+		width="100%"
+		>
+		<historicalMarks:HistoricalMarks 
+			label="Historical Marks"
+			/>
+		<mx:HBox 
+			label="Theme Explorer And Definition Page" 
+			width="100%" 
+			height="100%"
+			>
+			<themeExplorer:ThemeExplorer 
+				id="themeExplorer"
+				width="100%"
+				height="100%"
+				/>
+			<definitionPage:DefinitionPage 
+				id="definitionPage"
+				visible="{model.defPageVisible}"
+				/>
+			</mx:HBox>
+	</mx:ViewStack>
+	<mx:TextInput 
+		id="searchTextInput" 
+		right="20"
+		top="20"
+		/>
+	<searchResults:SearchResult 
+		label="Search Result"
+		word="{searchTextInput.text}"
+		visible="{searchTextInput.text!=''}"
+		width="500"
+		height="400"
+		right="20"
+		top="50"
+		showEffect="{wipeDown}"
+		hideEffect="{wipeUp}"
+		/>
+	<mx:WipeDown id="wipeDown" />
+	<mx:WipeUp id="wipeUp" />
+</mx:Canvas>
