@@ -54,6 +54,7 @@
 			private function faultHandler(event:FaultEvent):void
 			{
 				CursorManager.removeBusyCursor();
+				Alert.show("pas compris");
 			}
 			public function confirmHandler(event: CloseEvent): void{
 				/*switch (event.detail){
@@ -76,16 +77,17 @@
 
 	
 	<mx:HTTPService
+		
 		id="test_service"
 		resultFormat="e4x"
 		method ="GET"
 		result="resultHandler(event)" 
 		fault="faultHandler(event)"  
-		url= "http://localhost/svn/25366/data/index.php?action=search&amp;value={_word}"
+		url= "'http://localhost/svn/25366/data/index.php?action=search&amp;q=' + searchTextInput.text"
 	/>
-	<mx:VBox>
+	<mx:VBox>	
 
-	<mx:Text text="Résultat de la recherche pour {_word}              Dans les repères historiques" width="200" />
+	<mx:Text text="Résultat de la recherche pour {_word}" width="400" />
 	<mx:List dataProvider="{listData}"  itemRenderer="org.p25366.y2008.components.searchResults.view.SearchRenderer"/>
 	</mx:VBox>
 </mx:Canvas>
