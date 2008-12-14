@@ -4,7 +4,7 @@
 	$libSource = "mort";
 	$genreSource = "f.";
 	$libDest = "'mort' dans la langue de destination";
-	$genreDest = "genre du mot edans la langue de destination";
+	$genreDest = "genre du mot dans la langue de destination";
 	$wordId = "1";
 	$subthemeId = "4";
 ?>		
@@ -27,7 +27,7 @@
 	$libSource = "naissance";
 	$genreSource = "f.";
 	$libDest = "'naissance' dans la langue de destination";
-	$genreDest = "genre du mot edans la langue de destination";
+	$genreDest = "genre du mot dans la langue de destination";
 	$wordId = "2";
 ?>		
 		<id><?php echo $wordId; ?></id>
