@@ -15,6 +15,11 @@ package org.p25366.y2008.components.definitionPage.business
 		private var variables:URLVariables = new URLVariables();	
 		public static var instance:WordDelegate;
 		
+		/**
+		 * Tout ça, il faut le prendre dans le modèle direct, 
+		 * sans passer par des constantes, c'est inutile
+		 * Arnaud
+		 */
 		private const URL_SERVICE:String = Model.getInstance().data+"/index.php";
 		private const LANG_DEST:String = Model.getInstance().langDest;
 		private const LANG_SOURCE:String = Model.getInstance().langSource;
