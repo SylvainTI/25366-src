@@ -8,6 +8,7 @@
 	>
 	<mx:Script>
 		<![CDATA[
+			import mx.charts.chartClasses.StackedSeries;
 		/* Samedi : 02:20 (Mouhahahah) Anthony dit : Je me suis permis de rajouter => themeId="1"  ,dans mon composant que tu instancies ici, 
 		en fait tu pourras faire du data-binding à la place du 1, il me faut l'Id du theme selectionné. Merci */
 
@@ -20,14 +21,17 @@
 			[Bindable]
 			public var model:Model = Model.getInstance();
 			public var httpService:HTTPService;
+			
 			/**
-			 * Il faut appeler le vrai data provider de Thierry, et stocker les résultats dans le modèle.
+			 * Il faut appeler le vrai data provider de Thierry, 
+			 * et stocker les résultats dans le modèle.
 			 * Arnaud
 			 */
 			public function init():void
 			{
+
 				httpService = new HTTPService();
-				httpService.url = "data/keys.xml";
+				httpService.url = model.data + "keys.xml";
 				httpService.resultFormat = HTTPService.RESULT_FORMAT_E4X;
 				httpService.addEventListener(ResultEvent.RESULT, result);
 				httpService.send();
