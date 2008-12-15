@@ -1,39 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"  width="670" height="478" creationComplete="init()" styleName="defPage">
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"  width="670" height="478" styleName="defPage">
 	<mx:Script>
 		<![CDATA[
-			//import com.carlcalderon.arthropod.Debug;
+			import mx.controls.Alert;
+			import org.p25366.y2008.vo.WordVO;
+			import org.p25366.y2008.components.definitionPage.controler.DefinitionPageControler;
 			import org.p25366.y2008.model.Model;
 			import org.p25366.y2008.components.definitionPage.model.DefinitionPageModel;
 			import org.p25366.y2008.event.ProjectEvents;
 			
 			[Bindable]
-			private var definitionPage:DefinitionPageModel = DefinitionPageModel.getInstance();
+			private var definitionPageModel:DefinitionPageModel = DefinitionPageModel.getInstance();
+			[Bindable]
+			private var definitionPageControler:DefinitionPageControler = new DefinitionPageControler();
 			
-			public function init() : void {
-				Model.getInstance().addEventListener(ProjectEvents.OPEN_PAGE,definitionPage.openPage);
+			[Bindable (Model.getInstance().wordVO)]
+			public function getWord() : void{
+				Alert.show("DEFDEF");
+				definitionPageControler._word.getDatas(Model.getInstance().wordVO.id);
 			}
+			/*	Trouver un moyen de déclancher le Delegate automatiquement lorsque l'id du mot est renseigné.
+			*	definitionPageControler._word.getDatas(definitionPageModel.word.id)	
+			*/
+
 		]]>
 	</mx:Script>
 	<mx:VBox>
 		<mx:HBox>
-			<mx:Text x="10" y="10" text="{definitionPage.word.libSrc}" width="103"/>
-			<mx:Text text="{definitionPage.word.genderSrc}"/>
-			<mx:Text x="146" y="10" text="{definitionPage.word.genderDest}" width="128"/>
+			<mx:Text x="10" y="10" text="{definitionPageModel.word.libSrc}" width="103"/>
+			<mx:Text text="{definitionPageModel.word.genderSrc}"/>
+			<mx:Text x="146" y="10" text="{definitionPageModel.word.genderDest}" width="128"/>
 		</mx:HBox>
 		<mx:HBox>
 			<mx:VBox>
-				<mx:Text text="{'Phrase en '+definitionPage.word.langSrc+' : '}"/>
-				<mx:Text text="{definitionPage.word.sensSrc}"/>
+				<mx:Text text="{'Phrase en '+definitionPageModel.word.langSrc+' : '}"/>
+				<mx:Text text="{definitionPageModel.word.sensSrc}"/>
 			</mx:VBox>
 			<mx:VBox>
-				<mx:Text text="{'Phrase en '+definitionPage.word.langDest+' : '}"/>
-				<mx:Text text="{definitionPage.word.sensDest}"/>
+				<mx:Text text="{'Phrase en '+definitionPageModel.word.langDest+' : '}"/>
+				<mx:Text text="{definitionPageModel.word.sensDest}"/>
 			</mx:VBox>
 		</mx:HBox>
 		<mx:VBox>
 			<mx:Text text="Tags : "/>
-			<mx:Text text="{definitionPage.word.tags}"/>
+			<mx:Text text="{definitionPageModel.word.tags}"/>
 		</mx:VBox>
 	</mx:VBox>
 </mx:Canvas>

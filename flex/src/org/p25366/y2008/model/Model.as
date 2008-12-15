@@ -2,8 +2,9 @@ package org.p25366.y2008.model
 {
 	import mx.collections.ArrayCollection;
 	
-	import org.p25366.y2008.event.ProjectEvents;
+	import org.p25366.y2008.components.definitionPage.model.DefinitionPageModel;
 	import org.p25366.y2008.vo.KeyVO;
+	import org.p25366.y2008.vo.WordVO;
 	
 	[Bindable]
 	public class Model
@@ -21,21 +22,15 @@ package org.p25366.y2008.model
 		public var page:String = "choixLangue";
 		public var defPageVisible:Boolean = false;
 		private static var instance:Model;
-		
-		/**
-		 * Pas de logique applicative dans le modèle !
-		 * Arnaud
-		 */
-		public function  initDefinitionPage(event : ProjectEvents) : void{
-			var event2:ProjectEvents = event;
-			this.dispatchEvent(event2);
-		}
+		public var wordVO:WordVO = new WordVO();
+		private var defPageProvider:DefinitionPageModel;
 		
 		public function Model(enforcer:SingletonEnforcer)
 		{
-			// Pas d'init dans le modèle ! Arnaud
-			addEventListener(ProjectEvents.OPEN_PAGE, initDefinitionPage);
+			defPageProvider = DefinitionPageModel.getInstance();
+			defPageProvider.word = wordVO;
 		}
+		
 		public static function getInstance():Model
 		{
 			if (! instance){

@@ -1,12 +1,12 @@
 package org.p25366.y2008.components.themeExplorer.business
 {
+	import flash.display.Sprite;
 	import flash.events.*;
 	import flash.net.*;
 	
 	import mx.collections.ArrayCollection;
-	import mx.controls.Alert;
-	import flash.display.Sprite;
 	
+	import org.p25366.y2008.components.themeExplorer.model.ThemeExplorerModel;
 	import org.p25366.y2008.model.Model;
 	import org.p25366.y2008.vo.SubkeyVO;
 	
@@ -46,7 +46,8 @@ package org.p25366.y2008.components.themeExplorer.business
 		}
 
 	private function onXmlLoaded( event : Event ) : void {
-		this.subkeys_arr = new ArrayCollection();
+		ThemeExplorerModel.getInstance().subthemes_arr = new ArrayCollection();
+		this.subkeys_arr = ThemeExplorerModel.getInstance().subthemes_arr;
 		var xml:XML = new XML(event.target.data);
 		for each( var element:XML in xml.elements()){
 			var subKeysVO:SubkeyVO = new SubkeyVO();
@@ -56,10 +57,9 @@ package org.p25366.y2008.components.themeExplorer.business
 			subKeysVO.langDest = element.destination.lang.toString();
 			subKeysVO.langSrc = element.source.lang.toString();
 			subKeysVO.libDest = element.destination.lib.toString();
-			subKeysVO.libSrc =element.source.lib.toString();
+			subKeysVO.libSrc = element.source.lib.toString();
 			this.subkeys_arr.addItem(subKeysVO);
 		}
-		this.dispatchEvent(new Event("subThemesLoaded"));
 	}
 }
 }
