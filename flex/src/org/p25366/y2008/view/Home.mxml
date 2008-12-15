@@ -11,6 +11,7 @@
 			import org.p25366.y2008.model.Model;
 			[Bindable]
 			private var model:Model = Model.getInstance();
+			
 		]]>
 	</mx:Script>
 	<mx:Image 
@@ -42,6 +43,7 @@
 				height="100%"
 				/>
 			<definitionPage:DefinitionPage 
+				word="{Model.getInstance().wordVO.id}"
 				id="definitionPage"
 				visible="{model.defPageVisible}"
 				/>
