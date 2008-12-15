@@ -8,15 +8,16 @@
 	>
 	<mx:Script>
 		<![CDATA[
+			import mx.controls.Alert;
 			import org.p25366.y2008.model.Model;
 			import org.p25366.y2008.vo.KeyVO;
 		]]>
 	</mx:Script>
 	<mx:Image id="img"
-		scaleX=".5" 
-		scaleY=".5" 
-		source="{Model.getInstance().assets+data.image}" 
-		autoLoad="true" 
+		scaleX=".5"
+		scaleY=".5"
+		source="{Model.getInstance().assets+data.image}"
+		autoLoad="true"
 		scaleContent="true"
 		/>
 	<mx:Label  id="txt"
@@ -27,21 +28,17 @@
 		/>
 	<mx:transitions>
 		<mx:Transition fromState="*" toState="horizontalOver">
-			<mx:Move target="{img}" xTo="10"/>
+				<mx:Move target="{img}" xTo="10"/>
 		</mx:Transition>
 		<mx:Transition fromState="horizontalOver" toState="horizontalOut">
-			<mx:Move target="{img}" xTo="-10"/>
+			<mx:Move target="{img}" xTo="{-(img.width/2)}"/>
 		</mx:Transition>
 	</mx:transitions>
 	<mx:states>
 		<mx:State name="horizontalOver">
-			<mx:SetProperty target="{img}" name="scaleX" value=".8"/>
-			<mx:SetProperty target="{img}" name="scaleY" value=".8"/>
 			<mx:SetProperty target="{txt}" name="alpha" value="1"/>
 		</mx:State>
 		<mx:State name="horizontalOut">
-			<mx:SetProperty target="{img}" name="scaleX" value=".5"/>
-			<mx:SetProperty target="{img}" name="scaleY" value=".5"/>
 			<mx:SetProperty target="{txt}" name="alpha" value="0"/>
 		</mx:State>
 	</mx:states>

@@ -9,9 +9,9 @@ package org.p25366.y2008.components.themeExplorer.business
 	
 	import mx.collections.ArrayCollection;
 	
+	import org.p25366.y2008.components.themeExplorer.model.ThemeExplorerModel;
 	import org.p25366.y2008.model.Model;
 	import org.p25366.y2008.vo.WordsVO;
-	//import com.carlcalderon.arthropod.Debug;
 	
 	[Bindable]
 	public class WordsDelegate extends Sprite
@@ -50,7 +50,8 @@ package org.p25366.y2008.components.themeExplorer.business
 		}
 	
 		private function onXmlLoaded( event : Event ) : void {
-			words_arr = new ArrayCollection();
+			ThemeExplorerModel.getInstance().words_arr = new ArrayCollection();
+			words_arr = ThemeExplorerModel.getInstance().words_arr;
 			var xml:XML = new XML(event.target.data);
 			for each( var element:XML in xml.elements()){
 				var wordVO:WordsVO = new WordsVO();
@@ -64,7 +65,6 @@ package org.p25366.y2008.components.themeExplorer.business
 				wordVO.libSrc =element.source.lib.toString();
 				this.words_arr.addItem(wordVO);
 			}			
-		this.dispatchEvent(new Event("wordsLoaded"));
 		}
 	}
 }

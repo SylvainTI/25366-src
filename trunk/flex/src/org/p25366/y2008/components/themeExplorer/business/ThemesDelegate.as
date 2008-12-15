@@ -5,8 +5,8 @@ package org.p25366.y2008.components.themeExplorer.business
 	import flash.net.*;
 	
 	import mx.collections.ArrayCollection;
-	import mx.controls.Alert;
 	
+	import org.p25366.y2008.components.themeExplorer.model.ThemeExplorerModel;
 	import org.p25366.y2008.model.Model;
 	import org.p25366.y2008.vo.KeyVO;
 	import org.p25366.y2008.vo.SubkeyVO;
@@ -47,7 +47,8 @@ package org.p25366.y2008.components.themeExplorer.business
 		}
 
 	private function onXmlLoaded( event : Event ) : void {
-		this.themes_arr = new ArrayCollection();
+		ThemeExplorerModel.getInstance().themes_arr = new ArrayCollection();
+		this.themes_arr = ThemeExplorerModel.getInstance().themes_arr;
 		var xml:XML = new XML(event.target.data);
 		for each( var element:XML in xml.elements()){
 			var keyVO:KeyVO = new KeyVO();
@@ -57,7 +58,6 @@ package org.p25366.y2008.components.themeExplorer.business
 			keyVO.langSrc = element.lang.toString();
 			this.themes_arr.addItem(keyVO);
 		}
-		this.dispatchEvent(new Event("themesLoaded"));
 	}
 }
 }
