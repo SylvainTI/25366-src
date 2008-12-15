@@ -37,7 +37,6 @@ package org.p25366.y2008.components.themeExplorer.controler
 			 */
 			Model.getInstance().defPageVisible = true;		
 			Model.getInstance().wordVO.id = data.selectedItem.id;
-			ThemeExplorerModel.getInstance().currentState = "word";
 		}
 		
 		public function initThemeExplorer() : void {

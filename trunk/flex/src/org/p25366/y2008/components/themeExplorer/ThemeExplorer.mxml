@@ -2,16 +2,16 @@
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" creationComplete="themeExplorerControler.initThemeExplorer()">
 	<mx:Script>
 		<![CDATA[
+			
 			import org.p25366.y2008.components.themeExplorer.controler.ThemeExplorerControler;
 			import mx.controls.Alert;
 			import org.p25366.y2008.event.ProjectEvents;
 			import org.p25366.y2008.model.Model;
 			import org.p25366.y2008.components.themeExplorer.model.ThemeExplorerModel;
-			//import com.carlcalderon.arthropod.Debug;
-			
+						
 			[Bindable]
 			private var themeExplorerControler:ThemeExplorerControler = new ThemeExplorerControler();
-
+			
 			[Bindable]
 			private var themeExplorerModel:ThemeExplorerModel = ThemeExplorerModel.getInstance();
 			

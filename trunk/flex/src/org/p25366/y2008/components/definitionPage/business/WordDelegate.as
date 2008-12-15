@@ -4,6 +4,7 @@ package org.p25366.y2008.components.definitionPage.business
 	import flash.events.*;
 	import flash.net.*;
 	
+	import org.p25366.y2008.components.definitionPage.model.DefinitionPageModel;
 	import org.p25366.y2008.model.Model;
 	import org.p25366.y2008.vo.WordVO;
 	//import com.carlcalderon.arthropod.Debug;
@@ -50,7 +51,7 @@ package org.p25366.y2008.components.definitionPage.business
 		private function onXmlLoaded( event : Event ) : void {
 			var xml:XML = new XML(event.target.data);
 			for each( var element:XML in xml){
-				var wordVO:WordVO = Model.getInstance().wordVO;
+				var wordVO:WordVO = DefinitionPageModel.getInstance().word;
 				wordVO.id = element.id.toString();
 				wordVO.genderDest = element.destination.genre.toString();
 				wordVO.genderSrc = element.source.genre.toString();
