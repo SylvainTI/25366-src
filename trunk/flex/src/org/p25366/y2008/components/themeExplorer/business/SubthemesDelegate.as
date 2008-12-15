@@ -9,7 +9,15 @@ package org.p25366.y2008.components.themeExplorer.business
 	import org.p25366.y2008.components.themeExplorer.model.ThemeExplorerModel;
 	import org.p25366.y2008.model.Model;
 	import org.p25366.y2008.vo.SubkeyVO;
-	
+	/**
+	 * Delegate qui extends sprite, et qui est bindable, c'est très étrange.
+	 * Le delegate est chargé des relations avec le serveur.
+	 * Il stocke les résultats dans des VO, qu'il range dans le modèle.
+	 * Donc, il n'est pas bindable, et il n'extends pas sprite
+	 * De plus, pas la peine d'en faire plusieurs, et pas la peine de faire des singletons.
+	 * Il faut penser simple !
+	 * Arnaud
+	 */
 	[Bindable]
 	public class SubthemesDelegate extends Sprite
 	{		

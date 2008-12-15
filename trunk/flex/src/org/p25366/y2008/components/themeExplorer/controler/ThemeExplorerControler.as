@@ -32,6 +32,9 @@ package org.p25366.y2008.components.themeExplorer.controler
 		}		
 			
 		public function onWordSelected( data : Object ) : void {
+			/**
+			 * Ca n'est pas nécessaire, c'est à l'application de voir que wordVO est défini
+			 */
 			Model.getInstance().defPageVisible = true;		
 			Model.getInstance().wordVO.id = data.selectedItem.id;
 			ThemeExplorerModel.getInstance().currentState = "word";

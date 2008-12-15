@@ -5,6 +5,9 @@ package org.p25366.y2008.vo
 	[Bindable]
 	public class WordVO
 	{
+		public var keyVO:KeyVO;
+		public var subkeyVO:SubkeyVO;
+		
 		public var id:String;
 		
 		public var tags:String;
