@@ -3,8 +3,7 @@ package org.p25366.y2008.model
 	import mx.collections.ArrayCollection;
 	
 	import org.p25366.y2008.components.definitionPage.model.DefinitionPageModel;
-	import org.p25366.y2008.vo.KeyVO;
-	import org.p25366.y2008.vo.WordVO;
+	import org.p25366.y2008.vo.*;
 	
 	[Bindable]
 	public class Model
@@ -15,22 +14,47 @@ package org.p25366.y2008.model
 		 */
 		public var data:String = "data/";
 		public var assets:String = "data/media/";
+
 		public var langSource:String = "";
 		public var langDest:String = "";
+
 		public var keys:ArrayCollection;
-		public var currentKey:KeyVO;
-		public var page:String = "choixLangue";
-		public var defPageVisible:Boolean = false;
-		private static var instance:Model;
-		public var wordVO:WordVO = new WordVO();
-		private var defPageProvider:DefinitionPageModel;
+		/**
+		 * Ces 3 variables doivent contrôler l'affichage des thèmes
+		 * Si clé null, pas de clé choisie, etc
+		 * Arnaud
+		 */
+		public var keyVO:KeyVO;
+		public var subKeyVO:SubkeyVO;
+		public var wordVO:WordVO;
+
+		public var page:String = PAGE_CHOIX_LANGUE;
 		
+		/**
+		 * C'est quoi ça ? 
+		 * A priori, pas nécessaire. 
+		 * Si changement de page, alors jouer avec page
+		 * Arnaud
+		 */
+		public var defPageVisible:Boolean = false;
+		
+		/**
+		 * Pas de privé dans le modèle !
+		 * Arnaud
+		 */
+		//private var defPageProvider:DefinitionPageModel;
+		
+		/**
+		 * Lister toutes les pages possibles, pour éviter les fautes de frappe
+		 */
+		public static const PAGE_CHOIX_LANGUE:String = "choixLangue";
+		
+		private static var instance:Model;
 		public function Model(enforcer:SingletonEnforcer)
 		{
-			defPageProvider = DefinitionPageModel.getInstance();
-			defPageProvider.word = wordVO;
+			//defPageProvider = DefinitionPageModel.getInstance();
+			//defPageProvider.word = wordVO;
 		}
-		
 		public static function getInstance():Model
 		{
 			if (! instance){

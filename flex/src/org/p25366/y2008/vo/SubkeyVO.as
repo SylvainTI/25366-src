@@ -1,9 +1,12 @@
 package org.p25366.y2008.vo
 {
-	[Bindable]
+	import mx.collections.ArrayCollection;
 	
+	[Bindable]
 	public class SubkeyVO
 	{
+		public var keyVO:KeyVO;// la clé parente
+		
 		public var id:String;
 		
 		public var langDest:String;
@@ -14,5 +17,6 @@ package org.p25366.y2008.vo
 		public var libSrc:String;
 		public var genderSrc:String;
 		
+		public var children:ArrayCollection = new ArrayCollection();// Array of wordVOs
 	}
 }
