@@ -37,6 +37,8 @@ package org.p25366.y2008.model
 		 * Arnaud
 		 */
 		public var defPageVisible:Boolean = false;
+<<<<<<< .mine
+=======
 		
 		/**
 		 * Pas de privé dans le modèle !
@@ -50,10 +52,21 @@ package org.p25366.y2008.model
 		public static const PAGE_CHOIX_LANGUE:String = "choixLangue";
 		
 		private static var instance:Model;
+>>>>>>> .r119
+<<<<<<< .mine
+		public var wordVO:WordVO = new WordVO();
+	
+		private static var instance:Model;
+
+=======
+>>>>>>> .r119
 		public function Model(enforcer:SingletonEnforcer)
 		{
+<<<<<<< .mine
+=======
 			//defPageProvider = DefinitionPageModel.getInstance();
 			//defPageProvider.word = wordVO;
+>>>>>>> .r119
 		}
 		public static function getInstance():Model
 		{
