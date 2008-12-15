@@ -5,20 +5,29 @@
 			import org.p25366.y2008.components.definitionPage.business.WordDelegate;
 			import mx.controls.Alert;
 			import org.p25366.y2008.vo.WordVO;
-			import org.p25366.y2008.components.definitionPage.controler.DefinitionPageControler;
 			import org.p25366.y2008.model.Model;
 			import org.p25366.y2008.event.ProjectEvents;
 			
-			[Bindable]
-			private var model:Model = Model.getInstance();
-			[Bindable]
-			private var definitionPageControler:DefinitionPageControler = new DefinitionPageControler();
+			private var _wordId:String;
 			
-			[Bindable (Model.getInstance().wordVO)]
-			public function getWord() : void{
-				Alert.show("DEFDEF");
-				definitionPageControler._word.getDatas(Model.getInstance().wordVO.id);
+			[Bindable]
+<<<<<<< .mine
+			private var definitionPageModel:DefinitionPageModel = DefinitionPageModel.getInstance();			
+			
+=======
+			private var model:Model = Model.getInstance();
+>>>>>>> .r119
+			[Bindable]
+			public function set word(pWord:String) : void{
+				this._wordId = pWord;
+				WordDelegate.getInstance().getDatas(this._wordId);
 			}
+			
+			public function get word() : String{
+				return this._wordId;
+			}
+<<<<<<< .mine
+=======
 			/*	Trouver un moyen de déclancher le Delegate automatiquement lorsque l'id du mot est renseigné.
 			*	definitionPageControler._word.getDatas(definitionPageModel.word.id)	
 			Arnaud : le moyen ca peut être un binding avec un setter
@@ -35,6 +44,7 @@
 				delegate.loadWord(wordVO);
 				 */
 			}
+>>>>>>> .r119
 		]]>
 	</mx:Script>
 	<mx:Binding source="model.wordVO" destination="wordVO" />
