@@ -15,7 +15,7 @@
 			import mx.rpc.http.HTTPService;
 			import mx.rpc.events.ResultEvent;
 			import mx.controls.Alert;
-			
+			private var model:Model = Model.getInstance();
 			
 				
 			[Bindable]
@@ -86,10 +86,9 @@
 		method ="GET"
 		result="resultHandler(event)" 
 		fault="faultHandler(event)"  
-		url= "http://localhost/svn/25366/data/index.php?action=search&amp;q={_word}"
+		url= "data/index.php?action=search&amp;q={_word}"
 	/>
 	<mx:VBox>	
-
 	<mx:Text text="Résultat de la recherche pour {_word}" width="400" />
 	<mx:List dataProvider="{listData}"  itemRenderer="org.p25366.y2008.components.searchResults.view.SearchRenderer"/>
 	</mx:VBox>
