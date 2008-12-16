@@ -2,7 +2,7 @@
 	<lang>
 <?php
 	$langIdSource = "fr-fra";
-	$libSource = "français";
+	$libSource = "franÃ§ais";
 	$langIdDest = "zh-zho";
 	$libDest = "chinois";
 ?>		
