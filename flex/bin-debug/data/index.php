@@ -11,55 +11,32 @@ $query = isset($_GET["q"]) ? $_GET["q"] : false;
 
 switch ($action) {
 	case "langs":
-		echo "
-<langs>
-	<lang>
-		<id>fr-fra</id>
-		<lib><![CDATA[français]]></lib>
-		<destinations>
-			<lang>
-				<id>zh-zho</id>
-				<lib><![CDATA[Chinois]]></lib>
-			</lang>
-		</destinations>
-	</lang>
-	<lang>
-		<id>zh-zho</id>
-		<lib><![CDATA['chinois' en chinois]]></lib>
-		<destinations>
-			<lang>
-				<id>zh-zho</id>
-				<lib><![CDATA['français' en chinois]]></lib>
-			</lang>
-		</destinations>
-	</lang>
-</langs>
-		";
+		include('actions/langs.php');
 		break;
 	case "themes":
-		include('themes.php');
+		include('actions/themes.php');
 		break;
 	
 	case "subthemes":
 	//todo
-		include('subthemes.php');
+		include('actions/subthemes.php');
 		break;
 	case "words":
-		include('words.php');
+		include('actions/words.php');
 		break;
 	case "word":
-		include('word.php');
+		include('actions/word.php');
 		break;
 	case "historical":
 		//Thierry, je ne sais pas s'ils utilisent ça, fais un point avec eux. Arnaud
-		include('historical.php');
+		include('actions/historical.php');
 		break;
 	case "historic_keys":
 		//Thierry, je ne sais pas s'ils utilisent ça, fais un point avec eux. Arnaud
-		include('historic_keys.php');
+		include('actions/historic_keys.php');
 		break;
 	case "search":
-		include('search.php');
+		include('actions/search.php');
 		break;
 
 }
