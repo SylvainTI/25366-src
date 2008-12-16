@@ -4,7 +4,11 @@
 	>
 	<mx:Script>
 		<![CDATA[
+			import org.p25366.y2008.business.Delegate;
+			import mx.controls.Alert;
 			import org.p25366.y2008.model.Model;
+			private var delegate:Delegate = new Delegate();
+
 			[Bindable]
 			private var model:Model = Model.getInstance();
 			/**
@@ -14,17 +18,13 @@
 			 */
 			public function determineLangSource(event:Event):void
 			{
-				if(event.currentTarget.selectedItem.data == "fr-fra"){
-					model.langDest = "zh-zho";
-				}else {
-					model.langDest = "fr-fra";
-				}
 				model.langSource = event.currentTarget.selectedItem.data;
+				delegate.loadKeys();
 			}	
 			
 			public function determineLangDest(event:Event):void
 			{
-				model.langDest=event.currentTarget.selectedItem.data;
+				model.langDest = event.currentTarget.selectedItem.data.toString();
 			}		
 		]]>
 	</mx:Script>
@@ -42,13 +42,13 @@
 		change="determineLangSource(event)"
 		borderSides=""
 		cornerRadius="10"
-		>
+		dataProvider="{Model.getInstance().langSrcProvider}"
+		/>
         <!--
         Il fauy prendre un array collection du model comme data provider
-        -->
+        
         <mx:Object label="français" data="fr-fra"/>
-        <mx:Object label="chinois" data="zh-zho"/>
-	</mx:List>
+        <mx:Object label="chinois" data="zh-zho"/>-->
 	<mx:List
 		id="langDest"
 		height="100"
@@ -57,10 +57,10 @@
 		change="determineLangDest(event)"
 		borderSides=""
 		cornerRadius="10"
-		>
-        <mx:Object label="français" data="fr-fra"/>
-        <mx:Object label="chinois" data="zh-zho"/>
-	</mx:List>
+		dataProvider="{Model.getInstance().langDestProvider}"
+		/>
+        <!--<mx:Object label="français" data="fr-fra"/>
+        <mx:Object label="chinois" data="zh-zho"/>-->
 	<mx:Button 
 		label="Choix"
 		click="model.page='home'"

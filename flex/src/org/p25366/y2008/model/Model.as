@@ -24,11 +24,9 @@ package org.p25366.y2008.model
 		public var subkeyVO:SubkeyVO;
 		public var wordsVO:WordsVO;
 		public var wordVO:WordVO;
-
-		public var subthemesProvider:ArrayCollection;
-		public var wordsProvider:ArrayCollection;
 	
-		
+		public var langDestProvider:ArrayCollection = new ArrayCollection([{label:"français",data:"fr-fra"},{label:"chinois",data:"zh-zho"}]);
+		public var langSrcProvider:ArrayCollection = new ArrayCollection([{label:"français",data:"fr-fra"},{label:"chinois",data:"zh-zho"}]);
 		/**
 		public var themesProvider:ArrayCollection; // = keys
 		public var subthemesProvider:ArrayCollection; // = keyVO.children

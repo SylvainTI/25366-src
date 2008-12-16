@@ -7,7 +7,6 @@ package org.p25366.y2008.vo
 	[Bindable]
 	public class KeyVO
 	{
-		
 		public var id:String = "";
 		public var label:String = "";
 		public var image:String = "";
@@ -19,7 +18,7 @@ package org.p25366.y2008.vo
 			if (pObj==null) return;
 			this.id = pObj.id;
 			this.image =pObj.image;
-			this.label = pObj.label;
+			this.label = pObj.lib;
 			this.langSrc = pObj.lang;
 		}
 	}

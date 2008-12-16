@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml">
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" autoLayout="true" width="100%">
 	<mx:Script>
 		<![CDATA[
 			import org.p25366.y2008.business.Delegate;
@@ -25,7 +25,7 @@
 			 * Essaie de faire simple, mets 3 méthodes ici, qui invoquent une méthode du delegate
 			 * Cette méthode va remplir les VO, et les bindings font le reste
 			 * Arnaud
-			 */
+			 **/
 			 
 			private var delegate:Delegate;
 			
@@ -60,9 +60,9 @@
 	</mx:Script>
 	<mx:TileList 
 		id = "themeExplorer"
-		visible="{model.subkeyVO==null}"
-		width="100%"
-		height="100%"
+		rowCount="1"
+		columnCount="25"
+		visible="{model.keyVO==null}"
 		direction="horizontal"
 		styleName="themeExplorerList"
 		itemClick="selectKey(event)"
@@ -70,7 +70,7 @@
 		itemRenderer="org.p25366.y2008.view.KeyItemRenderer"
 	/>
 	<mx:HBox 
-		visible="{model.subkeyVO!=null}"
+		visible="{model.keyVO!=null}"
 		width="100%" 
 		height="100%"
 		>
@@ -87,7 +87,6 @@
 			itemRenderer="org.p25366.y2008.view.HorizontalKeyItemRenderer"
 			horizontalScrollPolicy="off"
 			verticalScrollPolicy="off"
-			variableRowHeight="true"
 			columnWidth="300"
 			rowHeight="100"
 			/>
