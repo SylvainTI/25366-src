@@ -43,11 +43,11 @@
 				height="100%"
 				/>
 			<definitionPage:DefinitionPage 
-				word="{Model.getInstance().wordVO.id}"
 				id="definitionPage"
-				visible="{model.defPageVisible}"
-				/>
-			</mx:HBox>
+				width="100%"
+				height="100%"
+			/>
+		</mx:HBox>
 	</mx:ViewStack>
 	<mx:TextInput 
 		id="searchTextInput" 

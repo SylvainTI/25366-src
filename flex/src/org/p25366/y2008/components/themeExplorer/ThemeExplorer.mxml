@@ -4,21 +4,17 @@
 		<![CDATA[
 			
 			import org.p25366.y2008.components.themeExplorer.controler.ThemeExplorerControler;
-			import mx.controls.Alert;
 			import org.p25366.y2008.event.ProjectEvents;
 			import org.p25366.y2008.model.Model;
 			import org.p25366.y2008.components.themeExplorer.model.ThemeExplorerModel;
 						
 			[Bindable]
 			private var themeExplorerControler:ThemeExplorerControler = new ThemeExplorerControler();
-			
-			[Bindable]
-			private var themeExplorerModel:ThemeExplorerModel = ThemeExplorerModel.getInstance();
-			
+						
 		]]>
 	</mx:Script>
 	
-	<mx:Binding source="themeExplorerModel.currentState" destination="currentState" />
+	<mx:Binding source="Model.getInstance().currentState" destination="currentState" />
 	
 	<mx:HBox id="themesBox" width="100%" height="100%" />
 	
@@ -38,7 +34,7 @@
 					id = "themeExplorer"
 					styleName="themeExplorerList"
 					click="themeExplorerControler.onThemeSelected(themeExplorer)"
-					dataProvider="{this.themeExplorerModel.themes_arr}" 
+					dataProvider="{Model.getInstance().themesProvider}" 
 					itemRenderer="org.p25366.y2008.view.KeyItemRenderer"
 				/>
 			</mx:AddChild>
@@ -54,21 +50,21 @@
 					id = "themeExplorerVertical"
 					styleName="themeExplorerList"
 					click="themeExplorerControler.onThemeSelected(themeExplorerVertical)"
-					dataProvider="{this.themeExplorerModel.themes_arr}" 
+					dataProvider="{Model.getInstance().themesProvider}" 
 					itemRenderer="org.p25366.y2008.view.HorizontalKeyItemRenderer"
 					horizontalScrollPolicy="off"
 					verticalScrollPolicy="off"
 					variableRowHeight="true"
 					columnWidth="300"
 					rowHeight="100"
-				/>	
+				/>
 				</mx:AddChild>
 				<mx:AddChild relativeTo="{subthemesBox}">
 					<mx:List
 						id = "subthemesList"
 						styleName="themeExplorerList"
-						click="themeExplorerControler.onItemSelected(subthemesList);wordsList.visible = true;"
-						dataProvider="{this.themeExplorerModel.subthemes_arr}" 
+						click="themeExplorerControler.onSubThemeSelected(subthemesList);wordsList.visible = true;"
+						dataProvider="{Model.getInstance().subthemesProvider}" 
 						itemRenderer="org.p25366.y2008.view.SubkeyItemRenderer"
 					/>
 				</mx:AddChild>
@@ -78,7 +74,7 @@
 					id = "wordsList"
 					styleName="themeExplorerList"
 					click = "themeExplorerControler.onWordSelected(wordsList);"
-					dataProvider="{this.themeExplorerModel.words_arr}" 
+					dataProvider="{Model.getInstance().wordsProvider}" 
 					itemRenderer="org.p25366.y2008.view.WordsItemRenderer"
 					/>
 			</mx:AddChild>

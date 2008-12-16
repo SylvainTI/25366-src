@@ -2,7 +2,6 @@ package org.p25366.y2008.model
 {
 	import mx.collections.ArrayCollection;
 	
-	import org.p25366.y2008.components.definitionPage.model.DefinitionPageModel;
 	import org.p25366.y2008.vo.*;
 	
 	[Bindable]
@@ -26,48 +25,29 @@ package org.p25366.y2008.model
 		 */
 		public var keyVO:KeyVO;
 		public var subKeyVO:SubkeyVO;
+		public var wordsVO:WordsVO;
+
+		public var themesProvider:ArrayCollection;
+		public var subthemesProvider:ArrayCollection;
+		public var wordsProvider:ArrayCollection;
 		public var wordVO:WordVO;
+	
+		public var currentState:String;
 
 		public var page:String = PAGE_CHOIX_LANGUE;
-		
-		/**
-		 * C'est quoi ça ? 
-		 * A priori, pas nécessaire. 
-		 * Si changement de page, alors jouer avec page
-		 * Arnaud
-		 */
-		public var defPageVisible:Boolean = false;
-<<<<<<< .mine
-=======
-		
-		/**
-		 * Pas de privé dans le modèle !
-		 * Arnaud
-		 */
-		//private var defPageProvider:DefinitionPageModel;
 		
 		/**
 		 * Lister toutes les pages possibles, pour éviter les fautes de frappe
 		 */
 		public static const PAGE_CHOIX_LANGUE:String = "choixLangue";
 		
-		private static var instance:Model;
->>>>>>> .r119
-<<<<<<< .mine
-		public var wordVO:WordVO = new WordVO();
 	
 		private static var instance:Model;
 
-=======
->>>>>>> .r119
 		public function Model(enforcer:SingletonEnforcer)
 		{
-<<<<<<< .mine
-=======
-			//defPageProvider = DefinitionPageModel.getInstance();
-			//defPageProvider.word = wordVO;
->>>>>>> .r119
 		}
+		
 		public static function getInstance():Model
 		{
 			if (! instance){
