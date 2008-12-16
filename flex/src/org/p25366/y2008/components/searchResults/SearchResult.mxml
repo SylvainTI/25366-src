@@ -3,10 +3,13 @@
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
 	backgroundColor="0xcccccc" 
 	creationComplete="recherche( )"
-
 	>
 	<mx:Script>
 		<![CDATA[
+			/**
+			 * Attention à respecter les indentations, et à supprimer le vieux code plus nécessaire
+			 * Arnaud
+			 */
 			import mx.collections.ArrayCollection;
 			import mx.events.CloseEvent;
 			import mx.managers.CursorManager;
@@ -15,8 +18,9 @@
 			import mx.rpc.http.HTTPService;
 			import mx.rpc.events.ResultEvent;
 			import mx.controls.Alert;
+
+			[Bindable]
 			private var model:Model = Model.getInstance();
-			
 				
 			[Bindable]
 			private var _word:String;
@@ -40,9 +44,11 @@
 				listData = new ArrayCollection();
 				//Alert.show(event.result.toString());
 				var one_result:Object;
-				
 				for each(var result:XML in (event.result as XML).elements()) {
-					
+					/** 
+					 * Génère des VO, stocke les dans le modèle
+					 * Arnaud
+					 */
 					one_result = new Object();
 					one_result.date = result.date;
 					one_result.description = result.description;
@@ -50,12 +56,11 @@
 					
 					listData.addItem(one_result);
 				}
-				
-				CursorManager.removeBusyCursor();
+				//CursorManager.removeBusyCursor();
 			}
 			private function faultHandler(event:FaultEvent):void
 			{
-				CursorManager.removeBusyCursor();
+				//CursorManager.removeBusyCursor();
 				//Alert.show("cela ne marche pas");
 				//http://localhost/svn/25366/data/index.php?action=search&amp;q=searchTextInput.txt
 			}
@@ -68,29 +73,42 @@
 					my_load.load(my_req);
 							}*/
 					}
-					private function completeHandler(evt:Event):void{
-					trace (evt.target.data);
-					}
+			private function completeHandler(evt:Event):void{
+				trace (evt.target.data);
+			}
 			public function recherche(): void
-				{
-					test_service.send();
-				}
+			{
+				test_service.send();
+			}
 		]]>
 	</mx:Script>
-
-	
 	<mx:HTTPService
-		
 		id="test_service"
 		resultFormat="e4x"
 		method ="GET"
+		showBusyCursor="true" 
 		result="resultHandler(event)" 
 		fault="faultHandler(event)"  
-		url= "data/index.php?action=search&amp;q={_word}"
-	/>
+		url= "{model.data+'?action=search&amp;q='+_word}"
+		/>
 	<mx:VBox>	
-	<mx:Text text="Résultat de la recherche pour {_word}" width="400" />
-	<mx:List dataProvider="{listData}"  itemRenderer="org.p25366.y2008.components.searchResults.view.SearchRenderer"/>
+		<mx:Text 
+			text="Résultat de la recherche pour {_word}" 
+			width="400" 
+			/>
+		<mx:List 
+			dataProvider="{listData}" 
+			>
+			<mx:itemRenderer>
+				<mx:Component>
+					<mx:VBox>
+						<mx:Label text="{data.description}"/>
+						<mx:Label text="{data.date}"/>
+						<mx:Label text="{data.num}"/>
+					</mx:VBox>
+				</mx:Component>
+			</mx:itemRenderer>
+		</mx:List>
 	</mx:VBox>
 </mx:Canvas>
 
