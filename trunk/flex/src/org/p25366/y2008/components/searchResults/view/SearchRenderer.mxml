@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml">
-	<mx:VBox>
-		<mx:Label text="{data.description}"/>
-		<mx:Label text="{data.date}"/>
-		<mx:Label text="{data.num}"/>
-	</mx:VBox>
-	
-</mx:Canvas>
