@@ -29,6 +29,7 @@ package org.p25366.y2008.business
 		public function loadKeys():void
 		{
 			this._action = "themes";
+			this.variables.action = this._action;
 			this.variables.langSource = Model.getInstance().langSource;
 			this.variables.langDest = Model.getInstance().langDest;
 			var url_request:URLRequest = new URLRequest();
@@ -42,6 +43,7 @@ package org.p25366.y2008.business
 		public function loadSubkeys(pKeyVO:KeyVO):void
 		{
 			this._action = "subthemes";
+			this.variables.action = this._action;
 			this.variables.langSource = Model.getInstance().langSource;
 			this.variables.langDest = Model.getInstance().langDest;
 			this.variables.themeId = pKeyVO.id;
@@ -56,6 +58,7 @@ package org.p25366.y2008.business
 		public function loadWords(pSubKeyVO:SubkeyVO):void
 		{
 			this._action = "words";
+			this.variables.action = this._action;
 			this.variables.langSource = Model.getInstance().langSource;
 			this.variables.langDest = Model.getInstance().langDest;
 			this.variables.subthemeId = pSubKeyVO.id;
@@ -70,6 +73,7 @@ package org.p25366.y2008.business
 		public function loadWord(pWordsVO:WordsVO):void
 		{
 			this._action = "word";
+			this.variables.action = this._action;
 			this.variables.langSource = Model.getInstance().langSource;
 			this.variables.langDest = Model.getInstance().langDest;
 			this.variables.subthemeId = pWordsVO.id;
