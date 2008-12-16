@@ -34,8 +34,7 @@ foreach ($lines as $line){
 }
 echo "</table>";
 $i=0;
-// extraction des sous-thèmes
-# ??? ---->> pb il me récupère 4507 sous-thèmes ...
+
 foreach ($lines as $line) {
 	$data = explode("	", $line);
 	$i++;
