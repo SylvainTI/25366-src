@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="278" height="42" styleName="wordsItem">
-	<mx:Script>
-		<![CDATA[
-			import org.p25366.y2008.vo.WordVO;
-		]]>
-	</mx:Script>
 	<mx:HBox>
-	<mx:Label text="{WordVO(data).libSrc}"/>
-	<mx:Label text="{WordVO(data).libDest}"/>
+	<mx:Label text="{data.libSrc}"/>
+	<mx:Label text="{data.libDest}"/>
 	</mx:HBox>
 </mx:VBox>
