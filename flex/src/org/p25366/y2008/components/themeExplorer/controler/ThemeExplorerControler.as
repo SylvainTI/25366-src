@@ -2,7 +2,7 @@ package org.p25366.y2008.components.themeExplorer.controler
 {
 	import flash.events.*;
 	
-	import org.p25366.y2008.components.themeExplorer.business.ThemeExplorerDelegate;
+	//import org.p25366.y2008.components.themeExplorer.business.ThemeExplorerDelegate;
 	import org.p25366.y2008.components.themeExplorer.business.ThemesDelegate;
 	import org.p25366.y2008.components.themeExplorer.business.WordsDelegate;
 	import org.p25366.y2008.components.themeExplorer.model.ThemeExplorerModel;
@@ -12,9 +12,13 @@ package org.p25366.y2008.components.themeExplorer.controler
 	{
 		
 		//private var _keysDelegate:ThemesDelegate = ThemesDelegate.getInstance();
-		private var _delegate:ThemeExplorerDelegate = new ThemeExplorerDelegate();
+		//private var _delegate:ThemeExplorerDelegate = new ThemeExplorerDelegate();
 		//private var _wordsDelegate:WordsDelegate = WordsDelegate.getInstance();
-		
+		private var _delegate;
+		/**
+		 * On ne commit pas un truc qui empêche tout le monde de compiler, Anthony
+		 * Arnaud
+		 */
 		public function ThemeExplorerControler()
 		{
 		}

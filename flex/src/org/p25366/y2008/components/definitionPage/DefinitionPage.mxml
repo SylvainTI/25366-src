@@ -2,7 +2,6 @@
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"  width="670" height="478" styleName="defPage">
 	<mx:Script>
 		<![CDATA[
-			import org.p25366.y2008.components.definitionPage.model.DefinitionPageModel;
 			import org.p25366.y2008.components.definitionPage.business.WordDelegate;
 			import mx.controls.Alert;
 			import org.p25366.y2008.vo.WordVO;
@@ -11,9 +10,6 @@
 			
 			[Bindable]
 			private var _wordId:String;
-			
-			[Bindable]
-			private var definitionPageModel:DefinitionPageModel = DefinitionPageModel.getInstance();			
 			
 			[Bindable]
 			private var model:Model = Model.getInstance();
