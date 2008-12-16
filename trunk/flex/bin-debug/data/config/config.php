@@ -5,7 +5,8 @@ $db = DatabaseManager::getInstance('mysql:dbname=25366src;host=localhost', 'root
 
 if (file_exists('INSTALL')) {
 	$sql = file_get_contents('db.sql');
-	$db->exec($sql) or die(print_r($db->errorInfo(), true));
+	$db->query($sql);
+	//echo (print_r($db->errorInfo(), true));
 	unlink('INSTALL');
 	/*
 	$handle = fopen('INSTALL', "a+");
