@@ -39,39 +39,41 @@
 			private function search(word:String):void
 			{
 			}
+			
+			private function onItemSelected(event : Event ) :void 
+			{
+				event.target.date
+			}
+			
 			private function resultHandler(event:ResultEvent):void
 			{
 				listData = new ArrayCollection();
-				//Alert.show(event.result.toString());
+							        
 				var one_result:Object;
 				for each(var result:XML in (event.result as XML).elements()) {
 					/** 
 					 * Génère des VO, stocke les dans le modèle
 					 * Arnaud
 					 */
+					 if(result.type=="word")
+					{
+						one_result = new Object();
+						
+					}
+					else{
 					one_result = new Object();
 					one_result.date = result.date;
 					one_result.description = result.description;
 					one_result.num = result.num;
 					
 					listData.addItem(one_result);
+					}
 				}
-				//CursorManager.removeBusyCursor();
 			}
 			private function faultHandler(event:FaultEvent):void
 			{
-				//CursorManager.removeBusyCursor();
-				//Alert.show("cela ne marche pas");
-				//http://localhost/svn/25366/data/index.php?action=search&amp;q=searchTextInput.txt
 			}
 			public function confirmHandler(event: CloseEvent): void{
-				/*switch (event.detail){
-					case Alert.OK:
-					var my_req:URLRequest = new URLRequest('requete.php');
-					var my_load:ULRLoader = new URLLoader();
-					my_load.addEventListener(Event.COMPLETE, completeHandler);
-					my_load.load(my_req);
-							}*/
 					}
 			private function completeHandler(evt:Event):void{
 				trace (evt.target.data);
@@ -96,19 +98,39 @@
 			text="Résultat de la recherche pour {_word}" 
 			width="400" 
 			/>
-		<mx:List 
-			dataProvider="{listData}" 
-			>
-			<mx:itemRenderer>
-				<mx:Component>
-					<mx:VBox>
-						<mx:Label text="{data.description}"/>
-						<mx:Label text="{data.date}"/>
-						<mx:Label text="{data.num}"/>
-					</mx:VBox>
-				</mx:Component>
-			</mx:itemRenderer>
-		</mx:List>
+		<mx:HBox>
+				
+			<mx:List 
+				dataProvider="{listData}" 
+				click="onItemSelected(event)"
+				width="50%"
+				>
+					<mx:itemRenderer>
+						<mx:Component>
+							<mx:VBox>
+								<mx:Label text="{data.description}"/>
+								<mx:Label text="{data.date}"/>
+								<mx:Label text="{data.num}"/>
+							</mx:VBox>
+						</mx:Component>
+					</mx:itemRenderer>
+			</mx:List>
+			<mx:List 
+				dataProvider="{listData}" 
+				click="onItemSelected(event)"
+				width="50%"				
+				>
+					<mx:itemRenderer>
+						<mx:Component>
+							<mx:VBox>
+								<mx:Label text="{data.description}"/>
+								<mx:Label text="{data.date}"/>
+								<mx:Label text="{data.num}"/>
+							</mx:VBox>
+						</mx:Component>
+					</mx:itemRenderer>
+			</mx:List>
+		</mx:HBox>
 	</mx:VBox>
 </mx:Canvas>
 
