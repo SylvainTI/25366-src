@@ -34,7 +34,7 @@ foreach ($lines as $line){
 }
 echo "</table>";
 $i=0;
-
+/*
 foreach ($lines as $line) {
 	$data = explode("	", $line);
 	$i++;
@@ -52,7 +52,8 @@ foreach ($lines as $line) {
 	}
 
 }
-//*
+//*/
+/*
 $i=0;
 // extraction des mots
 foreach ($lines as $line) {
@@ -74,13 +75,26 @@ foreach ($lines as $line) {
 
 }
 //*/
+require_once('../config/config.php');
+//$db
+	foreach ($themes as $key => $theme) {
+		if ($themes[$key] == '') unset($themes[$key]);
+		if ($themes[$key] == ' ') unset($themes[$key]);
+		$themes[$key] = str_replace("\n", '', $themes[$key]);
+		$themes[$key] = str_replace("\r", '', $themes[$key]);
+		$themes[$key] = str_replace("\t", '', $themes[$key]);
+		$themes[$key] = str_replace(" ", '', $themes[$key]);
+		if ($themes[$key] != '' && $themes[$key] != ' ') {
+			$db->query("INSERT INTO `theme` (`id`, `lib`, `lang`) VALUES ('$key','{$themes[$key]}','fr-fra')");
+		}
+	}
 	sort($themes);
 	sort($subthemes);
 	sort($words);
 	//echo count($subthemes);
 	//echo count($lines);
-	//echo (nl2br(print_r($themes, true)));
-	echo (nl2br(print_r($subthemes, true)));
-	//echo (nl2br(print_r($words, true)));
+	echo (print_r($themes, true));
+	//echo (print_r($subthemes, true));
+	//echo (print_r($words, true));
 
 ?>

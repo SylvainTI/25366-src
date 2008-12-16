@@ -1,22 +1,19 @@
 <themes>
-	<theme>
 <?php
-	$themeId = 1;
-	$lib = "Vie";
-	$image = "keys/vie.png";
-?>		<id><?php echo $themeId; ?></id>
-		<lang><?php echo $langSource; ?></lang>
-		<lib><![CDATA[<?php echo $lib; ?>]]></lib>
-		<image><?php echo $image; ?></image>
-	</theme>
+	$db = DatabaseManager::getInstance();
+	$queryThemes = $db->prepare("SELECT * FROM `theme` WHERE `lang` = ? ORDER BY `id` ASC"); // préparation de la requête
+	$queryThemes->execute(array($langSource)); // on exécute la requête
+	$themes = $queryThemes->fetchAll();
+	foreach ($themes as $theme) :
+?>
+		
 	<theme>
-<?php
-	$themeId = 2;
-	$lib = "Arts";
-	$image = "keys/arts.png";
-?>		<id><?php echo $themeId; ?></id>
-		<lang><?php echo $langSource; ?></lang>
-		<lib><![CDATA[<?php echo $lib; ?>]]></lib>
-		<image><?php echo $image; ?></image>
+		<id><?php echo $theme['id']; ?></id>
+		<lang><?php echo $theme['lang']; ?></lang>
+		<lib><?php echo $theme['lib']; ?></lib>
+		<image><?php echo $theme['image']; ?></image>
 	</theme>
+<?
+	endforeach;
+?>
 </themes>
