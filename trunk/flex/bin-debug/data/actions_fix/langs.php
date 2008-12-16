@@ -12,7 +12,7 @@
 		<destination>
 			<lang>
 				<id><?php echo $langIdDest; ?></id>
-				<lib><![CDATA[<?php echo $libDest; ?>]]></lib>
+				<libSource><![CDATA[<?php echo $libDest; ?>]]></libSource>
 			</lang>
 		</destination>
 	</lang>
