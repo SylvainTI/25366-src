@@ -3,14 +3,14 @@
 -- http://www.phpmyadmin.net
 -- 
 -- Serveur: localhost
--- Généré le : Mar 16 Décembre 2008 à 09:36
+-- GÃ©nÃ©rÃ© le : Mar 16 DÃ©cembre 2008 Ã  09:36
 -- Version du serveur: 5.0.45
 -- Version de PHP: 5.2.5
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 -- 
--- Base de données: `25366src`
+-- Base de donnÃ©es: `25366src`
 -- 
 
 -- --------------------------------------------------------
@@ -19,7 +19,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Structure de la table `lang_dest`
 -- 
 
-CREATE TABLE `lang_dest` (
+CREATE TABLE IF NOT EXISTS `lang_dest` (
   `lang_source_id` varchar(7) NOT NULL,
   `lang_id` varchar(7) NOT NULL,
   `lib_source` varchar(50) NOT NULL
@@ -38,7 +38,7 @@ INSERT INTO `lang_dest` (`lang_source_id`, `lang_id`, `lib_source`) VALUES
 -- Structure de la table `lang_source`
 -- 
 
-CREATE TABLE `lang_source` (
+CREATE TABLE IF NOT EXISTS `lang_source` (
   `id` varchar(7) NOT NULL,
   `lib` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -48,7 +48,7 @@ CREATE TABLE `lang_source` (
 -- 
 
 INSERT INTO `lang_source` (`id`, `lib`) VALUES 
-('fr-fra', 'français');
+('fr-fra', 'franÃ§ais');
 
 -- --------------------------------------------------------
 
@@ -56,7 +56,7 @@ INSERT INTO `lang_source` (`id`, `lib`) VALUES
 -- Structure de la table `subtheme`
 -- 
 
-CREATE TABLE `subtheme` (
+CREATE TABLE IF NOT EXISTS `subtheme` (
   `id` int(11) NOT NULL,
   `lang` varchar(10) NOT NULL,
   `lib` varchar(50) NOT NULL,
@@ -74,7 +74,7 @@ CREATE TABLE `subtheme` (
 -- Structure de la table `theme`
 -- 
 
-CREATE TABLE `theme` (
+CREATE TABLE IF NOT EXISTS `theme` (
   `id` int(11) NOT NULL,
   `lang` varchar(10) NOT NULL,
   `lib` varchar(60) NOT NULL
@@ -91,7 +91,7 @@ CREATE TABLE `theme` (
 -- Structure de la table `word`
 -- 
 
-CREATE TABLE `word` (
+CREATE TABLE IF NOT EXISTS `word` (
   `id` int(11) NOT NULL,
   `lang` varchar(10) NOT NULL,
   `lib` varchar(255) NOT NULL,

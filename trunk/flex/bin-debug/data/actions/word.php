@@ -2,10 +2,10 @@
 <?php
 	$libSource = "naissance";
 	$genreSource = "f.";
-	$sensSource = "Définition du mot dans la langue source";
+	$sensSource = "DÃ©finition du mot dans la langue source";
 	$libDest = "'naissance' dans la langue de destination";
 	$genreDest = "genre dest";
-	$sensDest = "Définition du mot dans la langue de destination";
+	$sensDest = "DÃ©finition du mot dans la langue de destination";
 	$tags = "Les tags en rapport avec le mot";
 ?>		
 	<id><?php echo $wordId; ?></id>

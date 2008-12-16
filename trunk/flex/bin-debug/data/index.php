@@ -79,4 +79,3 @@ if (!$use_db) {
 			break;
 	}
 }
-?>
