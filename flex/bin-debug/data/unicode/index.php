@@ -34,7 +34,7 @@ foreach ($lines as $line){
 }
 echo "</table>";
 $i=0;
-/*
+//*
 foreach ($lines as $line) {
 	$data = explode("	", $line);
 	$i++;
@@ -76,24 +76,29 @@ foreach ($lines as $line) {
 }
 //*/
 require_once('../config/config.php');
-//$db
-	foreach ($themes as $key => $theme) {
-		if ($themes[$key] == '') unset($themes[$key]);
-		if ($themes[$key] == ' ') unset($themes[$key]);
-		$themes[$key] = str_replace("\n", '', $themes[$key]);
-		$themes[$key] = str_replace("\r", '', $themes[$key]);
-		$themes[$key] = str_replace("\t", '', $themes[$key]);
-		$themes[$key] = str_replace(" ", '', $themes[$key]);
-		if ($themes[$key] != '' && $themes[$key] != ' ') {
-			$db->query("INSERT INTO `theme` (`id`, `lib`, `lang`) VALUES ('$key','{$themes[$key]}','fr-fra')");
-		}
+sort($themes);
+sort($subthemes);
+sort($words);
+
+//*
+	foreach ($subthemes as $key => $subtheme) {
+		/*
+		if ($subthemes[$key] == '') unset($subthemes[$key]);
+		if ($subthemes[$key] == ' ') unset($subthemes[$key]);
+		
+		$subthemes[$key] = str_replace("\n", '', $subthemes[$key]);
+		$subthemes[$key] = str_replace("\r", '', $subthemes[$key]);
+		$subthemes[$key] = str_replace("\t", '', $subthemes[$key]);
+		$subthemes[$key] = str_replace(" ", '', $subthemes[$key]);
+		if ($subthemes[$key] != '' && $subthemes[$key] != ' ') {
+		//*/
+			$db->query("INSERT INTO `subtheme` (`id`, `lib`, `lang`, `idTheme`) VALUES ('$key','{$subthemes[$key]['subtheme']}','fr-fra', '{$subthemes[$key]['theme_id']}')");
+		
 	}
-	sort($themes);
-	sort($subthemes);
-	sort($words);
+//*/
 	//echo count($subthemes);
 	//echo count($lines);
-	echo (print_r($themes, true));
+	echo (print_r($subthemes, true));
 	//echo (print_r($subthemes, true));
 	//echo (print_r($words, true));
 

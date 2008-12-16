@@ -11,15 +11,15 @@
 		<id><?php echo $langSource['id']; ?></id>
 		<lib><![CDATA[<?php echo $langSource['lib']; ?>]]></lib>
 		<destination><?php 
-			$queryLangsDest = $db->prepare("SELECT * FROM `lang_dest` WHERE `lang_source_id` = ? ORDER BY `lang_id` ASC"); // préparation de la requête
+			$queryLangsDest = $db->prepare("SELECT * FROM `lang_dest` WHERE `langSourceId` = ? ORDER BY `langId` ASC"); // préparation de la requête
 			$queryLangsDest->execute(array($langSource['id'])); // on exécute la requête
 			$langsDest = $queryLangsDest->fetchAll();
 			foreach ($langsDest as $langDest) :
 			?>
 			
 			<lang>
-				<id><?php echo $langDest['lang_id']; ?></id>
-				<libSource><?php echo $langDest['lib_source'] ?></libSource>
+				<id><?php echo $langDest['langId']; ?></id>
+				<libSource><?php echo $langDest['libSource'] ?></libSource>
 			</lang>
 		<?php
 			endforeach;

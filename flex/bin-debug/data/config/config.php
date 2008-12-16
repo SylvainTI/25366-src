@@ -12,5 +12,4 @@ if (file_exists('INSTALL')) {
 	$handle = fopen('INSTALL', "a+");
 	fclose ($handle);
 	//*/
-
 }
