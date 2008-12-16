@@ -1,6 +1,4 @@
 <?php
-## Chargement de la configuration (connexion BDD)
-require_once('config/config.php');
 
 
 ## Envoie les headers XML
@@ -49,6 +47,9 @@ if (!$use_db) {
 			break;
 	}
 } else {
+## Chargement de la configuration (connexion BDD)
+require_once('config/config.php');
+
 	switch ($action) {
 		case "langs":
 			include('actions/langs.php');
