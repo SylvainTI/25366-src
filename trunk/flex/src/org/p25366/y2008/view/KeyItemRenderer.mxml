@@ -3,8 +3,6 @@
 		height="300" 
 		width="110" 
 		backgroundAlpha="0"
-		mouseOver="currentState='over'" 
-		mouseOut="currentState='out'" 
 		mouseChildren="false"
 		>
 	<mx:Script>
@@ -14,7 +12,7 @@
 		]]>
 	</mx:Script>
 		<mx:Image id="img" height="50" width="50" source="{Model.getInstance().assets+'keys/'+data.image}" x="0" y="0" autoLoad="true" scaleContent="true" horizontalCenter="0"/>
-		<mx:Label id="txt" text="{data.label}" styleName="keyStyle" rotation="90" horizontalCenter="20" top="{img.height+3}"/>
+		<mx:Label id="txt" text="{data.label}" styleName="keyStyle" rotation="90" horizontalCenter="50" top="{img.height+3}"/>
 		
 		<!--<mx:transitions>
 		<mx:Transition fromState="*" toState="over">

@@ -27,8 +27,6 @@ package org.p25366.y2008.vo
 			this.langSrc = pObj.source.lang;
 			this.libDest = pObj.destination.lib;
 			this.libSrc = pObj.source.lib;
-			this.keyVO = Model.getInstance().keyVO;
-			this.subkeyVO = Model.getInstance().subkeyVO;
 		}
 	}
 }

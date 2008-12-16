@@ -2,8 +2,6 @@
 <mx:Canvas 
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
 	autoLayout="true" 
-	mouseOver="currentState='horizontalOver'" 
-	mouseOut="currentState='horizontalOut'" 
 	mouseChildren="false"
 	>
 	<mx:Script>
@@ -14,19 +12,18 @@
 		]]>
 	</mx:Script>
 	<mx:Image id="img"
-		scaleX=".5"
-		scaleY=".5"
+		scaleX=".7"
+		scaleY=".7"
 		source="{Model.getInstance().assets+'keys/'+data.image}"
 		autoLoad="true"
 		scaleContent="true"
 		/>
 	<mx:Label  id="txt"
-		left="{img.width+img.x}" 
 		text="{data.label}" 
 		styleName="keyStyle" 
 		alpha="0"
 		/>
-	<mx:transitions>
+	<!--<mx:transitions>
 		<mx:Transition fromState="*" toState="horizontalOver">
 				<mx:Move target="{img}" xTo="10"/>
 		</mx:Transition>
@@ -41,5 +38,5 @@
 		<mx:State name="horizontalOut">
 			<mx:SetProperty target="{txt}" name="alpha" value="0"/>
 		</mx:State>
-	</mx:states>
+	</mx:states>-->
 </mx:Canvas>

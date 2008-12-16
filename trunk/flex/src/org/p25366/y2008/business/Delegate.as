@@ -7,12 +7,12 @@ package org.p25366.y2008.business
 	import flash.net.URLVariables;
 	import flash.xml.XMLDocument;
 	
-	import mx.controls.Alert;
 	import mx.rpc.xml.SimpleXMLDecoder;
 	
 	import org.p25366.y2008.model.Model;
 	import org.p25366.y2008.vo.KeyVO;
 	import org.p25366.y2008.vo.SubkeyVO;
+	import org.p25366.y2008.vo.WordVO;
 	import org.p25366.y2008.vo.WordsVO;
 	
 	public class Delegate
@@ -111,7 +111,9 @@ package org.p25366.y2008.business
 					}
 				break;
 				case "word":
-					
+				for each(itemVO in xmlObj){
+					Model.getInstance().wordVO = new WordVO(itemVO);
+				}
 				break;
 			}
 		}
