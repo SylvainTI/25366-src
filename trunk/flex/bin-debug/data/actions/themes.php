@@ -10,7 +10,7 @@
 	<theme>
 		<id><?php echo $theme['id']; ?></id>
 		<lang><?php echo $theme['lang']; ?></lang>
-		<lib><?php echo $theme['lib']; ?></lib>
+		<lib><![CDATA[<?php echo $theme['lib']; ?>]]></lib>
 		<image><?php echo $theme['image']; ?></image>
 	</theme>
 <?
