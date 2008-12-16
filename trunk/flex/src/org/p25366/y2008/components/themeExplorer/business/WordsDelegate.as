@@ -50,8 +50,8 @@ package org.p25366.y2008.components.themeExplorer.business
 		}
 	
 		private function onXmlLoaded( event : Event ) : void {
-			ThemeExplorerModel.getInstance().words_arr = new ArrayCollection();
-			words_arr = ThemeExplorerModel.getInstance().words_arr;
+			Model.getInstance().wordsProvider = new ArrayCollection();
+			words_arr = Model.getInstance().wordsProvider;
 			var xml:XML = new XML(event.target.data);
 			for each( var element:XML in xml.elements()){
 				var wordVO:WordsVO = new WordsVO();

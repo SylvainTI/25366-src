@@ -2,52 +2,36 @@
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"  width="670" height="478" styleName="defPage">
 	<mx:Script>
 		<![CDATA[
+			import org.p25366.y2008.components.definitionPage.model.DefinitionPageModel;
 			import org.p25366.y2008.components.definitionPage.business.WordDelegate;
 			import mx.controls.Alert;
 			import org.p25366.y2008.vo.WordVO;
 			import org.p25366.y2008.model.Model;
 			import org.p25366.y2008.event.ProjectEvents;
 			
+			[Bindable]
 			private var _wordId:String;
 			
 			[Bindable]
-<<<<<<< .mine
 			private var definitionPageModel:DefinitionPageModel = DefinitionPageModel.getInstance();			
 			
-=======
-			private var model:Model = Model.getInstance();
->>>>>>> .r119
 			[Bindable]
-			public function set word(pWord:String) : void{
+			private var model:Model = Model.getInstance();
+			
+			[Bindable]
+			public function set wordId(pWord:String) : void{
 				this._wordId = pWord;
 				WordDelegate.getInstance().getDatas(this._wordId);
 			}
 			
-			public function get word() : String{
+			public function get wordId() : String{
 				return this._wordId;
 			}
-<<<<<<< .mine
-=======
-			/*	Trouver un moyen de déclancher le Delegate automatiquement lorsque l'id du mot est renseigné.
-			*	definitionPageControler._word.getDatas(definitionPageModel.word.id)	
-			Arnaud : le moyen ca peut être un binding avec un setter
-			*/
-			private function set wordVO(value:WordVO):void
-			{
-				/**
-				//Appelé à chaque changement de mot !
-				 * il suffirait de fabriquer le delegate, 
-				 * de lui envoyer le mot à remplir (le vo), 
-				 * et il se débrouille !
-				 * Arnaud
-				var delegate:WordDelegate = new WordDelegate();
-				delegate.loadWord(wordVO);
-				 */
-			}
->>>>>>> .r119
+			
 		]]>
 	</mx:Script>
-	<mx:Binding source="model.wordVO" destination="wordVO" />
+	<mx:Binding source="model.wordVO.id" destination="this.wordId" />
+	
 	<mx:VBox>
 		<mx:HBox>
 			<mx:Text x="10" y="10" text="{model.wordVO.libSrc}" width="103"/>

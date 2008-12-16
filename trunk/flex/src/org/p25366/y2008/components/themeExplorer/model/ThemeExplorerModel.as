@@ -5,7 +5,6 @@ package org.p25366.y2008.components.themeExplorer.model
 	[Bindable]
 	public class ThemeExplorerModel
 	{
-		public var currentState:String;
 		/**
 		 * Anthony, je crois que ce modèle est une mauvaise idée, il serait plus simple d'utiliser 
 		 * org.p25366.y2008.model.Model

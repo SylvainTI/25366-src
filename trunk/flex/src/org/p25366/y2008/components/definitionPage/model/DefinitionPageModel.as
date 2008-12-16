@@ -1,8 +1,5 @@
 package org.p25366.y2008.components.definitionPage.model
 {
-	import mx.controls.Alert;
-	
-	import org.p25366.y2008.components.definitionPage.business.WordDelegate;
 	import org.p25366.y2008.vo.WordVO;
 	
 	[Bindable]

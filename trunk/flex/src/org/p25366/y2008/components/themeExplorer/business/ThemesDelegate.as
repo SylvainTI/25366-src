@@ -47,8 +47,8 @@ package org.p25366.y2008.components.themeExplorer.business
 		}
 
 	private function onXmlLoaded( event : Event ) : void {
-		ThemeExplorerModel.getInstance().themes_arr = new ArrayCollection();
-		this.themes_arr = ThemeExplorerModel.getInstance().themes_arr;
+		Model.getInstance().themesProvider = new ArrayCollection();
+		this.themes_arr = Model.getInstance().themesProvider;
 		var xml:XML = new XML(event.target.data);
 		for each( var element:XML in xml.elements()){
 			var keyVO:KeyVO = new KeyVO();

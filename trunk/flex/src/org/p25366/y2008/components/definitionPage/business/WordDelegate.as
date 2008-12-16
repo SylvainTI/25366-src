@@ -4,7 +4,6 @@ package org.p25366.y2008.components.definitionPage.business
 	import flash.events.*;
 	import flash.net.*;
 	
-	import org.p25366.y2008.components.definitionPage.model.DefinitionPageModel;
 	import org.p25366.y2008.model.Model;
 	import org.p25366.y2008.vo.WordVO;
 	//import com.carlcalderon.arthropod.Debug;
@@ -16,16 +15,6 @@ package org.p25366.y2008.components.definitionPage.business
 		private var variables:URLVariables = new URLVariables();	
 		public static var instance:WordDelegate;
 		
-		/**
-		 * Tout ça, il faut le prendre dans le modèle direct, 
-		 * sans passer par des constantes, c'est inutile
-		 * Arnaud
-		 */
-		private const URL_SERVICE:String = Model.getInstance().data+"/index.php";
-		private const LANG_DEST:String = Model.getInstance().langDest;
-		private const LANG_SOURCE:String = Model.getInstance().langSource;
-		private const ACTION:String = "word";
-		
 		public static function getInstance():WordDelegate
 		{
 			if (! instance){
@@ -36,13 +25,13 @@ package org.p25366.y2008.components.definitionPage.business
 				
 		public function getDatas(pWordId:String): void {
 			if(pWordId==null)return;
-			this.variables.action = this.ACTION;
-			this.variables.langSource = this.LANG_SOURCE;
-			this.variables.langDest = this.LANG_DEST;
+			this.variables.action = "word";
+			this.variables.langSource = Model.getInstance().langSource;
+			this.variables.langDest = Model.getInstance().langDest;
 			this.variables.wordId = pWordId;
 			var url_request:URLRequest = new URLRequest();
 			url_request.method = URLRequestMethod.GET;
-			url_request.url = this.URL_SERVICE;
+			url_request.url = Model.getInstance().data+"/index.php";
 			url_request.data = this.variables;
 			this.url_loader.load(url_request);
 			this.url_loader.addEventListener(Event.COMPLETE,onXmlLoaded);
@@ -51,7 +40,7 @@ package org.p25366.y2008.components.definitionPage.business
 		private function onXmlLoaded( event : Event ) : void {
 			var xml:XML = new XML(event.target.data);
 			for each( var element:XML in xml){
-				var wordVO:WordVO = DefinitionPageModel.getInstance().word;
+				var wordVO:WordVO = Model.getInstance().wordVO;
 				wordVO.id = element.id.toString();
 				wordVO.genderDest = element.destination.genre.toString();
 				wordVO.genderSrc = element.source.genre.toString();
