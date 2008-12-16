@@ -1,4 +1,8 @@
 <?php
+## Chargement de la configuration (connexion BDD)
+require_once('config/config.php');
+
+
 ## Envoie les headers XML
 header('Content-type: application/xml; charset="utf-8"');
 echo ('<?xml version="1.0" encoding="utf-8" ?>');
@@ -13,11 +17,6 @@ $langDest = isset($_GET["langDest"]) ? $_GET['langDest'] : false;
 $query = isset($_GET["q"]) ? $_GET["q"] : false;
 
 $use_db = isset($_GET["use_db"]) ? $_GET["use_db"] : false;
-
-
-## Initialisation de la base de données (singleton PDO)
-require_once('lib/DatabaseManger.class.php');
-$db = DatabaseManager::getInstance('mysql:dbname=25366src;host=localhost', 'root', '', 'utf8');
 
 if (!$use_db) {
 	switch ($action) {
