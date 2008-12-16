@@ -7,7 +7,7 @@ package org.p25366.y2008.business
 	import flash.net.URLVariables;
 	import flash.xml.XMLDocument;
 	
-	import mx.collections.ArrayCollection;
+	import mx.controls.Alert;
 	import mx.rpc.xml.SimpleXMLDecoder;
 	
 	import org.p25366.y2008.model.Model;
@@ -29,19 +29,19 @@ package org.p25366.y2008.business
 		public function loadKeys():void
 		{
 			this._action = "themes";
+			this.variables.use_db = "true";
 			this.variables.action = this._action;
 			this.variables.langSource = Model.getInstance().langSource;
-			this.variables.langDest = Model.getInstance().langDest;
 			var url_request:URLRequest = new URLRequest();
 			url_request.method = URLRequestMethod.GET;
-			url_request.url = Model.getInstance().data+"/index.php";;
+			url_request.url = Model.getInstance().data+"/index.php";
 			url_request.data = this.variables;
 			this.url_loader.load(url_request);
 			this.url_loader.addEventListener(Event.COMPLETE,onXmlLoaded);	
 		}
 		
 		public function loadSubkeys(pKeyVO:KeyVO):void
-		{
+		{	
 			this._action = "subthemes";
 			this.variables.action = this._action;
 			this.variables.langSource = Model.getInstance().langSource;
