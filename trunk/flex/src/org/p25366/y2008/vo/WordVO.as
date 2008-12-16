@@ -21,5 +21,7 @@ package org.p25366.y2008.vo
 		public var libSrc:String;
 		public var genderSrc:String;
 		public var sensSrc:String
+		
+		public var loaded:Boolean = false;// indique si le mot entier a été chargé, ou juste une partie des infos
 	}
 }

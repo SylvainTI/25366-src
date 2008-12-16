@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" creationComplete="themeExplorerControler.initThemeExplorer()">
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+	creationComplete="themeExplorerControler.initThemeExplorer()"
+	>
 	<mx:Script>
 		<![CDATA[
+			import org.p25366.y2008.components.themeExplorer.business.Delegate;
+			import org.p25366.y2008.vo.KeyVO;
+			import mx.events.ListEvent;
 			
 			import org.p25366.y2008.components.themeExplorer.controler.ThemeExplorerControler;
 			import org.p25366.y2008.event.ProjectEvents;
@@ -10,22 +15,89 @@
 						
 			[Bindable]
 			private var themeExplorerControler:ThemeExplorerControler = new ThemeExplorerControler();
+			
+			[Bindable]
+			private var model:Model = Model.getInstance();
+			/**
+			 * Essaie de faire simple, mets 3 méthodes ici, qui invoquent une méthode du delegate
+			 * Cette méthode va remplir les VO, et les bindings font le reste
+			 * Arnaud
+			 */
+			private var delegate:Delegate;
+			private function selectKey(event:Event):void
+			{
+				var keyVO:KeyVO = themeExplorer.selectedItem as KeyVO;
+				model.keyVO =  keyVO;
+				if (keyVO.children.length == 0){
+					// On charge les sous-thèmes
+					delegate = new Delegate();
+					delegate.loadSubkeys(keyVO);
+				}
+			}
+			private function selectSubkey(event:Event):void
+			{
+				
+			}
+			private function selectWord(event:Event):void
+			{
+				
+			}
 						
 		]]>
 	</mx:Script>
-	
+	<!--
+	Inutile, on se repose sur model.subkeyVO==null
 	<mx:Binding source="Model.getInstance().currentState" destination="currentState" />
-	
-	<mx:HBox id="themesBox" width="100%" height="100%" />
-	
-	<mx:HBox width="100%" height="100%">
-		<mx:VBox id="themesBoxVertical" autoLayout="true" width="200"/>
-		<mx:HBox id="hbox">
-			<mx:Canvas id="subthemesBox"/>
-			<mx:Canvas id="wordsBox"/>
-		</mx:HBox>
+	-->
+	<mx:TileList id = "themeExplorer"
+		visible="{model.subkeyVO==null}"
+		width="100%" 
+		height="100%"
+		direction="horizontal"
+		styleName="themeExplorerList"
+		itemClick="selectKey(event)"
+		dataProvider="{model.keys}" 
+		itemRenderer="org.p25366.y2008.view.KeyItemRenderer"
+	/>
+	<mx:HBox 
+		visible="{model.subkeyVO!=null}"
+		width="100%" 
+		height="100%"
+		>
+		<mx:TileList id = "themeExplorerVertical"
+			rowCount="25"
+			width="200"
+			columnCount="1"
+			backgroundAlpha="0"
+			direction="vertical"
+			styleName="themeExplorerList"
+			click="themeExplorerControler.onThemeSelected(themeExplorerVertical)"
+			dataProvider="{model.keys}" 
+			itemRenderer="org.p25366.y2008.view.HorizontalKeyItemRenderer"
+			horizontalScrollPolicy="off"
+			verticalScrollPolicy="off"
+			variableRowHeight="true"
+			columnWidth="300"
+			rowHeight="100"
+			/>
+			<mx:List id = "subthemesList"
+				styleName="themeExplorerList"
+				click="themeExplorerControler.onSubThemeSelected(subthemesList);wordsList.visible = true;"
+				dataProvider="{model.keyVO.children}" 
+				itemRenderer="org.p25366.y2008.view.SubkeyItemRenderer"
+				/>
+			<mx:List id = "wordsList"
+				styleName="themeExplorerList"
+				click = "themeExplorerControler.onWordSelected(wordsList);"
+				dataProvider="{model.subkeyVO.children}" 
+				itemRenderer="org.p25366.y2008.view.WordsItemRenderer"
+				/>
 	</mx:HBox>
-	
+	<!--
+	Anthony, fais simple, tes states ajoutent du code et de la redondance
+	on a la même chose avec 2 clauses visible="{model.subkeyVO!=null}" et visible="{model.subkeyVO==null}"
+	Arnaud
+
 	<mx:states>
 		<mx:State name="themes">
 			<mx:AddChild relativeTo="{themesBox}">
@@ -34,7 +106,7 @@
 					id = "themeExplorer"
 					styleName="themeExplorerList"
 					click="themeExplorerControler.onThemeSelected(themeExplorer)"
-					dataProvider="{Model.getInstance().themesProvider}" 
+					dataProvider="{model.keys}" 
 					itemRenderer="org.p25366.y2008.view.KeyItemRenderer"
 				/>
 			</mx:AddChild>
@@ -50,7 +122,7 @@
 					id = "themeExplorerVertical"
 					styleName="themeExplorerList"
 					click="themeExplorerControler.onThemeSelected(themeExplorerVertical)"
-					dataProvider="{Model.getInstance().themesProvider}" 
+					dataProvider="{model.keys}" 
 					itemRenderer="org.p25366.y2008.view.HorizontalKeyItemRenderer"
 					horizontalScrollPolicy="off"
 					verticalScrollPolicy="off"
@@ -64,7 +136,7 @@
 						id = "subthemesList"
 						styleName="themeExplorerList"
 						click="themeExplorerControler.onSubThemeSelected(subthemesList);wordsList.visible = true;"
-						dataProvider="{Model.getInstance().subthemesProvider}" 
+						dataProvider="{model.keyVO.children}" 
 						itemRenderer="org.p25366.y2008.view.SubkeyItemRenderer"
 					/>
 				</mx:AddChild>
@@ -74,10 +146,11 @@
 					id = "wordsList"
 					styleName="themeExplorerList"
 					click = "themeExplorerControler.onWordSelected(wordsList);"
-					dataProvider="{Model.getInstance().wordsProvider}" 
+					dataProvider="{model.subkeyVO.children}" 
 					itemRenderer="org.p25366.y2008.view.WordsItemRenderer"
 					/>
 			</mx:AddChild>
 		</mx:State>	
 	</mx:states>
+	-->	
 </mx:Canvas>
