@@ -17,15 +17,17 @@ package org.p25366.y2008.model
 		public var langSource:String = "";
 		public var langDest:String = "";
 
-		public var keys:ArrayCollection; // Liste des clés
-		/**
-		 * Ces 3 variables doivent contrôler l'affichage des thèmes
-		 * Si clé null, pas de clé choisie, etc
-		 * Arnaud
-		 */
-		public var keyVO:KeyVO; // clé sélectionnée
-		public var subkeyVO:SubkeyVO; // sous clé sélectionnée
-		public var wordVO:WordVO; // mot sélectionné
+		public var keys:ArrayCollection = new ArrayCollection(); // Liste des clés
+		
+		
+		public var keyVO:KeyVO;
+		public var subkeyVO:SubkeyVO;
+		public var wordsVO:WordsVO;
+		public var wordVO:WordVO;
+
+		public var subthemesProvider:ArrayCollection;
+		public var wordsProvider:ArrayCollection;
+	
 		
 		/**
 		public var themesProvider:ArrayCollection; // = keys

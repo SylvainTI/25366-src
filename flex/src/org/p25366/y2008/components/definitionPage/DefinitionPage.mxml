@@ -27,7 +27,6 @@
 		]]>
 	</mx:Script>
 	<mx:Binding source="model.wordVO.id" destination="this.wordId" />
-	
 	<mx:VBox>
 		<mx:HBox>
 			<mx:Text x="10" y="10" text="{model.wordVO.libSrc}" width="103"/>

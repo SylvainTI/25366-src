@@ -1,62 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
-	creationComplete="themeExplorerControler.initThemeExplorer()"
-	>
+
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml">
 	<mx:Script>
 		<![CDATA[
-			import org.p25366.y2008.components.themeExplorer.business.Delegate;
+			import org.p25366.y2008.business.Delegate;
+			import mx.controls.Alert;
+			import org.p25366.y2008.vo.SubkeyVO;
+			import org.p25366.y2008.vo.WordsVO;
+			import org.p25366.y2008.vo.KeyVO;
 			import org.p25366.y2008.vo.KeyVO;
 			import mx.events.ListEvent;
 			
 			import org.p25366.y2008.components.themeExplorer.controler.ThemeExplorerControler;
 			import org.p25366.y2008.event.ProjectEvents;
 			import org.p25366.y2008.model.Model;
-			import org.p25366.y2008.components.themeExplorer.model.ThemeExplorerModel;
-						
+			
 			[Bindable]
-			private var themeExplorerControler:ThemeExplorerControler = new ThemeExplorerControler();
+			public var themeExplorerControler:ThemeExplorerControler = new ThemeExplorerControler();
 			
 			[Bindable]
 			private var model:Model = Model.getInstance();
+								
 			/**
 			 * Essaie de faire simple, mets 3 méthodes ici, qui invoquent une méthode du delegate
 			 * Cette méthode va remplir les VO, et les bindings font le reste
 			 * Arnaud
 			 */
+			 
 			private var delegate:Delegate;
+			
 			private function selectKey(event:Event):void
 			{
 				var keyVO:KeyVO = themeExplorer.selectedItem as KeyVO;
-				model.keyVO =  keyVO;
+				model.keyVO = keyVO;
 				if (keyVO.children.length == 0){
-					// On charge les sous-thèmes
 					delegate = new Delegate();
 					delegate.loadSubkeys(keyVO);
 				}
 			}
+			
 			private function selectSubkey(event:Event):void
 			{
-				
+				var subkeyVO:SubkeyVO = subthemesList.selectedItem as SubkeyVO;
+				model.subkeyVO = subkeyVO;
+				if (subkeyVO.children.length == 0){
+				delegate = new Delegate();
+				delegate.loadWords(subkeyVO);
+				}
 			}
+			
 			private function selectWord(event:Event):void
 			{
-				
+				var wordsVO:WordsVO = themeExplorer.selectedItem as WordsVO;
+				model.wordsVO = wordsVO;
+				delegate = new Delegate();
+				delegate.loadWord(wordsVO);
 			}
-						
 		]]>
 	</mx:Script>
-	<!--
-	Inutile, on se repose sur model.subkeyVO==null
-	<mx:Binding source="Model.getInstance().currentState" destination="currentState" />
-	-->
-	<mx:TileList id = "themeExplorer"
+	<mx:TileList 
+		id = "themeExplorer"
 		visible="{model.subkeyVO==null}"
-		width="100%" 
+		width="100%"
 		height="100%"
 		direction="horizontal"
 		styleName="themeExplorerList"
 		itemClick="selectKey(event)"
-		dataProvider="{model.keys}" 
+		dataProvider="{model.keys}"
 		itemRenderer="org.p25366.y2008.view.KeyItemRenderer"
 	/>
 	<mx:HBox 
@@ -64,14 +74,15 @@
 		width="100%" 
 		height="100%"
 		>
-		<mx:TileList id = "themeExplorerVertical"
+		<mx:TileList 
+			id = "themeExplorerVertical"
 			rowCount="25"
 			width="200"
 			columnCount="1"
 			backgroundAlpha="0"
 			direction="vertical"
 			styleName="themeExplorerList"
-			click="themeExplorerControler.onThemeSelected(themeExplorerVertical)"
+			click="selectKey(event)"
 			dataProvider="{model.keys}" 
 			itemRenderer="org.p25366.y2008.view.HorizontalKeyItemRenderer"
 			horizontalScrollPolicy="off"
@@ -80,77 +91,20 @@
 			columnWidth="300"
 			rowHeight="100"
 			/>
-			<mx:List id = "subthemesList"
+			
+			<mx:List 
+				id = "subthemesList"
 				styleName="themeExplorerList"
-				click="themeExplorerControler.onSubThemeSelected(subthemesList);wordsList.visible = true;"
+				click="selectSubkey(event);wordsList.visible = true;"
 				dataProvider="{model.keyVO.children}" 
 				itemRenderer="org.p25366.y2008.view.SubkeyItemRenderer"
 				/>
+				
 			<mx:List id = "wordsList"
 				styleName="themeExplorerList"
-				click = "themeExplorerControler.onWordSelected(wordsList);"
+				click = "selectWord(event);"
 				dataProvider="{model.subkeyVO.children}" 
 				itemRenderer="org.p25366.y2008.view.WordsItemRenderer"
 				/>
 	</mx:HBox>
-	<!--
-	Anthony, fais simple, tes states ajoutent du code et de la redondance
-	on a la même chose avec 2 clauses visible="{model.subkeyVO!=null}" et visible="{model.subkeyVO==null}"
-	Arnaud
-
-	<mx:states>
-		<mx:State name="themes">
-			<mx:AddChild relativeTo="{themesBox}">
-				<mx:TileList
-					direction="horizontal"
-					id = "themeExplorer"
-					styleName="themeExplorerList"
-					click="themeExplorerControler.onThemeSelected(themeExplorer)"
-					dataProvider="{model.keys}" 
-					itemRenderer="org.p25366.y2008.view.KeyItemRenderer"
-				/>
-			</mx:AddChild>
-		</mx:State>
-		<mx:State name="subthemes">
-		<mx:RemoveChild target="{themeExplorer}"/>
-				<mx:AddChild relativeTo="{themesBoxVertical}">
-				<mx:TileList
-					rowCount="25"
-					columnCount="1"
-					backgroundAlpha="0"
-					direction="vertical"
-					id = "themeExplorerVertical"
-					styleName="themeExplorerList"
-					click="themeExplorerControler.onThemeSelected(themeExplorerVertical)"
-					dataProvider="{model.keys}" 
-					itemRenderer="org.p25366.y2008.view.HorizontalKeyItemRenderer"
-					horizontalScrollPolicy="off"
-					verticalScrollPolicy="off"
-					variableRowHeight="true"
-					columnWidth="300"
-					rowHeight="100"
-				/>
-				</mx:AddChild>
-				<mx:AddChild relativeTo="{subthemesBox}">
-					<mx:List
-						id = "subthemesList"
-						styleName="themeExplorerList"
-						click="themeExplorerControler.onSubThemeSelected(subthemesList);wordsList.visible = true;"
-						dataProvider="{model.keyVO.children}" 
-						itemRenderer="org.p25366.y2008.view.SubkeyItemRenderer"
-					/>
-				</mx:AddChild>
-		<mx:AddChild relativeTo="{wordsBox}">
-		<mx:List 
-					visible = "false"
-					id = "wordsList"
-					styleName="themeExplorerList"
-					click = "themeExplorerControler.onWordSelected(wordsList);"
-					dataProvider="{model.subkeyVO.children}" 
-					itemRenderer="org.p25366.y2008.view.WordsItemRenderer"
-					/>
-			</mx:AddChild>
-		</mx:State>	
-	</mx:states>
-	-->	
 </mx:Canvas>
