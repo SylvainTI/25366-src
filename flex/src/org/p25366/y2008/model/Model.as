@@ -20,6 +20,7 @@ package org.p25366.y2008.model
 		public var keys:ArrayCollection = new ArrayCollection(); // Liste des clés
 		
 		
+		
 		public var keyVO:KeyVO;
 		public var subkeyVO:SubkeyVO;
 		public var wordsVO:WordsVO;

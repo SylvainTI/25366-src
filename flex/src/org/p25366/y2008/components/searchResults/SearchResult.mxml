@@ -74,9 +74,11 @@
 			private function faultHandler(event:FaultEvent):void
 			{
 			}
-			public function confirmHandler(event: CloseEvent): void{
-					}
-			private function completeHandler(evt:Event):void{
+			public function confirmHandler(event: CloseEvent): void
+			{
+			}
+			private function completeHandler(evt:Event):void
+			{
 				trace (evt.target.data);
 			}
 			public function recherche(): void
@@ -88,7 +90,7 @@
 	<mx:HTTPService
 		id="test_service"
 		resultFormat="e4x"
-		method ="GET"
+		method="GET"
 		showBusyCursor="true" 
 		result="resultHandler(event)" 
 		fault="faultHandler(event)"  
@@ -101,30 +103,30 @@
 			/>
 		<mx:HBox width="100%">
 				
-			<mx:List 
+			<mx:List
 				dataProvider="{listData}" 
 				click="onItemSelected(event)"
 				>
 					<mx:itemRenderer>
 						<mx:Component>
 							<mx:VBox>
-								<mx:Label text="{data.description}"/>
-								<mx:Label text="{data.date}"/>
-								<mx:Label text="{data.num}"/>
+								<mx:Text text="{data.description}" width="240" textAlign="left"/>
+								<mx:Text text="{data.date}" textAlign="left"/>
+								<mx:Text text="{data.num}" textAlign="left"/>
 							</mx:VBox>
 						</mx:Component>
 					</mx:itemRenderer>
 			</mx:List>
 			<mx:List 
-				dataProvider="{listData}" 
+				dataProvider="{listData}"
 				click="onItemSelected(event)"			
 				>
 					<mx:itemRenderer>
 						<mx:Component>
 							<mx:VBox>
-								<mx:Label text="{data.description}"/>
-								<mx:Label text="{data.date}"/>
-								<mx:Label text="{data.num}"/>
+								<mx:Text text="{data.description}" width="240"/>
+								<mx:Text text="{data.date}"/>
+								<mx:Text text="{data.num}"/>
 							</mx:VBox>
 						</mx:Component>
 					</mx:itemRenderer>
