@@ -27,11 +27,6 @@ package org.p25366.y2008.model
 	
 		public var langDestProvider:ArrayCollection = new ArrayCollection([{label:"français",data:"fr-fra"},{label:"chinois",data:"zh-zho"}]);
 		public var langSrcProvider:ArrayCollection = new ArrayCollection([{label:"français",data:"fr-fra"},{label:"chinois",data:"zh-zho"}]);
-		/**
-		public var themesProvider:ArrayCollection; // = keys
-		public var subthemesProvider:ArrayCollection; // = keyVO.children
-		public var wordsProvider:ArrayCollection; // = subkeyVO.children
-		*/
 		
 		public var currentState:String;
 
