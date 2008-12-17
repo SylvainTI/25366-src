@@ -47,14 +47,18 @@
 				listData = new ArrayCollection();
 							        
 				var one_result:Object;
+				var word_result:Object;
+				
 				for each(var result:XML in (event.result as XML).elements()) {
+					
 					/** 
 					 * Génère des VO, stocke les dans le modèle
 					 * Arnaud
 					 */
+					 
 					 if(result.type=="word")
 					{
-						one_result = new Object();
+						word_result = new Object();
 						
 					}
 					else{

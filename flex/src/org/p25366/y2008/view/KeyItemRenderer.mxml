@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
-		height="200" 
-		width="40" 
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"
 		backgroundAlpha="0"
 		mouseChildren="false"
+		mouseOver="currentState = 'over'"
+		mouseOut="currentState = 'out'"
+		
 		>
 	<mx:Script>
 		<![CDATA[
@@ -14,7 +15,7 @@
 		<mx:Image id="img" height="30" width="30" source="{Model.getInstance().assets+'keys/'+data.image}" x="0" y="0" autoLoad="true" scaleContent="true" horizontalCenter="0"/>
 		<mx:Label id="txt" text="{data.label}" styleName="keyStyle" rotation="90" horizontalCenter="30" top="{img.height+3}"/>
 		
-		<!--<mx:transitions>
+		<mx:transitions>
 		<mx:Transition fromState="*" toState="over">
 			<mx:Resize target="{img}" widthTo="100" heightTo="100"/>
 		</mx:Transition>
@@ -27,6 +28,6 @@
 		</mx:State>
 		<mx:State name="out">
 		</mx:State>
-	</mx:states>-->
+	</mx:states>
 	
 </mx:Canvas>
