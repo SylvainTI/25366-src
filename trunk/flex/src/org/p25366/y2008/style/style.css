@@ -18,6 +18,14 @@ VBox.subKeyItem{
 VBox.wordsItem{
 	
 }
+
+HBox.themeExplorerVerticalStyle{
+	background-color: #BCFFD2;
+	backgroundSize: auto;
+	borderStyle: none;
+	
+}
+
 Label.keyStyle{
 	color: #000000;
 	fontSize: 15;
