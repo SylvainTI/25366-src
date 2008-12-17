@@ -1,40 +1,30 @@
 <subthemes>
-<subtheme>
 <?php
-	$subthemeId = "2";
-	$libSource = "durée";
-	$genreSource = "f.";
-	$libDest = "'durée' dans la langue de destination";
-	$genreDest = "genre du mot edans la langue de destination";
-?>		<id><?php echo $subthemeId; ?></id>
-		<source>
-			<lang><?php echo $langSource; ?></lang>
-			<lib><![CDATA[<?php echo $libSource; ?>]]></lib>
-			<genre><![CDATA[<?php echo $genreSource; ?>]]></genre>
-		</source>
-		<destination>
-			<lang><?php echo $langDest; ?></lang>
-			<lib><![CDATA[<?php echo $libDest; ?>]]></lib>
-			<genre><![CDATA[<?php echo $genreDest; ?>]]></genre>
-		</destination>
-	</subtheme>
+	$db = DatabaseManager::getInstance();
+	$querySubThemesSource = $db->prepare("SELECT * FROM `subtheme` WHERE `idTheme` = ? AND `lang` = ? ORDER BY `id` ASC"); // préparation de la requête
+	$querySubThemesDest = $db->prepare("SELECT * FROM `subtheme` WHERE `idTheme` = ? AND `lang` = ? ORDER BY `id` ASC"); // préparation de la requête
+	$querySubThemesSource->execute(array($themeId, $langSource)); // on exécute la requête
+	$querySubThemesDest->execute(array($themeId, $langDest)); // on exécute la requête
+	//die (print_r($db->errorInfo(), true));
+	$subthemes = $querySubThemesSource->fetchAll();
+	$subthemesDest = $querySubThemesDest->fetchAll();
+	foreach ($subthemes as $key => $subtheme) :
+?>
+		
 	<subtheme>
-<?php
-	$subthemeId = "1";
-	$libSource = "naissance";
-	$genreSource = "f.";
-	$libDest = "'naissance' dans la langue de destination";
-	$genreDest = "genre du mot edans la langue de destination";
-?>		<id><?php echo $subthemeId; ?></id>
+		<id><?php echo $subtheme['id']; ?></id>
 		<source>
-			<lang><?php echo $langSource; ?></lang>
-			<lib><![CDATA[<?php echo $libSource; ?>]]></lib>
-			<genre><![CDATA[<?php echo $genreSource; ?>]]></genre>
+			<lang><?php echo $subtheme['lang']; ?></lang>
+			<lib><?php echo $subtheme['lib']; ?></lib>
+			<genre><?php echo $subtheme['image']; ?></genre>
 		</source>
 		<destination>
-			<lang><?php echo $langDest; ?></lang>
-			<lib><![CDATA[<?php echo $libDest; ?>]]></lib>
-			<genre><![CDATA[<?php echo $genreDest; ?>]]></genre>
+			<lang><?php echo $subthemesDest[$key]['lang']; ?></lang>
+			<lib><?php echo $subthemesDest[$key]['lib']; ?></lib>
+			<genre><?php echo $subthemesDest[$key]['image']; ?></genre>
 		</destination>
 	</subtheme>
+<?
+	endforeach;
+?>
 </subthemes>
