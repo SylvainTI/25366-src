@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Canvas 
-	xmlns:mx="http://www.adobe.com/2006/mxml" 
-	backgroundColor="0xcccccc" 
-	creationComplete="recherche( )"
-	>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" backgroundColor="0xcccccc" creationComplete="recherche( )">
 	<mx:Script>
 		<![CDATA[
 		
@@ -106,15 +102,11 @@
 			<mx:Text text="Mots" />
 		
 
-			<mx:List
-				dataProvider="{listData}" 
-				click="onItemSelected(event)"
-				>
-				
+			<mx:List dataProvider="{listData}" click="onItemSelected(event)">
 					<mx:itemRenderer>
 						<mx:Component>
-							<mx:VBox>
-								<mx:Text text="{data.description}" width="240" textAlign="left"/>
+							<mx:VBox height="150">
+								<mx:Text text="{data.description}" width="230"/>
 								<mx:Text text="{data.date}" textAlign="left"/>
 								<mx:Text text="{data.num}" textAlign="left"/>
 							</mx:VBox>
@@ -124,21 +116,18 @@
 			</mx:VBox>
 			<mx:VBox>
 			<mx:Text text="Repères chronologiques" />
-			<mx:List 
-				dataProvider="{listData}"
-				click="onItemSelected(event)"			
-				>
-					<mx:itemRenderer>
-						<mx:Component>
-							<mx:VBox>
-								<mx:Text text="{data.description}" width="240"/>
-								<mx:Text text="{data.date}"/>
-								<mx:Text text="{data.num}"/>
-							</mx:VBox>
-						</mx:Component>
-					</mx:itemRenderer>
-			</mx:List>
-					</mx:VBox>
+				<mx:List dataProvider="{listData}" click="onItemSelected(event)">
+						<mx:itemRenderer>
+							<mx:Component>
+								<mx:VBox height="150">
+									<mx:Text text="{data.description}" width="230"/>
+									<mx:Text text="{data.date}"/>
+									<mx:Text text="{data.num}"/>
+								</mx:VBox>
+							</mx:Component>
+						</mx:itemRenderer>
+				</mx:List>
+			</mx:VBox>
 		</mx:HBox>
 	</mx:VBox>
 </mx:Canvas>
