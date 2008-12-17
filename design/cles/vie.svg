@@ -5,14 +5,14 @@
 ]>
 <svg version="1.0"
 	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
-	 x="0px" y="0px" width="38px" height="38px" viewBox="-0.718 -0.404 38 38" enable-background="new -0.718 -0.404 38 38"
+	 x="0px" y="0px" width="284px" height="284px" viewBox="-0.718 -0.414 284 284" enable-background="new -0.718 -0.414 284 284"
 	 xml:space="preserve">
 <defs>
 	
-		<pattern  x="-125.718" y="158.596" width="69" height="69" patternUnits="userSpaceOnUse" id="Unnamed_Pattern" viewBox="2.125 -70.896 69 69" overflow="visible">
+		<pattern  x="-0.718" y="283.586" width="69" height="69" patternUnits="userSpaceOnUse" id="Unnamed_Pattern" viewBox="2.125 -70.896 69 69" overflow="visible">
 		<g>
 			<polygon fill="none" points="71.125,-1.896 2.125,-1.896 2.125,-70.896 71.125,-70.896 			"/>
-			<polygon fill="#F7C158" points="71.125,-1.896 2.125,-1.896 2.125,-70.896 71.125,-70.896 			"/>
+			<polygon fill="#F6C058" points="71.125,-1.896 2.125,-1.896 2.125,-70.896 71.125,-70.896 			"/>
 			<g>
 				<path fill="#FFFFFF" d="M61.772-71.653c0.018,0.072,0.007,0.127-0.026,0.19c-0.053,0.101-0.112,0.063-0.165,0.128
 					c-0.05,0.063-0.099,0.276-0.079,0.362c-0.169,0.058-0.01,0.227-0.015,0.35c-0.002,0.05-0.041,0.105-0.045,0.161
@@ -949,18 +949,19 @@
 		</g>
 	</pattern>
 </defs>
-<circle fill="#1964A4" cx="18.48" cy="18.479" r="18.48"/>
-<line fill="none" stroke="#000000" stroke-width="1.3473" stroke-linecap="round" stroke-linejoin="round" x1="27.807" y1="19.242" x2="8.107" y2="19.242"/>
+<path fill="#1963A3" d="M282.971,141.479C282.971,63.341,219.629,0,141.493,0C63.371,0,0,63.341,0,141.479
+	c0,78.137,63.371,141.47,141.493,141.47C219.629,282.948,282.971,219.615,282.971,141.479z"/>
+<line fill="none" stroke="#000000" stroke-width="1.3473" stroke-linecap="round" stroke-linejoin="round" x1="212.886" y1="147.317" x2="62.07" y2="147.317"/>
 <polyline fill="none" stroke="#000000" stroke-width="1.3473" stroke-linecap="round" stroke-linejoin="round" points="
-	25.343,17.766 27.807,19.242 25.343,20.721 "/>
-<path fill="none" stroke="#000000" stroke-width="1.3473" stroke-linecap="round" stroke-linejoin="round" d="M17.957,18.256
-	c-0.496,0-0.984,0.496-0.984,0.986c0,0.494,0.488,0.986,0.984,0.986c0.492,0,0.985-0.492,0.985-0.986
-	C18.942,18.752,18.449,18.256,17.957,18.256z"/>
-<line fill="none" stroke="#000000" stroke-width="1.3473" stroke-linecap="round" stroke-linejoin="round" x1="27.807" y1="19.242" x2="8.107" y2="19.242"/>
-<path fill="none" stroke="#000000" stroke-width="1.3473" stroke-linecap="round" stroke-linejoin="round" d="M17.957,18.256
-	c-0.496,0-0.984,0.496-0.984,0.986c0,0.494,0.488,0.986,0.984,0.986c0.492,0,0.985-0.492,0.985-0.986
-	C18.942,18.752,18.449,18.256,17.957,18.256z"/>
-<path fill="none" stroke="#000000" stroke-width="1.3473" stroke-linecap="round" stroke-linejoin="round" d="M21.393,15.827
-	c-0.936-0.938-2.184-1.566-3.436-1.566c-2.49,0-4.982,2.492-4.982,4.981c0,2.488,2.492,4.981,4.982,4.981
-	c1.258,0,2.517-0.636,3.451-1.586"/>
+	194.022,136.013 212.886,147.317 194.022,158.637 "/>
+<path fill="none" stroke="#000000" stroke-width="1.3473" stroke-linecap="round" stroke-linejoin="round" d="M137.478,139.766
+	c-3.798,0-7.536,3.798-7.536,7.551c0,3.783,3.738,7.552,7.536,7.552c3.769,0,7.543-3.769,7.543-7.552
+	C145.021,143.564,141.247,139.766,137.478,139.766z"/>
+<line fill="none" stroke="#000000" stroke-width="1.3473" stroke-linecap="round" stroke-linejoin="round" x1="212.886" y1="147.317" x2="62.07" y2="147.317"/>
+<path fill="none" stroke="#000000" stroke-width="1.3473" stroke-linecap="round" stroke-linejoin="round" d="M137.478,139.766
+	c-3.798,0-7.536,3.798-7.536,7.551c0,3.783,3.738,7.552,7.536,7.552c3.769,0,7.543-3.769,7.543-7.552
+	C145.021,143.564,141.247,139.766,137.478,139.766z"/>
+<path fill="none" stroke="#000000" stroke-width="1.3473" stroke-linecap="round" stroke-linejoin="round" d="M163.78,121.172
+	c-7.163-7.178-16.718-11.992-26.302-11.992c-19.065,0-38.146,19.08-38.146,38.137c0,19.05,19.081,38.138,38.146,38.138
+	c9.629,0,19.267-4.867,26.421-12.143"/>
 </svg>
