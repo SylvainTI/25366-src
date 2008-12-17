@@ -81,15 +81,15 @@
 				itemRenderer="org.p25366.y2008.view.HorizontalKeyItemRenderer"
 				horizontalScrollPolicy="off"
 				verticalScrollPolicy="off"
-				columnWidth="200"
-				rowHeight="90"
+				columnWidth="100"
+				rowHeight="35"
 			/>
 			
 			<mx:List 
 				id = "subthemesList"
 				styleName="themeExplorerList"
 				click="selectSubkey(event);"
-				dataProvider="{model.keyVO.children}" 
+				dataProvider="{model.keyVO.children}"
 				horizontalScrollPolicy="off"
 				itemRenderer="org.p25366.y2008.view.SubkeyItemRenderer"
 			/>

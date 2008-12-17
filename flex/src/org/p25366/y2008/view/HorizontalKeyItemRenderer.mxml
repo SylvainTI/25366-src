@@ -12,8 +12,8 @@
 		]]>
 	</mx:Script>
 	<mx:Image id="img"
-		scaleX=".7"
-		scaleY=".7"
+		scaleX=".3"
+		scaleY=".3"
 		source="{Model.getInstance().assets+'keys/'+data.image}"
 		autoLoad="true"
 		scaleContent="true"

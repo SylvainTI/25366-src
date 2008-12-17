@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
-		height="300" 
-		width="110" 
+		height="200" 
+		width="40" 
 		backgroundAlpha="0"
 		mouseChildren="false"
 		>
@@ -11,8 +11,8 @@
 			import org.p25366.y2008.vo.KeyVO;
 		]]>
 	</mx:Script>
-		<mx:Image id="img" height="50" width="50" source="{Model.getInstance().assets+'keys/'+data.image}" x="0" y="0" autoLoad="true" scaleContent="true" horizontalCenter="0"/>
-		<mx:Label id="txt" text="{data.label}" styleName="keyStyle" rotation="90" horizontalCenter="50" top="{img.height+3}"/>
+		<mx:Image id="img" height="30" width="30" source="{Model.getInstance().assets+'keys/'+data.image}" x="0" y="0" autoLoad="true" scaleContent="true" horizontalCenter="0"/>
+		<mx:Label id="txt" text="{data.label}" styleName="keyStyle" rotation="90" horizontalCenter="30" top="{img.height+3}"/>
 		
 		<!--<mx:transitions>
 		<mx:Transition fromState="*" toState="over">
