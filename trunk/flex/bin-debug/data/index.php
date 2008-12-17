@@ -34,12 +34,7 @@ if (!$use_db) {
 		case "word":
 			include('actions_fix/word.php');
 			break;
-		case "historical":
-			//Thierry, je ne sais pas s'ils utilisent ça, fais un point avec eux. Arnaud
-			include('actions_fix/historical.php');
-			break;
 		case "historic_keys":
-			//Thierry, je ne sais pas s'ils utilisent ça, fais un point avec eux. Arnaud
 			include('actions_fix/historic_keys.php');
 			break;
 		case "search":

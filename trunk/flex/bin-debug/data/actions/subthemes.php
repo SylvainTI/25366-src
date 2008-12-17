@@ -5,7 +5,7 @@
 	$querySubThemesDest = $db->prepare("SELECT * FROM `subtheme` WHERE `idTheme` = ? AND `lang` = ? ORDER BY `id` ASC"); // préparation de la requête
 	$querySubThemesSource->execute(array($themeId, $langSource)); // on exécute la requête
 	$querySubThemesDest->execute(array($themeId, $langDest)); // on exécute la requête
-	//die (print_r($db->errorInfo(), true));
+	
 	$subthemes = $querySubThemesSource->fetchAll();
 	$subthemesDest = $querySubThemesDest->fetchAll();
 	foreach ($subthemes as $key => $subtheme) :
