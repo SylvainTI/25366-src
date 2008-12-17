@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%">
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" >
 	<mx:Script>
 		<![CDATA[
 			import org.p25366.y2008.components.historicalMarks.vo.HistoricalMarkVO;
 			import org.p25366.y2008.components.historicalMarks.vo.HistoricalEventVO;
 		]]>
 	</mx:Script>
-	<mx:HBox>
+	<mx:HBox >
 	<mx:Label text="{HistoricalEventVO(data).from_date}:"  fontStyle="italic" />
-	<mx:Label  text="{HistoricalEventVO(data).description}"  />
+	<mx:Text  text="{HistoricalEventVO(data).description}" width="240" textAlign="left" />
 	</mx:HBox>
 </mx:Canvas>
