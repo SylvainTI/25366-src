@@ -4,7 +4,6 @@
 		mouseChildren="false"
 		mouseOver="currentState = 'over'"
 		mouseOut="currentState = 'out'"
-		
 		>
 	<mx:Script>
 		<![CDATA[
@@ -17,10 +16,10 @@
 		
 		<mx:transitions>
 		<mx:Transition fromState="*" toState="over">
-			<mx:Resize target="{img}" widthTo="100" heightTo="100"/>
+			<mx:Resize target="{img}" widthTo="40" heightTo="40"/>
 		</mx:Transition>
 		<mx:Transition fromState="*" toState="out">
-			<mx:Resize target="{img}" widthTo="50" heightTo="50"/>
+			<mx:Resize target="{img}" widthTo="30" heightTo="30"/>
 		</mx:Transition>
 	</mx:transitions>
 	<mx:states>

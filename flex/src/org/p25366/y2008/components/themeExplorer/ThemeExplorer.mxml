@@ -46,10 +46,9 @@
 				delegate = new Delegate();
 				delegate.loadWord(wordsVO);
 			}
-			
 		]]>
 	</mx:Script>
-	<mx:TileList 
+	<mx:TileList
 		id = "themeExplorer"
 		rowCount="1"
 		columnCount="25"
@@ -59,10 +58,13 @@
 		itemClick="selectKey(event)"
 		dataProvider="{model.keys}"
 		itemRenderer="org.p25366.y2008.view.KeyItemRenderer"
+		rowHeight="150"
+		columnWidth="45"
 	/>
 	<mx:HBox 
 		visible="{model.keyVO!=null}"
 		>
+			
 			<mx:TileList 
 				id = "themeExplorerVertical"
 				rowCount="25"

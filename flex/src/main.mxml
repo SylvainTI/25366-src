@@ -8,6 +8,7 @@
 	>
 	<mx:Script>
 		<![CDATA[
+			import mx.controls.Alert;
 			import mx.charts.chartClasses.StackedSeries;
 
 			import mx.rpc.events.ResultEvent;
