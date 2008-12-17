@@ -43,6 +43,7 @@ package org.p25366.y2008.business
 		public function loadSubkeys(pKeyVO:KeyVO):void
 		{	
 			this._action = "subthemes";
+			this.variables.use_db = "true";
 			this.variables.action = this._action;
 			this.variables.langSource = Model.getInstance().langSource;
 			this.variables.langDest = Model.getInstance().langDest;
