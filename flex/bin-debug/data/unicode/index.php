@@ -53,12 +53,14 @@ foreach ($lines as $line) {
 
 }
 //*/
-/*
+//*
 $i=0;
 // extraction des mots
+echo count($subthemes).'<br/>';
 foreach ($lines as $line) {
 	$data = explode("	", $line);
 	$i++;
+	$key=0;
 	if (!in_array($data[2], $words_list)) {
 		$words_list[] = $data[2];
 		$words[$i]['subtheme'] = $data[1];
@@ -80,9 +82,14 @@ sort($themes);
 sort($subthemes);
 sort($words);
 
-//*
+/* Insertion des sous-thèmes dans la base
 	foreach ($subthemes as $key => $subtheme) {
-		/*
+			$db->query("INSERT INTO `subtheme` (`id`, `lib`, `lang`, `idTheme`) VALUES ('$key','{$subthemes[$key]['subtheme']}','fr-fra', '{$subthemes[$key]['theme_id']}')");
+		
+	}
+//*/
+
+		/* nettoyage clé thème
 		if ($subthemes[$key] == '') unset($subthemes[$key]);
 		if ($subthemes[$key] == ' ') unset($subthemes[$key]);
 		
@@ -92,14 +99,11 @@ sort($words);
 		$subthemes[$key] = str_replace(" ", '', $subthemes[$key]);
 		if ($subthemes[$key] != '' && $subthemes[$key] != ' ') {
 		//*/
-			$db->query("INSERT INTO `subtheme` (`id`, `lib`, `lang`, `idTheme`) VALUES ('$key','{$subthemes[$key]['subtheme']}','fr-fra', '{$subthemes[$key]['theme_id']}')");
-		
-	}
-//*/
+
 	//echo count($subthemes);
 	//echo count($lines);
-	echo (print_r($subthemes, true));
+	//echo (print_r($themes, true));
 	//echo (print_r($subthemes, true));
-	//echo (print_r($words, true));
+	echo (print_r($words, true));
 
 ?>
