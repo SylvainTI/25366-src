@@ -4,6 +4,8 @@
 		mouseChildren="false"
 		mouseOver="currentState = 'over'"
 		mouseOut="currentState = 'out'"
+		horizontalScrollPolicy="off"
+		verticalScrollPolicy="off"
 		>
 	<mx:Script>
 		<![CDATA[
