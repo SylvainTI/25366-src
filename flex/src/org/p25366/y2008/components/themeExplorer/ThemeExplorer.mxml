@@ -21,6 +21,7 @@
 			
 			private function selectKey(event:Event):void
 			{
+				
 				var keyVO:KeyVO = event.target.selectedItem as KeyVO;
 				model.keyVO = keyVO;
 				if (keyVO.children.length == 0){
@@ -48,6 +49,7 @@
 			}
 		]]>
 	</mx:Script>
+	
 	<mx:TileList
 		verticalCenter="0"
 		id = "themeExplorer"
@@ -65,35 +67,37 @@
 	<mx:HBox 
 		visible="{model.keyVO!=null}"
 		>
-			
+			<mx:HBox styleName="themeExplorerVerticalStyle" width="210" verticalAlign="middle" height="100%">
 			<mx:TileList 
 				id = "themeExplorerVertical"
 				rowCount="25"
 				width="100"
 				columnCount="1"
-				backgroundAlpha="0"
 				direction="vertical"
-				styleName="themeExplorerList"
 				itemClick="selectKey(event)"
-				dataProvider="{model.keys}" 
+				dataProvider="{model.keys}"
 				itemRenderer="org.p25366.y2008.view.HorizontalKeyItemRenderer"
 				horizontalScrollPolicy="off"
 				verticalScrollPolicy="off"
 				columnWidth="150"
 				rowHeight="20"
+				styleName="themeExplorerList"
 			>
 			</mx:TileList>
-			
+			<mx:Image source="{Model.getInstance().assets+'keys/'+Model.getInstance().keyVO.image}" includeInLayout="true"/>	
+			</mx:HBox>
 			<mx:List 
+				top="200"
 				id = "subthemesList"
 				styleName="themeExplorerList"
 				click="selectSubkey(event);"
 				dataProvider="{model.keyVO.children}"
 				horizontalScrollPolicy="off"
+				verticalScrollPolicy="off"
 				itemRenderer="org.p25366.y2008.view.SubkeyItemRenderer"
 			/>
-				
 			<mx:List 
+				top="200"
 				id = "wordsList"
 				visible="{model.subkeyVO!=null}"
 				styleName="themeExplorerList"

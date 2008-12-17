@@ -20,12 +20,6 @@
 			[Bindable]
 			public var model:Model = Model.getInstance();
 			public var httpService:HTTPService;
-			
-			/**
-			 * Il faut appeler le vrai data provider de Thierry, 
-			 * et stocker les résultats dans le modèle.
-			 * Arnaud
-			 */
 			 
 			public function init():void
 			{
