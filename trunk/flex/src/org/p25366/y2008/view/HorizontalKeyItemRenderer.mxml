@@ -3,6 +3,8 @@
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
 	autoLayout="true" 
 	mouseChildren="false"
+	horizontalScrollPolicy="off"
+	verticalScrollPolicy="off"
 	>
 	<mx:Script>
 		<![CDATA[

@@ -49,6 +49,7 @@
 		]]>
 	</mx:Script>
 	<mx:TileList
+		verticalCenter="0"
 		id = "themeExplorer"
 		rowCount="1"
 		columnCount="25"
