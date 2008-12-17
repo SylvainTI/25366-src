@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" autoLayout="true" width="100%">
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%">
 	<mx:Script>
 		<![CDATA[
 			import org.p25366.y2008.business.Delegate;
@@ -21,7 +21,7 @@
 			
 			private function selectKey(event:Event):void
 			{
-				var keyVO:KeyVO = themeExplorer.selectedItem as KeyVO;
+				var keyVO:KeyVO = event.target.selectedItem as KeyVO;
 				model.keyVO = keyVO;
 				if (keyVO.children.length == 0){
 					delegate = new Delegate();
@@ -31,7 +31,7 @@
 			
 			private function selectSubkey(event:Event):void
 			{
-				var subkeyVO:SubkeyVO = subthemesList.selectedItem as SubkeyVO;
+				var subkeyVO:SubkeyVO = event.target.selectedItem as SubkeyVO;
 				model.subkeyVO = subkeyVO;
 				if (subkeyVO.children.length == 0){
 				delegate = new Delegate();
@@ -41,11 +41,12 @@
 			
 			private function selectWord(event:Event):void
 			{
-				var wordsVO:WordsVO = wordsList.selectedItem as WordsVO;
+				var wordsVO:WordsVO = event.target.selectedItem as WordsVO;
 				model.wordsVO = wordsVO;
 				delegate = new Delegate();
 				delegate.loadWord(wordsVO);
 			}
+			
 		]]>
 	</mx:Script>
 	<mx:TileList 
@@ -61,25 +62,24 @@
 	/>
 	<mx:HBox 
 		visible="{model.keyVO!=null}"
-		width="100%" 
-		height="100%"
 		>
 			<mx:TileList 
 				id = "themeExplorerVertical"
 				rowCount="25"
-				width="200"
+				width="100"
 				columnCount="1"
 				backgroundAlpha="0"
 				direction="vertical"
 				styleName="themeExplorerList"
-				click="selectKey(event)"
+				itemClick="selectKey(event)"
 				dataProvider="{model.keys}" 
 				itemRenderer="org.p25366.y2008.view.HorizontalKeyItemRenderer"
 				horizontalScrollPolicy="off"
 				verticalScrollPolicy="off"
-				columnWidth="100"
-				rowHeight="35"
-			/>
+				columnWidth="150"
+				rowHeight="20"
+			>
+			</mx:TileList>
 			
 			<mx:List 
 				id = "subthemesList"
