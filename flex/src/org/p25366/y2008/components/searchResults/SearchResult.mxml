@@ -6,10 +6,7 @@
 	>
 	<mx:Script>
 		<![CDATA[
-			/**
-			 * Attention à respecter les indentations, et à supprimer le vieux code plus nécessaire
-			 * Arnaud
-			 */
+		
 			import mx.collections.ArrayCollection;
 			import mx.events.CloseEvent;
 			import mx.managers.CursorManager;
@@ -96,14 +93,13 @@
 	<mx:VBox>	
 		<mx:Text 
 			text="Résultat de la recherche pour {_word}" 
-			width="400" 
+			width="100" 
 			/>
-		<mx:HBox>
+		<mx:HBox width="100%">
 				
 			<mx:List 
 				dataProvider="{listData}" 
 				click="onItemSelected(event)"
-				width="50%"
 				>
 					<mx:itemRenderer>
 						<mx:Component>
@@ -117,8 +113,7 @@
 			</mx:List>
 			<mx:List 
 				dataProvider="{listData}" 
-				click="onItemSelected(event)"
-				width="50%"				
+				click="onItemSelected(event)"			
 				>
 					<mx:itemRenderer>
 						<mx:Component>
