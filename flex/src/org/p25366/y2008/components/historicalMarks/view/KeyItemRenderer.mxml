@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" height="300" >
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" height="300"  verticalScrollPolicy="off" >
 	<mx:Script>
 		<![CDATA[
 			import org.p25366.y2008.components.historicalMarks.vo.HistoricalMarkVO;
 			import org.p25366.y2008.components.historicalMarks.vo.HistoricalEventVO;
 		]]>
 	</mx:Script>
-	<mx:HBox>
-		<mx:Label text="{HistoricalMarkVO(data).date}" fontWeight="bold"  fontSize="14"  paddingRight="-10" paddingTop="-3"/>
+	<mx:HBox >
+		<mx:Label  text="{HistoricalMarkVO(data).date}" fontWeight="bold"  fontSize="14"  paddingRight="-10" paddingTop="-3"/>
 		<mx:Label text="{HistoricalMarkVO(data).id}.>" fontSize="10" />
 	</mx:HBox>
 	<mx:List itemRenderer="org.p25366.y2008.components.historicalMarks.view.KeyEventRenderer" 
 		dataProvider="{HistoricalMarkVO(data).events}"
-			horizontalScrollPolicy="off"
-			borderThickness="0"
-			backgroundAlpha="0"
-			
+		horizontalScrollPolicy="off"
+		borderThickness="0"
+		backgroundAlpha="0"
 		/>
 		
 </mx:VBox>

@@ -74,7 +74,7 @@
 	</repere>
 	<repere>
 		<id>86</id>
-		<date>1945</date>
+		<date>2010</date>
 		<events>
 			<event type="normal">
 				<date type="single">1943</date>
