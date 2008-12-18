@@ -51,7 +51,7 @@
 				model.wordsVO = wordsVO;
 				model.wordVO = wordsVO;
 				delegate = new Delegate();
-				//delegate.loadWord(wordsVO);
+				
 			}
 		]]>
 	</mx:Script>
@@ -68,8 +68,8 @@
 		itemClick="selectKey(event)"
 		dataProvider="{model.keys}"
 		itemRenderer="org.p25366.y2008.view.KeyItemRenderer"
-		rowHeight="150"
-		columnWidth="36"
+		rowHeight="180"
+		columnWidth="40"
 		width="900"
 		verticalScrollPolicy="off"
 	/>
@@ -94,8 +94,8 @@
 				styleName="themeExplorerList"
 			/>
 			<mx:Canvas top="70" left="100" horizontalScrollPolicy="off" verticalScrollPolicy="off">
-			<mx:Image id="img" scaleX=".9" scaleY=".9" source="{Model.getInstance().assets+'keys/'+Model.getInstance().keyVO.image}" includeInLayout="true"/>	
-			<mx:Label id="txt" text="{Model.getInstance().keyVO.label}" styleName="keyStyle" left="50" rotation="90" horizontalCenter="30" top="{img.height+3}"/>		
+			<mx:Image id="img" source="{Model.getInstance().assets+'keys/'+Model.getInstance().keyVO.image}" includeInLayout="true"/>	
+			<mx:Label id="txt" text="{Model.getInstance().keyVO.label}" styleName="keySelectedStyle"  rotation="90" horizontalCenter="30" top="{img.height+3}"/>		
 			</mx:Canvas>
 			</mx:Canvas>
 			<mx:Canvas top="80" autoLayout="true" left="210" horizontalScrollPolicy="off" verticalScrollPolicy="off">

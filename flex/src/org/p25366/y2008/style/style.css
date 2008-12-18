@@ -31,10 +31,23 @@ Canvas.keyRenderer{
 
 Label.keyStyle{
 	color: #000000;
+	fontSize: 14;
+	fontFamily: DINPro;
+	
+}
+
+Label.keyStyleHorizontal{
+	color: #000000;
 	fontSize: 10;
 	fontFamily: DINPro;
 	
 }
+Label.keySelectedStyle{
+	color: #222222;
+	fontSize: 24;
+	fontFamily: DINPro;
+}
+
 List.themeExplorerList{
 	background-alpha: 0;
 	borderThickness: 0;

@@ -13,15 +13,15 @@
 			import org.p25366.y2008.vo.KeyVO;
 		]]>
 	</mx:Script>
-		<mx:Image id="img" height="30" width="30" source="{Model.getInstance().assets+'keys/'+data.image}" x="0" y="0" autoLoad="true" scaleContent="true" horizontalCenter="0"/>
+		<mx:Image id="img" height="35" width="35" source="{Model.getInstance().assets+'keys/'+data.image}" x="0" y="0" autoLoad="true" scaleContent="true" horizontalCenter="0"/>
 		<mx:Label id="txt" text="{data.label}" styleName="keyStyle" rotation="90" horizontalCenter="30" top="{img.height+3}"/>
 		
 		<mx:transitions>
 		<mx:Transition fromState="*" toState="over">
-			<mx:Resize target="{img}" widthTo="35" heightTo="35"/>
+			<mx:Resize target="{img}" widthTo="40" heightTo="40"/>
 		</mx:Transition>
 		<mx:Transition fromState="*" toState="out">
-			<mx:Resize target="{img}" widthTo="30" heightTo="30"/>
+			<mx:Resize target="{img}" widthTo="35" heightTo="35"/>
 		</mx:Transition>
 	</mx:transitions>
 	<mx:states>
