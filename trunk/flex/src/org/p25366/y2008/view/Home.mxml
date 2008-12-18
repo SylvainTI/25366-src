@@ -33,19 +33,20 @@
 			/>
 
 		<searchResults:SearchResult 
-			
+		
 			id="searchResult"
 			label="Search Result"
 			word="{searchTextInput.text}"
 			visible="{searchTextInput.text!=''}"
-			cornerRadius="30"
-			width="500"
-			height="400"
-			right="20"
-			top="50"
+			width="287"
+			height="300"
+			right="30"
+			top="60"
 			showEffect="{wipeDown}"
 			hideEffect="{wipeUp}"
+			
 			/>
+			
 	<mx:WipeDown id="wipeDown"/>
 		<mx:WipeUp id="wipeUp"/>
 	<mx:Canvas

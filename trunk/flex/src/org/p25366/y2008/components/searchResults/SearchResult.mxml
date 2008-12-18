@@ -101,21 +101,21 @@
 		/>
 	<mx:VBox>
 		
-		<mx:Text  text="Résultat de la recherche pour {_word}" width="300" paddingBottom="20">
+		<mx:Text  text="Résultat de la recherche pour {_word}" width="250" paddingBottom="20">
 			<!--<mx:htmlText>
 				<![CDATA[
 					Résultat de la recherche pour <b>{_word}</b>
 				]]>
 			</mx:htmlText>-->
 		</mx:Text>
-		<mx:HBox width="100%">
+		<mx:HBox paddingLeft="6" paddingRight="-25" paddingBottom="5" >
 		<mx:VBox>
 			<mx:Text text="Mots" />
-				<mx:List dataProvider="{listData}" click="onItemSelected(event)" cornerRadius="10">
+				<mx:List dataProvider="{listData}" click="onItemSelected(event)" cornerRadius="10" >
 						<mx:itemRenderer>
 							<mx:Component>
-								<mx:VBox height="120">
-									<mx:Text text="{data.source.lib}" width="230"/>
+								<mx:VBox height="70">
+									<mx:Text text="{data.source.lib}" width="120"/>
 									<mx:Text text="{data.num}" textAlign="left"/>
 								</mx:VBox>
 							</mx:Component>
@@ -127,8 +127,8 @@
 				<mx:List dataProvider="{listData}" click="onItemSelected(event)" cornerRadius="10">
 						<mx:itemRenderer>
 							<mx:Component>
-								<mx:VBox height="120">
-									<mx:Text text="{data.date}" width="230"/>
+								<mx:VBox height="70">
+									<mx:Text text="{data.date}" width="120"/>
 									<mx:Text text="{data.num}"/>
 								</mx:VBox>
 							</mx:Component>
