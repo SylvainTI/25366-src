@@ -1,46 +1,30 @@
 <words>
-	<word>
 <?php
-	$libSource = "mort";
-	$genreSource = "f.";
-	$libDest = "'mort' dans la langue de destination";
-	$genreDest = "genre du mot dans la langue de destination";
-	$wordId = "1";
-	$subthemeId = "4";
-?>		
-
-		<id><?php echo $wordId; ?></id>
-		<subThemeId><?php echo $subthemeId; ?></subThemeId>
+	$db = DatabaseManager::getInstance();
+	$queryWordsSource = $db->prepare("SELECT * FROM `word` WHERE `idsubtheme` = ? AND `lang` = ? ORDER BY `id` ASC"); // préparation de la requête
+	$queryWordsDest = $db->prepare("SELECT * FROM `word` WHERE `idSubtheme` = ? AND `lang` = ? ORDER BY `id` ASC"); // préparation de la requête
+	$queryWordsSource->execute(array($subthemeId, $langSource)); // on exécute la requête
+	$queryWordsDest->execute(array($subthemeId, $langDest)); // on exécute la requête
+	
+	$words = $queryWordsSource->fetchAll();
+	$wordsDest = $queryWordsDest->fetchAll();
+	foreach ($words as $key => $word) :
+?>
+		
+	<word>
+		<id><?php echo $word['id']; ?></id>
 		<source>
-			<lang><?php echo $langSource; ?></lang>
-			<lib><![CDATA[<?php echo $libSource; ?>]]></lib>
-			<genre><![CDATA[<?php echo $genreSource; ?>]]></genre>
+			<lang><?php echo $word['lang']; ?></lang>
+			<lib><?php echo $word['lib']; ?></lib>
+			<genre><?php echo $word['genre']; ?></genre>
 		</source>
 		<destination>
-			<lang><?php echo $langDest; ?></lang>
-			<lib><![CDATA[<?php echo $libDest; ?>]]></lib>
-			<genre><![CDATA[<?php echo $genreDest; ?>]]></genre>
+			<lang><?php echo $wordsDest[$key]['lang']; ?></lang>
+			<lib><?php echo $wordsDest[$key]['lib']; ?></lib>
+			<genre><?php echo $wordsDest[$key]['genre']; ?></genre>
 		</destination>
 	</word>
-	<word>
-<?php
-	$libSource = "naissance";
-	$genreSource = "f.";
-	$libDest = "'naissance' dans la langue de destination";
-	$genreDest = "genre du mot dans la langue de destination";
-	$wordId = "2";
-?>		
-		<id><?php echo $wordId; ?></id>
-		<subThemeId><?php echo $subthemeId; ?></subThemeId>
-		<source>
-			<lang><?php echo $langSource; ?></lang>
-			<lib><![CDATA[<?php echo $libSource; ?>]]></lib>
-			<genre><![CDATA[<?php echo $genreSource; ?>]]></genre>
-		</source>
-		<destination>
-			<lang><?php echo $langDest; ?></lang>
-			<lib><![CDATA[<?php echo $libDest; ?>]]></lib>
-			<genre><![CDATA[<?php echo $genreDest; ?>]]></genre>
-		</destination>
-	</word>
+<?
+	endforeach;
+?>
 </words>
