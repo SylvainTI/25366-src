@@ -1,0 +1,20 @@
+/* CSS file */
+Button.markLinks{
+borderColor:#ababab;
+fillColors:#ababab, #ababab;
+fontSize:11px;
+letterSpacing:0.2;
+cornerRadius:11;
+color:#FFFFFF;
+paddingBottom:0px;
+paddingLeft:2px;
+paddingRight:2px;
+paddingTop:0px;
+}
+
+Label.marksRestrictors {
+textDecoration:underline;
+fontSize:14px;
+paddingTop:4px;
+color:#676767;
+}

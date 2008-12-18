@@ -15,6 +15,7 @@
 		horizontalScrollPolicy="off"
 		borderThickness="0"
 		backgroundAlpha="0"
-		/>
 		
+		/>
+		<mx:Move id="test_transitions" />
 </mx:VBox>

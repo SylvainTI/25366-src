@@ -19,6 +19,6 @@
 	</mx:Script>
 	<mx:HBox>
 		<mx:Label fontSize="11.5" textAlign="left"  text="{HistoricalEventVO(data).from_date}:"  fontStyle="italic"   />
-		<mx:Text  fontSize="11.5"  text="{HistoricalEventVO(data).description}" width="240" textAlign="left"  />
+		<mx:Text  fontSize="11.5"  text="{HistoricalEventVO(data).description}" width="200" textAlign="left"  />
 	</mx:HBox>
 </mx:Canvas>
