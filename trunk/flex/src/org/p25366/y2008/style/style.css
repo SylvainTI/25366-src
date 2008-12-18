@@ -20,13 +20,13 @@ VBox.wordsItem{
 }
 
 HBox.themeExplorerVerticalStyle{
-	background-color: #BCFFD2;
+	background-alpha:0;
 	backgroundSize: auto;
 	borderStyle: none;
 }
 
 Canvas.keyRenderer{
-	background-color: #BCFFD2;
+	background-alpha:0;
 }
 
 Label.keyStyle{
