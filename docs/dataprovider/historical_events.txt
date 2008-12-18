@@ -1,0 +1,52 @@
+-- phpMyAdmin SQL Dump
+-- version 2.10.1
+-- http://www.phpmyadmin.net
+-- 
+-- Serveur: localhost
+-- Généré le : Jeu 18 Décembre 2008 à 05:09
+-- Version du serveur: 5.0.45
+-- Version de PHP: 5.2.5
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+-- 
+-- Base de données: `25366`
+-- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Structure de la table `historical_events`
+-- 
+
+CREATE TABLE `historical_events` (
+  `id` int(11) NOT NULL auto_increment,
+  `marks_id` int(11) NOT NULL,
+  `event_type` varchar(15) NOT NULL default 'basic',
+  `date_type` varchar(15) NOT NULL default 'single',
+  `from_date` double NOT NULL,
+  `to_date` double NOT NULL,
+  `description` text NOT NULL,
+  `link` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+
+-- 
+-- Contenu de la table `historical_events`
+-- 
+
+INSERT INTO `historical_events` (`id`, `marks_id`, `event_type`, `date_type`, `from_date`, `to_date`, `description`, `link`) VALUES 
+(1, 83, 'basic', 'single', 1927, 0, 'Henri Bergson, prix Nobel de littérature', 0),
+(2, 83, 'basic', 'single', 1929, 0, 'Krach boursier à New York (Jeudi Noir)', 0),
+(3, 84, 'basic', 'single', 1931, 0, 'Paul Doumer - Président', 0),
+(4, 84, 'basic', 'single', 1932, 0, 'Albert Lebrun - Président', 0),
+(5, 84, 'basic', 'single', 1933, 0, 'Début de l''affaire Stavisky (scandale financier)', 0),
+(6, 84, 'basic', 'single', 1933, 0, 'Hitler devient Chancelier en Allemagne', 0),
+(7, 84, 'basic', 'single', 1933, 0, 'Un barbare en Asie d’Henri Michaux', 0),
+(8, 85, 'basic', 'single', 1936, 0, 'Le Front populaire remporte les élections législatives – série de réformes sociales', 0),
+(9, 85, 'basic', 'single', 1939, 0, 'Hitler envahit la Pologne', 0),
+(10, 85, 'basic', 'single', 1940, 0, '17 juin : Appel radiophonique du maréchal Pétain à cesser le combat – Pétain, chef de l’état', 0),
+(11, 85, 'basic', 'single', 1940, 0, '18 juin : Appel à la résistance du général De Gaulle réfugié à Londres.', 0),
+(12, 86, 'basic', 'single', 1943, 0, 'Publication de l’Être et le Néant de Jean-Paul Sartre - Publication du Petit Prince d’Antoine de Saint-Exupéry', 0),
+(13, 86, 'basic', 'single', 1943, 0, 'Conseil national de la résistance avec Jean Moulin', 0),
+(14, 86, 'basic', 'single', 1944, 0, 'Charles de Gaulle – gouvernement provisoire', 0);
