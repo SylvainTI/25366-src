@@ -19,6 +19,11 @@ VBox.wordsItem{
 	
 }
 
+Canvas.rechercheStyle{
+	 background-image:"@Embed('../bin-debug/data/media/recherche.png')";
+	backgroundSize: "15%";
+	backgroundAlpha: 1.0;
+}
 HBox.themeExplorerVerticalStyle{
 	background-alpha:0;
 	backgroundSize: auto;
