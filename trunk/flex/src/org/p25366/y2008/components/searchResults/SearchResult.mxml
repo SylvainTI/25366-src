@@ -93,33 +93,34 @@
 		url= "{model.data+'?action=search&amp;q='+_word}"
 		/>
 	<mx:VBox>	
-		<mx:Text 
-			text="Résultat de la recherche pour {_word}"
-			width="100"  paddingBottom="20"
-			/>
+		<mx:Text  text="Résultat de la recherche pour {_word}" width="300" paddingBottom="20">
+			<!--<mx:htmlText>
+				<![CDATA[
+					Résultat de la recherche pour <b>{_word}</b>
+				]]>
+			</mx:htmlText>-->
+		</mx:Text>
 		<mx:HBox width="100%">
 		<mx:VBox>
 			<mx:Text text="Mots" />
-		
-
-			<mx:List dataProvider="{listData}" click="onItemSelected(event)">
-					<mx:itemRenderer>
-						<mx:Component>
-							<mx:VBox height="150">
-								<mx:Text text="{data.description}" width="230"/>
-								<mx:Text text="{data.date}" textAlign="left"/>
-								<mx:Text text="{data.num}" textAlign="left"/>
-							</mx:VBox>
-						</mx:Component>
-					</mx:itemRenderer>		
-			</mx:List>
+				<mx:List dataProvider="{listData}" click="onItemSelected(event)">
+						<mx:itemRenderer>
+							<mx:Component>
+								<mx:VBox height="120">
+									<mx:Text text="{data.description}" width="230"/>
+									<mx:Text text="{data.date}" textAlign="left"/>
+									<mx:Text text="{data.num}" textAlign="left"/>
+								</mx:VBox>
+							</mx:Component>
+						</mx:itemRenderer>		
+				</mx:List>
 			</mx:VBox>
 			<mx:VBox>
 			<mx:Text text="Repères chronologiques" />
 				<mx:List dataProvider="{listData}" click="onItemSelected(event)">
 						<mx:itemRenderer>
 							<mx:Component>
-								<mx:VBox height="150">
+								<mx:VBox height="120">
 									<mx:Text text="{data.description}" width="230"/>
 									<mx:Text text="{data.date}"/>
 									<mx:Text text="{data.num}"/>
