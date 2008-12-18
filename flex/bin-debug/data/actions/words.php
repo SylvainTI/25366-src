@@ -17,11 +17,13 @@
 			<lang><?php echo $word['lang']; ?></lang>
 			<lib><?php echo $word['lib']; ?></lib>
 			<genre><?php echo $word['genre']; ?></genre>
+			<phrase><?php echo $word['definition']; ?></phrase>
 		</source>
 		<destination>
 			<lang><?php echo $wordsDest[$key]['lang']; ?></lang>
 			<lib><?php echo $wordsDest[$key]['lib']; ?></lib>
 			<genre><?php echo $wordsDest[$key]['genre']; ?></genre>
+			<phrase><?php echo $wordsDest[$key]['definition']; ?></phrase>
 		</destination>
 	</word>
 <?
