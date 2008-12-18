@@ -8,7 +8,8 @@
 			import mx.controls.Alert;
 			import org.p25366.y2008.model.Model;
 			private var delegate:Delegate = new Delegate();
-
+			
+			
 			[Bindable]
 			private var model:Model = Model.getInstance();
 			/**
@@ -18,6 +19,7 @@
 			 */
 			public function determineLangSource(event:Event):void
 			{
+				if(event.currentTarget.selectedItem.data.toString()=="")return;
 				model.langSource = event.currentTarget.selectedItem.data.toString();
 				model.langSrcString = event.currentTarget.selectedItem.label.toString();
 				delegate.loadKeys();
@@ -25,42 +27,51 @@
 			
 			public function determineLangDest(event:Event):void
 			{
+				if(event.currentTarget.selectedItem.data.toString()=="")return;
 				model.langDest = event.currentTarget.selectedItem.data.toString();
-				model.langDestString = event.currentTarget.selectedItem.label.toString();			
+				model.langDestString = event.currentTarget.selectedItem.label.toString();
 			}		
 		]]>
 	</mx:Script>
 	<mx:Text
 		width="200"
-		left="250"
-		verticalCenter="-100"
+		left="200"
+		verticalCenter="-50"
 		text="Pour entrer, choisissez une langue source et une langue cible en cliquant sur les champs ci-dessous"
 		/>
 	<mx:ComboBox
 		id="langSource"
 	
-		left="250"
+		left="200"
 		verticalCenter="0"
-		close="determineLangSource(event)"
+		change="determineLangSource(event)"
 		
 		cornerRadius="10"
 		dataProvider="{Model.getInstance().langSrcProvider}"
 		/>
-
+	
+	<mx:Image
+		source="@Embed('../bin-debug/data/media/fleche.png')" 
+		left="293"
+		verticalCenter="0"
+			/>
+	
 	<mx:ComboBox
 		id="langDest"
 		
-		left="325"
+		left="310"
 		verticalCenter="0"
-		close="determineLangDest(event)"
+		change="determineLangDest(event)"
 		
 		cornerRadius="10"
 		dataProvider="{Model.getInstance().langDestProvider}"
 		/>
 	<mx:Button 
-		label="Choix"
+		label="OK"
 		click="model.page=model.PAGE_HOME;model.souspage=model.SOUSPAGE_EXPLORATEUR_THEMES"
 		verticalCenter="0"
 		left="400"
+		cornerRadius="40"
+		width="40"
 		/>
 </mx:Canvas>

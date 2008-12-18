@@ -62,7 +62,7 @@
 			left="210"
 			verticalCenter="0"
 			>
-			<mx:text>français > chinois</mx:text>
+			<mx:text>{model.langSrcString} > {model.langDestString}</mx:text>
 		</mx:Text>
 		<mx:Image
 			source="@Embed('../bin-debug/data/media/maison.png')" 
