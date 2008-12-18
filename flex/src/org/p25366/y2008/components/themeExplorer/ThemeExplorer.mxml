@@ -81,7 +81,7 @@
 				horizontalScrollPolicy="off"
 				verticalScrollPolicy="off"
 				columnWidth="150"
-				rowHeight="20"
+				rowHeight="24"
 				styleName="themeExplorerList"
 			/>
 			<mx:Canvas top="70" left="100" horizontalScrollPolicy="off" verticalScrollPolicy="off">

@@ -36,11 +36,9 @@ Label.keyStyle{
 	
 }
 List.themeExplorerList{
-	background-alpha:0;
+	background-alpha: 0;
 	borderThickness: 0;
 	borderStyle: none;
-	item-roll-over-color:#BCFFD2;
-	item-selection-color:#BCFFD2;
 }
 .listVerticalScrollBar
 {
