@@ -99,6 +99,8 @@ package org.p25366.y2008.business
 				case "langs":
 				Model.getInstance().langDestProvider = new ArrayCollection();
 				Model.getInstance().langSrcProvider = new ArrayCollection();
+					Model.getInstance().langSrcProvider.addItem({data:"",label:"source"});
+					Model.getInstance().langDestProvider.addItem({data:"",label:"cible"});
 					for each(itemVO in xmlObj){ 
 						Model.getInstance().langSrcProvider.addItem({data:itemVO.lang.id,label:itemVO.lang.lib});
 						Model.getInstance().langDestProvider.addItem({data:itemVO.lang.destination.lang.id,label:itemVO.lang.destination.lang.libSource});
