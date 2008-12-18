@@ -14,8 +14,8 @@ package org.p25366.y2008.model
 		public var data:String = "http://srcbordeaux2009.com/25366/data/";
 		public var assets:String = "http://srcbordeaux2009.com/25366/data/media/";
 
-		//public var data:String = "data/";
-		//public var assets:String = "data/media/";
+
+
 
 		public var langSource:String = "";
 		public var langDest:String = "";
@@ -29,8 +29,8 @@ package org.p25366.y2008.model
 		public var wordsVO:WordsVO;
 		public var wordVO:WordVO;
 	
-		public var langDestProvider:ArrayCollection = new ArrayCollection([{label:"français",data:"fr-fra"},{label:"chinois",data:"zh-zho"}]);
-		public var langSrcProvider:ArrayCollection = new ArrayCollection([{label:"français",data:"fr-fra"},{label:"chinois",data:"zh-zho"}]);
+		public var langDestProvider:ArrayCollection;
+		public var langSrcProvider:ArrayCollection;
 		
 		public var currentState:String;
 

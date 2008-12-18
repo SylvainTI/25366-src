@@ -8,6 +8,7 @@
 	>
 	<mx:Script>
 		<![CDATA[
+			import org.p25366.y2008.business.Delegate;
 			import mx.controls.Alert;
 			import mx.charts.chartClasses.StackedSeries;
 
@@ -20,19 +21,11 @@
 			[Bindable]
 			public var model:Model = Model.getInstance();
 			public var httpService:HTTPService;
+			private var _delegate:Delegate = new Delegate();
 			 
 			public function init():void
 			{
-				httpService = new HTTPService();
-				httpService.url = model.data + "keys.xml";
-				httpService.resultFormat = HTTPService.RESULT_FORMAT_E4X;
-				httpService.addEventListener(ResultEvent.RESULT, result);
-				httpService.send();
-			}
-			
-			public function result(data:Object):void
-			{
-				trace("yeah");
+				_delegate.loadLangs();
 			}
 		]]>
 		
