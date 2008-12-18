@@ -10,6 +10,7 @@
 				$tags = "Les tags en rapport avec le mot";
 			?>		
 			<id><?php echo $wordId; ?></id>
+			<type>word</type>
 			<source>
 				<lang><?php echo $langSource; ?></lang>
 				<lib><![CDATA[<?php echo $libSource; ?>]]></lib>
