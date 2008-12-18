@@ -107,8 +107,7 @@
 						<mx:itemRenderer>
 							<mx:Component>
 								<mx:VBox height="120">
-									<mx:Text text="{data.description}" width="230"/>
-									<mx:Text text="{data.date}" textAlign="left"/>
+									<mx:Text text="{data.source.lib}" width="230"/>
 									<mx:Text text="{data.num}" textAlign="left"/>
 								</mx:VBox>
 							</mx:Component>
@@ -121,8 +120,7 @@
 						<mx:itemRenderer>
 							<mx:Component>
 								<mx:VBox height="120">
-									<mx:Text text="{data.description}" width="230"/>
-									<mx:Text text="{data.date}"/>
+									<mx:Text text="{data.date}" width="230"/>
 									<mx:Text text="{data.num}"/>
 								</mx:VBox>
 							</mx:Component>
