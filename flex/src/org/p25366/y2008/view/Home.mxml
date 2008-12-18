@@ -5,6 +5,8 @@
 	xmlns:themeExplorer="org.p25366.y2008.components.themeExplorer.*" 
 	xmlns:definitionPage="org.p25366.y2008.components.definitionPage.*" 
 	xmlns:searchResults="org.p25366.y2008.components.searchResults.*"
+	height="100%"
+	verticalScrollPolicy="off"
 	>
 	<mx:Script>
 		<![CDATA[
@@ -15,67 +17,6 @@
 			private var model:Model = Model.getInstance();
 		]]>
 	</mx:Script>
-	<mx:Canvas
-		height="90"
-		width="100%"
-		>
-		<mx:Image
-			source="@Embed('org/p25366/y2008/style/assets/logo25366.png')" 
-			left="120"
-			verticalCenter="0"
-			/>
-		<mx:Text
-			left="210"
-			verticalCenter="0"
-			>
-			<mx:text>français > chinois</mx:text>
-		</mx:Text>
-		<mx:Image
-			source="@Embed('../bin-debug/data/media/maison.png')" 
-			left="350"
-			verticalCenter="0"
-			click="model.page='choixLangue'"
-			/>
-		<mx:Text
-			left="390"
-			verticalCenter="0"
-			>
-			<mx:text>REP&#200;RES</mx:text>
-		</mx:Text>	
-		<mx:Button
-			label="LINGUISTIQUES"
-			verticalCenter="0"
-			left="447"
-		/>
-		<mx:Button
-			label="HISTORIQUES"
-			click="model.souspage='reperesHistoriques'"
-			verticalCenter="0"
-			left="557"
-		/>
-		<mx:HBox
-			right="30"
-			height="30"
-			
-			>
-			<mx:Text
-				text="informations sur 35366.org"
-			/>
-			<mx:Image
-				source="@Embed('../bin-debug/data/media/barre.png')" 
-			/>
-			<mx:Text
-				text="le langage Unideo"
-			/>
-			<mx:Image
-				source="@Embed('../bin-debug/data/media/barre.png')" 
-			/>
-			<mx:Text
-				text="contact"
-			/>
-		</mx:HBox>
-
-	</mx:Canvas>
 	<mx:TextInput 
 			id="searchTextInput" 
 			right="30"
@@ -94,39 +35,87 @@
 			/>
 	<mx:WipeDown id="wipeDown"/>
 		<mx:WipeUp id="wipeUp"/>
-	<mx:TabBar
-		dataProvider="{viewStack}"
-		top="80"
-		visible="false"
-		/>
-	<mx:ViewStack
-		id="viewStack"
-		top="150"
-		height="80%"
+	<mx:Canvas
+		height="90"
 		width="100%"
-		visible="false"
 		>
-		
-		<mx:HBox
-			label="Theme Explorer And Definition Page" 
-			width="100%" 
-			height="100%"
+		<mx:Image
+			source="@Embed('org/p25366/y2008/style/assets/logo25366.png')" 
+			left="120"
+			verticalCenter="0"
+			click="model.page=model.PAGE_CHOIX_LANGUE;model.souspage=null;model.subkeyVO=null;model.keyVO=null;model.wordsVO=null;model.wordVO=null"
+			/>
+		<mx:Text
+			left="210"
+			verticalCenter="0"
 			>
+			<mx:text>français > chinois</mx:text>
+		</mx:Text>
+		<mx:Image
+			source="@Embed('../bin-debug/data/media/maison.png')" 
+			left="350"
+			verticalCenter="0"
+			click="model.page=model.PAGE_HOME;model.souspage=model.SOUSPAGE_EXPLORATEUR_THEMES;model.keyVO=null;model.subkeyVO=null;model.wordsVO=null;model.wordVO=null"
+			/>
+		<mx:Text
+			left="390"
+			verticalCenter="0"
+			>
+			<mx:text>REP&#200;RES</mx:text>
+		</mx:Text>	
+		<mx:Button
+			label="LINGUISTIQUES"
+			verticalCenter="0"
+			left="447"
+			click="Alert.show('Vous pourrez bientôt découvrir les repères linguistiques !')"
+		/>
+		<mx:Button
+			label="HISTORIQUES"
+			click="model.souspage=model.SOUSPAGE_REPERES_HISTORIQUES"
+			verticalCenter="0"
+			left="557"
+		/>
+		<mx:HBox
+			right="30"
+			height="30"
 			
-			<definitionPage:DefinitionPage 
-				id="definitionPage"
-				autoLayout="true"
+			>
+			<mx:Text
+				text="informations sur 32 46 72 34 45 bis (56 79).org"
+				click="Alert.show('Vous pourrez bientôt découvrir les repères linguistiques !')"
+			/>
+			<mx:Image
+				source="@Embed('../bin-debug/data/media/barre.png')" 
+			/>
+			<mx:Text
+				text="le langage Unideo"
+				click="Alert.show('Bientôt, toutes les informations sur le langage Unideo !')"
+			/>
+			<mx:Image
+				source="@Embed('../bin-debug/data/media/barre.png')" 
+			/>
+			<mx:Text
+				text="contact"
+				click="Alert.show('Pour contacter les administrateurs...')"
 			/>
 		</mx:HBox>
-	</mx:ViewStack>
+
+	</mx:Canvas>
+	
+	
+		
+	
+
 	
 	<themeExplorer:ThemeExplorer 
-				id="themeExplorer"
-				verticalScrollPolicy="off"
-				horizontalScrollPolicy="off"
-				visible="{model.souspage=='explorateurThemes'}"
-				
+		id="themeExplorer"
+		verticalScrollPolicy="off"
+		horizontalScrollPolicy="off"
+		visible="{model.souspage=='explorateurThemes'}"		
 	/>
+
+	
+	
 	<historicalMarks:HistoricalMarks
 			label="Historical Marks"
 			visible="{model.souspage=='reperesHistoriques'}"

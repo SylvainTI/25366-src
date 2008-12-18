@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%">
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" xmlns:definitionPage="org.p25366.y2008.components.definitionPage.*">
 	<mx:Script>
 		<![CDATA[
 			import org.p25366.y2008.business.Delegate;
@@ -41,7 +41,7 @@
 			
 			private function selectWord(event:Event):void
 			{
-				var wordsVO:WordsVO = event.target.selectedItem as WordsVO;
+				var wordsVO:WordsVO = wordsList.selectedItem as WordsVO;
 				model.wordsVO = wordsVO;
 				delegate = new Delegate();
 				delegate.loadWord(wordsVO);
@@ -63,6 +63,8 @@
 		itemRenderer="org.p25366.y2008.view.KeyItemRenderer"
 		rowHeight="150"
 		columnWidth="36"
+		width="900"
+		verticalScrollPolicy="off"
 	/>
 	<mx:Canvas 
 		visible="{model.keyVO!=null}"
@@ -111,7 +113,13 @@
 				horizontalScrollPolicy="off"
 				height="100%"
 			/>
+			<definitionPage:DefinitionPage 
+			id="definitionPage"
+			autoLayout="true"
+			visible="{model.wordVO!=null}"
+			/>
 			</mx:HBox>
+			
 			</mx:Canvas>
 	</mx:Canvas>
 </mx:Canvas>
