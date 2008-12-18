@@ -18,7 +18,7 @@
 			 */
 			public function determineLangSource(event:Event):void
 			{
-				model.langSource = event.currentTarget.selectedItem.data;
+				model.langSource = event.currentTarget.selectedItem.data.toString();
 				delegate.loadKeys();
 			}	
 			
@@ -63,7 +63,7 @@
         <mx:Object label="chinois" data="zh-zho"/>-->
 	<mx:Button 
 		label="Choix"
-		click="model.page='home';model.souspage='explorateurThemes'"
+		click="model.page=model.PAGE_HOME;model.souspage=model.SOUSPAGE_EXPLORATEUR_THEMES"
 		verticalCenter="0"
 		left="400"
 		/>

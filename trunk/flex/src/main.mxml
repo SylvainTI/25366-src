@@ -42,17 +42,17 @@
 		source="@Embed('org/p25366/y2008/style/assets/logo25366.png')" 
 		verticalCenter="0"
 		left="100"
-		visible="{model.page=='choixLangue'}"
+		visible="{model.page==model.PAGE_CHOIX_LANGUE}"
 		/>
 	<view:ChoixLangue
 		id="choixLangue"
-		visible="{model.page=='choixLangue'}"
+		visible="{model.page==model.PAGE_CHOIX_LANGUE}"
 		width="100%"
 		height="100%"
 		/>
 	<view:Home
 		id="langueChoisie"
-		visible="{model.page=='home'}"
+		visible="{model.page==model.PAGE_HOME}"
 		width="100%"
 		height="100%"
 		/>

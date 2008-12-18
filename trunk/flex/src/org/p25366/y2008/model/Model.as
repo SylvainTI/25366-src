@@ -37,10 +37,11 @@ package org.p25366.y2008.model
 		/**
 		 * Lister toutes les pages possibles, pour éviter les fautes de frappe
 		 */
-		public static const PAGE_CHOIX_LANGUE:String = "choixLangue";
+		public const PAGE_HOME:String = "home";
+		public const PAGE_CHOIX_LANGUE:String = "choixLangue";
 		
-		public static const SOUSPAGE_REPERES_HISTORIQUES:String = "reperesHistoriques";
-		public static const SOUSPAGE_EXPLORATEUR_THEMES:String = "explorateurThemes";
+		public const SOUSPAGE_REPERES_HISTORIQUES:String = "reperesHistoriques";
+		public const SOUSPAGE_EXPLORATEUR_THEMES:String = "explorateurThemes";
 		
 		private static var instance:Model;
 
