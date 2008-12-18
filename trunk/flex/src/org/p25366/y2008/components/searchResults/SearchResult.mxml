@@ -2,6 +2,10 @@
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" backgroundColor="0xcccccc" creationComplete="recherche( )">
 	<mx:Script>
 		<![CDATA[
+			import org.p25366.y2008.vo.SubkeyVO;
+			import org.p25366.y2008.vo.KeyVO;
+			import mx.rpc.xml.SimpleXMLDecoder;
+			import org.p25366.y2008.components.searchResults.vo.MarkVO;
 		
 			import mx.collections.ArrayCollection;
 			import mx.events.CloseEvent;
@@ -11,7 +15,7 @@
 			import mx.rpc.http.HTTPService;
 			import mx.rpc.events.ResultEvent;
 			import mx.controls.Alert;
-			import org.p25366.y2008.components.searchResults.vo.KeyVO;
+			import org.p25366.y2008.vo.WordsVO;
 
 			[Bindable]
 			private var model:Model = Model.getInstance();
@@ -20,7 +24,10 @@
 			private var _word:String;
 			
 			[Bindable]
-			private var listData:ArrayCollection;
+			private var wordsData:ArrayCollection;
+			[Bindable]
+			private var markData:ArrayCollection;
+			
 			public function set word(value:String):void
 			{
 				_word = value;
@@ -40,21 +47,53 @@
 				model.keyVO
 			}
 			
+			private function onWordSelected(event : Event ): void {
+				Model.getInstance().keyVO = Model.getInstance().keys.getItemAt(event.target.selectedItem.themeId as Number) as KeyVO;
+				Model.getInstance().subkeyVO = Model.getInstance().keyVO.children.getItemAt(event.target.selectedItem.subthemeId as Number) as SubkeyVO;
+				Model.getInstance().subkeyVO.keyVO = Model.getInstance().keyVO;
+				Model.getInstance().wordVO = event.target.selectedItem;
+				Model.getInstance().wordVO.keyVO = Model.getInstance().keyVO;
+				Model.getInstance().wordVO.subkeyVO = Model.getInstance().subkeyVO;
+				Model.getInstance().page = Model.getInstance().SOUSPAGE_EXPLORATEUR_THEMES;
+				
+				/** 
+				 * Voir avec thierry pour les event.target.selectedItem.themeId et subthemeId
+				 * Anthony
+				 */
+			}
+			
 			private function resultHandler(event:ResultEvent):void
 			{
-				listData = new ArrayCollection();
-							        
-				var one_result:KeyVO;
-				var word_result:Object;
+				wordsData = new ArrayCollection();
+				markData = new ArrayCollection();			        
+				var one_word:WordsVO;
+				var one_mark:MarkVO;
 				
-				for each(var result:XML in (event.result as XML).elements()) {
+				var itemVO:Object;
+		
+				var xmlStr:String = event.result.toString();
+      		  	var xmlDoc:XMLDocument = new XMLDocument(xmlStr);
+      		 	var decoder:SimpleXMLDecoder = new SimpleXMLDecoder(true);
+        		var xmlObj:Object = decoder.decodeXML(xmlDoc);
+        		// Il faut rajouter .results.result >>> .word , car il faut differencier les WORDS et HISTORICAL
+        			for each(itemVO in xmlObj.results.result){
+        				Alert.show(itemVO.lib.toString());
+						wordsData.addItem((new WordsVO(itemVO)));
+					}
+
+				for each(var historicResult:XML in (event.result.historicResults).elements()){
+						
+				}
+				//for each(var result:XML in (event.result as XML).elements()) {
+				//for each (var ling:XML in (event.result.data.linguisticResults as XML).elements()){
+				//Alert.show(ling.toString());
 					
 					/** 
 					 * Génère des VO, stocke les dans le modèle
 					 * Arnaud
 					 */
 					 
-					 if(result.type=="word")
+					/* if(result.type=="word")
 					{
 						word_result = new Object();
 						
@@ -67,7 +106,7 @@
 					
 					listData.addItem(one_result);
 					}
-				}
+				}*/
 			}
 			private function faultHandler(event:FaultEvent):void
 			{
@@ -82,6 +121,10 @@
 			public function recherche(): void
 			{
 				test_service.send();
+			}
+			
+			public function clickHandler(evt:MouseEvent):void {
+				
 			}
 		/* au clic sur un mot (Onclick) : modele.keyVO = au keyVo du mot selectionné.
 		modele.subKeyVo = subkeyVo du mot selectionné,modele.subkeyVo.keyVO = modele.KeyVO;
@@ -110,13 +153,13 @@
 		</mx:Text>
 		<mx:HBox paddingLeft="6" paddingRight="-25" paddingBottom="5" >
 		<mx:VBox>
-			<mx:Text text="Mots" />
-				<mx:List dataProvider="{listData}" click="onItemSelected(event)" cornerRadius="10" >
+			<mx:Text text="Repères linguistiques" />
+				<mx:List dataProvider="{wordsData}" click="onWordSelected(event)" cornerRadius="10">
 						<mx:itemRenderer>
 							<mx:Component>
 								<mx:VBox height="70">
-									<mx:Text text="{data.source.lib}" width="120"/>
-									<mx:Text text="{data.num}" textAlign="left"/>
+									<mx:Text text="{data.libSrc}" width="120"/>
+									<mx:Text text="{data.id}" textAlign="left"/>
 								</mx:VBox>
 							</mx:Component>
 						</mx:itemRenderer>		
@@ -124,12 +167,12 @@
 			</mx:VBox>
 			<mx:VBox>
 			<mx:Text text="Repères chronologiques" />
-				<mx:List dataProvider="{listData}" click="onItemSelected(event)" cornerRadius="10">
-						<mx:itemRenderer>
+				<mx:List dataProvider="" click="onItemSelected(event)" cornerRadius="10">
+						<mx:itemRenderer >
 							<mx:Component>
-								<mx:VBox height="70">
+								<mx:VBox height="70" >
 									<mx:Text text="{data.date}" width="120"/>
-									<mx:Text text="{data.num}"/>
+									<mx:Text text="{data.num}"  />
 								</mx:VBox>
 							</mx:Component>
 						</mx:itemRenderer>
