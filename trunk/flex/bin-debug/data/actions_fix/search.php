@@ -1,5 +1,5 @@
-<data>
-	<translation_properties>
+<results>
+	<result>
 			<?php
 				$libSource = "naissance";
 				$genreSource = "f.";
@@ -8,8 +8,12 @@
 				$genreDest = "genre dest";
 				$sensDest = "Définition du mot dans la langue de destination";
 				$tags = "Les tags en rapport avec le mot";
-			?>		
+			?>
+		<word>
 			<id><?php echo $wordId; ?></id>
+			<subthemeId>3</subthemeId>
+			<themeId>6</themeId>
+			<type>word</type>
 			<source>
 				<lang><?php echo $langSource; ?></lang>
 				<lib><![CDATA[<?php echo $libSource; ?>]]></lib>
@@ -23,86 +27,76 @@
 				<sens><![CDATA[<?php echo $sensDest; ?>]]></sens>
 			</destination>
 			<tags><![CDATA[<?php echo $tags; ?>]]></tags>
-	</translation_properties>
-	<linguisticResults>
-		<result>
+		</word>
+	</result>
+	<result>
+		<historical>
 			<id>1</id>
-			<context>Au début, tout paraît bien.</context>
-			<mot>début</mot>
-			<theme>temps</theme>
-			<soustheme>début</soustheme>
-		</result>
-		<result>
-			<id>2</id>
-			<context>Le rabin est venu au début de la cérémonie.</context>
-			<mot>rabbin</mot>
-			<theme>société</theme>
-			<soustheme>judaisme</soustheme>
-		</result>
-		<result>
-			<id>3</id>
-			<context>Le Shabbat débute le vendredi soir.</context>	
-			<mot>shabbat</mot>
-			<theme>société</theme>
-			<soustheme>judaisme</soustheme>
-		</result>
-		<result>
-			<id>4</id>
-			<context>La cérémonie vient juste de débuter</context>	
-			<mot>cérémonie</mot>
-			<theme>société</theme>
-			<soustheme>fête</soustheme>
-		</result>		
-	</linguisticResults>
-	<historicResults>
-		<result>
-			<id>1</id>
+			<type>historic</type>
 			<mark_id></mark_id>
 			<mark_date></mark_date>
 			<date>La cérémonie vient juste de débuter</date>	
 			<description>cérémonie</description>
-		</result>
-		<result>
+		</historical>
+	</result>
+	<result>
+		<historical>
 			<id>1</id>
+			<type>historic</type>
 			<mark_id></mark_id>
 			<mark_date></mark_date>
 			<date>La cérémonie vient juste de débuter</date>	
 			<description>cérémonie</description>
-		</result>	
-		<result>
+		</historical>
+	</result>	
+	<result>
+		<historical>
 			<id>1</id>
+			<type>historic</type>
 			<mark_id></mark_id>
 			<mark_date></mark_date>
 			<date>La cérémonie vient juste de débuter</date>	
 			<description>cérémonie</description>
-		</result>	
-		<result>
+		</historical>
+	</result>	
+	<result>
+		<historical>
 			<id>1</id>
+			<type>historic</type>
 			<mark_id></mark_id>
 			<mark_date></mark_date>
 			<date>La cérémonie vient juste de débuter</date>	
 			<description>cérémonie</description>
-		</result>	
-		<result>
+		</historical>
+	</result>	
+	<result>
+		<historical>
 			<id>1</id>
+			<type>historic</type>
 			<mark_id></mark_id>
 			<mark_date></mark_date>
 			<date>La cérémonie vient juste de débuter</date>	
 			<description>cérémonie</description>
-		</result>	
-		<result>
+		</historical>
+	</result>	
+	<result>
+		<historical>
 			<id>1</id>
+			<type>historic</type>
 			<mark_id></mark_id>
 			<mark_date></mark_date>
 			<date>La cérémonie vient juste de débuter</date>	
 			<description>cérémonie</description>
-		</result>	
-		<result>
+		</historical>
+	</result>	
+	<result>
+		<historical>
 			<id>1</id>
+			<type>historic</type>
 			<mark_id></mark_id>
 			<mark_date></mark_date>
 			<date>La cérémonie vient juste de débuter</date>	
 			<description>cérémonie</description>
-		</result>			
-	</historicResults>
-</data>
+		</historical>
+	</result>
+</results>
