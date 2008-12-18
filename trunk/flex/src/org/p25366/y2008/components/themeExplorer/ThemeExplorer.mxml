@@ -21,6 +21,9 @@
 			
 			private function selectKey(event:Event):void
 			{
+				model.subkeyVO = null;
+				model.wordsVO = null;
+				model.wordVO = null;
 				var keyVO:KeyVO = event.target.selectedItem as KeyVO;
 				model.keyVO = keyVO;
 				if (keyVO.children.length == 0){
@@ -31,6 +34,8 @@
 			
 			private function selectSubkey(event:Event):void
 			{
+				model.wordsVO = null;
+				model.wordVO = null;
 				var subkeyVO:SubkeyVO = subthemesList.selectedItem as SubkeyVO;
 				model.subkeyVO = subkeyVO;
 				if (subkeyVO.children.length == 0){
@@ -41,10 +46,12 @@
 			
 			private function selectWord(event:Event):void
 			{
+				model.wordVO = null;
 				var wordsVO:WordsVO = wordsList.selectedItem as WordsVO;
 				model.wordsVO = wordsVO;
+				model.wordVO = wordsVO;
 				delegate = new Delegate();
-				delegate.loadWord(wordsVO);
+				//delegate.loadWord(wordsVO);
 			}
 		]]>
 	</mx:Script>

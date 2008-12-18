@@ -4,7 +4,6 @@
 		<![CDATA[
 			import org.p25366.y2008.components.definitionPage.business.WordDelegate;
 			import mx.controls.Alert;
-			import org.p25366.y2008.vo.WordVO;
 			import org.p25366.y2008.model.Model;
 			import org.p25366.y2008.event.ProjectEvents;
 			
@@ -37,12 +36,12 @@
 		</mx:HBox>
 		<mx:HBox>
 			<mx:VBox>
-				<mx:Text text="{'Phrase en '+model.wordVO.langSrc+' : '}"/>
+				<mx:Text text="{'Phrase en '+model.langSrcString+' : '}"/>
 				<mx:Text text="{model.wordVO.sensSrc}"/>
 			</mx:VBox>
 			<mx:VBox>
-				<mx:Text text="{'Phrase en '+model.wordVO.langDest+' : '}"/>
-				<mx:Text text="{model.wordVO.sensDest}"/>
+				<mx:Text text="{'Phrase en '+model.langDestString+' : '}"/>
+				<mx:Text text="{model.wordsVO.sensDest}"/>
 			</mx:VBox>
 		</mx:HBox>
 		<mx:VBox>

@@ -15,6 +15,7 @@ package org.p25366.y2008.model
 		public var assets:String = "http://srcbordeaux2009.com/25366/data/media/";
 
 		public var langSource:String = "";
+		
 		public var langDest:String = "";
 
 		public var keys:ArrayCollection = new ArrayCollection(); // Liste des clés
@@ -24,7 +25,7 @@ package org.p25366.y2008.model
 		public var keyVO:KeyVO;
 		public var subkeyVO:SubkeyVO;
 		public var wordsVO:WordsVO;
-		public var wordVO:WordVO;
+		public var wordVO:WordsVO;
 	
 		public var langDestProvider:ArrayCollection;
 		public var langSrcProvider:ArrayCollection;
