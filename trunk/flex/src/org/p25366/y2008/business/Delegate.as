@@ -59,6 +59,7 @@ package org.p25366.y2008.business
 		public function loadWords(pSubKeyVO:SubkeyVO):void
 		{
 			this._action = "words";
+			this.variables.use_db = "true";
 			this.variables.action = this._action;
 			this.variables.langSource = Model.getInstance().langSource;
 			this.variables.langDest = Model.getInstance().langDest;
@@ -74,6 +75,7 @@ package org.p25366.y2008.business
 		public function loadWord(pWordsVO:WordsVO):void
 		{
 			this._action = "word";
+			this.variables.use_db = "true";
 			this.variables.action = this._action;
 			this.variables.langSource = Model.getInstance().langSource;
 			this.variables.langDest = Model.getInstance().langDest;

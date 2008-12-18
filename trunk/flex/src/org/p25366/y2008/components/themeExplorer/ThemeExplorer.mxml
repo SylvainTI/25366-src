@@ -21,7 +21,6 @@
 			
 			private function selectKey(event:Event):void
 			{
-				
 				var keyVO:KeyVO = event.target.selectedItem as KeyVO;
 				model.keyVO = keyVO;
 				if (keyVO.children.length == 0){
@@ -32,7 +31,7 @@
 			
 			private function selectSubkey(event:Event):void
 			{
-				var subkeyVO:SubkeyVO = event.target.selectedItem as SubkeyVO;
+				var subkeyVO:SubkeyVO = subthemesList.selectedItem as SubkeyVO;
 				model.subkeyVO = subkeyVO;
 				if (subkeyVO.children.length == 0){
 				delegate = new Delegate();
@@ -51,6 +50,7 @@
 	</mx:Script>
 	
 	<mx:TileList
+		horizontalCenter="0"
 		verticalCenter="0"
 		id = "themeExplorer"
 		rowCount="1"
@@ -66,6 +66,7 @@
 	/>
 	<mx:HBox 
 		visible="{model.keyVO!=null}"
+		verticalCenter="0"
 		>
 			<mx:HBox styleName="themeExplorerVerticalStyle" width="210" verticalAlign="middle" height="100%">
 			<mx:TileList 
@@ -82,12 +83,11 @@
 				columnWidth="150"
 				rowHeight="20"
 				styleName="themeExplorerList"
-			>
-			</mx:TileList>
+			/>
 			<mx:Image source="{Model.getInstance().assets+'keys/'+Model.getInstance().keyVO.image}" includeInLayout="true"/>	
 			</mx:HBox>
 			<mx:List 
-				top="200"
+				top="200" 
 				id = "subthemesList"
 				styleName="themeExplorerList"
 				click="selectSubkey(event);"
