@@ -10,7 +10,7 @@ Arnaud
 header('Content-type: text/html; charset=UTF-8');
 $data = file_get_contents("data_unicode.txt");
 $data = mb_convert_encoding( $data, 'UTF-8', 'UTF-16LE'); // Excel fait de l'utf 16 little endian, on convertit en utf-8
-$lines = explode("\r",$data);
+$lines = explode("\r\n",$data);
 $themes = array();
 $subthemes = array();
 $words = array();
@@ -40,6 +40,7 @@ foreach ($lines as $line) {
 	$i++;
 	if (!in_array($data[1], $subthemes_list)) {
 		$subthemes_list[] = $data[1];
+		//$subthemes[$data[1]] = $i;
 		$subthemes[$i]['subtheme'] = $data[1];
 		$subthemes[$i]['theme'] = $data[0];
 		$subthemes[$i]['chinois'] = $data[5];
@@ -50,7 +51,6 @@ foreach ($lines as $line) {
 			}
 		}
 	}
-
 }
 //*/
 //*
@@ -60,27 +60,46 @@ echo count($subthemes).'<br/>';
 foreach ($lines as $line) {
 	$data = explode("	", $line);
 	$i++;
-	$key=0;
 	if (!in_array($data[2], $words_list)) {
 		$words_list[] = $data[2];
 		$words[$i]['subtheme'] = $data[1];
 		$words[$i]['theme'] = $data[0];
 		$words[$i]['word'] = $data[2];
+		$words[$i]['genre'] = $data[4];
 		$words[$i]['chinois'] = $data[5];
+		$words[$i]['phrase'] = $data[6];
+		$words[$i]['phrase_c'] = $data[7];
+		//$words[$i]['subtheme_id'] = $subthemes[$data[1]];
 		// récupération de la clé du sous-themes pour le mot
-		foreach ($subthemes as $key => $subtheme) {
+		//*
+		$j=0;
+		foreach ($subthemes as $subtheme) {
+			$j++;
+			//echo count($subthemes).'<br/>';
+			//echo ($data[1].' = '.$subtheme['subtheme']."<br/>\n");
 			if ($data[1] ==  $subtheme['subtheme']) {
-				$words[$i]['subtheme_id'] = $key;
+				//echo $subthemes[$subtheme['subtheme']].'<br/>';
+				$words[$i]['subtheme_id'] = $j;
+				break;
+
 			}
 		}
+		//*/
 	}
-
 }
+$i=0;
 //*/
 require_once('../config/config.php');
 sort($themes);
 sort($subthemes);
 sort($words);
+/* insertion des mots dans la base
+foreach ($words as $key => $word) {
+$i++;
+			$db->query("INSERT INTO `word` (`id`, `lib`, `lang`, `definition`, `genre`, `idSubtheme`) VALUES ('$i','{$words[$key]['chinois']}','zh-zho', '{$words[$key]['phrase_c']}', '', '{$words[$key]['subtheme_id']}')");
+			//echo("INSERT INTO `word` (`id`, `lib`, `lang`, `definition`, `genre`, `idSubtheme`) VALUES ('$i','{$words[$key]['word']}','fr-fra', '{$words[$key]['phrase']}', '{$words[$key]['genre']}', '{$words[$key]['subtheme_id']}')".'<br/>');
+}
+//*/
 
 /* Insertion des sous-thèmes dans la base
 	foreach ($subthemes as $key => $subtheme) {
