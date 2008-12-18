@@ -14,7 +14,7 @@
 		]]>
 	</mx:Script>
 		<mx:Image id="img" height="35" width="35" source="{Model.getInstance().assets+'keys/'+data.image}" x="0" y="0" autoLoad="true" scaleContent="true" horizontalCenter="0"/>
-		<mx:Label id="txt" text="{data.label}" styleName="keyStyle" rotation="90" horizontalCenter="30" top="{img.height+3}"/>
+		<mx:Label id="txt" text="{data.label}" styleName="keyStyle" rotation="90" horizontalCenter="30" top="{img.height+3}" textAlign="left"/>
 		
 		<mx:transitions>
 		<mx:Transition fromState="*" toState="over">

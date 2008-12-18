@@ -28,24 +28,24 @@
 	
 	<mx:Binding source="model.wordVO.id" destination="this.wordId"/>
 	
-	<mx:VBox>
-		<mx:HBox>
-			<mx:Text x="10" y="10" text="{model.wordVO.libSrc}" width="103"/>
-			<mx:Text text="{model.wordVO.genderSrc}"/>
+	<mx:VBox horizontalCenter="0" verticalCenter="0">
+		<mx:HBox width="100%" paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10" borderStyle="solid" borderColor="#DDDDDD">
+			<mx:Text color="#330000" x="10" y="10" text="{model.wordVO.libSrc}" width="103"/>
+			<mx:Text color="#AAAAAA" text="{model.wordVO.genderSrc+' : '}"/>
 			<mx:Text x="146" y="10" text="{model.wordVO.genderDest}" width="128"/>
 		</mx:HBox>
 		<mx:HBox>
-			<mx:VBox>
-				<mx:Text text="{'Phrase en '+model.langSrcString+' : '}"/>
+			<mx:VBox width="50%" paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10" borderStyle="solid" borderColor="#DDDDDD">
+				<mx:Text color="#111111" text="{'Phrase en '+model.langSrcString+' : '}"/>
 				<mx:Text text="{model.wordVO.sensSrc}"/>
 			</mx:VBox>
-			<mx:VBox>
-				<mx:Text text="{'Phrase en '+model.langDestString+' : '}"/>
+			<mx:VBox width="50%" paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10" borderStyle="solid" borderColor="#DDDDDD">
+				<mx:Text color="#111111" text="{'Phrase en '+model.langDestString+' : '}"/>
 				<mx:Text text="{model.wordsVO.sensDest}"/>
 			</mx:VBox>
 		</mx:HBox>
-		<mx:VBox>
-			<mx:Text text="Tags : "/>
+		<mx:VBox width="100%" paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10" borderStyle="solid" borderColor="#DDDDDD">
+			<mx:Text color="#111111" text="Tags : "/>
 			<mx:Text text="{model.wordVO.tags}"/>
 		</mx:VBox>
 	</mx:VBox>

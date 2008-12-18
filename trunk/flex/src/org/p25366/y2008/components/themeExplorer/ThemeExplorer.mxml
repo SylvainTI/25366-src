@@ -106,9 +106,10 @@
 				click="selectSubkey(event);"
 				dataProvider="{model.keyVO.children}"
 				horizontalScrollPolicy="off"
-				verticalScrollPolicy="off"
+				paddingRight="10"
 				itemRenderer="org.p25366.y2008.view.SubkeyItemRenderer"
 				height="100%"
+				columnWidth="200"
 			/>
 			<mx:List 
 				id = "wordsList"
@@ -118,9 +119,13 @@
 				dataProvider="{model.subkeyVO.children}" 
 				itemRenderer="org.p25366.y2008.view.WordsItemRenderer"
 				horizontalScrollPolicy="off"
+				paddingRight="10"
 				height="100%"
+				columnWidth="200"
 			/>
 			<definitionPage:DefinitionPage 
+			horizontalCenter="0"
+			verticalCenter="0"
 			id="definitionPage"
 			autoLayout="true"
 			visible="{model.wordVO!=null}"

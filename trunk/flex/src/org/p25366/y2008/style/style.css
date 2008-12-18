@@ -59,11 +59,10 @@ List.themeExplorerList{
 	trackColors: #FFFFFF, #FFFFFF;
 }
 Canvas.defPage{
-	background-alpha: 0;
 	color: #000000;
 	fontSize: 16;
-	fontFamily: DINPro;
 }
+
 @font-face
 {
 	fontFamily: DINPro;
