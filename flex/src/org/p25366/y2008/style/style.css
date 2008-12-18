@@ -23,21 +23,24 @@ HBox.themeExplorerVerticalStyle{
 	background-color: #BCFFD2;
 	backgroundSize: auto;
 	borderStyle: none;
-	
+}
+
+Canvas.keyRenderer{
+	background-color: #BCFFD2;
 }
 
 Label.keyStyle{
 	color: #000000;
-	fontSize: 15;
+	fontSize: 10;
 	fontFamily: DINPro;
+	
 }
 List.themeExplorerList{
 	background-alpha:0;
 	borderThickness: 0;
 	borderStyle: none;
-	rollOverColor: #F1F1F1;
-	selectionColor: #EDEDED;
-	verticalScrollBarStyleName: listVerticalScrollBar;
+	item-roll-over-color:#BCFFD2;
+	item-selection-color:#BCFFD2;
 }
 .listVerticalScrollBar
 {

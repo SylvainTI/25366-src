@@ -5,7 +5,9 @@
 	mouseChildren="false"
 	horizontalScrollPolicy="off"
 	verticalScrollPolicy="off"
-	backgroundAlpha="0"
+	mouseOut="currentState = 'horizontalOut'"
+	mouseOver="currentState = 'horizontalOver'"
+	styleName="keyRenderer"
 	>
 	<mx:Script>
 		<![CDATA[
@@ -14,7 +16,8 @@
 			import org.p25366.y2008.vo.KeyVO;
 		]]>
 	</mx:Script>
-	<mx:Image id="img"
+	<mx:Image 
+		id="img"
 		height="20"
 		width="20"
 		verticalCenter="0"
@@ -22,19 +25,14 @@
 		autoLoad="true"
 		scaleContent="true"
 		/>
-	<mx:Label  id="txt"
-		text="{data.label}" 
-		styleName="keyStyle" 
+	<mx:Label
+		id="txt"
+		text="{data.label}"
+		styleName="keyStyle"
 		alpha="0"
+		left="{img.width+2}"
+		verticalCenter="0"
 		/>
-	<!--<mx:transitions>
-		<mx:Transition fromState="*" toState="horizontalOver">
-				<mx:Move target="{img}" xTo="10"/>
-		</mx:Transition>
-		<mx:Transition fromState="horizontalOver" toState="horizontalOut">
-			<mx:Move target="{img}" xTo="{-(img.width/2)}"/>
-		</mx:Transition>
-	</mx:transitions>
 	<mx:states>
 		<mx:State name="horizontalOver">
 			<mx:SetProperty target="{txt}" name="alpha" value="1"/>
@@ -42,5 +40,5 @@
 		<mx:State name="horizontalOut">
 			<mx:SetProperty target="{txt}" name="alpha" value="0"/>
 		</mx:State>
-	</mx:states>-->
+	</mx:states>
 </mx:Canvas>
