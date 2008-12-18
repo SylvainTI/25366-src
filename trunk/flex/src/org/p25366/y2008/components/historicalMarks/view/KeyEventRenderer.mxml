@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" >
+<mx:Canvas  xmlns:mx="http://www.adobe.com/2006/mxml" horizontalScrollPolicy="off" verticalScrollPolicy="off">
 	<mx:Script>
 		<![CDATA[
 			import org.p25366.y2008.components.historicalMarks.vo.HistoricalMarkVO;
 			import org.p25366.y2008.components.historicalMarks.vo.HistoricalEventVO;
+			import mx.controls.Alert;
+		
+		/*private function bolding():void {
+			
+			if (HistoricalEventVO(data).type == "major"){
+				HistoricalEventVO(data).type = "bold";
+			}  else {
+			HistoricalEventVO(data).type = "normal";
+			}
+			
+		}*/
 		]]>
 	</mx:Script>
-	<mx:HBox >
-	<mx:Label text="{HistoricalEventVO(data).from_date}:"  fontStyle="italic" />
-	<mx:Text  text="{HistoricalEventVO(data).description}" width="240" textAlign="left" />
+	<mx:HBox>
+		<mx:Label fontSize="11.5" textAlign="left"  text="{HistoricalEventVO(data).from_date}:"  fontStyle="italic"   />
+		<mx:Text  fontSize="11.5"  text="{HistoricalEventVO(data).description}" width="240" textAlign="left"  />
 	</mx:HBox>
 </mx:Canvas>
