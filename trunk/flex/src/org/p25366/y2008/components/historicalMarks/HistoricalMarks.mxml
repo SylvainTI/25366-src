@@ -86,16 +86,23 @@
 			private function sliderChange(evt:Event):void{
 			var historic_slider_index:Number = historic_slider.value;
 			list.scrollToIndex(historic_slider_index-2);
-			//historic_slider.dispatchEvent(evt:Event);
-			//var evt:Event = new (Event.CHANGE);
+			//myAnimate.play([list]);
+			}
+			private function slide_to(scroll_position:Number):void{
+				
 			}
 
 		]]>
 	</mx:Script>
+	<mx:Sequence id="myAnimate">
+		<mx:AnimateProperty id="myAnimateProperty" property="horizontalScrollPosition" fromValue="0" toValue="50" duration="5000"/>
+	</mx:Sequence>
+
+
 <mx:VBox  >
 <mx:HBox>
-	<mx:Label text="100 repères historiques" fontSize="20" click="Alert.show('hihi')"   />	
-	<mx:Label styleName="marksRestrictors" text="tous"  buttonMode="true" click="historic_slider.minimum=0;historic_slider.maximum=99;"/>
+	<mx:Label text="100 repères historiques" fontSize="20"   />	
+	<mx:Label styleName="marksRestrictors"   text="tous"  buttonMode="true" click="historic_slider.minimum=0;historic_slider.maximum=99;"/>
 	<mx:Label styleName="marksRestrictors" text="de 0 à 20" buttonMode="true" click="historic_slider.minimum=0;historic_slider.maximum=19;"/>
 	<mx:Label styleName="marksRestrictors" text="de 20 à 40"  buttonMode="true" click="historic_slider.minimum=20;historic_slider.maximum=39;"/>
 	<mx:Label styleName="marksRestrictors" text="de 40 à 60"  buttonMode="true" click="historic_slider.minimum=40;historic_slider.maximum=59;"/>
@@ -104,13 +111,13 @@
 </mx:HBox>
 	<mx:VBox horizontalAlign="left">
 	<mx:Canvas>
-		<mx:Button buttonMode="true" styleName="markLinks" left="{historic_slider.width*0}" label="-1 000 000"   click="list.scrollToIndex(1-3)"/>
-		<mx:Button buttonMode="true" styleName="markLinks" left="{historic_slider.width*0.07}" label="-2 000"   click="list.scrollToIndex(5-3)"/>
-		<mx:Button buttonMode="true" styleName="markLinks" left="{historic_slider.width*0.2}" label="0"  click="list.scrollToIndex(16-3)"/>
-		<mx:Button buttonMode="true" styleName="markLinks" left="{historic_slider.width*0.3}" label="1 000"  click="list.scrollToIndex(36-3)"/>
-		<mx:Button buttonMode="true" styleName="markLinks" left="{historic_slider.width*0.5}" label="1 200"  click="list.scrollToIndex(44-3)"/>
-		<mx:Button buttonMode="true" styleName="markLinks" left="{historic_slider.width*0.65}" label="1 500"  click="list.scrollToIndex(56-3)"/>
-		<mx:Button buttonMode="true" styleName="markLinks" left="{historic_slider.width*0.95}" label="2010"  click="list.scrollToIndex(100-3)"/>
+		<mx:Button buttonMode="true" styleName="markLinks" left="{historic_slider.width*0}" label="-1 000 000"   click="slide_to(-2)"/>
+		<mx:Button buttonMode="true" styleName="markLinks" left="{historic_slider.width*0.0435}" label="-2 000"   click="slide_to(2)"/>
+		<mx:Button buttonMode="true" styleName="markLinks" left="{historic_slider.width*0.142}" label="0"  click="slide_to(13)"/>
+		<mx:Button buttonMode="true" styleName="markLinks" left="{historic_slider.width*0.34}" label="1 000"  click="slide_to(33)"/>
+		<mx:Button buttonMode="true" styleName="markLinks" left="{historic_slider.width*0.42}" label="1 200"  click="slide_to(41)"/>
+		<mx:Button buttonMode="true" styleName="markLinks" left="{historic_slider.width*0.54}" label="1 500"  click="slide_to(53)"/>
+		<mx:Button buttonMode="true" styleName="markLinks" left="{historic_slider.width*0.955}" label="2010"  click="slide_to(97)"/>
 	</mx:Canvas>
 	<mx:HSlider trackSkin="{HistoricTrack}" sliderThumbClass="{HistoricSlider}"  
 		useHandCursor="true" buttonMode="true" liveDragging="true" invertThumbDirection="true"  
@@ -121,7 +128,6 @@
 		<mx:HorizontalList id="list"
 			paddingTop="20"
 			horizontalScrollPolicy="off"
-			change="Alert.show(list.horizontalScrollPosition.toString());"
 			borderThickness="0"
 			backgroundAlpha="0"
 			width="1200"

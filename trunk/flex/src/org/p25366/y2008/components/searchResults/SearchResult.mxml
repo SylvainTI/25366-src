@@ -37,6 +37,7 @@
 			private function onItemSelected(event : Event ) :void 
 			{
 				Alert.show(event.target.tostring());
+				model.keyVO
 			}
 			
 			private function resultHandler(event:ResultEvent):void
