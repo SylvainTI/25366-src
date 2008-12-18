@@ -32,7 +32,7 @@ http://code.google.com/p/tweener/
 http://code.google.com/p/tweener/wiki/License
 */
 
-package caurina.transitions {
+package org.p25366.y2008.components.historicalMarks.caurina.transitions {
 	
 	import flash.display.*;
 	import flash.events.Event;
