@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="278" height="42" styleName="wordsItem">
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="278" height="30" styleName="wordsItem">
 	<mx:HBox>
 	<mx:Label text="{data.libSrc}"/>
 	<mx:Label text="{data.libDest}"/>

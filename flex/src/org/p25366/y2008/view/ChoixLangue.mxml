@@ -21,13 +21,13 @@
 				model.langSource = event.currentTarget.selectedItem.data.toString();
 				model.langSrcString = event.currentTarget.selectedItem.label.toString();
 				delegate.loadKeys();
-				Alert.show("idjbg");
 			}	
 			
 			public function determineLangDest(event:Event):void
 			{
 				model.langDest = event.currentTarget.selectedItem.data.toString();
-				model.langDestString = event.currentTarget.selectedItem.label.toString();			}		
+				model.langDestString = event.currentTarget.selectedItem.label.toString();			
+			}		
 		]]>
 	</mx:Script>
 	<mx:Text
@@ -46,11 +46,7 @@
 		cornerRadius="10"
 		dataProvider="{Model.getInstance().langSrcProvider}"
 		/>
-        <!--
-        Il fauy prendre un array collection du model comme data provider
-        
-        <mx:Object label="français" data="fr-fra"/>
-        <mx:Object label="chinois" data="zh-zho"/>-->
+
 	<mx:ComboBox
 		id="langDest"
 		
@@ -61,8 +57,6 @@
 		cornerRadius="10"
 		dataProvider="{Model.getInstance().langDestProvider}"
 		/>
-        <!--<mx:Object label="français" data="fr-fra"/>
-        <mx:Object label="chinois" data="zh-zho"/>-->
 	<mx:Button 
 		label="Choix"
 		click="model.page=model.PAGE_HOME;model.souspage=model.SOUSPAGE_EXPLORATEUR_THEMES"

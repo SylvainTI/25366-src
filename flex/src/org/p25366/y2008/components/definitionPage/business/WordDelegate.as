@@ -8,7 +8,7 @@ package org.p25366.y2008.components.definitionPage.business
 	import mx.rpc.xml.SimpleXMLDecoder;
 	
 	import org.p25366.y2008.model.Model;
-	import org.p25366.y2008.vo.WordVO;
+	import org.p25366.y2008.vo.WordsVO;
 	//import com.carlcalderon.arthropod.Debug;
 	
 	[Bindable]
@@ -48,7 +48,7 @@ package org.p25366.y2008.components.definitionPage.business
         var decoder:SimpleXMLDecoder = new SimpleXMLDecoder(true);
         var xmlObj:Object = decoder.decodeXML(xmlDoc);
         
-        Model.getInstance().keys.addItem((new WordVO(itemVO)));
+        Model.getInstance().keys.addItem((new WordsVO(itemVO)));
         			
 		}
 	}

@@ -14,7 +14,6 @@ package org.p25366.y2008.business
 	import org.p25366.y2008.model.Model;
 	import org.p25366.y2008.vo.KeyVO;
 	import org.p25366.y2008.vo.SubkeyVO;
-	import org.p25366.y2008.vo.WordVO;
 	import org.p25366.y2008.vo.WordsVO;
 	
 	public class Delegate
@@ -81,23 +80,7 @@ package org.p25366.y2008.business
 			this.variables.subthemeId = pSubKeyVO.id;
 			var url_request:URLRequest = new URLRequest();
 			url_request.method = URLRequestMethod.GET;
-			url_request.url = Model.getInstance().data+"/index.php";;
-			url_request.data = this.variables;
-			this.url_loader.load(url_request);
-			this.url_loader.addEventListener(Event.COMPLETE,onXmlLoaded);
-		}
-		
-		public function loadWord(pWordsVO:WordsVO):void
-		{
-			this._action = "word";
-			this.variables.use_db = "true";
-			this.variables.action = this._action;
-			this.variables.langSource = Model.getInstance().langSource;
-			this.variables.langDest = Model.getInstance().langDest;
-			this.variables.subthemeId = pWordsVO.id;
-			var url_request:URLRequest = new URLRequest();
-			url_request.method = URLRequestMethod.GET;
-			url_request.url = Model.getInstance().data+"/index.php";;
+			url_request.url = Model.getInstance().data+"/index.php";
 			url_request.data = this.variables;
 			this.url_loader.load(url_request);
 			this.url_loader.addEventListener(Event.COMPLETE,onXmlLoaded);
@@ -135,11 +118,6 @@ package org.p25366.y2008.business
 					for each(itemVO in xmlObj.words.word){
 						Model.getInstance().subkeyVO.children.addItem((new WordsVO(itemVO)));
 					}
-				break;
-				case "word":
-				for each(itemVO in xmlObj){
-					Model.getInstance().wordVO = new WordVO(itemVO);
-				}
 				break;
 			}
 		}
