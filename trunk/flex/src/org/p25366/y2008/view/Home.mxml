@@ -20,18 +20,24 @@
 			private function init():void{
 			this.setChildIndex(searchResult,this.getChildIndex(themeExplorer));
 			}
-		]]>
+		
+			//Mettre un écouteur sur le text input pour la touche entrée. L'écouteur activera le "visible" 
+			//du composant juste dessous
+			]]>
 	</mx:Script>
 	<mx:TextInput 
 			id="searchTextInput" 
 			right="30"
 			top="30"
 			/>
+
 		<searchResults:SearchResult 
+			
 			id="searchResult"
 			label="Search Result"
 			word="{searchTextInput.text}"
 			visible="{searchTextInput.text!=''}"
+			 
 			width="500"
 			height="400"
 			right="20"

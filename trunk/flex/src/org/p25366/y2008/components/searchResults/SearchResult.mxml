@@ -81,7 +81,12 @@
 			{
 				test_service.send();
 			}
+		/* au clic sur un mot (Onclick) : modele.keyVO = au keyVo du mot selectionné.
+		modele.subKeyVo = subkeyVo du mot selectionné,modele.subkeyVo.keyVO = modele.KeyVO;
+		modele.wordVo = mot.
+		*/
 		]]>
+		
 	</mx:Script>
 	<mx:HTTPService
 		id="test_service"
