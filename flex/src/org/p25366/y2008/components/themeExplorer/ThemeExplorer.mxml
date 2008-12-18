@@ -64,11 +64,12 @@
 		rowHeight="150"
 		columnWidth="45"
 	/>
-	<mx:HBox 
+	<mx:Canvas 
 		visible="{model.keyVO!=null}"
 		verticalCenter="0"
+		height="100%"
 		>
-			<mx:HBox styleName="themeExplorerVerticalStyle" width="210" verticalAlign="middle" height="100%">
+			<mx:HBox styleName="themeExplorerVerticalStyle" width="210" height="100%">
 			<mx:TileList 
 				id = "themeExplorerVertical"
 				rowCount="25"
@@ -84,10 +85,14 @@
 				rowHeight="20"
 				styleName="themeExplorerList"
 			/>
-			<mx:Image source="{Model.getInstance().assets+'keys/'+Model.getInstance().keyVO.image}" includeInLayout="true"/>	
+			<mx:Canvas top="50">
+			<mx:Image id="img" source="{Model.getInstance().assets+'keys/'+Model.getInstance().keyVO.image}" includeInLayout="true"/>	
+			<mx:Label id="txt" text="{Model.getInstance().keyVO.label}" styleName="keyStyle" left="50" rotation="90" horizontalCenter="30" top="{img.height+3}"/>		
+			</mx:Canvas>
 			</mx:HBox>
-			<mx:List 
-				top="200" 
+			<mx:Canvas top="100" autoLayout="true">
+			<mx:HBox>
+				<mx:List 
 				id = "subthemesList"
 				styleName="themeExplorerList"
 				click="selectSubkey(event);"
@@ -95,9 +100,9 @@
 				horizontalScrollPolicy="off"
 				verticalScrollPolicy="off"
 				itemRenderer="org.p25366.y2008.view.SubkeyItemRenderer"
+				height="100%"
 			/>
 			<mx:List 
-				top="200"
 				id = "wordsList"
 				visible="{model.subkeyVO!=null}"
 				styleName="themeExplorerList"
@@ -105,6 +110,9 @@
 				dataProvider="{model.subkeyVO.children}" 
 				itemRenderer="org.p25366.y2008.view.WordsItemRenderer"
 				horizontalScrollPolicy="off"
+				height="100%"
 			/>
-	</mx:HBox>
+			</mx:HBox>
+			</mx:Canvas>
+	</mx:Canvas>
 </mx:Canvas>
