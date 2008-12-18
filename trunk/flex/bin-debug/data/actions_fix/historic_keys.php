@@ -1,10 +1,14 @@
 <reperes>
 <?php
-mysql_connect("localhost", "root", "");
-mysql_select_db('25366');
+//mysql_connect("localhost", "root", "");
+//mysql_select_db('25366');
 $sql ="SELECT id,date FROM historical_marks ORDER BY id";
-$query = mysql_query($sql);
-while ($data = mysql_fetch_array($query)){
+$query = $db->prepare($sql);
+$query = $db->execute(array());
+$datas = $db->fetchAll();
+//$query = mysql_query($sql);
+//while ($data = mysql_fetch_array($query)){
+foreach($datas as $data) {
 	$xml.= '<repere><id>'.$data['id'].'</id><date>'.$data['date'].'</date><events>';
 
 	$sql2 = "SELECT * FROM historical_events WHERE marks_id='".$data['id']."'";
@@ -23,4 +27,5 @@ while ($data = mysql_fetch_array($query)){
 }
  $xml.='</reperes>';
  echo $xml;
+echo 'salut';
 ?>
