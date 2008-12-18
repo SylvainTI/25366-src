@@ -70,7 +70,7 @@
 		height="100%"
 		>
 			<mx:HBox styleName="themeExplorerVerticalStyle" width="210" height="100%">
-			<mx:TileList 
+			<mx:TileList
 				id = "themeExplorerVertical"
 				rowCount="25"
 				width="100"
