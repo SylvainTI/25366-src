@@ -62,7 +62,7 @@
 		dataProvider="{model.keys}"
 		itemRenderer="org.p25366.y2008.view.KeyItemRenderer"
 		rowHeight="150"
-		columnWidth="45"
+		columnWidth="36"
 	/>
 	<mx:Canvas 
 		visible="{model.keyVO!=null}"

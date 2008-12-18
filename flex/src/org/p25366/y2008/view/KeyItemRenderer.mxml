@@ -18,7 +18,7 @@
 		
 		<mx:transitions>
 		<mx:Transition fromState="*" toState="over">
-			<mx:Resize target="{img}" widthTo="40" heightTo="40"/>
+			<mx:Resize target="{img}" widthTo="35" heightTo="35"/>
 		</mx:Transition>
 		<mx:Transition fromState="*" toState="out">
 			<mx:Resize target="{img}" widthTo="30" heightTo="30"/>
