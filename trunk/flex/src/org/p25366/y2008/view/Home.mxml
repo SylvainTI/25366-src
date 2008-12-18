@@ -7,6 +7,7 @@
 	xmlns:searchResults="org.p25366.y2008.components.searchResults.*"
 	height="100%"
 	verticalScrollPolicy="off"
+	creationComplete="init()"
 	>
 	<mx:Script>
 		<![CDATA[
@@ -15,6 +16,10 @@
 			import org.p25366.y2008.model.Model;
 			[Bindable]
 			private var model:Model = Model.getInstance();
+			
+			private function init():void{
+			this.setChildIndex(searchResult,this.getChildIndex(themeExplorer));
+			}
 		]]>
 	</mx:Script>
 	<mx:TextInput 
@@ -23,6 +28,7 @@
 			top="30"
 			/>
 		<searchResults:SearchResult 
+			id="searchResult"
 			label="Search Result"
 			word="{searchTextInput.text}"
 			visible="{searchTextInput.text!=''}"
@@ -81,8 +87,8 @@
 			
 			>
 			<mx:Text
-				text="informations sur 32 46 72 34 45 bis (56 79).org"
-				click="Alert.show('Vous pourrez bientôt découvrir les repères linguistiques !')"
+				text="informations sur 25366.org"
+				click="Alert.show('Toutes les informations sur 25366.org...')"
 			/>
 			<mx:Image
 				source="@Embed('../bin-debug/data/media/barre.png')" 
