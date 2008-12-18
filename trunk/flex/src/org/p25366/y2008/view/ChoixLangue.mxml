@@ -63,7 +63,7 @@
         <mx:Object label="chinois" data="zh-zho"/>-->
 	<mx:Button 
 		label="Choix"
-		click="model.page='home'"
+		click="model.page='home';model.souspage='explorateurThemes'"
 		verticalCenter="0"
 		left="400"
 		/>

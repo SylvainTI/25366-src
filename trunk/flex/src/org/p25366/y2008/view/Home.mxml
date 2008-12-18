@@ -5,7 +5,6 @@
 	xmlns:themeExplorer="org.p25366.y2008.components.themeExplorer.*" 
 	xmlns:definitionPage="org.p25366.y2008.components.definitionPage.*" 
 	xmlns:searchResults="org.p25366.y2008.components.searchResults.*"
-	
 	>
 	<mx:Script>
 		<![CDATA[
@@ -14,60 +13,123 @@
 			import org.p25366.y2008.model.Model;
 			[Bindable]
 			private var model:Model = Model.getInstance();
-			
-			
 		]]>
 	</mx:Script>
-	<mx:Image
-		source="@Embed('org/p25366/y2008/style/assets/logo25366.png')" 
-		top="0"
-		left="100"
+	<mx:Canvas
+		height="90"
+		width="100%"
+		>
+		<mx:Image
+			source="@Embed('org/p25366/y2008/style/assets/logo25366.png')" 
+			left="120"
+			verticalCenter="0"
+			/>
+		<mx:Text
+			left="210"
+			verticalCenter="0"
+			>
+			<mx:text>français > chinois</mx:text>
+		</mx:Text>
+		<mx:Image
+			source="@Embed('../bin-debug/data/media/maison.png')" 
+			left="350"
+			verticalCenter="0"
+			click="model.page='choixLangue'"
+			/>
+		<mx:Text
+			left="390"
+			verticalCenter="0"
+			>
+			<mx:text>REP&#200;RES</mx:text>
+		</mx:Text>	
+		<mx:Button
+			label="LINGUISTIQUES"
+			verticalCenter="0"
+			left="447"
 		/>
+		<mx:Button
+			label="HISTORIQUES"
+			click="model.souspage='reperesHistoriques'"
+			verticalCenter="0"
+			left="557"
+		/>
+		<mx:HBox
+			right="30"
+			height="30"
+			
+			>
+			<mx:Text
+				text="informations sur 35366.org"
+			/>
+			<mx:Image
+				source="@Embed('../bin-debug/data/media/barre.png')" 
+			/>
+			<mx:Text
+				text="le langage Unideo"
+			/>
+			<mx:Image
+				source="@Embed('../bin-debug/data/media/barre.png')" 
+			/>
+			<mx:Text
+				text="contact"
+			/>
+		</mx:HBox>
+
+	</mx:Canvas>
+	<mx:TextInput 
+			id="searchTextInput" 
+			right="30"
+			top="30"
+			/>
+		<searchResults:SearchResult 
+			label="Search Result"
+			word="{searchTextInput.text}"
+			visible="{searchTextInput.text!=''}"
+			width="500"
+			height="400"
+			right="20"
+			top="50"
+			showEffect="{wipeDown}"
+			hideEffect="{wipeUp}"
+			/>
+	<mx:WipeDown id="wipeDown"/>
+		<mx:WipeUp id="wipeUp"/>
 	<mx:TabBar
 		dataProvider="{viewStack}"
-		top="80" 
+		top="80"
+		visible="false"
 		/>
 	<mx:ViewStack
 		id="viewStack"
 		top="150"
 		height="80%"
 		width="100%"
+		visible="false"
 		>
-		<historicalMarks:HistoricalMarks
-			label="Historical Marks"
-			/>
+		
 		<mx:HBox
 			label="Theme Explorer And Definition Page" 
 			width="100%" 
 			height="100%"
 			>
-			<themeExplorer:ThemeExplorer 
-				id="themeExplorer"
-				width="100%"
-				height="100%"
-				/>
+			
 			<definitionPage:DefinitionPage 
 				id="definitionPage"
 				autoLayout="true"
 			/>
 		</mx:HBox>
 	</mx:ViewStack>
-	<mx:TextInput 
-		id="searchTextInput" 
-		right="20"
-		top="20"
-		/>
-	<searchResults:SearchResult 
-		label="Search Result"
-		word="{searchTextInput.text}"
-		visible="{searchTextInput.text!=''}"
-		width="500"
-		height="400"
-		right="20"
-		top="50"
-		showEffect="{wipeDown}"
-		hideEffect="{wipeUp}"
-		/>
-	<mx:WipeDown id="wipeDown" />
-	<mx:WipeUp id="wipeUp" />
+	
+	<themeExplorer:ThemeExplorer 
+				id="themeExplorer"
+				verticalScrollPolicy="off"
+				horizontalScrollPolicy="off"
+				visible="{model.souspage=='explorateurThemes'}"
+				
+	/>
+	<historicalMarks:HistoricalMarks
+			label="Historical Marks"
+			visible="{model.souspage=='reperesHistoriques'}"
+	/>
+		
 </mx:Canvas>
