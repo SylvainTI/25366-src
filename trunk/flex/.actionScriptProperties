@@ -10,6 +10,7 @@
 </compiler>
 <applications>
 <application path="main.mxml"/>
+<application path="TEST_RECHERCHE.mxml"/>
 </applications>
 <modules/>
 <buildCSSFiles/>
