@@ -29,6 +29,7 @@
 			id="searchTextInput" 
 			right="30"
 			top="30"
+			cornerRadius="10"
 			/>
 
 		<searchResults:SearchResult 
@@ -37,7 +38,7 @@
 			label="Search Result"
 			word="{searchTextInput.text}"
 			visible="{searchTextInput.text!=''}"
-			 
+			cornerRadius="30"
 			width="500"
 			height="400"
 			right="20"

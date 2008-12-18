@@ -97,7 +97,8 @@
 		fault="faultHandler(event)"  
 		url= "{model.data+'?action=search&amp;q='+_word}"
 		/>
-	<mx:VBox>	
+	<mx:VBox>
+		
 		<mx:Text  text="Résultat de la recherche pour {_word}" width="300" paddingBottom="20">
 			<!--<mx:htmlText>
 				<![CDATA[
@@ -108,7 +109,7 @@
 		<mx:HBox width="100%">
 		<mx:VBox>
 			<mx:Text text="Mots" />
-				<mx:List dataProvider="{listData}" click="onItemSelected(event)">
+				<mx:List dataProvider="{listData}" click="onItemSelected(event)" cornerRadius="10">
 						<mx:itemRenderer>
 							<mx:Component>
 								<mx:VBox height="120">
@@ -121,7 +122,7 @@
 			</mx:VBox>
 			<mx:VBox>
 			<mx:Text text="Repères chronologiques" />
-				<mx:List dataProvider="{listData}" click="onItemSelected(event)">
+				<mx:List dataProvider="{listData}" click="onItemSelected(event)" cornerRadius="10">
 						<mx:itemRenderer>
 							<mx:Component>
 								<mx:VBox height="120">
