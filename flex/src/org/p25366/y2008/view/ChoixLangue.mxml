@@ -19,13 +19,15 @@
 			public function determineLangSource(event:Event):void
 			{
 				model.langSource = event.currentTarget.selectedItem.data.toString();
+				model.langSrcString = event.currentTarget.selectedItem.label.toString();
 				delegate.loadKeys();
+				Alert.show("idjbg");
 			}	
 			
 			public function determineLangDest(event:Event):void
 			{
 				model.langDest = event.currentTarget.selectedItem.data.toString();
-			}		
+				model.langDestString = event.currentTarget.selectedItem.label.toString();			}		
 		]]>
 	</mx:Script>
 	<mx:Text
@@ -34,13 +36,13 @@
 		verticalCenter="-100"
 		text="Pour entrer, choisissez une langue source et une langue cible en cliquant sur les champs ci-dessous"
 		/>
-	<mx:List
+	<mx:ComboBox
 		id="langSource"
-		height="100"
+	
 		left="250"
 		verticalCenter="0"
-		change="determineLangSource(event)"
-		borderSides=""
+		close="determineLangSource(event)"
+		
 		cornerRadius="10"
 		dataProvider="{Model.getInstance().langSrcProvider}"
 		/>
@@ -49,13 +51,13 @@
         
         <mx:Object label="français" data="fr-fra"/>
         <mx:Object label="chinois" data="zh-zho"/>-->
-	<mx:List
+	<mx:ComboBox
 		id="langDest"
-		height="100"
+		
 		left="325"
 		verticalCenter="0"
-		change="determineLangDest(event)"
-		borderSides=""
+		close="determineLangDest(event)"
+		
 		cornerRadius="10"
 		dataProvider="{Model.getInstance().langDestProvider}"
 		/>

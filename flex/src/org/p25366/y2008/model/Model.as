@@ -14,9 +14,6 @@ package org.p25366.y2008.model
 		public var data:String = "http://srcbordeaux2009.com/25366/data/";
 		public var assets:String = "http://srcbordeaux2009.com/25366/data/media/";
 
-
-
-
 		public var langSource:String = "";
 		public var langDest:String = "";
 
@@ -31,6 +28,9 @@ package org.p25366.y2008.model
 	
 		public var langDestProvider:ArrayCollection;
 		public var langSrcProvider:ArrayCollection;
+		
+		public var langSrcString:String="";
+		public var langDestString:String="";
 		
 		public var currentState:String;
 
