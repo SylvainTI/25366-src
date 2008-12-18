@@ -18,8 +18,8 @@
 	</mx:Script>
 	<mx:Image 
 		id="img"
-		height="20"
-		width="20"
+		height="21"
+		width="21"
 		verticalCenter="0"
 		source="{Model.getInstance().assets+'keys/'+data.image}"
 		autoLoad="true"
