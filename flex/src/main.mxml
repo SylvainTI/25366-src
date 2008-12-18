@@ -52,7 +52,7 @@
 		/>
 	<view:Home
 		id="langueChoisie"
-		visible="{model.page!='choixLangue'}"
+		visible="{model.page=='home'}"
 		width="100%"
 		height="100%"
 		/>
