@@ -1,7 +1,5 @@
 <reperes>
 <?php
-//mysql_connect("localhost", "root", "");
-//mysql_select_db('25366');
 $sql ="SELECT id,date FROM historical_marks ORDER BY id";
 $query = $db->prepare($sql);
 $query = $db->execute(array());
@@ -27,5 +25,4 @@ foreach($datas as $data) {
 }
  $xml.='</reperes>';
  echo $xml;
-echo 'salut';
 ?>

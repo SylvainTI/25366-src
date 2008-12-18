@@ -11,6 +11,7 @@
 			import mx.rpc.http.HTTPService;
 			import mx.rpc.events.ResultEvent;
 			import mx.controls.Alert;
+			import org.p25366.y2008.components.searchResults.vo.KeyVO;
 
 			[Bindable]
 			private var model:Model = Model.getInstance();
@@ -35,14 +36,14 @@
 			
 			private function onItemSelected(event : Event ) :void 
 			{
-				event.target.date
+				Alert.show(event.target.tostring());
 			}
 			
 			private function resultHandler(event:ResultEvent):void
 			{
 				listData = new ArrayCollection();
 							        
-				var one_result:Object;
+				var one_result:KeyVO;
 				var word_result:Object;
 				
 				for each(var result:XML in (event.result as XML).elements()) {
@@ -58,7 +59,7 @@
 						
 					}
 					else{
-					one_result = new Object();
+					one_result = new KeyVO();
 					one_result.date = result.date;
 					one_result.description = result.description;
 					one_result.num = result.num;
