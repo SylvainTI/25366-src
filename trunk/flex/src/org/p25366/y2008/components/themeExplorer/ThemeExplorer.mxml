@@ -53,8 +53,8 @@
 	
 	<mx:TileList
 		horizontalCenter="0"
-		verticalCenter="0"
 		id = "themeExplorer"
+		bottom="190"
 		rowCount="1"
 		columnCount="25"
 		visible="{model.keyVO==null}"
@@ -65,7 +65,7 @@
 		itemRenderer="org.p25366.y2008.view.KeyItemRenderer"
 		rowHeight="180"
 		columnWidth="40"
-		width="900"
+		width="1000"
 		verticalScrollPolicy="off"
 	/>
 	<mx:Canvas 
