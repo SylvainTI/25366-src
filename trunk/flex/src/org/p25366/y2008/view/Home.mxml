@@ -16,11 +16,23 @@
 			import org.p25366.y2008.model.Model;
 			[Bindable]
 			private var model:Model = Model.getInstance();
+			[Bindable]
+			private var sendSearch:Boolean = false;
 			
 			private function init():void{
 			this.setChildIndex(searchResult,this.getChildIndex(themeExplorer));
 			}
 		
+			private function onSearchValidate(event :KeyboardEvent) : void {
+				if(event.keyCode != Keyboard.ENTER){
+					sendSearch = false;
+					return;
+				}else if(event.keyCode == Keyboard.ENTER){
+					searchResult.recherche();
+					sendSearch=true;
+					return;
+				}
+			}
 			//Mettre un écouteur sur le text input pour la touche entrée. L'écouteur activera le "visible" 
 			//du composant juste dessous
 			]]>
@@ -30,14 +42,15 @@
 			right="30"
 			top="30"
 			cornerRadius="10"
+			textInput="sendSearch=false;"
+			keyDown="onSearchValidate(event)"
 			/>
 
 		<searchResults:SearchResult 
-		
 			id="searchResult"
 			label="Search Result"
 			word="{searchTextInput.text}"
-			visible="{searchTextInput.text!=''}"
+			visible="{sendSearch}"
 			width="287"
 			height="300"
 			right="30"
@@ -57,7 +70,7 @@
 			source="@Embed('org/p25366/y2008/style/assets/logo25366.png')" 
 			left="120"
 			verticalCenter="0"
-			click="model.page=model.PAGE_CHOIX_LANGUE;model.souspage=null;model.subkeyVO=null;model.keyVO=null;model.wordsVO=null;model.wordVO=null"
+			click="model.page=model.PAGE_CHOIX_LANGUE;model.souspage=null;model.subkeyVO=null;model.keyVO=null;model.wordVO=null"
 			/>
 		<mx:Text
 			left="210"
@@ -69,7 +82,7 @@
 			source="@Embed('../bin-debug/data/media/maison.png')" 
 			left="350"
 			verticalCenter="0"
-			click="model.page=model.PAGE_HOME;model.souspage=model.SOUSPAGE_EXPLORATEUR_THEMES;model.keyVO=null;model.subkeyVO=null;model.wordsVO=null;model.wordVO=null"
+			click="model.page=model.PAGE_HOME;model.souspage=model.SOUSPAGE_EXPLORATEUR_THEMES;model.keyVO=null;model.subkeyVO=null;model.wordVO=null"
 			/>
 		<mx:Text
 			left="390"

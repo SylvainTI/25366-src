@@ -8,6 +8,9 @@ package org.p25366.y2008.vo
 		public var keyVO:KeyVO;
 		public var subkeyVO:SubkeyVO;
 		
+		public var subthemeId:Number;
+		public var themeId:Number;
+		
 		public var id:String;
 		public var tags:String;
 		
@@ -32,6 +35,8 @@ package org.p25366.y2008.vo
 			this.libSrc = pObj.source.lib;
 			this.sensSrc = pObj.source.phrase;
 			this.sensDest = pObj.destination.phrase;
+			this.subthemeId = pObj.subthemeId;
+			this.themeId = pObj.themeId;
 		}
 	}
 }
