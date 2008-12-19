@@ -41,7 +41,6 @@
 			id="searchTextInput" 
 			right="30"
 			top="30"
-			cornerRadius="10"
 			textInput="sendSearch=false;"
 			keyDown="onSearchValidate(event)"
 			/>
