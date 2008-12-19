@@ -22,7 +22,6 @@
 			private function selectKey(event:Event):void
 			{
 				model.subkeyVO = null;
-				model.wordsVO = null;
 				model.wordVO = null;
 				var keyVO:KeyVO = event.target.selectedItem as KeyVO;
 				model.keyVO = keyVO;
@@ -34,7 +33,6 @@
 			
 			private function selectSubkey(event:Event):void
 			{
-				model.wordsVO = null;
 				model.wordVO = null;
 				var subkeyVO:SubkeyVO = subthemesList.selectedItem as SubkeyVO;
 				model.subkeyVO = subkeyVO;
@@ -48,10 +46,7 @@
 			{
 				model.wordVO = null;
 				var wordsVO:WordsVO = wordsList.selectedItem as WordsVO;
-				model.wordsVO = wordsVO;
-				model.wordVO = wordsVO;
-				delegate = new Delegate();
-				
+				model.wordVO = wordsVO;				
 			}
 		]]>
 	</mx:Script>
@@ -110,6 +105,7 @@
 				itemRenderer="org.p25366.y2008.view.SubkeyItemRenderer"
 				height="100%"
 				columnWidth="200"
+				verticalScrollBarStyleName="listVerticalScrollBar"
 			/>
 			<mx:List 
 				id = "wordsList"
@@ -122,6 +118,7 @@
 				paddingRight="10"
 				height="100%"
 				columnWidth="200"
+				verticalScrollBarStyleName="listVerticalScrollBar"
 			/>
 			<definitionPage:DefinitionPage 
 			horizontalCenter="0"

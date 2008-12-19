@@ -26,7 +26,6 @@ package org.p25366.y2008.model
 		
 		public var keyVO:KeyVO;
 		public var subkeyVO:SubkeyVO;
-		public var wordsVO:WordsVO;
 		public var wordVO:WordsVO;
 	
 		public var langDestProvider:ArrayCollection;
