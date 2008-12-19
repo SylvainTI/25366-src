@@ -74,3 +74,16 @@ Canvas.defPage{
 
 .historicButton {
 }
+
+TextInput {
+   borderStyle: solid;
+   borderColor: #999999;
+   borderThickness: 1;
+   cornerRadius: 12;
+   backgroundColor: #cccccc;
+   color: #666666;
+   letterSpacing: 0;
+   paddingLeft: 4;
+   dropShadowEnabled: false;
+   shadowDirection: center;
+}
