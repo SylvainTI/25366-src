@@ -11,6 +11,9 @@ paddingRight:1px;
 paddingTop:0px;
 }
 
+Button.linkButton {
+fontSize:9px;
+}
 Label.marksRestrictors {
 textDecoration:underline;
 fontSize:14px;

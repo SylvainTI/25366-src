@@ -2,13 +2,16 @@
 <mx:Canvas 
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
 	creationComplete="init()"
-	 horizontalCenter="0"
-	  verticalCenter="0"
+    top="100"
+    left="30"
+	height="480"
+	  verticalScrollPolicy="off"
 	>
 
 <mx:Style source="style/Style.css"/>
 	<mx:Script>
 		<![CDATA[
+			import mx.controls.sliderClasses.SliderThumb;
 			import org.p25366.y2008.model.Model;
 			import org.p25366.y2008.components.historicalMarks.vo.HistoricalEventVO;
 			import mx.rpc.http.HTTPService;
@@ -53,7 +56,7 @@
 					historicalEventVO.link = one_event.link;
 					historicalEventVO.from_date =  one_event.dates.from_date;
 					historicalEventVO.to_date =  one_event.dates.to_date;
-					historicalEventVO.date_type = one_event.date.@type;
+					historicalEventVO.date_type = one_event.dates.@type;
 					historicalMarkVO.events.addItem(historicalEventVO);
 					}
 					historicModel.marks.addItem(historicalMarkVO);
@@ -86,17 +89,19 @@
 			private function sliderChange(evt:Event):void{
 			var historic_slider_index:Number = historic_slider.value;
 			list.scrollToIndex(historic_slider_index-2);
-			//myAnimate.play([list]);
 			}
 			private function slide_to(scroll_position:Number):void{
-				
+				main_slider_properties.fromValue = historic_slider.value;
+				main_slider_properties.toValue = scroll_position+2;
+				main_slider.play([historic_slider]);
 			}
 
 		]]>
 	</mx:Script>
-	<mx:Sequence id="myAnimate">
-		<mx:AnimateProperty id="myAnimateProperty" property="horizontalScrollPosition" fromValue="0" toValue="50" duration="5000"/>
-	</mx:Sequence>
+	
+	<mx:Sequence id="main_slider">
+		<mx:AnimateProperty id="main_slider_properties" property="value" duration="400" />
+	</mx:Sequence>	
 
 
 <mx:VBox  >
@@ -112,7 +117,7 @@
 	<mx:VBox horizontalAlign="left">
 	<mx:Canvas>
 		<mx:Button buttonMode="true" styleName="markLinks" left="{historic_slider.width*0}" label="-1 000 000"   click="slide_to(-2)"/>
-		<mx:Button buttonMode="true" styleName="markLinks" left="{historic_slider.width*0.0435}" label="-2 000"   click="slide_to(2)"/>
+		<mx:Button buttonMode="true" styleName="markLinks" left="{historic_slider.width*0.0435}" label="-2 000"  click="slide_to(2)"/>
 		<mx:Button buttonMode="true" styleName="markLinks" left="{historic_slider.width*0.142}" label="0"  click="slide_to(13)"/>
 		<mx:Button buttonMode="true" styleName="markLinks" left="{historic_slider.width*0.34}" label="1 000"  click="slide_to(33)"/>
 		<mx:Button buttonMode="true" styleName="markLinks" left="{historic_slider.width*0.42}" label="1 200"  click="slide_to(41)"/>
@@ -123,11 +128,13 @@
 		useHandCursor="true" buttonMode="true" liveDragging="true" invertThumbDirection="true"  
 		change="sliderChange(event)" dataTipFormatFunction="tipValue" 
 		width="100%" id="historic_slider"  snapInterval="1" minimum="0"  
-		dataTipOffset="-50"  bottom="-50"/>
+		dataTipOffset="-5" />
 		
-		<mx:HorizontalList id="list"
-			paddingTop="20"
+		<mx:HorizontalList
 			horizontalScrollPolicy="off"
+			verticalScrollPolicy="off"
+			id="list"
+			paddingTop="20"
 			borderThickness="0"
 			backgroundAlpha="0"
 			width="1200"
