@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <mx:Canvas 
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
 	xmlns:historicalMarks="org.p25366.y2008.components.historicalMarks.*" 
@@ -9,6 +10,7 @@
 	verticalScrollPolicy="off"
 	creationComplete="init()"
 	>
+	<mx:Style source="../style/styleHome.css"/>
 	<mx:Script>
 		<![CDATA[
 			import org.p25366.y2008.business.Delegate;
@@ -21,6 +23,7 @@
 			
 			private function init():void{
 			this.setChildIndex(searchResult,this.getChildIndex(themeExplorer));
+			this.setChildIndex(searchResult,this.getChildIndex(historicalMarks));
 			}
 		
 			private function onSearchValidate(event :KeyboardEvent) : void {
@@ -70,6 +73,7 @@
 			left="120"
 			verticalCenter="0"
 			click="model.page=model.PAGE_CHOIX_LANGUE;model.souspage=null;model.subkeyVO=null;model.keyVO=null;model.wordVO=null"
+			buttonMode="true"
 			/>
 		<mx:Text
 			left="210"
@@ -82,24 +86,32 @@
 			left="350"
 			verticalCenter="0"
 			click="model.page=model.PAGE_HOME;model.souspage=model.SOUSPAGE_EXPLORATEUR_THEMES;model.keyVO=null;model.subkeyVO=null;model.wordVO=null"
+			buttonMode="true"
 			/>
+			
+		
 		<mx:Text
 			left="390"
 			verticalCenter="0"
 			>
 			<mx:text>REP&#200;RES</mx:text>
 		</mx:Text>	
+		
 		<mx:Button
+			styleName="buttonReperes"
 			label="LINGUISTIQUES"
 			verticalCenter="0"
-			left="447"
+			focusAlpha="0.5"
+
+			left="462"
 			click="Alert.show('Vous pourrez bientôt découvrir les repères linguistiques !')"
 		/>
 		<mx:Button
+			styleName="buttonReperes"
 			label="HISTORIQUES"
 			click="model.souspage=model.SOUSPAGE_REPERES_HISTORIQUES"
 			verticalCenter="0"
-			left="557"
+			left="562"
 		/>
 		<mx:HBox
 			right="30"
@@ -108,7 +120,17 @@
 			>
 			<mx:Text
 				text="informations sur 25366.org"
-				click="Alert.show('Toutes les informations sur 25366.org...')"
+				click="Alert.show('25366 est un défi qui porte sur le partage des langues,' + 
+						'et des cultures. A l\'instar des nombreuses initiatives entreprises' + 
+						'sur le web, 25366 vise à vous fournir une base de données vous' + 
+						'permettant d\'acquérir tout à la fois une nouvelle langue, mais' + 
+						'aussi des références culturelles, et finalement une autre manière' + 
+						'de penser le monde.' + 
+						'Pourquoi 25366 ?' + 
+						'25, car le corpus est composé de 25 catégories : vie, manger, sports et' + 
+						'jeux, commerce, communication, etc. ' + 
+						'366, car ces catégories se déclinent en autant de sous-thèmes : ainsi' + 
+						'la vie se décline en âge, naissance, mort, etc.')"
 			/>
 			<mx:Image
 				source="@Embed('../bin-debug/data/media/barre.png')" 
@@ -128,11 +150,7 @@
 
 	</mx:Canvas>
 	
-	
-		
-	
 
-	
 	<themeExplorer:ThemeExplorer 
 		id="themeExplorer"
 		verticalScrollPolicy="off"
@@ -143,6 +161,7 @@
 	
 	
 	<historicalMarks:HistoricalMarks
+			id="historicalMarks"
 			label="Historical Marks"
 			visible="{model.souspage=='reperesHistoriques'}"
 	/>
