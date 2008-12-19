@@ -12,15 +12,14 @@ foreach($datas as $data) {
 	$query2->execute(array());
 	$datas2 = $query2->fetchAll();
 	foreach($datas2 as $data2){
-		$add = '<event type="'.$data2['event_type'].'">';
-		$add.= '<dates type="'.$data2['date_type'].'"><from_date>'.$data2['from_date'].'</from_date><to_date>'.$data2['to_date'].'</to_date></dates>';
-		$add.= '<description>'.utf8_decode($data2['description']).'</description>';
-		$add.= '<link>'.$data2['link'].'</link>';
-		$add .= '</event>';
+		$xml .= '<event type="'.$data2['event_type'].'">';
+		$xml .= '<dates type="'.$data2['date_type'].'"><from_date>'.$data2['from_date'].'</from_date><to_date>'.$data2['to_date'].'</to_date></dates>';
+		$xml .= '<description>'.$data2['description'].'</description>';
+		$xml .= '<link>'.$data2['link'].'</link>';
+		$xml .= '</event>';
 	}
 	
-	$xml .= $add.'</events>';
-	$add = '';
+	$xml .= '</events>';
 	$xml .= '</repere>';
 }
  $xml.='</reperes>';
