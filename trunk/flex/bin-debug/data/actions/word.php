@@ -7,7 +7,7 @@
 	$genreDest = "genre dest";
 	$sensDest = "Définition du mot dans la langue de destination";
 	$tags = "Les tags en rapport avec le mot";
-?>		
+?>
 	<id><?php echo $wordId; ?></id>
 		<source>
 			<lang><?php echo $langSource; ?></lang>
