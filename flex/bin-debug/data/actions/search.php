@@ -1,12 +1,12 @@
 <results>
 <?php
 	$db = DatabaseManager::getInstance();
-	$querySearch = $db->prepare("SELECT * FROM `word` WHERE `lib` LIKE '%?%' ORDER BY `id` ASC"); // préparation de la requête
-	$querySearch->execute(array($query)); // on exécute la requête
-	print_r($querySearch);
-	print_r($db->errorInfo());
+	$querySearch = $db->prepare("SELECT ALL FROM `word` WHERE `lib` LIKE '%$query%'"); // préparation de la requête
+	$querySearch->execute(array()); // on exécute la requête
 	$searchResults = $querySearch->fetchAll();
-	print_r($searchResults);
+	//print_r($searchResults);
+	//print_r($db->errorInfo());
+	//print_r($searchResults);
 	foreach ($searchResults as $key => $searchResult) :
 ?>
 	<result>

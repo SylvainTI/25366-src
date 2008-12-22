@@ -73,5 +73,8 @@ require_once('config/config.php');
 		case "search":
 			include('actions/search.php');
 			break;
+		case "daily";
+			include('actions/daily.php');
+			break;
 	}
 }

@@ -6,7 +6,6 @@
 	$langsSources = $queryLangs->fetchAll();
 	foreach ($langsSources as $langSource) :
 ?>
-		
 	<lang>
 		<id><?php echo $langSource['id']; ?></id>
 		<lib><![CDATA[<?php echo $langSource['lib']; ?>]]></lib>
