@@ -19,26 +19,26 @@ $use_db = isset($_GET["use_db"]) ? $_GET["use_db"] : false;
 if (!$use_db) {
 	switch ($action) {
 		case "langs":
-			include('actions-no-bdd/langs.php');
+			include('actions-no-db/langs.php');
 			break;
 		case "themes":
-			include('actions-no-bdd/themes.php');
+			include('actions-no-db/themes.php');
 			break;
 		
 		case "subthemes":
-			include('actions-no-bdd/subthemes.php');
+			include('actions-no-db/subthemes.php');
 			break;
 		case "words":
-			include('actions-no-bdd/words.php');
+			include('actions-no-db/words.php');
 			break;
 		case "word":
-			include('actions-no-bdd/word.php');
+			include('actions-no-db/word.php');
 			break;
 		case "historic_keys":
-			include('actions-no-bdd/historic_keys.php');
+			include('actions-no-db/historic_keys.php');
 			break;
 		case "search":
-			include('actions-no-bdd/search.php');
+			include('actions-no-db/search.php');
 			break;
 	}
 } else {
