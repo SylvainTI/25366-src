@@ -7,7 +7,7 @@ Structure MySQL de la base des événements historiques
 
 = Details =
 
-
+{{{
 -- phpMyAdmin SQL Dump
 -- version 2.10.1
 -- http://www.phpmyadmin.net
@@ -60,3 +60,5 @@ INSERT INTO `historical_events` (`id`, `marks_id`, `event_type`, `date_type`, `f
 (12, 86, 'basic', 'single', 1943, 0, 'Publication de l’Être et le Néant de Jean-Paul Sartre - Publication du Petit Prince d’Antoine de Saint-Exupéry', 0),
 (13, 86, 'basic', 'single', 1943, 0, 'Conseil national de la résistance avec Jean Moulin', 0),
 (14, 86, 'basic', 'single', 1944, 0, 'Charles de Gaulle – gouvernement provisoire', 0);
+
+}}}
