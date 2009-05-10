@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary Structure MySQL de la base des événements historiques
 
 = Introduction =
 
