@@ -13,7 +13,7 @@
 		<lib><![CDATA[<?php echo $theme['lib']; ?>]]></lib>
 		<image><?php echo $theme['image']; ?></image>
 	</theme>
-<?
+<?php
 	endforeach;
 ?>
 </themes>
