@@ -7,8 +7,19 @@ L'astuce, c'est la conversion utf-16 little endian vers utf-8
 Sans ça, rien ne marche bien
 Arnaud
 */
+
+
+/*
+** Pour l'import : 
+** décommenter les ligne d'insertion en base une à la fois,
+** sinon ça fait un timeout...
+** Thierry
+*/
+
+
 header('Content-type: text/html; charset=UTF-8');
-$file = file_get_contents("data_unicode.txt");
+//$file = file_get_contents("data_unicode.txt");
+$file = file_get_contents("001-025 Fichiers 2009.txt");
 $file = mb_convert_encoding( $file, 'UTF-8', 'UTF-16LE'); // Excel fait de l'utf 16 little endian, on convertit en utf-8
 $lines = explode("\n",$file);
 $themes = array();
@@ -26,17 +37,16 @@ foreach ($lines as $nb_line => $line){
 	if (!in_array($data[0], $themes)) {
 		$i++;
 		$themes[$i] = $data[0];
-		//$db->query("INSERT INTO `theme` (`id`, `lib`, `lang`) VALUES ('$i','{$themes[$i]}','fr-fra')");		
+		//$db->query("INSERT INTO `theme` (`id`, `lib`, `lang`) VALUES ('$i','{$themes[$i]}','fr-fra')");
 	}
 	if (!in_array($data[1], $subthemes_list)) {
 		$j++;
 		$subthemes_list[$j] = $data[1];
 		$subthemes[$j]['subtheme'] = $data[1];
 		$subthemes[$j]['theme'] = $data[0];
-		$subthemes[$j]['chinois'] = $data[5];
 		// récupération de la clé du thème pour le sous-thèmes
 		$subthemes[$j]['theme_id'] = $i;
-		//$db->query("INSERT INTO `subtheme` (`id`, `lib`, `lang`, `idTheme`) VALUES ('$j','{$subthemes[$j]['subtheme']}','fr-fra', '{$subthemes[$j]['theme_id']}')");		
+		//$db->query("INSERT INTO `subtheme` (`id`, `lib`, `lang`, `idTheme`) VALUES ('$j','{$subthemes[$j]['subtheme']}','fr-fra', '{$subthemes[$j]['theme_id']}')");
 	}
 	if (!in_array($data[2], $words_list)) {
 		$k++;
@@ -46,13 +56,14 @@ foreach ($lines as $nb_line => $line){
 		$words[$k]['word'] = $data[2];
 		$words[$k]['genre'] = $data[4];
 		$words[$k]['chinois'] = $data[5];
-		$words[$k]['phrase'] = $data[6];
-		$words[$k]['phrase_c'] = $data[7];
-		$words[$k]['tags'] = $data[8];
+		$words[$k]['pinyin'] = $data[6];
+		$words[$k]['phrase'] = $data[7];
+		$words[$k]['phrase_c'] = $data[8];
+		$words[$k]['tags'] = $data[9];
 		// récupération de la clé du sous-themes pour le mot
 		$words[$k]['subtheme_id'] = $j;
 		//$db->query("INSERT INTO `word` (`id`, `lib`, `lang`, `definition`, `genre`, `idSubtheme`, `tags`) VALUES ('$k','{$words[$k]['chinois']}','zh-zho', '{$words[$k]['phrase_c']}', '', '{$words[$k]['subtheme_id']}', '')");
-		//$db->query("INSERT INTO `word` (`id`, `lib`, `lang`, `definition`, `genre`, `idSubtheme`, `tags`) VALUES ('$k','{$words[$k]['word']}','fr-fra', '{$words[$k]['phrase']}', '{$words[$k]['genre']}', '{$words[$k]['subtheme_id']}', '{$words[$k]['tags']}')");
+		$db->query("INSERT INTO `word` (`id`, `lib`, `lang`, `definition`, `genre`, `idSubtheme`, `tags`) VALUES ('$k','{$words[$k]['word']}','fr-fra', '{$words[$k]['phrase']}', '{$words[$k]['genre']}', '{$words[$k]['subtheme_id']}', '{$words[$k]['tags']}')");
 	}
 	echo "$i - $j - $k - {$themes[$i]} - {$subthemes[$j]['subtheme']} - {$words[$k]['word']}<br/>";
 }
