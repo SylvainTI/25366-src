@@ -82,7 +82,7 @@
 			<mx:text>{model.langSrcString} > {model.langDestString}</mx:text>
 		</mx:Text>
 		<mx:Image
-			source="@Embed('../bin-debug/data/media/maison.png')" 
+			source="@Embed('assets/media/maison.png')" 
 			left="350"
 			verticalCenter="0"
 			click="model.page=model.PAGE_HOME;model.souspage=model.SOUSPAGE_EXPLORATEUR_THEMES;model.keyVO=null;model.subkeyVO=null;model.wordVO=null"
@@ -133,14 +133,14 @@
 						'la vie se décline en âge, naissance, mort, etc.')"
 			/>
 			<mx:Image
-				source="@Embed('../bin-debug/data/media/barre.png')" 
+				source="@Embed('assets/media/barre.png')" 
 			/>
 			<mx:Text
 				text="le langage Unideo"
 				click="Alert.show('Bientôt, toutes les informations sur le langage Unideo !')"
 			/>
 			<mx:Image
-				source="@Embed('../bin-debug/data/media/barre.png')" 
+				source="@Embed('assets/media/barre.png')" 
 			/>
 			<mx:Text
 				text="contact"

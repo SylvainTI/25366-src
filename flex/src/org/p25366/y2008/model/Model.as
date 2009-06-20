@@ -11,8 +11,8 @@ package org.p25366.y2008.model
 		 * Attention, il ne faut rien prendre hors du dossier bin-debug, c'est ce qu'on mettra en ligne
 		 * Arnaud
 		 */
-		public var data:String = "http://srcbordeaux2009.com/25366/data/";
-		public var assets:String = "http://srcbordeaux2009.com/25366/data/media/";
+		public var data:String = "data/";
+		public var assets:String = "data/media/";
 		
 		//public var data:String = "data/";
 		//public var assets:String = "data/media/";	
