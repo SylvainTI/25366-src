@@ -51,7 +51,7 @@
 		/>
 	
 	<mx:Image
-		source="@Embed('../bin-debug/data/media/fleche.png')" 
+		source="@Embed('assets/media/fleche.png')" 
 		left="293"
 		verticalCenter="0"
 			/>
