@@ -35,7 +35,7 @@ package org.p25366.y2008.business
 			this.variables.langSource = Model.getInstance().langSource;
 			var url_request:URLRequest = new URLRequest();
 			url_request.method = URLRequestMethod.GET;
-			url_request.url = Model.getInstance().data+"/index.php";
+			url_request.url = Model.getInstance().data;
 			url_request.data = this.variables;
 			this.url_loader.load(url_request);
 			this.url_loader.addEventListener(Event.COMPLETE,onXmlLoaded);	
