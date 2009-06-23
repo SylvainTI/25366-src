@@ -94,7 +94,7 @@ package org.p25366.y2008.business
         var xmlDoc:XMLDocument = new XMLDocument(xmlStr);
         var decoder:SimpleXMLDecoder = new SimpleXMLDecoder(true);
         var xmlObj:Object = decoder.decodeXML(xmlDoc);
-		
+		trace(xmlStr.toString());
 			switch(_action){
 				case "langs":
 				Model.getInstance().langDestProvider = new ArrayCollection();

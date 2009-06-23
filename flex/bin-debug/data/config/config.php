@@ -1,7 +1,8 @@
 <?php
 ## Initialisation de la base de données (singleton PDO)
 require_once(dirname(__FILE__).'/../lib/DatabaseManager.class.php');
-$db = DatabaseManager::getInstance('mysql:dbname=25366-dev;host=localhost', 'root', '', 'utf8');
+//$db = DatabaseManager::getInstance('mysql:dbname=25366;host=localhost', 'root', 'root', 'utf8');
+$db = DatabaseManager::getInstance('mysql:dbname=ec25366;host=localhost', 'ec25366', 'SIrJL1wk', 'utf8');
 
 /*
 ## Script d'installation de la base de données
