@@ -41,7 +41,7 @@ package org.p25366.y2008.business
 			this._variables.langSource = Model.getInstance().langSource;
 			var url_request:URLRequest = new URLRequest();
 			url_request.method = URLRequestMethod.GET;
-			url_request.url = Model.getInstance().data;
+			url_request.url = Model.getInstance().data+"/index.php";
 			url_request.data = this._variables;
 			this._urlLoader.load(url_request);
 			this._urlLoader.addEventListener(Event.COMPLETE,onXmlLoaded);	
@@ -117,7 +117,7 @@ package org.p25366.y2008.business
 					}
 				break;
 				case "themes":
-					trace('ThÃ¨mes');
+					trace('Thèmes');
 					for each(itemVO in xmlObj.themes.theme){
 						Model.getInstance().keys.addItem((new KeyVO(itemVO)));
 					}
