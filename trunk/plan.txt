@@ -1,0 +1,23 @@
+Bonjour Thierry et Thomas, 
+
+voilà qqs indications : 
+
+1. Structure
+travaillez dans d:/xampp/htdocs/svn/org.25366
+bin contient les fichiers à mettre en ligne
+public est le dossier visible, pour pouvoir passer en Zend plus tard, avec un private et une application
+public/data contient les données et les appels php, à ranger un peu
+src contient toutes les sources, rangées
+
+2. convertisseur de csv
+Le ranger dans src/database
+Créer un répertoire langs, avec dedans les fichers nommés fr-fra.csv, etc.
+Créer un répertoire xls et ranger les xls dedans
+
+3. PHP
+Faire simple !
+Pas de classes pour faire des trucs qui existent déjà, faire au plus simple possible !
+
+4. Flex
+Utilisez des adresses relatives, pas absolues
+N'oubliez pas l'optimisation 1024x768
