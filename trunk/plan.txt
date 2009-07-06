@@ -6,7 +6,8 @@ voilà qqs indications :
 travaillez dans d:/xampp/htdocs/svn/org.25366
 bin contient les fichiers à mettre en ligne
 public est le dossier visible, pour pouvoir passer en Zend plus tard, avec un private et une application
-public/data contient les données et les appels php, à ranger un peu
+public/data contient les données et les appels php, à ranger (les anciens fichiers sont dans src/data)
+public/admin contient le manage de Thierry
 src contient toutes les sources, rangées
 
 2. convertisseur de csv
@@ -17,7 +18,9 @@ Créer un répertoire xls et ranger les xls dedans
 3. PHP
 Faire simple !
 Pas de classes pour faire des trucs qui existent déjà, faire au plus simple possible !
+Utiliser un seul fichier de config, data/config.req.php, avec les params localhost dedans
 
 4. Flex
+Le projet est passé dans src/interface
 Utilisez des adresses relatives, pas absolues
 N'oubliez pas l'optimisation 1024x768
