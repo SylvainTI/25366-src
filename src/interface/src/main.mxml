@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <mx:Application 
 	backgroundColor="0xffffff"
 	creationComplete="init()" 
@@ -21,6 +21,7 @@
 			[Bindable]
 			public var model:Model = Model.getInstance();
 			public var httpService:HTTPService;
+			
 			private var _delegate:Delegate = new Delegate();
 			 
 			public function init():void

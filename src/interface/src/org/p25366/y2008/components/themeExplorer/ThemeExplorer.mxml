@@ -3,6 +3,7 @@
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" xmlns:definitionPage="org.p25366.y2008.components.definitionPage.*">
 	<mx:Script>
 		<![CDATA[
+			import org.p25366.y2008.model.swfManager.SwfManager;
 			import org.p25366.y2008.business.Delegate;
 			import mx.controls.Alert;
 			import org.p25366.y2008.vo.SubkeyVO;
@@ -17,6 +18,8 @@
 			[Bindable]
 			private var model:Model = Model.getInstance();
 			 
+			private var keyVisual:DisplayObject;
+			
 			private var delegate:Delegate;
 			
 			private function selectKey(event:Event):void
@@ -29,6 +32,10 @@
 					delegate = new Delegate();
 					delegate.loadSubkeys(keyVO);
 				}
+				keyVisual = SwfManager.getInstance().getDisplayObject('keys',model.keyVO.asset);
+				keyVisual.width = keyVisual.height = 120;
+				keyAsset.addChild(keyVisual);
+				
 			}
 			
 			private function selectSubkey(event:Event):void
@@ -89,8 +96,9 @@
 				styleName="themeExplorerList"
 			/>
 			<mx:Canvas top="70" left="100" horizontalScrollPolicy="off" verticalScrollPolicy="off">
-			<mx:Image id="img" source="{Model.getInstance().assets+'keys/'+Model.getInstance().keyVO.image}" includeInLayout="true"/>	
-			<mx:Label id="txt" text="{Model.getInstance().keyVO.label}" styleName="keySelectedStyle"  rotation="90" horizontalCenter="30" top="{img.height+3}"/>		
+			
+			<mx:UIComponent id="keyAsset" />
+			<mx:Label id="txt" text="{Model.getInstance().keyVO.label}" styleName="keySelectedStyle"  rotation="90" horizontalCenter="{123/2 - txt.height/2}" top="123"/>		
 			</mx:Canvas>
 			</mx:Canvas>
 			<mx:Canvas top="80" autoLayout="true" left="210" horizontalScrollPolicy="off" verticalScrollPolicy="off">

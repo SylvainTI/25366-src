@@ -2,6 +2,7 @@ package org.p25366.y2008.model
 {
 	import mx.collections.ArrayCollection;
 	
+	import org.p25366.y2008.model.swfManager.SwfManager;
 	import org.p25366.y2008.vo.*;
 	
 	[Bindable]
@@ -14,15 +15,14 @@ package org.p25366.y2008.model
 		public var data:String = "data/";
 		public var assets:String = "data/media/";
 		
-		//public var data:String = "data/";
-		//public var assets:String = "data/media/";	
 
 		public var langSource:String = "";
 		
 		public var langDest:String = "";
+		
 
 		public var keys:ArrayCollection = new ArrayCollection(); // Liste des clés
-		
+		public var SM:SwfManager;
 		
 		public var keyVO:KeyVO;
 		public var subkeyVO:SubkeyVO;
