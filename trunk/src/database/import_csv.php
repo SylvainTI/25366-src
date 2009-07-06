@@ -27,13 +27,3 @@
 	echo (nl2br(print_r($subthemes, true)));
 	//echo (nl2br(print_r($themes, true)));
 ?>
-
-Thématique
-Sous-thème
-mot
-noyau
-genre
-mot en chinois
-phrases françaises
-phrases chinoises
-tag
