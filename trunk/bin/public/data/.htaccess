@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+#Décommenter toutes les lignes pour développer (redirection vers les scripts php en version de développement.
+#RewriteEngine On
+
+#RewriteBase /svn/org.25366/src/data/
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule (.*) index.php/$1
+#RewriteRule ^index.php$  index.php/
+</IfModule>
