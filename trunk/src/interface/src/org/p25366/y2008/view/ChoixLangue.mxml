@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	>
+	<mx:Script>
+		<![CDATA[
+			import org.p25366.y2008.business.Delegate;
+			import mx.controls.Alert;
+			import org.p25366.y2008.model.Model;
+			private var delegate:Delegate = new Delegate();
+			
+			
+			[Bindable]
+			private var model:Model = Model.getInstance();
+			/**
+			 * il faut utiliser les infos venant de Thierry pour construire ces choix.
+			 * Il faut les stocker dans le modèle.
+			 * Arnaud
+			 */
+			public function determineLangSource(event:Event):void
+			{
+				if(event.currentTarget.selectedItem.data.toString()=="")return;
+				model.langSource = event.currentTarget.selectedItem.data.toString();
+				model.langSrcString = event.currentTarget.selectedItem.label.toString();
+				delegate.loadKeys();
+			}	
+			
+			public function determineLangDest(event:Event):void
+			{
+				if(event.currentTarget.selectedItem.data.toString()=="")return;
+				model.langDest = event.currentTarget.selectedItem.data.toString();
+				model.langDestString = event.currentTarget.selectedItem.label.toString();
+			}		
+		]]>
+	</mx:Script>
+	<mx:Text
+		width="200"
+		left="200"
+		verticalCenter="-50"
+		text="Pour entrer, choisissez une langue source et une langue cible en cliquant sur les champs ci-dessous"
+		/>
+	<mx:ComboBox
+		id="langSource"
+	
+		left="200"
+		verticalCenter="0"
+		change="determineLangSource(event)"
+		
+		cornerRadius="10"
+		dataProvider="{Model.getInstance().langSrcProvider}"
+		/>
+	
+	<mx:Image
+		source="@Embed('assets/media/fleche.png')" 
+		left="293"
+		verticalCenter="0"
+			/>
+	
+	<mx:ComboBox
+		id="langDest"
+		
+		left="310"
+		verticalCenter="0"
+		change="determineLangDest(event)"
+		
+		cornerRadius="10"
+		dataProvider="{Model.getInstance().langDestProvider}"
+		/>
+	<mx:Button 
+		label="OK"
+		click="model.page=model.PAGE_HOME;model.souspage=model.SOUSPAGE_EXPLORATEUR_THEMES"
+		verticalCenter="0"
+		left="400"
+		cornerRadius="40"
+		width="40"
+		/>
+</mx:Canvas>

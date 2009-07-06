@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	autoLayout="true" 
+	mouseChildren="false"
+	horizontalScrollPolicy="off"
+	verticalScrollPolicy="off"
+	mouseOut="currentState = 'horizontalOut'"
+	mouseOver="currentState = 'horizontalOver'"
+	styleName="keyRenderer"
+	>
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			import org.p25366.y2008.model.Model;
+			import org.p25366.y2008.vo.KeyVO;
+		]]>
+	</mx:Script>
+	<mx:Image 
+		id="img"
+		height="20"
+		width="20"
+		verticalCenter="0"
+		source="{Model.getInstance().assets+'keys/'+data.image}"
+		autoLoad="true"
+		scaleContent="true"
+		/>
+	<mx:Label
+		id="txt"
+		text="{data.label}"
+		styleName="keyStyleHorizontal"
+		alpha="0"
+		left="{img.width+2}"
+		verticalCenter="0"
+		/>
+	<mx:states>
+		<mx:State name="horizontalOver">
+			<mx:SetProperty target="{txt}" name="alpha" value="1"/>
+		</mx:State>
+		<mx:State name="horizontalOut">
+			<mx:SetProperty target="{txt}" name="alpha" value="0"/>
+		</mx:State>
+	</mx:states>
+</mx:Canvas>
