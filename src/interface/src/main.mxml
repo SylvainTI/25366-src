@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<mx:Application 
+	backgroundColor="0xffffff"
+	creationComplete="init()" 
+	layout="absolute"
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:view="org.p25366.y2008.view.*"
+	>
+	<mx:Script>
+		<![CDATA[
+			import org.p25366.y2008.business.Delegate;
+			import mx.controls.Alert;
+			import mx.charts.chartClasses.StackedSeries;
+
+			import mx.rpc.events.ResultEvent;
+			import mx.rpc.http.HTTPService;
+			
+			import org.p25366.y2008.vo.KeyVO;
+			import org.p25366.y2008.model.Model;
+			
+			[Bindable]
+			public var model:Model = Model.getInstance();
+			public var httpService:HTTPService;
+			private var _delegate:Delegate = new Delegate();
+			 
+			public function init():void
+			{
+				_delegate.loadLangs();
+			}
+		]]>
+		
+	</mx:Script>
+	<mx:Style source="org/p25366/y2008/style/style.css" />
+	<mx:Image 
+		source="@Embed('org/p25366/y2008/style/assets/logo25366.png')" 
+		verticalCenter="0"
+		left="100"
+		visible="{model.page==model.PAGE_CHOIX_LANGUE}"
+		/>
+	<view:ChoixLangue
+		id="choixLangue"
+		visible="{model.page==model.PAGE_CHOIX_LANGUE}"
+		width="100%"
+		height="100%"
+		/>
+	<view:Home
+		id="langueChoisie"
+		visible="{model.page==model.PAGE_HOME}"
+		width="100%"
+		height="100%"
+		/>
+</mx:Application> 

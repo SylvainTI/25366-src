@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" xmlns:definitionPage="org.p25366.y2008.components.definitionPage.*">
+	<mx:Script>
+		<![CDATA[
+			import org.p25366.y2008.business.Delegate;
+			import mx.controls.Alert;
+			import org.p25366.y2008.vo.SubkeyVO;
+			import org.p25366.y2008.vo.WordsVO;
+			import org.p25366.y2008.vo.KeyVO;
+			import org.p25366.y2008.vo.KeyVO;
+			import mx.events.ListEvent;
+			
+			import org.p25366.y2008.event.ProjectEvents;
+			import org.p25366.y2008.model.Model;
+			
+			[Bindable]
+			private var model:Model = Model.getInstance();
+			 
+			private var delegate:Delegate;
+			
+			private function selectKey(event:Event):void
+			{
+				model.subkeyVO = null;
+				model.wordVO = null;
+				var keyVO:KeyVO = event.target.selectedItem as KeyVO;
+				model.keyVO = keyVO;
+				if (keyVO.children.length == 0){
+					delegate = new Delegate();
+					delegate.loadSubkeys(keyVO);
+				}
+			}
+			
+			private function selectSubkey(event:Event):void
+			{
+				model.wordVO = null;
+				var subkeyVO:SubkeyVO = subthemesList.selectedItem as SubkeyVO;
+				model.subkeyVO = subkeyVO;
+				if (subkeyVO.children.length == 0){
+				delegate = new Delegate();
+				delegate.loadWords(subkeyVO);
+				}
+			}
+			
+			private function selectWord(event:Event):void
+			{
+				model.wordVO = null;
+				var wordsVO:WordsVO = wordsList.selectedItem as WordsVO;
+				model.wordVO = wordsVO;				
+			}
+		]]>
+	</mx:Script>
+	
+	<mx:TileList
+		horizontalCenter="0"
+		id = "themeExplorer"
+		bottom="190"
+		rowCount="1"
+		columnCount="25"
+		visible="{model.keyVO==null}"
+		direction="horizontal"
+		styleName="themeExplorerList"
+		itemClick="selectKey(event)"
+		dataProvider="{model.keys}"
+		itemRenderer="org.p25366.y2008.view.KeyItemRenderer"
+		rowHeight="180"
+		columnWidth="40"
+		width="1000"
+		verticalScrollPolicy="off"
+	/>
+	<mx:Canvas 
+		visible="{model.keyVO!=null}"
+		verticalCenter="0"
+		>
+			<mx:Canvas styleName="themeExplorerVerticalStyle" width="210" height="100%" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+			<mx:TileList
+				id = "themeExplorerVertical"
+				rowCount="25"
+				width="100"
+				columnCount="1"
+				direction="vertical"
+				itemClick="selectKey(event)"
+				dataProvider="{model.keys}"
+				itemRenderer="org.p25366.y2008.view.HorizontalKeyItemRenderer"
+				horizontalScrollPolicy="off"
+				verticalScrollPolicy="off"
+				columnWidth="150"
+				rowHeight="24"
+				styleName="themeExplorerList"
+			/>
+			<mx:Canvas top="70" left="100" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+			<mx:Image id="img" source="{Model.getInstance().assets+'keys/'+Model.getInstance().keyVO.image}" includeInLayout="true"/>	
+			<mx:Label id="txt" text="{Model.getInstance().keyVO.label}" styleName="keySelectedStyle"  rotation="90" horizontalCenter="30" top="{img.height+3}"/>		
+			</mx:Canvas>
+			</mx:Canvas>
+			<mx:Canvas top="80" autoLayout="true" left="210" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+			<mx:HBox>
+				<mx:List 
+				id = "subthemesList"
+				styleName="themeExplorerList"
+				click="selectSubkey(event);"
+				dataProvider="{model.keyVO.children}"
+				horizontalScrollPolicy="off"
+				paddingRight="10"
+				itemRenderer="org.p25366.y2008.view.SubkeyItemRenderer"
+				height="100%"
+				columnWidth="200"
+				verticalScrollBarStyleName="listVerticalScrollBar"
+			/>
+			<mx:List 
+				id = "wordsList"
+				visible="{model.subkeyVO!=null}"
+				styleName="themeExplorerList"
+				click = "selectWord(event);"
+				dataProvider="{model.subkeyVO.children}" 
+				itemRenderer="org.p25366.y2008.view.WordsItemRenderer"
+				horizontalScrollPolicy="off"
+				paddingRight="10"
+				height="100%"
+				columnWidth="200"
+				verticalScrollBarStyleName="listVerticalScrollBar"
+			/>
+			<definitionPage:DefinitionPage 
+			horizontalCenter="0"
+			verticalCenter="0"
+			id="definitionPage"
+			autoLayout="true"
+			visible="{model.wordVO!=null}"
+			/>
+			</mx:HBox>
+			
+			</mx:Canvas>
+	</mx:Canvas>
+</mx:Canvas>

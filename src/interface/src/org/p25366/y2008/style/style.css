@@ -1,0 +1,89 @@
+/* CSS file */
+Application{
+	backgroundColor: #ffffff;
+	theme-color : #999999;
+}
+global {
+	fontFamily: Arial;	
+}
+
+.listeAccueil{
+	
+}
+
+VBox.subKeyItem{
+	
+}
+
+VBox.wordsItem{
+	
+}
+
+HBox.themeExplorerVerticalStyle{
+	background-alpha:0;
+	backgroundSize: auto;
+	borderStyle: none;
+}
+
+Canvas.keyRenderer{
+	background-alpha:0;
+}
+
+Label.keyStyle{
+	color: #000000;
+	fontSize: 14;
+	fontFamily: DINPro;
+	
+}
+
+Label.keyStyleHorizontal{
+	color: #000000;
+	fontSize: 10;
+	fontFamily: DINPro;
+	
+}
+Label.keySelectedStyle{
+	color: #222222;
+	fontSize: 24;
+	fontFamily: DINPro;
+}
+
+List.themeExplorerList{
+	background-alpha: 0;
+	borderThickness: 0;
+	borderStyle: none;
+}
+.listVerticalScrollBar
+{
+	borderColor: #FFFFFF;
+	trackColors: #FFFFFF, #FFFFFF;
+}
+Canvas.defPage{
+	color: #000000;
+	fontSize: 16;
+}
+
+@font-face
+{
+	fontFamily: DINPro;
+	fontWeight: normal;
+	fontStyle: normal;
+	src: url("fonts/DINPro.otf");
+
+}
+
+.historicButton {
+}
+
+TextInput {
+   borderStyle: solid;
+   borderColor: #999999;
+   borderThickness: 1;
+   cornerRadius: 12;
+   backgroundColor: #cccccc;
+   color: #666666;
+   letterSpacing: 0;
+   paddingLeft: 4;
+   dropShadowEnabled: false;
+   shadowDirection: center;
+}
