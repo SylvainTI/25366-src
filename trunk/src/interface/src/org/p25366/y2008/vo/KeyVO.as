@@ -11,15 +11,17 @@ package org.p25366.y2008.vo
 		public var label:String = "";
 		public var image:String = "";
 		public var langSrc:String = "";
+		public var asset:String = "";
 		
 		public var children:ArrayCollection = new ArrayCollection();// Array of subkeyVOs
 		
 		public function KeyVO(pObj:Object = null){
 			if (pObj==null) return;
-			this.id = pObj.id;
-			this.image =pObj.image;
-			this.label = pObj.lib;
-			this.langSrc = pObj.lang;
+			id = pObj.id;
+			image =pObj.image;
+			label = pObj.lib;
+			langSrc = pObj.lang;
+			asset = pObj.asset;
 		}
 	}
 }
