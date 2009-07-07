@@ -97,13 +97,13 @@ package org.p25366.y2008.business
 		}
 		
 		private function onXmlLoaded( event : Event ) : void {
-		
-		var itemVO:Object;
-		
-		var xmlStr:String = event.target.data.toString();
-        var xmlDoc:XMLDocument = new XMLDocument(xmlStr);
-        var decoder:SimpleXMLDecoder = new SimpleXMLDecoder(true);
-        var xmlObj:Object = decoder.decodeXML(xmlDoc);
+		/*
+			var itemVO:Object;
+			
+			var xmlStr:String = event.target.data.toString();
+	        var xmlDoc:XMLDocument = new XMLDocument(xmlStr);
+	        var decoder:SimpleXMLDecoder = new SimpleXMLDecoder(true);
+	        var xmlObj:Object = decoder.decodeXML(xmlDoc);
 		
 			switch(_action){
 				case "langs":
@@ -117,7 +117,7 @@ package org.p25366.y2008.business
 					}
 				break;
 				case "themes":
-					trace('Thèmes');
+					trace('Thï¿½mes');
 					for each(itemVO in xmlObj.themes.theme){
 						Model.getInstance().keys.addItem((new KeyVO(itemVO)));
 					}
@@ -136,6 +136,7 @@ package org.p25366.y2008.business
 				break;
 				
 			}
+			*/
 		}
 		private function _onAssetComplete(evt:Event):void {
 			SwfManager.getInstance().pushSwf(_loader.contentLoaderInfo.url.toString(),_loader.contentLoaderInfo.applicationDomain );

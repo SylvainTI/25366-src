@@ -48,7 +48,7 @@ package org.p25366.y2008.components.definitionPage.business
         var decoder:SimpleXMLDecoder = new SimpleXMLDecoder(true);
         var xmlObj:Object = decoder.decodeXML(xmlDoc);
         
-        Model.getInstance().keys.addItem((new WordsVO(itemVO)));
+        //Model.getInstance().keys.addItem((new WordsVO(itemVO)));
         			
 		}
 	}

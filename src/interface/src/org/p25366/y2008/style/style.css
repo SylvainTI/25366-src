@@ -68,8 +68,7 @@ Canvas.defPage{
 	fontFamily: DINPro;
 	fontWeight: normal;
 	fontStyle: normal;
-	src: url("fonts/DINPro.otf");
-
+	src: url("org/p25366/y2008/style/assets/fonts/DINPro.otf");
 }
 
 .historicButton {

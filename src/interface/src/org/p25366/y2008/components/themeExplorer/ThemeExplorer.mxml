@@ -21,7 +21,7 @@
 			private var keyVisual:DisplayObject;
 			
 			private var delegate:Delegate;
-			
+			/*
 			private function selectKey(event:Event):void
 			{
 				model.subkeyVO = null;
@@ -55,9 +55,10 @@
 				var wordsVO:WordsVO = wordsList.selectedItem as WordsVO;
 				model.wordVO = wordsVO;				
 			}
+			*/
 		]]>
 	</mx:Script>
-	
+	<!--
 	<mx:TileList
 		horizontalCenter="0"
 		id = "themeExplorer"
@@ -139,4 +140,5 @@
 			
 			</mx:Canvas>
 	</mx:Canvas>
+	-->
 </mx:Canvas>

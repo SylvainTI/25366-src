@@ -1,36 +1,32 @@
 package org.p25366.y2008.model
 {
 	import mx.collections.ArrayCollection;
+	import mx.collections.XMLListCollection;
 	
-	import org.p25366.y2008.model.swfManager.SwfManager;
 	import org.p25366.y2008.vo.*;
 	
 	[Bindable]
 	public class Model
 	{
-		/**
-		 * Attention, il ne faut rien prendre hors du dossier bin-debug, c'est ce qu'on mettra en ligne
-		 * Arnaud
-		 */
 		public var data:String = "data/";
-		public var assets:String = "data/media/";
+		public var langSource:String = "fr-fra";
+		public var langDest:String = "zh-zho";
 		
-
-		public var langSource:String = "";
+		public var elements:XMLListCollection = new XMLListCollection();
+		public var structure:XMLListCollection = new XMLListCollection();
+		public var langs:XMLListCollection = new XMLListCollection();
 		
-		public var langDest:String = "";
-		
-
-		public var keys:ArrayCollection = new ArrayCollection(); // Liste des clés
+		/*
 		public var SM:SwfManager;
 		
 		public var keyVO:KeyVO;
 		public var subkeyVO:SubkeyVO;
 		public var wordVO:WordsVO;
 	
+		
+		*/
 		public var langDestProvider:ArrayCollection;
 		public var langSrcProvider:ArrayCollection;
-		
 		public var langSrcString:String="";
 		public var langDestString:String="";
 		

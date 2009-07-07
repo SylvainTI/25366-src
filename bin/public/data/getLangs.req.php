@@ -1,0 +1,31 @@
+<?
+/*
+?action=getLangs
+*/
+?>
+<langs>
+	<lang>
+		<id>fr-fra</id>
+		<label>Français</label>
+		<destinations>
+			<lang>
+				<id>zh-zho</id>
+				<label>Chinois</label>
+			</lang>
+		</destinations>
+	</lang>
+	<lang>
+		<id>zh-zho</id>
+		<label>Chinois (en chinois)</label>
+		<destinations>
+			<lang>
+				<id>fr-fra</id>
+				<label>Français</label>
+			</lang>
+			<lang>
+				<id>sp-spa</id>
+				<label>Espanol</label>
+			</lang>
+		</destinations>
+	</lang>
+</langs>

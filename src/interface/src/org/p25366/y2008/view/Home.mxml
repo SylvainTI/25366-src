@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <mx:Canvas 
 	xmlns:mx="http://www.adobe.com/2006/mxml" 
-	xmlns:historicalMarks="org.p25366.y2008.components.historicalMarks.*" 
-	xmlns:themeExplorer="org.p25366.y2008.components.themeExplorer.*" 
-	xmlns:definitionPage="org.p25366.y2008.components.definitionPage.*" 
-	xmlns:searchResults="org.p25366.y2008.components.searchResults.*"
 	height="100%"
 	verticalScrollPolicy="off"
-	creationComplete="init()"
-	>
+	xmlns:themeExplorer="org.p25366.y2008.components.themeExplorer.*">
 	<mx:Style source="../style/styleHome.css"/>
+<!--
 	<mx:Script>
 		<![CDATA[
 			import org.p25366.y2008.business.Delegate;
@@ -82,7 +77,7 @@
 			<mx:text>{model.langSrcString} > {model.langDestString}</mx:text>
 		</mx:Text>
 		<mx:Image
-			source="@Embed('assets/media/maison.png')" 
+			source="@Embed('org/p25366/y2008/style/assets/maison.png')" 
 			left="350"
 			verticalCenter="0"
 			click="model.page=model.PAGE_HOME;model.souspage=model.SOUSPAGE_EXPLORATEUR_THEMES;model.keyVO=null;model.subkeyVO=null;model.wordVO=null"
@@ -133,14 +128,14 @@
 						'la vie se décline en âge, naissance, mort, etc.')"
 			/>
 			<mx:Image
-				source="@Embed('assets/media/barre.png')" 
+				source="@Embed('org/p25366/y2008/style/assets/barre.png')" 
 			/>
 			<mx:Text
 				text="le langage Unideo"
 				click="Alert.show('Bientôt, toutes les informations sur le langage Unideo !')"
 			/>
 			<mx:Image
-				source="@Embed('assets/media/barre.png')" 
+				source="@Embed('org/p25366/y2008/style/assets/barre.png')" 
 			/>
 			<mx:Text
 				text="contact"
@@ -151,12 +146,6 @@
 	</mx:Canvas>
 	
 
-	<themeExplorer:ThemeExplorer 
-		id="themeExplorer"
-		verticalScrollPolicy="off"
-		horizontalScrollPolicy="off"
-		visible="{model.souspage=='explorateurThemes'}"		
-	/>
 
 	
 	
@@ -165,5 +154,10 @@
 			label="Historical Marks"
 			visible="{model.souspage=='reperesHistoriques'}"
 	/>
-		
+-->		
+	<themeExplorer:ThemeExplorer
+		id="themeExplorer"
+		verticalScrollPolicy="off"
+		horizontalScrollPolicy="off"
+	/>
 </mx:Canvas>
