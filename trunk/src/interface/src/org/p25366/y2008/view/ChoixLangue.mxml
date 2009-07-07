@@ -4,6 +4,7 @@
 	>
 	<mx:Script>
 		<![CDATA[
+			import mx.collections.XMLListCollection;
 			import org.p25366.y2008.business.Delegate;
 			import mx.controls.Alert;
 			import org.p25366.y2008.model.Model;
@@ -39,39 +40,30 @@
 		verticalCenter="-50"
 		text="Pour entrer, choisissez une langue source et une langue cible en cliquant sur les champs ci-dessous"
 		/>
-	<mx:ComboBox
-		id="langSource"
-	
+	<mx:HBox
 		left="200"
 		verticalCenter="0"
-		change="determineLangSource(event)"
-		
-		cornerRadius="10"
-		dataProvider="{Model.getInstance().langSrcProvider}"
-		/>
-	
-	<mx:Image
-		source="@Embed('assets/media/fleche.png')" 
-		left="293"
-		verticalCenter="0"
+		>
+		<mx:ComboBox
+			id="langSource"
+			change="determineLangSource(event)"
+			cornerRadius="10"
+			dataProvider="{Model.getInstance().langs}"
 			/>
-	
-	<mx:ComboBox
-		id="langDest"
-		
-		left="310"
-		verticalCenter="0"
-		change="determineLangDest(event)"
-		
-		cornerRadius="10"
-		dataProvider="{Model.getInstance().langDestProvider}"
-		/>
-	<mx:Button 
-		label="OK"
-		click="model.page=model.PAGE_HOME;model.souspage=model.SOUSPAGE_EXPLORATEUR_THEMES"
-		verticalCenter="0"
-		left="400"
-		cornerRadius="40"
-		width="40"
-		/>
+		<mx:Image
+			source="@Embed('org/p25366/y2008/style/assets/fleche.png')" 
+			/>
+		<mx:ComboBox
+			id="langDest"
+			change="determineLangDest(event)"
+			cornerRadius="10"
+			dataProvider="{langSource.selectedItem.destinations.lang as XMLList}"
+			/>
+		<mx:Button 
+			label="OK"
+			click="model.page=model.PAGE_HOME;model.souspage=model.SOUSPAGE_EXPLORATEUR_THEMES"
+			cornerRadius="40"
+			width="40"
+			/>
+	</mx:HBox>
 </mx:Canvas>

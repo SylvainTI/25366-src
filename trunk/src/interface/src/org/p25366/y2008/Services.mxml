@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"
+	creationComplete="getLangs();getElements();"
+	>
+	<mx:Script>
+		<![CDATA[
+			import mx.rpc.events.ResultEvent;
+			import org.p25366.y2008.model.Model;
+			private var model:Model = Model.getInstance();
+			public function getLangs():void
+			{
+				getLangsService.send();
+			}
+			private function getLangsResultHandler(event:ResultEvent):void
+			{
+				model.langs.source = XMLList(event.result).lang;
+			}
+			public function getElements():void
+			{
+				getElementsService.url = 'data/?action=getElements&langSource=' + model.langSource + '&langDest=' + model.langDest;
+				getElementsService.send();
+			}
+			private function getElementsResultHandler(event:ResultEvent):void
+			{
+				model.elements.source = XMLList(event.result).element;
+			}
+		]]>
+	</mx:Script>
+	<mx:HTTPService
+		id="getLangsService"
+		url="data/?action=getLangs"
+		resultFormat="e4x"
+		result="getLangsResultHandler(event)"
+		/>
+	<mx:HTTPService
+		id="getElementsService"
+		resultFormat="e4x"
+		result="getElementsResultHandler(event)"
+		/>
+</mx:Canvas>

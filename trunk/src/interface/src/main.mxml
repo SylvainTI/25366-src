@@ -5,7 +5,7 @@
 	layout="absolute"
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:view="org.p25366.y2008.view.*"
-	>
+	xmlns:y2008="org.p25366.y2008.*">
 	<mx:Script>
 		<![CDATA[
 			import org.p25366.y2008.business.Delegate;
@@ -20,17 +20,9 @@
 			
 			[Bindable]
 			public var model:Model = Model.getInstance();
-			public var httpService:HTTPService;
-			
-			private var _delegate:Delegate = new Delegate();
-			 
-			public function init():void
-			{
-				_delegate.loadLangs();
-			}
 		]]>
-		
 	</mx:Script>
+	<y2008:Services />
 	<mx:Style source="org/p25366/y2008/style/style.css" />
 	<mx:Image 
 		source="@Embed('org/p25366/y2008/style/assets/logo25366.png')" 
