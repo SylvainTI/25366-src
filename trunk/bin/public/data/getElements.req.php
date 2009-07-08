@@ -7,7 +7,7 @@ $langDest = $_GET['langDest'];
 
 function getElements($id, $langSource, $langDest)
 {
-	echo '<elements>';
+	echo '<children>';
 	$res = mysql_query('SELECT * FROM structure WHERE parent=' . $id);
 	while ($data = mysql_fetch_array($res)) {
 		echo '
@@ -36,6 +36,6 @@ function getElements($id, $langSource, $langDest)
 		echo '
 		</element>';
 	}
-	echo '</elements>';
+	echo '</children>';
 }
 echo getElements(0, $langSource, $langDest);
