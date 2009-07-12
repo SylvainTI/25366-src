@@ -4,10 +4,10 @@
 	>
 	<mx:Script>
 		<![CDATA[
-			import mx.collections.XMLListCollection;
-			import org.p25366.y2008.business.Delegate;
-			import mx.controls.Alert;
 			import org.p25366.y2008.model.Model;
+			import org.p25366.y2008.business.Delegate;
+			import mx.events.DropdownEvent;
+			
 			private var delegate:Delegate = new Delegate();
 			
 			
@@ -18,22 +18,32 @@
 			 * Il faut les stocker dans le modèle.
 			 * Arnaud
 			 */
-			public function determineLangSource(event:Event):void
+			public function determineLangSource(event:DropdownEvent):void
 			{
-				if(event.currentTarget.selectedItem.data.toString()=="")return;
-				model.langSource = event.currentTarget.selectedItem.data.toString();
-				model.langSrcString = event.currentTarget.selectedItem.label.toString();
-				delegate.loadKeys();
+				model.langSource = event.target.selectedItem.id;
+				checkIsValidable();
 			}	
 			
-			public function determineLangDest(event:Event):void
+			public function determineLangDest(event:DropdownEvent):void
 			{
-				if(event.currentTarget.selectedItem.data.toString()=="")return;
-				model.langDest = event.currentTarget.selectedItem.data.toString();
-				model.langDestString = event.currentTarget.selectedItem.label.toString();
+				model.langDest = event.target.selectedItem.id;
+				checkIsValidable();
 			}		
+			
+			private function checkIsValidable():void{
+				if (model.langDest && model.langSource != '')
+				validation.enabled = true;
+				else
+				validation.enabled = false;
+			}
 		]]>
 	</mx:Script>
+	<mx:Image 
+		source="@Embed('org/p25366/y2008/style/assets/logo25366.png')" 
+		verticalCenter="0"
+		left="100"
+		visible="{model.page==model.PAGE_CHOIX_LANGUE}"
+		/>
 	<mx:Text
 		width="200"
 		left="200"
@@ -43,27 +53,30 @@
 	<mx:HBox
 		left="200"
 		verticalCenter="0"
-		>
+	>
 		<mx:ComboBox
 			id="langSource"
-			change="determineLangSource(event)"
+			 
+			close="determineLangSource(event)"
 			cornerRadius="10"
 			dataProvider="{Model.getInstance().langs}"
-			/>
+		/>
 		<mx:Image
 			source="@Embed('org/p25366/y2008/style/assets/fleche.png')" 
-			/>
+		/>
 		<mx:ComboBox
 			id="langDest"
-			change="determineLangDest(event)"
+			close="determineLangDest(event)"
 			cornerRadius="10"
 			dataProvider="{langSource.selectedItem.destinations.lang as XMLList}"
-			/>
+		/>
 		<mx:Button 
+			id="validation"
 			label="OK"
+			enabled="false"
 			click="model.page=model.PAGE_HOME;model.souspage=model.SOUSPAGE_EXPLORATEUR_THEMES"
 			cornerRadius="40"
 			width="40"
-			/>
+		/>
 	</mx:HBox>
 </mx:Canvas>

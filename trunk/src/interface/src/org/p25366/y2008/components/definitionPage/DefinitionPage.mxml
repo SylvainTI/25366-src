@@ -26,7 +26,7 @@
 		]]>
 	</mx:Script>
 	
-	<mx:Binding source="model.wordVO.id" destination="this.wordId"/>
+<!--	<mx:Binding source="model.wordVO.id" destination="this.wordId"/>
 	
 	<mx:VBox horizontalCenter="0" verticalCenter="0">
 		<mx:HBox width="100%" paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10" borderStyle="solid" borderColor="#DDDDDD">
@@ -48,5 +48,5 @@
 			<mx:Text color="#111111" text="Tags : "/>
 			<mx:Text text="{model.wordVO.tags}"/>
 		</mx:VBox>
-	</mx:VBox>
+	</mx:VBox>-->
 </mx:Canvas>

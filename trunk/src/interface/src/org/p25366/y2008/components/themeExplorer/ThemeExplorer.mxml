@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" xmlns:definitionPage="org.p25366.y2008.components.definitionPage.*">
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" 
+	xmlns:definitionPage="org.p25366.y2008.components.definitionPage.*">
 	<mx:Script>
 		<![CDATA[
+			import mx.collections.XMLListCollection;
 			import org.p25366.y2008.model.swfManager.SwfManager;
 			import org.p25366.y2008.business.Delegate;
 			import mx.controls.Alert;
@@ -21,95 +22,74 @@
 			private var keyVisual:DisplayObject;
 			
 			private var delegate:Delegate;
-			/*
-			private function selectKey(event:Event):void
+		
+			private function selectKey(event:ListEvent):void
 			{
-				model.subkeyVO = null;
-				model.wordVO = null;
-				var keyVO:KeyVO = event.target.selectedItem as KeyVO;
-				model.keyVO = keyVO;
-				if (keyVO.children.length == 0){
-					delegate = new Delegate();
-					delegate.loadSubkeys(keyVO);
-				}
-				keyVisual = SwfManager.getInstance().getDisplayObject('keys',model.keyVO.asset);
-				keyVisual.width = keyVisual.height = 120;
-				keyAsset.addChild(keyVisual);
-				
-			}
-			
-			private function selectSubkey(event:Event):void
-			{
-				model.wordVO = null;
-				var subkeyVO:SubkeyVO = subthemesList.selectedItem as SubkeyVO;
-				model.subkeyVO = subkeyVO;
-				if (subkeyVO.children.length == 0){
-				delegate = new Delegate();
-				delegate.loadWords(subkeyVO);
+				trace(model.elements[(event.target as TileList).selectedIndex]);
+				model.selectedKey = model.elements[(event.target as TileList).selectedIndex];
+					
+				if 	(model.selectedKey.asset != '') {
+					keyVisual = SwfManager.getInstance().getDisplayObject('keys',model.selectedKey.asset);
+					keyVisual.width = keyVisual.height = 120;
+					keyAsset.addChild(keyVisual); 
 				}
 			}
 			
-			private function selectWord(event:Event):void
-			{
-				model.wordVO = null;
-				var wordsVO:WordsVO = wordsList.selectedItem as WordsVO;
-				model.wordVO = wordsVO;				
+			private function selectSubkey(event:ListEvent):void {
+
+				model.selectedSubKey = model.selectedKey.children.element[(event.target as List).selectedIndex];
+				trace(model.selectedSubKey);
 			}
-			*/
 		]]>
 	</mx:Script>
-	<!--
+	<!--  -->
 	<mx:TileList
+		visible="{model.selectedKey == null}"
+		rollOverColor="0xFFFFFF"
 		horizontalCenter="0"
 		id = "themeExplorer"
 		bottom="190"
 		rowCount="1"
 		columnCount="25"
-		visible="{model.keyVO==null}"
 		direction="horizontal"
 		styleName="themeExplorerList"
 		itemClick="selectKey(event)"
-		dataProvider="{model.keys}"
+		dataProvider="{model.elements}"
 		itemRenderer="org.p25366.y2008.view.KeyItemRenderer"
-		rowHeight="180"
+		rowHeight="280"
 		columnWidth="40"
 		width="1000"
 		verticalScrollPolicy="off"
 	/>
-	<mx:Canvas 
-		visible="{model.keyVO!=null}"
-		verticalCenter="0"
-		>
-			<mx:Canvas styleName="themeExplorerVerticalStyle" width="210" height="100%" horizontalScrollPolicy="off" verticalScrollPolicy="off">
-			<mx:TileList
-				id = "themeExplorerVertical"
-				rowCount="25"
-				width="100"
-				columnCount="1"
-				direction="vertical"
-				itemClick="selectKey(event)"
-				dataProvider="{model.keys}"
-				itemRenderer="org.p25366.y2008.view.HorizontalKeyItemRenderer"
-				horizontalScrollPolicy="off"
-				verticalScrollPolicy="off"
-				columnWidth="150"
-				rowHeight="24"
-				styleName="themeExplorerList"
-			/>
-			<mx:Canvas top="70" left="100" horizontalScrollPolicy="off" verticalScrollPolicy="off">
-			
+	<mx:Canvas visible="{model.selectedKey!=null}" styleName="themeExplorerVerticalStyle" >
+		<mx:TileList
+			id = "themeExplorerVertical"
+			rowCount="25"
+			columnCount="1"
+			direction="vertical"
+			itemClick="selectKey(event)"
+			dataProvider="{model.elements}"
+			itemRenderer="org.p25366.y2008.view.HorizontalKeyItemRenderer"
+			horizontalScrollPolicy="off"
+			verticalScrollPolicy="off"
+			columnWidth="180"
+			rowHeight="24"
+			styleName="themeExplorerList"
+		/>
+		
+		<mx:Canvas visible="{model.selectedKey!=null}" top="70" left="180" horizontalScrollPolicy="off" verticalScrollPolicy="off">
 			<mx:UIComponent id="keyAsset" />
-			<mx:Label id="txt" text="{Model.getInstance().keyVO.label}" styleName="keySelectedStyle"  rotation="90" horizontalCenter="{123/2 - txt.height/2}" top="123"/>		
-			</mx:Canvas>
-			</mx:Canvas>
-			<mx:Canvas top="80" autoLayout="true" left="210" horizontalScrollPolicy="off" verticalScrollPolicy="off">
-			<mx:HBox>
+			<mx:Label id="txt" text="{model.selectedKey.identifier}" styleName="keySelectedStyle"  rotation="90" horizontalCenter="{58 - txt.height/2}" top="123"/>		
+		</mx:Canvas>
+	</mx:Canvas>
+	<mx:Canvas visible="{model.selectedKey != null}" top="80" autoLayout="true" left="280" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+		<mx:HBox>
 				<mx:List 
 				id = "subthemesList"
 				styleName="themeExplorerList"
-				click="selectSubkey(event);"
-				dataProvider="{model.keyVO.children}"
+				dataProvider="{model.selectedKey.children.element}"
 				horizontalScrollPolicy="off"
+				itemClick="selectSubkey(event)"
 				paddingRight="10"
 				itemRenderer="org.p25366.y2008.view.SubkeyItemRenderer"
 				height="100%"
@@ -118,10 +98,10 @@
 			/>
 			<mx:List 
 				id = "wordsList"
-				visible="{model.subkeyVO!=null}"
+				visible="{model.selectedSubKey!=null}"
 				styleName="themeExplorerList"
-				click = "selectWord(event);"
-				dataProvider="{model.subkeyVO.children}" 
+				
+				dataProvider="{model.selectedSubKey.children.element}" 
 				itemRenderer="org.p25366.y2008.view.WordsItemRenderer"
 				horizontalScrollPolicy="off"
 				paddingRight="10"
@@ -134,11 +114,10 @@
 			verticalCenter="0"
 			id="definitionPage"
 			autoLayout="true"
-			visible="{model.wordVO!=null}"
+			visible="{model.selectedWord !=null}"
 			/>
-			</mx:HBox>
+			</mx:HBox> 
 			
 			</mx:Canvas>
-	</mx:Canvas>
-	-->
+	
 </mx:Canvas>

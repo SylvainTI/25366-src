@@ -9,26 +9,19 @@ package org.p25366.y2008.model
 	public class Model
 	{
 		public var data:String = "data/";
-		public var langSource:String = "fr-fra";
-		public var langDest:String = "zh-zho";
+		public var langSource:String;
+		public var langDest:String;
 		
 		public var elements:XMLListCollection = new XMLListCollection();
 		public var structure:XMLListCollection = new XMLListCollection();
 		public var langs:XMLListCollection = new XMLListCollection();
 		
-		/*
-		public var SM:SwfManager;
+		public var selectedKey:XML;
+		public var selectedSubKey:XML;
+		public var selectedWord:XML;
 		
-		public var keyVO:KeyVO;
-		public var subkeyVO:SubkeyVO;
-		public var wordVO:WordsVO;
-	
-		
-		*/
 		public var langDestProvider:ArrayCollection;
 		public var langSrcProvider:ArrayCollection;
-		public var langSrcString:String="";
-		public var langDestString:String="";
 		
 		public var currentState:String;
 

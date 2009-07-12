@@ -27,14 +27,16 @@ package org.p25366.y2008.model.swfManager
  			var swfName:String =  swfUrlParts[swfUrlParts.length -1];
  			swfName = swfName.substring(0, swfName.length - 4);
 			_appDomains[swfName] = pAppDomain;
-			trace('pushSwf ::' +swfName+ 'registred');
+			trace('pushSwf :: ' +swfName+ ' registred');
 			
 		}	
 		public function getDisplayObject(pSwfPath:String,pName:String):DisplayObject {
-			trace(pSwfPath+ 'invoqued');
+			trace(pSwfPath+ ' invoqued, '+pName+' required');
 			var swfClassAsset:Class;
 			var swfVisualAsset:DisplayObject;
+			trace();
 			swfClassAsset = ApplicationDomain(_appDomains[pSwfPath]).getDefinition(pName) as Class;
+			
 			swfVisualAsset = new swfClassAsset() as DisplayObject;
 			return swfVisualAsset;
 		} 
