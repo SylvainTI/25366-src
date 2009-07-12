@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="500" height="25" styleName="wordsItem">
 	<mx:HBox>
-	<mx:Label text="{data.libSrc}"/>
-	<mx:Label text="{data.libDest}"/>
+	<mx:Label text="{data.identifier}"/>
+	<mx:Label text="{data.identifier}"/>
 	</mx:HBox>
 </mx:VBox>

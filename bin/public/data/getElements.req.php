@@ -13,7 +13,8 @@ function getElements($id, $langSource, $langDest)
 		echo '
 		<element>
 			<id>' . $data['id'] . '</id>
-			<identifier>' . $data['identifier'] . '</identifier>';
+			<identifier><![CDATA[' . $data['identifier'] . ']]></identifier>
+			<asset>'.$data['asset'].'</asset>';
 		$sql2 = 'SELECT * FROM elements WHERE structureId=' . $data['id'] . ' AND lang = "' . $langSource . '"';
 		$res2 = mysql_query($sql2);
 		$data2 = mysql_fetch_array($res2);

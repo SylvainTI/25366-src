@@ -20,8 +20,9 @@
 			private var KeyVisual:DisplayObject;
 			
 			private function _init():void {
+				if (data.asset == '') return;
 				KeyVisual = SwfManager.getInstance().getDisplayObject('keys',data.asset);
-				KeyVisual.width = KeyVisual.height = 20;
+				KeyVisual.width = KeyVisual.height = 22;
 				keyAsset.addChild(KeyVisual);
 			}
 		]]>
@@ -29,7 +30,7 @@
 	<mx:UIComponent id="keyAsset" />
 	<mx:Label
 		id="txt"
-		text="{data.label}"
+		text="{data.identifier}"
 		styleName="keyStyleHorizontal"
 		alpha="0"
 		left="22"

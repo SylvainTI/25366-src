@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"
-	creationComplete="getLangs();getElements();"
+	creationComplete="getAssets();"
 	>
 	<mx:Script>
 		<![CDATA[
+			import org.p25366.y2008.model.swfManager.SwfManager;
 			import mx.rpc.events.ResultEvent;
 			import org.p25366.y2008.model.Model;
+			
 			private var model:Model = Model.getInstance();
+			private var _swfLoader:Loader = new Loader();
+			
 			public function getLangs():void
 			{
 				getLangsService.send();
@@ -24,6 +28,16 @@
 			{
 				model.elements.source = XMLList(event.result).element;
 			}
+			private function getAssets():void{
+				_swfLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, _onAssetComplete);
+				_swfLoader.load(new URLRequest('data/keys.swf'));
+			}
+			private function _onAssetComplete(evt:Event):void {
+				SwfManager.getInstance().pushSwf(_swfLoader.contentLoaderInfo.url.toString(),_swfLoader.contentLoaderInfo.applicationDomain );
+				getElements();
+				getLangs();
+			}
+			
 		]]>
 	</mx:Script>
 	<mx:HTTPService

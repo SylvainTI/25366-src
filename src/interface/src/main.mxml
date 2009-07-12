@@ -8,28 +8,14 @@
 	xmlns:y2008="org.p25366.y2008.*">
 	<mx:Script>
 		<![CDATA[
-			import org.p25366.y2008.business.Delegate;
-			import mx.controls.Alert;
-			import mx.charts.chartClasses.StackedSeries;
-
-			import mx.rpc.events.ResultEvent;
-			import mx.rpc.http.HTTPService;
-			
-			import org.p25366.y2008.vo.KeyVO;
 			import org.p25366.y2008.model.Model;
 			
 			[Bindable]
 			public var model:Model = Model.getInstance();
 		]]>
 	</mx:Script>
-	<y2008:Services />
 	<mx:Style source="org/p25366/y2008/style/style.css" />
-	<mx:Image 
-		source="@Embed('org/p25366/y2008/style/assets/logo25366.png')" 
-		verticalCenter="0"
-		left="100"
-		visible="{model.page==model.PAGE_CHOIX_LANGUE}"
-		/>
+	<y2008:Services />
 	<view:ChoixLangue
 		id="choixLangue"
 		visible="{model.page==model.PAGE_CHOIX_LANGUE}"

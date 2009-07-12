@@ -29,12 +29,13 @@
 			private var KeyClass:Class;
 			
 			private function init():void {
-				KeyVisual = SwfManager.getInstance().getDisplayObject('keys',data.asset);
+				if (data.asset == '') return;
+ 				KeyVisual = SwfManager.getInstance().getDisplayObject('keys',data.asset);
 				KeyVisual.addEventListener(MouseEvent.MOUSE_OVER, _onMouseOver);
 				keyVisualZone.addChild(KeyVisual);
 				keyVisualZone.cacheAsBitmap = true;
 				KeyVisual.x = (40 - KeyVisual.width)/2;
-				trace(keyVisualZone.x);
+				trace(keyVisualZone.x); 
 			}
 			private function _onMouseOver(evt:MouseEvent):void {
 				TweenLite.to(KeyVisual, 0.4, {width:40,height:40,x:0});
@@ -48,5 +49,10 @@
 		]]>
 	</mx:Script>
 		<mx:UIComponent id="keyVisualZone"/>
-		<mx:Label id="KeyDescriptionZone" text="{data.label}" styleName="keyStyle" rotation="90" horizontalCenter="{KeyDescriptionZone.width/2 + 10}" top="{_topMarge}" textAlign="left"/>
+		<mx:Label id="KeyDescriptionZone" text="{data.identifier}" 
+			styleName="keyStyle" 
+			rotation="90" 
+			horizontalCenter="{KeyDescriptionZone.width/2 + 10}" 
+			top="{_topMarge}" 
+			textAlign="left" />
 </mx:Canvas>
