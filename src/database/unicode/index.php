@@ -18,6 +18,15 @@ Arnaud
 
 
 header('Content-type: text/html; charset=UTF-8');
+
+
+require 'config.req.php';
+mysql_connect($config->server, $config->user, $config->password);
+mysql_select_db($config->db);
+mysql_query('SET NAMES UTF8');
+mysql_query('SET CHARACTER SET UTF8');
+
+
 //$file = file_get_contents("data_unicode.txt");
 $file = file_get_contents("001-025 Fichiers 2009.txt");
 $file = mb_convert_encoding( $file, 'UTF-8', 'UTF-16LE'); // Excel fait de l'utf 16 little endian, on convertit en utf-8
@@ -29,7 +38,6 @@ $words_list = array();
 $subthemes_list = array();
 
 $i = $j = $k = 0;
-require_once('../../config/config.php');
 
 foreach ($lines as $nb_line => $line){
 	$data = explode("	",$line);
@@ -37,7 +45,11 @@ foreach ($lines as $nb_line => $line){
 	if (!in_array($data[0], $themes)) {
 		$i++;
 		$themes[$i] = $data[0];
-		//$db->query("INSERT INTO `theme` (`id`, `lib`, `lang`) VALUES ('$i','{$themes[$i]}','fr-fra')");
+		//mysql_query("INSERT INTO `theme` (`id`, `lib`, `lang`) VALUES ('$i','{$themes[$i]}','fr-fra')");
+		mysql_query("INSERT INTO `structure` (`id`, `parent`, `identifier`) VALUES (0,0,'{$themes[$i]}')");
+		$themeStructureId = mysql_insert_id();
+		mysql_query("INSERT INTO `elements` (`id`, `structureId`, `identifier`, `label`, `lang`, `content`) VALUES (0,$themeStructureId,'{$themes[$i]}', '{$themes[$i]}', 'fr-fra', '')");
+		$themeElementId = mysql_insert_id();
 	}
 	if (!in_array($data[1], $subthemes_list)) {
 		$j++;
@@ -46,7 +58,11 @@ foreach ($lines as $nb_line => $line){
 		$subthemes[$j]['theme'] = $data[0];
 		// récupération de la clé du thème pour le sous-thèmes
 		$subthemes[$j]['theme_id'] = $i;
-		//$db->query("INSERT INTO `subtheme` (`id`, `lib`, `lang`, `idTheme`) VALUES ('$j','{$subthemes[$j]['subtheme']}','fr-fra', '{$subthemes[$j]['theme_id']}')");
+		//mysql_query("INSERT INTO `subtheme` (`id`, `lib`, `lang`, `idTheme`) VALUES ('$j','{$subthemes[$j]['subtheme']}','fr-fra', '{$subthemes[$j]['theme_id']}')");
+		mysql_query("INSERT INTO `structure` (`id`, `parent`, `identifier`) VALUES (0,$themeStructureId,'{$subthemes[$j]['subtheme']}')");
+		$subthemeStructureId = mysql_insert_id();
+		mysql_query("INSERT INTO `elements` (`id`, `structureId`, `identifier`, `label`, `lang`, `content`) VALUES (0,$subthemeStructureId,'{$themes[$i]}', '{$subthemes[$j]['subtheme']}', 'fr-fra', '')");
+		$subthemeElementId = mysql_insert_id();
 	}
 	if (!in_array($data[2], $words_list)) {
 		$k++;
@@ -62,8 +78,16 @@ foreach ($lines as $nb_line => $line){
 		$words[$k]['tags'] = $data[9];
 		// récupération de la clé du sous-themes pour le mot
 		$words[$k]['subtheme_id'] = $j;
-		//$db->query("INSERT INTO `word` (`id`, `lib`, `lang`, `definition`, `genre`, `idSubtheme`, `tags`) VALUES ('$k','{$words[$k]['chinois']}','zh-zho', '{$words[$k]['phrase_c']}', '', '{$words[$k]['subtheme_id']}', '')");
-		$db->query("INSERT INTO `word` (`id`, `lib`, `lang`, `definition`, `genre`, `idSubtheme`, `tags`) VALUES ('$k','{$words[$k]['word']}','fr-fra', '{$words[$k]['phrase']}', '{$words[$k]['genre']}', '{$words[$k]['subtheme_id']}', '{$words[$k]['tags']}')");
+		//mysql_query("INSERT INTO `word` (`id`, `lib`, `lang`, `definition`, `genre`, `idSubtheme`, `tags`) VALUES ('$k','{$words[$k]['chinois']}','zh-zho', '{$words[$k]['phrase_c']}', '', '{$words[$k]['subtheme_id']}', '')");
+		//mysql_query("INSERT INTO `word` (`id`, `lib`, `lang`, `definition`, `genre`, `idSubtheme`, `tags`) VALUES ('$k','{$words[$k]['word']}','fr-fra', '{$words[$k]['phrase']}', '{$words[$k]['genre']}', '{$words[$k]['subtheme_id']}', '{$words[$k]['tags']}')");
+		mysql_query("INSERT INTO `structure` (`id`, `parent`, `identifier`) VALUES (0,$subthemeStructureId,'{$words[$k]['word']}')");
+		$wordStructureId = mysql_insert_id();
+		mysql_query("INSERT INTO `elements` (`id`, `structureId`, `identifier`, `label`, `lang`, `content`) VALUES (0,$wordStructureId,'{$words[$k]['word']}', '{$words[$k]['word']}', 'fr-fra', '<genre>{$words[$k]['genre']}</genre><phrase>{$words[$k]['phrase']}</phrase><tags>{$words[$k]['tags']}</tags>')");
+		$wordElementId = mysql_insert_id();
+		mysql_query("INSERT INTO `structure` (`id`, `parent`, `identifier`) VALUES (0,$subthemeStructureId,'{$words[$k]['pinyin']}')");
+		$wordStructureId = mysql_insert_id();
+		mysql_query("INSERT INTO `elements` (`id`, `structureId`, `identifier`, `label`, `lang`, `content`) VALUES (0,$wordStructureId,'{$words[$k]['pinyin']}', '{$words[$k]['chinois']}', 'fr-fra', '<phrase>{$words[$k]['phrase_c']}</phrase>')");
+		$wordElementId = mysql_insert_id();
 	}
 	echo "$i - $j - $k - {$themes[$i]} - {$subthemes[$j]['subtheme']} - {$words[$k]['word']}<br/>";
 }
@@ -91,11 +115,11 @@ $i=0;
 		$subthemes[$key] = str_replace(" ", '', $subthemes[$key]);
 		if ($subthemes[$key] != '' && $subthemes[$key] != ' ') {
 		//*/
-
-	//echo count($subthemes);
-	//echo count($lines);
-	//echo (print_r($themes, true));
-	//echo (print_r($subthemes, true));
-	//echo (print_r($words, true));
-
+/*
+	echo count($subthemes);
+	echo count($lines);
+	echo (print_r($themes, true));
+	echo (print_r($subthemes, true));
+	echo (print_r($words, true));
+//*/
 ?>

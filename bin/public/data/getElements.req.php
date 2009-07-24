@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 ?action=getElements&langSource=fr-fra&langDest=zh-zho
 */
