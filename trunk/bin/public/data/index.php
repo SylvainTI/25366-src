@@ -1,4 +1,4 @@
-<?
+<?php
 require 'config.req.php';
 mysql_connect($config->server, $config->user, $config->password);
 mysql_select_db($config->db);

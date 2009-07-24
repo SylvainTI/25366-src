@@ -1,5 +1,5 @@
 <langs>
-<?
+<?php
 $sql = "SELECT * FROM langs WHERE parent='0'";
 $query = mysql_query($sql);
 while ($data = mysql_fetch_array($query)){
