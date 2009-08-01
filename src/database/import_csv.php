@@ -8,6 +8,7 @@
 
 /*************************** vérification connexion à la base ***************************/
 //connexion à la base
+
 $connect = mysql_connect("localhost", "root", "");
     if ( !$connect ) {
           $err .= "-impossible de se connecter <br/>";
@@ -40,6 +41,7 @@ echo "</pre>";
 */
 /******************************************* création du tableau listant toutes les données à récupérer *********************************************/
 // on parcours le csv
+$originTime = time();
 for($i=1; $i<sizeof($datas); $i++){
 
 
@@ -69,7 +71,7 @@ foreach($arbre as $theme => $value){
  //echo "<h1>".$theme."</h1>";
  
  //requete sql d'insertion
-$sql_insert = "INSERT INTO structure SET parent ='0', identifier ='".$theme."'";
+$sql_insert = "INSERT INTO structure SET parent ='0', identifier =\"".$theme."\"";
 
 if(mysql_query($sql_insert)) echo $sql_insert."<br/>";
 $last_id_theme = mysql_insert_id();
@@ -79,7 +81,7 @@ $last_id_theme = mysql_insert_id();
  	//echo "<h3>".$sous_theme."</h3>";
  	
  	//requete sql d'insertion
-	$sql_insert = "INSERT INTO structure SET parent ='".$last_id_theme."', identifier ='".$sous_theme."'";
+	$sql_insert = "INSERT INTO structure SET parent =\"".$last_id_theme."\", identifier =\"".$sous_theme."\"";
 	
 	if(mysql_query($sql_insert)) echo $sql_insert."<br/>";
 	$last_id_sous_theme = mysql_insert_id();
@@ -89,11 +91,11 @@ $last_id_theme = mysql_insert_id();
  		//echo "<h6>".$value['mot_fr']."</h6>";
  		
  		//requete sql d'insertion
-		$sql_insert = "INSERT INTO structure SET parent ='".$last_id_sous_theme."', identifier ='".$value['mot_fr']."'";
+		$sql_insert = "INSERT INTO structure SET parent =\"".$last_id_sous_theme."\", identifier =\"".$value['mot_fr']."\"";
 		if(mysql_query($sql_insert)) echo $sql_insert."<br/>";
 			$id_to_elements = mysql_insert_id();
-			$frElement = "INSERT INTO elements SET structureId='".$id_to_elements."', label='".$value['mot_fr']."', lang='fr-fra', content='<content></content>', phrase='".$value['phrase_fr']."'";
-			$zhElement = "INSERT INTO elements SET structureId='".$id_to_elements."', label='".$value['mot_zh']."', lang='zh-zho', content='<content></content>', phrase='".$value['phrase_zh']."'";
+			$frElement = "INSERT INTO elements SET structureId=\"".$id_to_elements."\", label=\"".$value['mot_fr']."\", lang=\"fr-fra\", content='<content></content>', phrase=\"".$value['phrase_fr']."\"";
+			$zhElement = "INSERT INTO elements SET structureId=\"".$id_to_elements."\", label=\"".$value['mot_zh']."\", lang=\"zh-zho\", content='<content></content>', phrase=\"".$value['phrase_zh']."\"";
 			echo $frElement.'<br/>';
 			echo $zhElement.'<br/>';
 			mysql_query($frElement);
@@ -106,5 +108,5 @@ $last_id_theme = mysql_insert_id();
  //echo "<hr>";
 }
 /******************************************* fin script d'insertion ou mise à jour ************************************************************/
-
+//echo 'Durée totale :'.(time() - $originTime);
 ?>
