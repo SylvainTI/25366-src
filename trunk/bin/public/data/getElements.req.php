@@ -1,42 +1,46 @@
 <?php
-/*
-?action=getElements&langSource=fr-fra&langDest=zh-zho
-*/
-$langSource = $_GET['langSource'];
-$langDest = $_GET['langDest'];
+$langS = $_GET['langSource'];
+$langD = $_GET['langDest'];
+$langAsNature = array('fr-fra'=>'langSource','zh-zho'=>'langDest');
 
-function getElements($id, $langSource, $langDest)
+$totalReq = 0;
+function getElements($id=0, $langSource='fr-fra', $langDest='zh-zho')
 {
+	global $totalReq;
+	global $langAsNature;
+	
 	echo '<children>';
 	$res = mysql_query('SELECT * FROM structure WHERE parent=' . $id);
+	$totalReq++;
 	while ($data = mysql_fetch_array($res)) {
 		echo '
 		<element>
 			<id>' . $data['id'] . '</id>
 			<identifier><![CDATA[' . $data['identifier'] . ']]></identifier>
 			<asset>'.$data['asset'].'</asset>';
-		$sql2 = 'SELECT * FROM elements WHERE structureId=' . $data['id'] . ' AND lang = "' . $langSource . '"';
+			
+		$sql2 = 'SELECT * FROM elements WHERE structureId=' . $data['id'] . ' AND (lang = "' . $langSource . '" OR lang="'.$langDest.'")';
+		$totalReq++;
 		$res2 = mysql_query($sql2);
-		$data2 = mysql_fetch_array($res2);
-		echo '
-			<langSource>
-				<identifier>'. $data2['identifier'] . '</identifier>
-				<label>'. $data2['label'] . '</label>
-				<content>'. $data2['content'] . '</content>
-			</langSource>';
-		$sql2 = 'SELECT * FROM elements WHERE structureId=' . $data['id'] . ' AND lang = "' . $langDest . '"';
-		$res2 = mysql_query($sql2);
-		$data2 = mysql_fetch_array($res2);			
-		echo '
-			<langDest>
-				<identifier>'. $data2['identifier'] . '</identifier>
-				<label>'. $data2['label'] . '</label>
-				<content>'. $data2['content'] . '</content>
-			</langDest>';
+		while($data2 = mysql_fetch_array($res2)){
+			if($data2['lang']==null)
+			break;
+		?>
+			<<?php echo $langAsNature[$data2['lang']] ?>>
+				<identifier><?php echo $data2['identifier'] ?></identifier>
+				<label><?php echo $data2['label'] ?></label>
+				<content><?php echo $data2['content'] ?></content>
+			</<?php echo $langAsNature[$data2['lang']] ?>>
+		<?php
+		}	
 			getElements($data['id'], $langSource, $langDest);
 		echo '
 		</element>';
 	}
 	echo '</children>';
 }
-echo getElements(0, $langSource, $langDest);
+$originTime = time();
+getElements();
+//echo 'Durée totale :'.(time() - $originTime);
+//echo '<br/>Total req'.$totalReq;
+
