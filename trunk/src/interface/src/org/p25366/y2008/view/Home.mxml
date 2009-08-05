@@ -19,23 +19,6 @@
 			right="30"
 			top="30"
 			/>
-<!--
-		<searchResults:SearchResult 
-			id="searchResult"
-			label="Search Result"
-			word="{searchTextInput.text}"
-			visible="{sendSearch}"
-			width="287"
-			height="300"
-			right="30"
-			top="60"
-			showEffect="{wipeDown}"
-			hideEffect="{wipeUp}"
-			
-			/>
-
-	<mx:WipeDown id="wipeDown"/>
-		<mx:WipeUp id="wipeUp"/>-->
 	<mx:Canvas
 		height="90"
 		width="100%"

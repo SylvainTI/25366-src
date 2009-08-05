@@ -17,6 +17,7 @@
 			
 			private function _initMonsterDebugger():void {
 				var monster:MonsterDebugger = new MonsterDebugger(this);
+				
 			}
 		]]>
 	</mx:Script>
