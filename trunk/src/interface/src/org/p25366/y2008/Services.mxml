@@ -4,6 +4,7 @@
 	>
 	<mx:Script>
 		<![CDATA[
+			import com.airlogger.AirLoggerDebug;
 			import org.p25366.y2008.model.swfManager.SwfManager;
 			import mx.rpc.events.ResultEvent;
 			import org.p25366.y2008.model.Model;
@@ -27,6 +28,8 @@
 			private function getElementsResultHandler(event:ResultEvent):void
 			{
 				model.elements.source = XMLList(event.result).element;
+				AirLoggerDebug.debug('Services.mxml :: getElementsResultHandler');
+				
 			}
 			private function getAssets():void{
 				_swfLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, _onAssetComplete);

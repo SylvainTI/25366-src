@@ -6,7 +6,7 @@ $langAsNature = array('fr-fra'=>'langSource','zh-zho'=>'langDest');
 $structure = array();
 $elements = array();
 
-$getStructure = "SELECT * FROM structure";
+$getStructure = "SELECT * FROM structure ORDER BY `order` DESC";
 $structureQ = mysql_query($getStructure);
 while($structureData = mysql_fetch_array($structureQ)){
 	$structure[$structureData['parent']][$structureData['id']] =
@@ -45,7 +45,7 @@ function getElements($id=0, $langSource='fr-fra', $langDest='zh-zho')
 	//echo ' $childId :'.$childId.', $childDatas  :'.$childDatas."<br/>";
 	//print_r($childDatas);
 		?>
-		<elements>
+		<element>
 			<id><?php echo $childId ?></id>
 			<identifier><![CDATA[<?php echo $childDatas['identifier'] ?>]]></identifier>
 			<asset><?php echo $childDatas['asset'] ?></asset>
@@ -66,7 +66,7 @@ function getElements($id=0, $langSource='fr-fra', $langDest='zh-zho')
 		 	getElements($childId);
 		 }
 		echo "\r";
-		 ?></elements><?php
+		 ?></element><?php
 	}
 	 ?></children><?php
 	//die();
