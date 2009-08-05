@@ -3,6 +3,7 @@
 	xmlns:definitionPage="org.p25366.y2008.components.definitionPage.*">
 	<mx:Script>
 		<![CDATA[
+			import com.airlogger.AirLoggerDebug;
 			import mx.collections.XMLListCollection;
 			import org.p25366.y2008.model.swfManager.SwfManager;
 			import org.p25366.y2008.business.Delegate;
@@ -38,7 +39,6 @@
 			private function selectSubkey(event:ListEvent):void {
 
 				model.selectedSubKey = model.selectedKey.children.element[(event.target as List).selectedIndex];
-				trace(model.selectedSubKey);
 			}
 		]]>
 	</mx:Script>
@@ -54,12 +54,13 @@
 		direction="horizontal"
 		styleName="themeExplorerList"
 		itemClick="selectKey(event)"
+		itemRenderer="org.p25366.y2008.view.KeyItemRenderer" 
 		dataProvider="{model.elements}"
-		itemRenderer="org.p25366.y2008.view.KeyItemRenderer"
 		rowHeight="280"
 		columnWidth="40"
 		width="1000"
 		verticalScrollPolicy="off"
+		creationComplete="AirLoggerDebug.debug('ThemeExplorer :: creationComplete')"
 	/>
 	<mx:Canvas visible="{model.selectedKey!=null}" styleName="themeExplorerVerticalStyle" >
 		<mx:TileList

@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Application 
 	backgroundColor="0xffffff"
-	creationComplete="init()" 
 	layout="absolute"
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:view="org.p25366.y2008.view.*"
-	xmlns:y2008="org.p25366.y2008.*">
+	xmlns:y2008="org.p25366.y2008.*"
+	creationComplete="_initMonsterDebugger()">
 	<mx:Script>
 		<![CDATA[
 			import org.p25366.y2008.model.Model;
+			import com.airlogger.AirLoggerDebug;
+			import nl.demonsters.debugger.MonsterDebugger;
 			
 			[Bindable]
 			public var model:Model = Model.getInstance();
+			
+			private function _initMonsterDebugger():void {
+				var monster:MonsterDebugger = new MonsterDebugger(this);
+			}
 		]]>
 	</mx:Script>
 	<mx:Style source="org/p25366/y2008/style/style.css" />
