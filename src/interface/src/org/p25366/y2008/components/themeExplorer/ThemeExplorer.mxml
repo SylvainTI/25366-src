@@ -37,7 +37,6 @@
 			}
 			
 			private function selectSubkey(event:ListEvent):void {
-
 				model.selectedSubKey = model.selectedKey.children.element[(event.target as List).selectedIndex];
 			}
 		]]>
